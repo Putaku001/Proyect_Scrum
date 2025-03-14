@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto_A.Pages.SplashPage"
+             BackgroundColor="Black">
+    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+            <!-- Logo -->
+            <Image Source="logo.png" WidthRequest="150" HeightRequest="150"/>
+
+            <!-- Nombre de la app -->
+            <Label Text="Proyecto_A" 
+                   FontSize="24" 
+                   TextColor="White" 
+                   HorizontalOptions="Center"/>
+
+            <!-- Animación de puntos de carga -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label x:Name="Dot1" Text="●" FontSize="24" TextColor="White" Opacity="1"/>
+                <Label x:Name="Dot2" Text="●" FontSize="24" TextColor="White" Opacity="0.5"/>
+                <Label x:Name="Dot3" Text="●" FontSize="24" TextColor="White" Opacity="0.2"/>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>

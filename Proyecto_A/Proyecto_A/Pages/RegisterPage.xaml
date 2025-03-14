@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto_A.Pages.RegisterPage">
+
+    <ContentPage.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#3027e0" Offset="0.0"/>
+            <GradientStop Color="#9000a7" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid Padding="30">
+        <StackLayout VerticalOptions="Center"
+                     Spacing="10"
+                     Padding="20"
+                     WidthRequest="350"
+                     HorizontalOptions="Center">
+
+            <Label Text="Regístrate"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+
+            <Label Text="Nombre de Usuario"
+                   FontSize="14"
+                   TextColor="White"/>
+            <Entry Placeholder="Ejemplo123"
+                   Text="{Binding NombreUsuario}"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   BackgroundColor="White"
+                   HeightRequest="40"/>
+
+            <Label Text="Correo Electrónico"
+                   FontSize="14"
+                   TextColor="White"/>
+            <Entry Placeholder="example123@gmail.com"
+                   Text="{Binding Email}"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   Keyboard="Email"
+                   BackgroundColor="White"
+                   HeightRequest="40"/>
+
+            <Label Text="Contraseña"
+                   FontSize="14"
+                   TextColor="White"/>
+            <Entry Placeholder="********"
+                   IsPassword="True"
+                   Text="{Binding Contrasena}"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   BackgroundColor="White"
+                   HeightRequest="40"/>
+
+            <!-- Botón Registrarse -->
+            <Button Text="Registrarse"
+                    Command="{Binding RegisterCommand}"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="45"
+                    Margin="10,0,10,10">
+                <Button.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#00FFA2" Offset="0.0"/>
+                        <GradientStop Color="#007BFF" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                <Label Text="¿Ya tienes cuenta?" 
+                       TextColor="White"
+                       FontSize="14"
+                       VerticalOptions="Center"/>
+
+                <Button Text="Iniciar Sesión"
+                        Clicked="OnLoginClicked"
+                        TextColor="LightBlue"
+                        FontAttributes="Bold"
+                        BackgroundColor="Transparent"
+                        FontSize="14"
+                        Padding="0"
+                        VerticalOptions="Center"/>
+            </StackLayout>
+
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

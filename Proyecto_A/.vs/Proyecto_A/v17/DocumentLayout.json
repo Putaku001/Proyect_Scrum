@@ -1,0 +1,360 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\models\\contenidomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\models\\contenidomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\splashpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\splashpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\data\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\data\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\pages\\splashpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\pages\\splashpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\utilities\\projectextentions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\utilities\\projectextentions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|c:\\users\\kenne\\onedrive\\desktop\\proyect_a\\proyecto_a\\proyecto_a\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87A619E1-A0F8-42A8-BF6F-CCF807D62CF4}|Proyecto_A\\Proyecto_A.csproj|solutionrelative:proyecto_a\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ContenidoModel.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Models\\ContenidoModel.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Models\\ContenidoModel.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Models\\ContenidoModel.cs",
+              "RelativeToolTip": "Proyecto_A\\Models\\ContenidoModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T02:07:00.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomePage.xaml",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\HomePage.xaml",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\HomePage.xaml",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\HomePage.xaml",
+              "RelativeToolTip": "Proyecto_A\\Pages\\HomePage.xaml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-13T23:27:43.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\HomePage.xaml.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\HomePage.xaml.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\HomePage.xaml.cs",
+              "RelativeToolTip": "Proyecto_A\\Pages\\HomePage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T23:28:14.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\App.xaml.cs",
+              "RelativeToolTip": "Proyecto_A\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T22:46:20.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SplashPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\SplashPage.xaml.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\SplashPage.xaml.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\SplashPage.xaml.cs",
+              "RelativeToolTip": "Proyecto_A\\Pages\\SplashPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T22:38:02.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\LoginPage.xaml.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\LoginPage.xaml.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\LoginPage.xaml.cs",
+              "RelativeToolTip": "Proyecto_A\\Pages\\LoginPage.xaml.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA1wBMAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T23:41:14.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\ViewModels\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\ViewModels\\HomeViewModel.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\ViewModels\\HomeViewModel.cs",
+              "RelativeToolTip": "Proyecto_A\\ViewModels\\HomeViewModel.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T23:20:43.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "Proyecto_A\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T23:20:31.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RegisterPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\RegisterPage.xaml.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\RegisterPage.xaml.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\RegisterPage.xaml.cs",
+              "RelativeToolTip": "Proyecto_A\\Pages\\RegisterPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T01:09:49.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RegisterPage.xaml",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\RegisterPage.xaml",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\RegisterPage.xaml",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\RegisterPage.xaml",
+              "RelativeToolTip": "Proyecto_A\\Pages\\RegisterPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-14T01:00:07.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "Proyecto_A\\ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T01:19:42.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\LoginPage.xaml",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\LoginPage.xaml",
+              "RelativeToolTip": "Proyecto_A\\Pages\\LoginPage.xaml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAwHUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-13T23:24:25.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Data\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Data\\DatabaseService.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Data\\DatabaseService.cs",
+              "RelativeToolTip": "Proyecto_A\\Data\\DatabaseService.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAowJAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T21:18:54.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\AppShell.xaml",
+              "RelativeDocumentMoniker": "Proyecto_A\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\AppShell.xaml",
+              "RelativeToolTip": "Proyecto_A\\AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-13T23:44:42.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SplashPage.xaml",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\SplashPage.xaml",
+              "RelativeDocumentMoniker": "Proyecto_A\\Pages\\SplashPage.xaml",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Pages\\SplashPage.xaml",
+              "RelativeToolTip": "Proyecto_A\\Pages\\SplashPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-13T22:38:17.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\MauiProgram.cs",
+              "RelativeToolTip": "Proyecto_A\\MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T22:51:00.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProjectExtentions.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Utilities\\ProjectExtentions.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Utilities\\ProjectExtentions.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Utilities\\ProjectExtentions.cs",
+              "RelativeToolTip": "Proyecto_A\\Utilities\\ProjectExtentions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T23:30:40.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UsuarioModel.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Models\\UsuarioModel.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\Models\\UsuarioModel.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\Models\\UsuarioModel.cs",
+              "RelativeToolTip": "Proyecto_A\\Models\\UsuarioModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T23:33:41.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GlobalUsings.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\GlobalUsings.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\GlobalUsings.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\GlobalUsings.cs",
+              "RelativeToolTip": "Proyecto_A\\GlobalUsings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T23:30:30.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "Proyecto_A\\AppShell.xaml.cs",
+              "ToolTip": "C:\\Users\\kenne\\OneDrive\\Desktop\\proyect_A\\Proyecto_A\\Proyecto_A\\AppShell.xaml.cs",
+              "RelativeToolTip": "Proyecto_A\\AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T22:39:15.3Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

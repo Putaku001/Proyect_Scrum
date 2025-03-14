@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto_A.Pages.HomePage"
+             BackgroundColor="Black">
+
+    <Grid>
+        <!-- Definición de columnas para menú lateral y contenido principal -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="MenuColumn" Width="250" />
+            <!-- Menú lateral -->
+            <ColumnDefinition Width="5" />
+            <!-- Línea/Pestaña para reabrir -->
+            <ColumnDefinition Width="*" />
+            <!-- Contenido principal -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Menú lateral desplegable -->
+        <StackLayout x:Name="SideMenu" Grid.Column="0" BackgroundColor="#222" WidthRequest="250" Padding="20">
+            <!-- Imagen de perfil -->
+            <Image Source="user_white.png" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center"/>
+
+            <!-- Nombre de usuario -->
+            <Label Text="Nombre de usuario" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+
+            <!-- Botón menú hamburguesa -->
+            <Button x:Name="MenuToggleButton" 
+            BackgroundColor="Transparent" 
+            TextColor="White" 
+            FontSize="24"
+            Text="☰"
+            HorizontalOptions="End"
+            Clicked="ToggleMenu"/>
+
+            <!-- Opciones del menú -->
+            <StackLayout Spacing="15">
+
+                <!-- Personalizar -->
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Source="user_edit_white.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
+                    <Button Text="Personalizar" BackgroundColor="Transparent" TextColor="White" FontSize="14" HorizontalOptions="Start"/>
+                </Grid>
+
+                <!-- Notificaciones -->
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Source="notificaciones_white.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
+                    <Button Text="Notificaciones" BackgroundColor="Transparent" TextColor="White" FontSize="14" HorizontalOptions="Start"/>
+                </Grid>
+
+                <!-- Favoritos -->
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Source="favorito_white.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
+                    <Button Text="Favoritos" BackgroundColor="Transparent" TextColor="White" FontSize="14" HorizontalOptions="Start"/>
+                </Grid>
+
+                <!-- Catálogo -->
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Source="categoria_white.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
+                    <Button Text="Catálogo" BackgroundColor="Transparent" TextColor="White" FontSize="14" HorizontalOptions="Start"/>
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Línea o pestaña para abrir el menú -->
+        <BoxView x:Name="MenuTab" Grid.Column="1" WidthRequest="5" BackgroundColor="Gray"
+                 VerticalOptions="Fill" GestureRecognizers="{TapGestureRecognizer Tapped=ToggleMenu}"/>
+
+        <!-- Contenido principal -->
+        <StackLayout x:Name="MainContent" Grid.Column="2" Padding="20">
+            <!-- Slider de recomendaciones -->
+            <Frame BackgroundColor="#333" CornerRadius="15" HeightRequest="200" Padding="10">
+                <CarouselView ItemsSource="{Binding Contenidos}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding RutaImagen}" Aspect="AspectFill"/>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </Frame>
+
+            <!-- Recomendaciones de Manga -->
+            <Label Text="Recomendaciones de Manga" TextColor="White" FontSize="18" FontAttributes="Bold"/>
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Contenidos}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#333" CornerRadius="15" HeightRequest="150" WidthRequest="150">
+                                <Image Source="{Binding RutaImagen}" Aspect="AspectFill"/>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Recomendaciones de Anime -->
+            <Label Text="Recomendaciones de Anime" TextColor="White" FontSize="18" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Contenidos}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#333" CornerRadius="15" HeightRequest="150" WidthRequest="150">
+                                <Image Source="{Binding RutaImagen}" Aspect="AspectFill"/>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </Grid>
+</ContentPage>
