@@ -28,6 +28,11 @@ namespace ProyectScrum.Forms
         {
             this.Close();
         }
+
+        private void GalleryFlow5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
     
