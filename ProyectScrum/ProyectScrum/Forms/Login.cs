@@ -1,4 +1,6 @@
-﻿using ProyectScrum.Data;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using ProyectScrum.Data;
+using ProyectScrum.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,17 +9,23 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ProyectScrum.Forms.customControl;
 
 namespace ProyectScrum.Forms
 {
     public partial class Login : Form
     {
+        private readonly EmailSettings _emailSettings = new EmailSettings();
+        private DateTime _codeTime;
         public Login()
         {
             InitializeComponent();
+            _codeTime = DateTime.Now;
+
         }
 
         private void registerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -85,9 +93,88 @@ namespace ProyectScrum.Forms
             this.Close();
         }
 
+        private string GenerateCodeVerification()
+        {
+            Random random = new Random();
+            return random.Next(100000, 999999).ToString();
+        }
+
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FPassword FPassForm = new FPassword();
+
+            _emailSettings.codigoVerificacion = GenerateCodeVerification();
+
+            var dataAccess = new SqlDataAccess();
+            using (var connection = dataAccess.GetConnection())
+            {
+                connection.Open();
+
+                var cmd = new SqlCommand("SELECT Email FROM Usuarios WHERE NombreUsuario = @NombreUsuario", connection);
+                cmd.Parameters.AddWithValue("@NombreUsuario", txtUsuario.Text);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        _emailSettings.EmailDestino = reader["Email"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                try
+                {
+                    MailMessage mailMessage = new MailMessage(
+                        _emailSettings.EmailOrigen,
+                        _emailSettings.EmailDestino,
+                        "Código de Verificación",
+                        $@"
+                        <p>Estimado/a {_emailSettings.EmailDestino},</p>
+
+                        <p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta. Para completar el proceso de recuperación de contraseña, utiliza el siguiente código de verificación:</p>
+
+                        <p style='font-size: 18px; color: #2E86C1;'><b>{_emailSettings.codigoVerificacion}</b></p>
+
+                        <p>Por favor, introduce este código en la pantalla de verificación para restablecer tu contraseña y acceder nuevamente a tu cuenta. Este código es válido solo por un período limitado, por lo que te recomendamos que completes el proceso lo antes posible.</p>
+
+                        <p>Si no solicitaste restablecer tu contraseña, puedes ignorar este mensaje. La seguridad de tu cuenta es muy importante para nosotros, y ningún cambio será realizado sin tu autorización.</p>
+
+                        <p>Atentamente,</p>
+                        <p>Equipo de Soporte LosTilinazos77</p>
+
+                        <p style='font-size: 12px; color: #888;'>Este es un mensaje automático, por favor no respondas a este correo.</p>
+                        "
+                    );
+
+                    mailMessage.IsBodyHtml = true;
+
+                    SmtpClient smtpClient = new SmtpClient("smpt.gmail.com");
+                    smtpClient.EnableSsl = true;
+                    smtpClient.UseDefaultCredentials = false;
+                    smtpClient.Host = "smtp.gmail.com";
+                    smtpClient.Port = 587;
+                    smtpClient.Credentials = new System.Net.NetworkCredential(_emailSettings.EmailOrigen, _emailSettings.Contraseña);
+
+                    _emailSettings.time = _codeTime;
+
+                    smtpClient.Send(mailMessage);
+
+                    smtpClient.Dispose();
+
+                    MessageBox.Show("Se ha enviado el código de verificación a su correo.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al enviar el correo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            FPassword FPassForm = new FPassword(_emailSettings);
             FPassForm.FormClosed += FPassForm_FormClosed;
             FPassForm.Show();
             this.Hide();
@@ -123,10 +210,10 @@ namespace ProyectScrum.Forms
         {
             GraphicsPath path = new GraphicsPath();
             path.StartFigure();
-            path.AddArc(rect.X, rect.Y, Radius, Radius, 180,90);
-            path.AddArc(rect.Width-Radius, rect.Y, Radius, Radius, 270,90);
-            path.AddArc(rect.Width - Radius, rect.Height-Radius, Radius, Radius, 0, 90);
-            path.AddArc(rect.X, rect.Height-Radius, Radius, Radius, 90, 90);
+            path.AddArc(rect.X, rect.Y, Radius, Radius, 180, 90);
+            path.AddArc(rect.Width - Radius, rect.Y, Radius, Radius, 270, 90);
+            path.AddArc(rect.Width - Radius, rect.Height - Radius, Radius, Radius, 0, 90);
+            path.AddArc(rect.X, rect.Height - Radius, Radius, Radius, 90, 90);
             path.CloseFigure();
 
             return path;
@@ -136,8 +223,8 @@ namespace ProyectScrum.Forms
             base.OnPaint(pevent);
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            RectangleF rectSurface = new RectangleF(0,0,this.Width, this.Height);
-            RectangleF rectBorder = new RectangleF(1,1, this.Width-0.8F, this.Height-1);
+            RectangleF rectSurface = new RectangleF(0, 0, this.Width, this.Height);
+            RectangleF rectBorder = new RectangleF(1, 1, this.Width - 0.8F, this.Height - 1);
 
             if (borderRadius > 2)
             {
@@ -164,7 +251,7 @@ namespace ProyectScrum.Forms
                     using (Pen penBorder = new Pen(borderColor, borderSize))
                     {
                         penBorder.Alignment = PenAlignment.Inset;
-                        pevent.Graphics.DrawRectangle(penBorder, 0,0,this.Width-1, this.Height-1);
+                        pevent.Graphics.DrawRectangle(penBorder, 0, 0, this.Width - 1, this.Height - 1);
                     }
                 }
             }
@@ -181,5 +268,6 @@ namespace ProyectScrum.Forms
                 this.Invalidate();
             }
         }
+
     }
 }

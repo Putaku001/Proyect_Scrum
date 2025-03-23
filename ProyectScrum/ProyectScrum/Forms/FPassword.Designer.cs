@@ -42,17 +42,18 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(334, 18);
+            label1.Location = new Point(382, 24);
             label1.Name = "label1";
-            label1.Size = new Size(381, 45);
+            label1.Size = new Size(479, 54);
             label1.TabIndex = 0;
             label1.Text = "Olvidaste Tu Contraseña";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(391, 215);
+            textBox1.Location = new Point(447, 287);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(264, 23);
+            textBox1.Size = new Size(301, 27);
             textBox1.TabIndex = 1;
             // 
             // label2
@@ -61,9 +62,9 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(301, 151);
+            label2.Location = new Point(344, 201);
             label2.Name = "label2";
-            label2.Size = new Size(517, 30);
+            label2.Size = new Size(658, 37);
             label2.TabIndex = 2;
             label2.Text = "Se ha enviado un correo con un codigo de verificacion";
             // 
@@ -74,23 +75,26 @@
             customControl1.FlatAppearance.BorderSize = 0;
             customControl1.FlatStyle = FlatStyle.Flat;
             customControl1.ForeColor = Color.White;
-            customControl1.Location = new Point(449, 266);
+            customControl1.Location = new Point(513, 355);
+            customControl1.Margin = new Padding(3, 4, 3, 4);
             customControl1.Name = "customControl1";
-            customControl1.Size = new Size(150, 40);
+            customControl1.Size = new Size(171, 53);
             customControl1.TabIndex = 4;
             customControl1.Text = "Verificar";
             customControl1.UseVisualStyleBackColor = false;
+            customControl1.Click += customControl1_Click;
             // 
             // FPassword
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1092, 539);
+            ClientSize = new Size(1248, 719);
             Controls.Add(customControl1);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FPassword";
             Text = "FPassword";
             ResumeLayout(false);

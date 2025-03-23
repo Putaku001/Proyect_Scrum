@@ -44,9 +44,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(240, 9);
+            label1.Location = new Point(274, 12);
             label1.Name = "label1";
-            label1.Size = new Size(335, 45);
+            label1.Size = new Size(420, 54);
             label1.TabIndex = 0;
             label1.Text = "Cambia Tu Cotraseña";
             // 
@@ -56,32 +56,34 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(169, 105);
+            label2.Location = new Point(193, 140);
             label2.Name = "label2";
-            label2.Size = new Size(261, 25);
+            label2.Size = new Size(326, 32);
             label2.TabIndex = 1;
             label2.Text = "Escribe tu Nueva Contraseña";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(169, 222);
+            label3.Location = new Point(193, 296);
             label3.Name = "label3";
-            label3.Size = new Size(0, 15);
+            label3.Size = new Size(0, 20);
             label3.TabIndex = 2;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(169, 137);
+            textBox1.Location = new Point(193, 183);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(406, 23);
+            textBox1.Size = new Size(463, 27);
             textBox1.TabIndex = 3;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(169, 252);
+            textBox2.Location = new Point(193, 336);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(406, 23);
+            textBox2.Size = new Size(463, 27);
             textBox2.TabIndex = 4;
             // 
             // customControl1
@@ -92,12 +94,14 @@
             customControl1.FlatStyle = FlatStyle.Flat;
             customControl1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             customControl1.ForeColor = Color.White;
-            customControl1.Location = new Point(169, 316);
+            customControl1.Location = new Point(193, 421);
+            customControl1.Margin = new Padding(3, 4, 3, 4);
             customControl1.Name = "customControl1";
-            customControl1.Size = new Size(406, 40);
+            customControl1.Size = new Size(464, 53);
             customControl1.TabIndex = 5;
             customControl1.Text = "Confirmar Cambio";
             customControl1.UseVisualStyleBackColor = false;
+            customControl1.Click += customControl1_Click;
             // 
             // label4
             // 
@@ -105,18 +109,18 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ButtonHighlight;
-            label4.Location = new Point(169, 214);
+            label4.Location = new Point(193, 285);
             label4.Name = "label4";
-            label4.Size = new Size(221, 25);
+            label4.Size = new Size(278, 32);
             label4.TabIndex = 6;
             label4.Text = "Confirma La Contraseña";
             // 
             // New_Password
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(label4);
             Controls.Add(customControl1);
             Controls.Add(textBox2);
@@ -124,6 +128,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "New_Password";
             Text = "New_Password";
             ResumeLayout(false);
