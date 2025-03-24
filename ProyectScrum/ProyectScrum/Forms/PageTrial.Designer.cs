@@ -50,9 +50,6 @@
             panel7 = new Panel();
             GalleryFlow3 = new FlowLayoutPanel();
             manga3 = new PictureBox();
-            panel8 = new Panel();
-            GalleryFlow4 = new FlowLayoutPanel();
-            manga4 = new PictureBox();
             panel9 = new Panel();
             GalleryFlow5 = new FlowLayoutPanel();
             manga5 = new PictureBox();
@@ -62,9 +59,7 @@
             panel11 = new Panel();
             GalleryFlow7 = new FlowLayoutPanel();
             manga7 = new PictureBox();
-            panel12 = new Panel();
-            GalleryFlow8 = new FlowLayoutPanel();
-            manga8 = new PictureBox();
+            label2 = new Label();
             manga2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)manga2).BeginInit();
             SlideBar.SuspendLayout();
@@ -81,9 +76,6 @@
             panel7.SuspendLayout();
             GalleryFlow3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manga3).BeginInit();
-            panel8.SuspendLayout();
-            GalleryFlow4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)manga4).BeginInit();
             panel9.SuspendLayout();
             GalleryFlow5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manga5).BeginInit();
@@ -93,15 +85,12 @@
             panel11.SuspendLayout();
             GalleryFlow7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manga7).BeginInit();
-            panel12.SuspendLayout();
-            GalleryFlow8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)manga8).BeginInit();
             SuspendLayout();
             // 
             // manga2
             // 
             manga2.BackColor = Color.Black;
-            manga2.Image = Properties.Resources.Nanatsu;
+            manga2.Image = (Image)resources.GetObject("manga2.Image");
             manga2.Location = new Point(3, 3);
             manga2.Name = "manga2";
             manga2.Size = new Size(214, 315);
@@ -111,7 +100,7 @@
             // 
             // SlideBar
             // 
-            SlideBar.BackColor = Color.Black;
+            SlideBar.BackColor = Color.DimGray;
             SlideBar.Controls.Add(panel1);
             SlideBar.Controls.Add(panel2);
             SlideBar.Controls.Add(panel3);
@@ -238,7 +227,7 @@
             // panel4
             // 
             panel4.Controls.Add(GalleryFlow1);
-            panel4.Location = new Point(245, 22);
+            panel4.Location = new Point(322, 61);
             panel4.Name = "panel4";
             panel4.Size = new Size(217, 301);
             panel4.TabIndex = 2;
@@ -255,7 +244,7 @@
             // 
             // manga1
             // 
-            manga1.Image = Properties.Resources.onep;
+            manga1.Image = (Image)resources.GetObject("manga1.Image");
             manga1.Location = new Point(3, 3);
             manga1.Name = "manga1";
             manga1.Size = new Size(211, 320);
@@ -274,7 +263,7 @@
             // panel5
             // 
             panel5.Controls.Add(GalleryFlow2);
-            panel5.Location = new Point(493, 22);
+            panel5.Location = new Point(597, 61);
             panel5.Name = "panel5";
             panel5.Size = new Size(217, 301);
             panel5.TabIndex = 3;
@@ -291,7 +280,7 @@
             // panel7
             // 
             panel7.Controls.Add(GalleryFlow3);
-            panel7.Location = new Point(734, 22);
+            panel7.Location = new Point(857, 61);
             panel7.Name = "panel7";
             panel7.Size = new Size(217, 301);
             panel7.TabIndex = 3;
@@ -308,7 +297,7 @@
             // manga3
             // 
             manga3.BackColor = Color.Black;
-            manga3.Image = Properties.Resources.DB;
+            manga3.Image = (Image)resources.GetObject("manga3.Image");
             manga3.Location = new Point(3, 3);
             manga3.Name = "manga3";
             manga3.Size = new Size(211, 330);
@@ -316,38 +305,10 @@
             manga3.TabIndex = 0;
             manga3.TabStop = false;
             // 
-            // panel8
-            // 
-            panel8.Controls.Add(GalleryFlow4);
-            panel8.Location = new Point(975, 22);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(217, 301);
-            panel8.TabIndex = 3;
-            // 
-            // GalleryFlow4
-            // 
-            GalleryFlow4.Controls.Add(manga4);
-            GalleryFlow4.Dock = DockStyle.Fill;
-            GalleryFlow4.Location = new Point(0, 0);
-            GalleryFlow4.Name = "GalleryFlow4";
-            GalleryFlow4.Size = new Size(217, 301);
-            GalleryFlow4.TabIndex = 1;
-            // 
-            // manga4
-            // 
-            manga4.BackColor = Color.Black;
-            manga4.Image = Properties.Resources.nerverland;
-            manga4.Location = new Point(3, 3);
-            manga4.Name = "manga4";
-            manga4.Size = new Size(214, 335);
-            manga4.SizeMode = PictureBoxSizeMode.Zoom;
-            manga4.TabIndex = 0;
-            manga4.TabStop = false;
-            // 
             // panel9
             // 
             panel9.Controls.Add(GalleryFlow5);
-            panel9.Location = new Point(245, 353);
+            panel9.Location = new Point(325, 394);
             panel9.Name = "panel9";
             panel9.Size = new Size(217, 301);
             panel9.TabIndex = 3;
@@ -365,7 +326,7 @@
             // manga5
             // 
             manga5.BackColor = Color.Black;
-            manga5.Image = Properties.Resources.fire;
+            manga5.Image = (Image)resources.GetObject("manga5.Image");
             manga5.Location = new Point(3, 3);
             manga5.Name = "manga5";
             manga5.Size = new Size(214, 320);
@@ -376,7 +337,7 @@
             // panel10
             // 
             panel10.Controls.Add(GalleryFlow6);
-            panel10.Location = new Point(493, 353);
+            panel10.Location = new Point(597, 392);
             panel10.Name = "panel10";
             panel10.Size = new Size(217, 301);
             panel10.TabIndex = 3;
@@ -404,7 +365,7 @@
             // panel11
             // 
             panel11.Controls.Add(GalleryFlow7);
-            panel11.Location = new Point(734, 353);
+            panel11.Location = new Point(857, 392);
             panel11.Name = "panel11";
             panel11.Size = new Size(217, 301);
             panel11.TabIndex = 4;
@@ -421,7 +382,7 @@
             // manga7
             // 
             manga7.BackColor = Color.Black;
-            manga7.Image = Properties.Resources.naruto;
+            manga7.Image = (Image)resources.GetObject("manga7.Image");
             manga7.Location = new Point(3, 3);
             manga7.Name = "manga7";
             manga7.Size = new Size(214, 310);
@@ -429,46 +390,28 @@
             manga7.TabIndex = 0;
             manga7.TabStop = false;
             // 
-            // panel12
+            // label2
             // 
-            panel12.Controls.Add(GalleryFlow8);
-            panel12.Location = new Point(975, 353);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(217, 301);
-            panel12.TabIndex = 3;
-            // 
-            // GalleryFlow8
-            // 
-            GalleryFlow8.Controls.Add(manga8);
-            GalleryFlow8.Dock = DockStyle.Fill;
-            GalleryFlow8.Location = new Point(0, 0);
-            GalleryFlow8.Name = "GalleryFlow8";
-            GalleryFlow8.Size = new Size(217, 301);
-            GalleryFlow8.TabIndex = 1;
-            // 
-            // manga8
-            // 
-            manga8.BackColor = Color.Black;
-            manga8.Image = Properties.Resources.bokuhero;
-            manga8.Location = new Point(3, 3);
-            manga8.Name = "manga8";
-            manga8.Size = new Size(211, 310);
-            manga8.SizeMode = PictureBoxSizeMode.Zoom;
-            manga8.TabIndex = 0;
-            manga8.TabStop = false;
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ButtonFace;
+            label2.Location = new Point(228, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(311, 31);
+            label2.TabIndex = 5;
+            label2.Text = "MANGAS RECOMENDADOS";
             // 
             // PageTrial
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
-            BackgroundImage = Properties.Resources.menu;
+            BackColor = Color.Black;
             ClientSize = new Size(1248, 719);
-            Controls.Add(panel12);
+            Controls.Add(label2);
             Controls.Add(panel11);
             Controls.Add(panel10);
             Controls.Add(panel9);
-            Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(panel5);
             Controls.Add(panel4);
@@ -493,9 +436,6 @@
             panel7.ResumeLayout(false);
             GalleryFlow3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)manga3).EndInit();
-            panel8.ResumeLayout(false);
-            GalleryFlow4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)manga4).EndInit();
             panel9.ResumeLayout(false);
             GalleryFlow5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)manga5).EndInit();
@@ -505,10 +445,8 @@
             panel11.ResumeLayout(false);
             GalleryFlow7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)manga7).EndInit();
-            panel12.ResumeLayout(false);
-            GalleryFlow8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)manga8).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -525,27 +463,22 @@
         private Panel panel4;
         private Panel panel5;
         private Panel panel7;
-        private Panel panel8;
         private Panel panel9;
         private Panel panel10;
         private Panel panel11;
-        private Panel panel12;
         private FlowLayoutPanel GalleryFlow1;
         private PictureBox manga1;
         private PictureBox pictureBox2;
         private FlowLayoutPanel GalleryFlow2;
         private FlowLayoutPanel GalleryFlow3;
-        private FlowLayoutPanel GalleryFlow4;
         private FlowLayoutPanel GalleryFlow5;
         private FlowLayoutPanel GalleryFlow6;
         private FlowLayoutPanel GalleryFlow7;
-        private FlowLayoutPanel GalleryFlow8;
         private PictureBox manga3;
-        private PictureBox manga4;
         private PictureBox manga5;
         private PictureBox manga6;
         private PictureBox manga7;
-        private PictureBox manga8;
         private Button button1;
+        private Label label2;
     }
 }
