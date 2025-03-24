@@ -30,7 +30,7 @@ namespace ProyectScrum.Forms
             {
                 New_Password new_Password = new New_Password(_emailSettings);
                 new_Password.ShowDialog();
-                this.Close();
+                this.Hide();
             }
             else
             {

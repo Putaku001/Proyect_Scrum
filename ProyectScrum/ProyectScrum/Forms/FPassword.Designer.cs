@@ -96,6 +96,7 @@
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FPassword";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FPassword";
             ResumeLayout(false);
             PerformLayout();

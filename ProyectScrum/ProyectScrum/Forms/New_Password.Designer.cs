@@ -75,6 +75,7 @@
             textBox1.Location = new Point(193, 183);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
+            textBox1.PasswordChar = '*';
             textBox1.Size = new Size(463, 27);
             textBox1.TabIndex = 3;
             // 
@@ -83,6 +84,7 @@
             textBox2.Location = new Point(193, 336);
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '*';
             textBox2.Size = new Size(463, 27);
             textBox2.TabIndex = 4;
             // 
@@ -130,6 +132,7 @@
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "New_Password";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "New_Password";
             ResumeLayout(false);
             PerformLayout();

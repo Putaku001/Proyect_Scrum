@@ -32,6 +32,13 @@ namespace ProyectScrum.Forms
                     return;
                 }
 
+                string hashedPassword;
+                using (var sha256 = System.Security.Cryptography.SHA256.Create())
+                {
+                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(textBox1.Text));
+                    hashedPassword = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+                }
+
                 var dataAccess = new SqlDataAccess();
                 using (var connection = dataAccess.GetConnection())
                 {
@@ -40,7 +47,7 @@ namespace ProyectScrum.Forms
                         connection.Open();
 
                         var query = new SqlCommand("UPDATE Usuarios SET ContrasenaHash = @ContrasenaHash WHERE Email = @Email", connection);
-                        query.Parameters.AddWithValue("@ContrasenaHash", textBox1.Text);
+                        query.Parameters.AddWithValue("@ContrasenaHash", hashedPassword); 
                         query.Parameters.AddWithValue("@Email", _emailSettings.EmailDestino.ToString());
 
                         int rowsAffected = query.ExecuteNonQuery();
@@ -48,8 +55,8 @@ namespace ProyectScrum.Forms
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Contraseña actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
                             Login login = new Login();
+                            this.Hide();
                             login.Show();
                         }
                         else

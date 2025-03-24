@@ -166,6 +166,7 @@ namespace ProyectScrum.Forms
                     smtpClient.Dispose();
 
                     MessageBox.Show("Se ha enviado el código de verificación a su correo.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
                 }
                 catch (Exception ex)
                 {
