@@ -39,7 +39,7 @@
             panel3 = new Panel();
             button1 = new Button();
             panel4 = new Panel();
-            button2 = new Button();
+            catalogbtn = new Button();
             panel5 = new Panel();
             button3 = new Button();
             slideBarTime = new System.Windows.Forms.Timer(components);
@@ -167,31 +167,32 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(button2);
+            panel4.Controls.Add(catalogbtn);
             panel4.Location = new Point(3, 331);
             panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
             panel4.Size = new Size(218, 87);
             panel4.TabIndex = 3;
             // 
-            // button2
+            // catalogbtn
             // 
-            button2.Cursor = Cursors.Hand;
-            button2.Dock = DockStyle.Left;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(0, 0);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Padding = new Padding(17, 0, 0, 0);
-            button2.Size = new Size(215, 87);
-            button2.TabIndex = 1;
-            button2.Text = " Catalogo";
-            button2.UseVisualStyleBackColor = true;
+            catalogbtn.Cursor = Cursors.Hand;
+            catalogbtn.Dock = DockStyle.Left;
+            catalogbtn.FlatAppearance.BorderSize = 0;
+            catalogbtn.FlatStyle = FlatStyle.Flat;
+            catalogbtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            catalogbtn.ForeColor = Color.White;
+            catalogbtn.Image = (Image)resources.GetObject("catalogbtn.Image");
+            catalogbtn.ImageAlign = ContentAlignment.MiddleLeft;
+            catalogbtn.Location = new Point(0, 0);
+            catalogbtn.Margin = new Padding(3, 4, 3, 4);
+            catalogbtn.Name = "catalogbtn";
+            catalogbtn.Padding = new Padding(17, 0, 0, 0);
+            catalogbtn.Size = new Size(215, 87);
+            catalogbtn.TabIndex = 1;
+            catalogbtn.Text = " Catalogo";
+            catalogbtn.UseVisualStyleBackColor = true;
+            catalogbtn.Click += catalogbtn_Click;
             // 
             // panel5
             // 
@@ -256,7 +257,7 @@
         private Panel panel3;
         private Button button1;
         private Panel panel4;
-        private Button button2;
+        private Button catalogbtn;
         private Panel panel5;
         private Button button3;
         private Panel panel6;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectScrum.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,6 +49,13 @@ namespace ProyectScrum
         private void menuButton_Click(object sender, EventArgs e)
         {
             slideBarTime.Start();
+        }
+
+        private void catalogbtn_Click(object sender, EventArgs e)
+        {
+            Catalog catalogForm = new Catalog();
+            catalogForm.Show();
+            this.Hide();
         }
     }
 }
