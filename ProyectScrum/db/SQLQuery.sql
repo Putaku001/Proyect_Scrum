@@ -1,7 +1,7 @@
-CREATE DATABASE proyectoDBS
+CREATE DATABASE proyectoDBS2
 GO 
 
-USE proyectoDBS
+USE proyectoDBS2
 GO
 
 -- Tabla de Roles
@@ -34,32 +34,13 @@ CREATE TABLE Mangas (
     Titulo NVARCHAR(100) NOT NULL,
     Autor NVARCHAR(100) NOT NULL,
     Descripcion NVARCHAR(500),
-    URLPortada NVARCHAR(255) NOT NULL,
     Estado NVARCHAR(20) DEFAULT 'En publicación',
     FechaPublicacion DATE,
-    CarpetaDriveID NVARCHAR(100) NOT NULL 
+    URLMangaDrive NVARCHAR(100) NOT NULL, --carpeta de volumes de manga en pdf ubicado en drive
+	URLPortada NVARCHAR(255) NOT NULL -- portadas de los mangas jpg ubicados en drive
 );
 
--- Tabla de relación Manga-Género
-CREATE TABLE MangaGeneros (
-    MangaID INT NOT NULL,
-    GeneroID INT NOT NULL,
-    PRIMARY KEY (MangaID, GeneroID),
-    FOREIGN KEY (MangaID) REFERENCES Mangas(MangaID) ON DELETE CASCADE,
-    FOREIGN KEY (GeneroID) REFERENCES Generos(GeneroID) ON DELETE CASCADE
-);
 
--- Tabla de Volúmenes
-CREATE TABLE Volumenes (
-    VolumenID INT PRIMARY KEY IDENTITY(1,1),
-    MangaID INT NOT NULL,
-    Numero INT NOT NULL,
-    Titulo NVARCHAR(100),
-    CantidadPaginas INT DEFAULT 0,
-    CarpetaDriveID NVARCHAR(100) NOT NULL,
-    FechaPublicacion DATE,
-    FOREIGN KEY (MangaID) REFERENCES Mangas(MangaID) ON DELETE CASCADE
-);
 
 -- Tabla de Favoritos
 CREATE TABLE Favoritos (
@@ -72,39 +53,81 @@ CREATE TABLE Favoritos (
     UNIQUE (UsuarioID, MangaID)
 );
 
+INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada)
+VALUES (
+    'Koe no Katachi',
+    'Yoshitoki ?ima',
+    'Shôko Nishimiya, una estudiante de primaria sorda, empieza a sentir el bullying de sus nuevos compañeros cuando se cambia de colegio. El peor de todos es Ishida Shôya, quien termina por forzar que Nishimiya se cambie de escuela. Años después, Ishida buscará la redención de sus malas acciones.',
+    'Finalizado',
+    '2013-08-06',
+    'https://drive.google.com/drive/folders/1izcBRPWyw9t5SfTm44F-PJZGe3qVLQJY?usp=sharing',
+    'https://drive.google.com/uc?export=view&id=1_8egGWW_-pXajVA99w5fr7loFjeP3Nw8'
+);
+
+INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada)
+VALUES (
+    'Aku no Hana',
+    'Sh?z? Oshimi',
+    'Kasuga Takao es un chico que ama leer libros, en especial Les Fleurs du mal, de Charles Baudelaire. Saeki Nanao, una estudiante que asiste a su misma escuela, es la chica de la cual Kasuga esta enamorado, pero él solo la admira desde la distancia. Un día, olvida su libro en su clase y vuelve por él. Allí encuentra además de su preciado libro, el uniforme de gimnasia de Saeki y lo roba en un arrebato de locura.',
+    'Finalizado',
+    '2014-09-09',
+    'https://drive.google.com/drive/folders/1CcjRJzp7IKHqKM0KJDts3cPWkRWpeZF2?usp=sharing',
+    'https://drive.google.com/uc?export=view&id=1kklUx7glv8kKIitozA9Fs_fY0dOCHzDw'
+);
+
+INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada)
+VALUES (
+    'Onanie Master Kurosawa',
+    'Ise Katsura',
+    'Un estudiante solitario de secundaria encuentra su forma de lidiar con la frustración personal hasta que un evento inesperado lo lleva a una transformación profunda.',
+    'Finalizado',
+    '2008-01-01',
+    'https://drive.google.com/drive/folders/17IjQGamseRmbG0yXtSlGSVty8Iku2GKe?usp=sharing',
+    'https://drive.google.com/uc?export=view&id=1Ju5-yJBRKZHHL6IUurs9pmLZJmgdyCsn'
+);
+
+INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada)
+VALUES (
+    'Ruri Dragon',
+    'Masaoki Shindo',
+    'Ruri descubre que su padre es un dragón y debe adaptarse a una nueva vida con poderes sobrenaturales mientras asiste a la escuela.',
+    'En publicación',
+    '2022-06-13',
+    'https://drive.google.com/drive/folders/1GUkMoBVIAkcrEGcTFqhJWucdXgIp4cQZ?usp=sharing',
+    'https://drive.google.com/uc?export=view&id=1ujfDFBovbRAMe9Pj5O8pbTIFGr_nxGRO'
+);
+
+INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada)
+VALUES (
+    'Kimi no Na wa',
+    'Makoto Shinkai',
+    'Dos adolescentes descubren que están conectados a través de sueños extraños y deben encontrarse para entender el misterio que los une.',
+    'Finalizado',
+    '2016-08-26',
+    'https://drive.google.com/drive/folders/1cMWvfzju9I92nXn9K8ZE2f79xD8nrEF0?usp=sharing',
+    'https://drive.google.com/uc?export=view&id=16YvC2eePRj1VwHwmr2xC87R9_2Nk-lXw'
+);
+
+INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada)
+VALUES (
+    'Kaichou-kun no Shimobe',
+    'Fujikawa Yura',
+    'Una chica común termina convertida en la asistente del presidente del consejo estudiantil, un chico mandón con secretos detrás de su actitud fría.',
+    'Finalizado',
+    '2013-11-01',
+    'https://drive.google.com/drive/folders/1grC9VA25fjf-xjzERZAn6J10sDnjx024?usp=sharing',
+    'https://drive.google.com/uc?export=view&id=1TOsTCZOXUN08qAdAX0L_knTzqAGvC7u_'
+);
+
+
 INSERT INTO Roles (Nombre) VALUES ('Admin'), ('Usuario');
 
-INSERT INTO Generos (Nombre) VALUES 
-('Acción'), ('Aventura'), ('Comedia'), ('Drama'),
-('Fantasía'), ('Horror'), ('Misterio'), ('Romance'),
-('Ciencia Ficción'), ('Seinen'), ('Shonen');
-
-INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID) VALUES 
-('admin', 'admin@mangadb.com', '$2a$10$xJwL5v5Jz7U6QbZ5X2n4Xe', 1),
-('usuario1', 'usuario1@mangadb.com', '$2a$10$xJwL5v5Jz7U6QbZ5X2n4Xe', 2);
-
-INSERT INTO Mangas (Titulo, Autor, Descripcion, URLPortada, Estado, FechaPublicacion, CarpetaDriveID) VALUES 
-('One Piece', 'Eiichiro Oda', 'Aventuras piratas de Monkey D. Luffy', 'https://drive.google.com/1aB2cD3eF4g', 'En publicación', '1997-07-22', '5hJ6kL7mN8o'),
-('Berserk', 'Kentaro Miura', 'La oscura historia de Guts', 'https://drive.google.com/9pQ0rS1tU2v', 'Pausado', '1989-08-25', '3wX4yZ5aB6c');
-
-INSERT INTO MangaGeneros (MangaID, GeneroID) VALUES 
-(1, 1), (1, 2), (1, 5), 
-(2, 1), (2, 5), (2, 10); 
-
-INSERT INTO Volumenes (MangaID, Numero, Titulo, CantidadPaginas, CarpetaDriveID, FechaPublicacion) VALUES 
-(1, 1, 'Romance Dawn', 200, '7dE8fG9hI0j', '1997-12-24'),
-(1, 2, 'Buggy el Payaso', 192, '1kL2mN3oP4q', '1998-04-03'),
-(2, 1, 'La Espada Negra', 240, '5rS6tU7vW8x', '1990-11-22');
-
-INSERT INTO Favoritos (UsuarioID, MangaID) VALUES 
-(2, 1),
-(2, 2);
 
 SELECT * FROM Roles;
 SELECT * FROM Usuarios;
 SELECT * FROM Generos;
 SELECT * FROM Mangas;
-SELECT * FROM MangaGeneros;
-SELECT * FROM Volumenes;
+SELECT * FROM MangaGeneros; --para que se usara ???
+SELECT * FROM Volumenes; --no hace nada
 SELECT * FROM Favoritos;
 

@@ -50,12 +50,39 @@ namespace ProyectScrum
         {
             slideBarTime.Start();
         }
+        private void AbrirFormularioEnPanel(Form formularioHijo)
+        {
+            // Limpia contenido anterior
+            if (panelContenedor.Controls.Count > 0)
+                panelContenedor.Controls.RemoveAt(0);
+
+            // Ajusta el nuevo formulario
+            formularioHijo.TopLevel = false;
+            formularioHijo.FormBorderStyle = FormBorderStyle.None;
+            formularioHijo.Dock = DockStyle.Fill;
+
+            panelContenedor.Controls.Add(formularioHijo);
+            panelContenedor.Tag = formularioHijo;
+
+            formularioHijo.Show();
+        }
 
         private void catalogbtn_Click(object sender, EventArgs e)
         {
-            Catalog catalogForm = new Catalog();
-            catalogForm.Show();
-            this.Hide();
+            AbrirFormularioEnPanel(new Catalog());
+        }
+
+        private void cerrarSesionButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide(); 
+                Login loginForm = new Login(); 
+                loginForm.FormClosed += (s, args) => this.Close();
+                loginForm.Show();
+            }
         }
     }
 }

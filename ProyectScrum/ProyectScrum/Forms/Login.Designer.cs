@@ -29,108 +29,57 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            label1 = new Label();
-            panel1 = new Panel();
-            label2 = new Label();
-            label3 = new Label();
-            txtUsuario = new TextBox();
-            txtContrasena = new TextBox();
-            label4 = new Label();
-            registerLinkLabel = new LinkLabel();
-            btnIniciarSesion = new customControl();
-            label5 = new Label();
+            pictureBox1 = new PictureBox();
             linkLabel1 = new LinkLabel();
+            label5 = new Label();
+            btnIniciarSesion = new customControl();
+            registerLinkLabel = new LinkLabel();
+            label4 = new Label();
+            txtContrasena = new TextBox();
+            txtUsuario = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            panel2 = new Panel();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // pictureBox1
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(903, 91);
-            label1.Name = "label1";
-            label1.Size = new Size(115, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Bienvenido!";
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Dock = DockStyle.Left;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(500, 539);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
             // 
-            // panel1
+            // linkLabel1
             // 
-            panel1.BackColor = Color.White;
-            panel1.Location = new Point(658, 91);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(11, 533);
-            panel1.TabIndex = 1;
+            linkLabel1.AutoSize = true;
+            linkLabel1.BackColor = Color.Transparent;
+            linkLabel1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLabel1.LinkColor = Color.LightBlue;
+            linkLabel1.Location = new Point(658, 261);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(168, 17);
+            linkLabel1.TabIndex = 33;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "¿Olvidaste Tu contraseña?";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
-            // label2
+            // label5
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(768, 160);
-            label2.Name = "label2";
-            label2.Size = new Size(70, 23);
-            label2.TabIndex = 2;
-            label2.Text = "Usuario";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(768, 256);
-            label3.Name = "label3";
-            label3.Size = new Size(99, 23);
-            label3.TabIndex = 3;
-            label3.Text = "Contraseña";
-            // 
-            // txtUsuario
-            // 
-            txtUsuario.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(768, 187);
-            txtUsuario.Margin = new Padding(3, 4, 3, 4);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(369, 29);
-            txtUsuario.TabIndex = 4;
-            // 
-            // txtContrasena
-            // 
-            txtContrasena.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContrasena.Location = new Point(768, 283);
-            txtContrasena.Margin = new Padding(3, 4, 3, 4);
-            txtContrasena.Name = "txtContrasena";
-            txtContrasena.PasswordChar = '*';
-            txtContrasena.Size = new Size(369, 29);
-            txtContrasena.TabIndex = 5;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(822, 520);
-            label4.Name = "label4";
-            label4.Size = new Size(156, 23);
-            label4.TabIndex = 7;
-            label4.Text = "¿No tienes cuenta?\r\n";
-            // 
-            // registerLinkLabel
-            // 
-            registerLinkLabel.AutoSize = true;
-            registerLinkLabel.BackColor = Color.Transparent;
-            registerLinkLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            registerLinkLabel.LinkColor = Color.LightBlue;
-            registerLinkLabel.Location = new Point(984, 520);
-            registerLinkLabel.Name = "registerLinkLabel";
-            registerLinkLabel.Size = new Size(92, 23);
-            registerLinkLabel.TabIndex = 8;
-            registerLinkLabel.TabStop = true;
-            registerLinkLabel.Text = "Registrate";
-            registerLinkLabel.LinkClicked += registerLinkLabel_LinkClicked;
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(610, 304);
+            label5.Name = "label5";
+            label5.Size = new Size(0, 17);
+            label5.TabIndex = 32;
             // 
             // btnIniciarSesion
             // 
@@ -141,47 +90,108 @@
             btnIniciarSesion.FlatStyle = FlatStyle.Flat;
             btnIniciarSesion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnIniciarSesion.ForeColor = Color.White;
-            btnIniciarSesion.Location = new Point(872, 417);
-            btnIniciarSesion.Margin = new Padding(3, 4, 3, 4);
+            btnIniciarSesion.Location = new Point(749, 324);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(171, 53);
-            btnIniciarSesion.TabIndex = 9;
+            btnIniciarSesion.Size = new Size(150, 40);
+            btnIniciarSesion.TabIndex = 31;
             btnIniciarSesion.Text = "Iniciar Sesion";
             btnIniciarSesion.UseVisualStyleBackColor = false;
             btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
-            // label5
+            // registerLinkLabel
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(713, 391);
-            label5.Name = "label5";
-            label5.Size = new Size(0, 23);
-            label5.TabIndex = 10;
+            registerLinkLabel.AutoSize = true;
+            registerLinkLabel.BackColor = Color.Transparent;
+            registerLinkLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            registerLinkLabel.LinkColor = Color.LightBlue;
+            registerLinkLabel.Location = new Point(847, 401);
+            registerLinkLabel.Name = "registerLinkLabel";
+            registerLinkLabel.Size = new Size(70, 17);
+            registerLinkLabel.TabIndex = 30;
+            registerLinkLabel.TabStop = true;
+            registerLinkLabel.Text = "Registrate";
+            registerLinkLabel.LinkClicked += registerLinkLabel_LinkClicked;
             // 
-            // linkLabel1
+            // label4
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.BackColor = Color.Transparent;
-            linkLabel1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabel1.LinkColor = Color.LightBlue;
-            linkLabel1.Location = new Point(768, 333);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(214, 23);
-            linkLabel1.TabIndex = 11;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "¿Olvidaste Tu contraseña?";
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(723, 401);
+            label4.Name = "label4";
+            label4.Size = new Size(118, 17);
+            label4.TabIndex = 29;
+            label4.Text = "¿No tienes cuenta?\r\n";
+            // 
+            // txtContrasena
+            // 
+            txtContrasena.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtContrasena.Location = new Point(658, 223);
+            txtContrasena.Name = "txtContrasena";
+            txtContrasena.PasswordChar = '*';
+            txtContrasena.Size = new Size(323, 25);
+            txtContrasena.TabIndex = 28;
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsuario.Location = new Point(658, 151);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(323, 25);
+            txtUsuario.TabIndex = 27;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(658, 203);
+            label3.Name = "label3";
+            label3.Size = new Size(77, 17);
+            label3.TabIndex = 26;
+            label3.Text = "Contraseña";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(658, 131);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 17);
+            label2.TabIndex = 25;
+            label2.Text = "Usuario";
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.White;
+            panel2.Location = new Point(562, 79);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(10, 400);
+            panel2.TabIndex = 24;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(776, 79);
+            label1.Name = "label1";
+            label1.Size = new Size(92, 21);
+            label1.TabIndex = 23;
+            label1.Text = "Bienvenido!";
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(159, 51, 255);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1248, 719);
+            ClientSize = new Size(1092, 539);
             Controls.Add(linkLabel1);
             Controls.Add(label5);
             Controls.Add(btnIniciarSesion);
@@ -191,28 +201,29 @@
             Controls.Add(txtUsuario);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(panel1);
+            Controls.Add(panel2);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
+            Controls.Add(pictureBox1);
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private Panel panel1;
-        private Label label2;
-        private Label label3;
-        private TextBox txtUsuario;
-        private TextBox txtContrasena;
-        private Label label4;
-        private LinkLabel registerLinkLabel;
-        private customControl btnIniciarSesion;
-        private Label label5;
+        private PictureBox pictureBox1;
         private LinkLabel linkLabel1;
+        private Label label5;
+        private customControl btnIniciarSesion;
+        private LinkLabel registerLinkLabel;
+        private Label label4;
+        private TextBox txtContrasena;
+        private TextBox txtUsuario;
+        private Label label3;
+        private Label label2;
+        private Panel panel2;
+        private Label label1;
     }
 }
