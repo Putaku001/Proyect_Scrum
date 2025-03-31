@@ -16,5 +16,8 @@ namespace ProyectScrum.Entities
         public DateTime FechaPublicacion { get; set; }
         public string URLMangaDrive { get; set; }
         public string URLPortada { get; set; }
+
+        // Nueva propiedad para filtrar o mostrar género
+        public int GeneroID { get; set; }
     }
 }

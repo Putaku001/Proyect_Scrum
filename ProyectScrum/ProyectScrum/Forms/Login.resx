@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -121,7 +121,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAva9JREFUeF7t3Qe4NVV1N3BUVBBBBBRBRWnSmwIKCAIiSLFX7AU09o5d7A07KijY
+        vwAADr8BOAVTJAAAva9JREFUeF7t3Qe4NVV1N3BUVBBBBBRBRWnSmwIKCAIiSLFX7AU09o5d7A07KijY
         sCEiKohYQFEswahfLCnGxCQaS4ox9gIv8+3f3Lsu+x3mnDPnlrfd9X+e/3Pa9Jmz1l51r5dIJBKJRCKR
         SCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJ
         RCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFI
@@ -936,7 +936,7 @@
   <data name="btnIniciarSesion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJYAAAAoCAIAAACTo5SwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAACd0RVh0U29mdHdhcmUAQWRvYmUgUGhvdG9zaG9wIDIyLjUgKFdpbmRvd3Mpu864
+        DQAACw0B7QfALAAAACd0RVh0U29mdHdhcmUAQWRvYmUgUGhvdG9zaG9wIDIyLjUgKFdpbmRvd3Mpu864
         vwAAAAd0SU1FB+kDEhM3DbD5xI4AABBLSURBVHhezdx5l1xVEQBwvw3pvV93zxwQJKICgiBh30QQEiNI
         lMgiCCLIIouAkUVAZjJrz0z3bD37lqBgEFFAI/J5rO3WrffefT3dSQicU2dO/v+dqlvL63wtd+5QIvLn
         DUPs+TpG7vyjGN8YhshfeHTPXozcN4fzFx3NfQsj/+2R/HdGIQqXYOS/O4Jx+Wjhe2Mc+StHC98fK141

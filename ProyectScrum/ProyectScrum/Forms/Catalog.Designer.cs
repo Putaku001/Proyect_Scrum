@@ -36,7 +36,12 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             anteriorButton = new Label();
             siguienteButton = new Label();
+            panelFiltro = new Panel();
+            btnAplicarFiltro = new Button();
+            flowCheckBoxGeneros = new FlowLayoutPanel();
+            btnFiltro = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelFiltro.SuspendLayout();
             SuspendLayout();
             // 
             // label7
@@ -87,9 +92,9 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(78, 56);
+            flowLayoutPanel1.Location = new Point(59, 62);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(797, 440);
+            flowLayoutPanel1.Size = new Size(774, 437);
             flowLayoutPanel1.TabIndex = 21;
             // 
             // anteriorButton
@@ -98,7 +103,7 @@
             anteriorButton.BackColor = Color.Transparent;
             anteriorButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             anteriorButton.ForeColor = Color.White;
-            anteriorButton.Location = new Point(415, 509);
+            anteriorButton.Location = new Point(425, 476);
             anteriorButton.Name = "anteriorButton";
             anteriorButton.Size = new Size(15, 15);
             anteriorButton.TabIndex = 22;
@@ -111,19 +116,66 @@
             siguienteButton.BackColor = Color.Transparent;
             siguienteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             siguienteButton.ForeColor = Color.White;
-            siguienteButton.Location = new Point(452, 509);
+            siguienteButton.Location = new Point(462, 476);
             siguienteButton.Name = "siguienteButton";
             siguienteButton.Size = new Size(15, 15);
             siguienteButton.TabIndex = 23;
             siguienteButton.Text = ">";
             siguienteButton.Click += siguienteButton_Click;
             // 
+            // panelFiltro
+            // 
+            panelFiltro.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panelFiltro.BackColor = Color.FromArgb(220, 30, 30, 30);
+            panelFiltro.BorderStyle = BorderStyle.FixedSingle;
+            panelFiltro.Controls.Add(btnAplicarFiltro);
+            panelFiltro.Controls.Add(flowCheckBoxGeneros);
+            panelFiltro.Location = new Point(633, 22);
+            panelFiltro.Name = "panelFiltro";
+            panelFiltro.Size = new Size(200, 300);
+            panelFiltro.TabIndex = 24;
+            panelFiltro.Visible = false;
+            // 
+            // btnAplicarFiltro
+            // 
+            btnAplicarFiltro.Dock = DockStyle.Bottom;
+            btnAplicarFiltro.Location = new Point(0, 275);
+            btnAplicarFiltro.Name = "btnAplicarFiltro";
+            btnAplicarFiltro.Size = new Size(198, 23);
+            btnAplicarFiltro.TabIndex = 1;
+            btnAplicarFiltro.Text = "aplicar";
+            btnAplicarFiltro.UseVisualStyleBackColor = true;
+            btnAplicarFiltro.Click += btnAplicarFiltro_Click;
+            // 
+            // flowCheckBoxGeneros
+            // 
+            flowCheckBoxGeneros.AutoScroll = true;
+            flowCheckBoxGeneros.Dock = DockStyle.Top;
+            flowCheckBoxGeneros.Location = new Point(0, 0);
+            flowCheckBoxGeneros.Name = "flowCheckBoxGeneros";
+            flowCheckBoxGeneros.Size = new Size(198, 200);
+            flowCheckBoxGeneros.TabIndex = 0;
+            // 
+            // btnFiltro
+            // 
+            btnFiltro.FlatStyle = FlatStyle.Flat;
+            btnFiltro.ForeColor = Color.White;
+            btnFiltro.Location = new Point(797, 13);
+            btnFiltro.Name = "btnFiltro";
+            btnFiltro.Size = new Size(62, 33);
+            btnFiltro.TabIndex = 25;
+            btnFiltro.Text = "filtrar";
+            btnFiltro.UseVisualStyleBackColor = true;
+            btnFiltro.Click += btnFiltro_Click;
+            // 
             // Catalog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1119, 586);
+            ClientSize = new Size(882, 500);
+            Controls.Add(btnFiltro);
+            Controls.Add(panelFiltro);
             Controls.Add(siguienteButton);
             Controls.Add(anteriorButton);
             Controls.Add(flowLayoutPanel1);
@@ -135,7 +187,9 @@
             Name = "Catalog";
             Text = "Catalog";
             Load += Catalog_Load;
+            MouseDown += Catalog_MouseDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelFiltro.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,5 +202,9 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Label anteriorButton;
         private Label siguienteButton;
+        private Panel panelFiltro;
+        private Button btnAplicarFiltro;
+        private FlowLayoutPanel flowCheckBoxGeneros;
+        private Button btnFiltro;
     }
 }
