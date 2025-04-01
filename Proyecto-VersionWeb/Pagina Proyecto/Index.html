@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga Verse - La Página Definitiva de Manga</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- Header Fijo y Animado -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="./imgs/Logito.png" alt="Logo Manga Verse" class="header-logo">
+        <span>Manga Verse</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Mi Lista</a></li>
+          <li><a href="#">Catalogo</a></li>
+        </ul>
+      </nav>
+      <div class="profile">
+        <a href="#" id="login-link">Iniciar Sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección Hero -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Bienvenido a Manga Verse</h1>
+      <p>La experiencia definitiva en streaming de manga. Sumérgete en historias que te transformarán.</p>
+      <button id="explore-btn">Descubre lo Increíble</button>
+    </div>
+  </section>
+
+  <!-- Slider de Recomendados -->
+  <main>
+    <section class="slider-section" id="recomendados">
+      <h2>Recomendados</h2>
+      <div class="slider">
+        <button class="slider-btn left" onclick="slideLeft('recomendados-slider')">&#10094;</button>
+        <div class="slider-container" id="recomendados-slider">
+          <!-- Cada tarjeta tiene atributo data-pdf con el enlace del PDF (Tomo 1) -->
+          <div class="manga-card" data-pdf="https://drive.google.com/file/d/1yTpv2PD5css7IS9FSgSRsTI7PbcmVUj1/preview" id="first-manga">
+            <img src="./imgs/koe no katachi.jpg" alt="Manga 1">
+          </div>
+          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_2/preview">
+            <img src="./imgs/Kurosawa.jpg" alt="Manga 2">
+          </div>
+          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_3/preview">
+            <img src="./imgs/akunohana.jpg" alt="Manga 3">
+          </div>
+          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_4/preview">
+            <img src="./imgs/ruri-dragon-vol1.jpg" alt="Manga 4">
+          </div>
+          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_5/preview">
+            <img src="./imgs/yourname.jpg" alt="Manga 5">
+          </div>
+          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_6/preview">
+            <img src="./imgs/KS.jpg" alt="Manga 6">
+          </div>
+          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_7/preview">
+            <img src="./imgs/LOTM.webp" alt="Manga 7">
+          </div>
+        </div>
+        <button class="slider-btn right" onclick="slideRight('recomendados-slider')">&#10095;</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal para Selección de Tomo -->
+  <div id="volumeModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Elige el tomo que quieras leer</h2>
+      <div class="volume-options">
+        <button class="volume-btn" data-volume="1">Tomo 1</button>
+        <button class="volume-btn" data-volume="2">Tomo 2</button>
+        <button class="volume-btn" data-volume="3">Tomo 3</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Manga Verse. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
