@@ -49,9 +49,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(156, 4);
+            label7.Location = new Point(178, 5);
             label7.Name = "label7";
-            label7.Size = new Size(69, 20);
+            label7.Size = new Size(82, 25);
             label7.TabIndex = 17;
             label7.Text = "Catálago";
             // 
@@ -60,9 +60,9 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ButtonFace;
-            label8.Location = new Point(156, 22);
+            label8.Location = new Point(178, 29);
             label8.Name = "label8";
-            label8.Size = new Size(94, 21);
+            label8.Size = new Size(117, 28);
             label8.TabIndex = 18;
             label8.Text = "COMPLETO";
             // 
@@ -71,9 +71,9 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = SystemColors.ButtonHighlight;
-            label9.Location = new Point(16, 13);
+            label9.Location = new Point(18, 17);
             label9.Name = "label9";
-            label9.Size = new Size(80, 21);
+            label9.Size = new Size(100, 28);
             label9.TabIndex = 19;
             label9.Text = "MANGAS";
             // 
@@ -81,10 +81,9 @@
             // 
             pictureBox1.BackColor = Color.Black;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(100, 4);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(114, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(60, 37);
+            pictureBox1.Size = new Size(69, 49);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
@@ -92,9 +91,10 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(59, 62);
+            flowLayoutPanel1.Location = new Point(67, 83);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(774, 437);
+            flowLayoutPanel1.Size = new Size(885, 583);
             flowLayoutPanel1.TabIndex = 21;
             // 
             // anteriorButton
@@ -103,9 +103,9 @@
             anteriorButton.BackColor = Color.Transparent;
             anteriorButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             anteriorButton.ForeColor = Color.White;
-            anteriorButton.Location = new Point(425, 476);
+            anteriorButton.Location = new Point(486, 635);
             anteriorButton.Name = "anteriorButton";
-            anteriorButton.Size = new Size(15, 15);
+            anteriorButton.Size = new Size(20, 20);
             anteriorButton.TabIndex = 22;
             anteriorButton.Text = "<";
             anteriorButton.Click += anteriorButton_Click;
@@ -116,9 +116,9 @@
             siguienteButton.BackColor = Color.Transparent;
             siguienteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             siguienteButton.ForeColor = Color.White;
-            siguienteButton.Location = new Point(462, 476);
+            siguienteButton.Location = new Point(528, 635);
             siguienteButton.Name = "siguienteButton";
-            siguienteButton.Size = new Size(15, 15);
+            siguienteButton.Size = new Size(20, 20);
             siguienteButton.TabIndex = 23;
             siguienteButton.Text = ">";
             siguienteButton.Click += siguienteButton_Click;
@@ -130,18 +130,20 @@
             panelFiltro.BorderStyle = BorderStyle.FixedSingle;
             panelFiltro.Controls.Add(btnAplicarFiltro);
             panelFiltro.Controls.Add(flowCheckBoxGeneros);
-            panelFiltro.Location = new Point(633, 22);
+            panelFiltro.Location = new Point(723, 29);
+            panelFiltro.Margin = new Padding(3, 4, 3, 4);
             panelFiltro.Name = "panelFiltro";
-            panelFiltro.Size = new Size(200, 300);
+            panelFiltro.Size = new Size(228, 399);
             panelFiltro.TabIndex = 24;
             panelFiltro.Visible = false;
             // 
             // btnAplicarFiltro
             // 
             btnAplicarFiltro.Dock = DockStyle.Bottom;
-            btnAplicarFiltro.Location = new Point(0, 275);
+            btnAplicarFiltro.Location = new Point(0, 366);
+            btnAplicarFiltro.Margin = new Padding(3, 4, 3, 4);
             btnAplicarFiltro.Name = "btnAplicarFiltro";
-            btnAplicarFiltro.Size = new Size(198, 23);
+            btnAplicarFiltro.Size = new Size(226, 31);
             btnAplicarFiltro.TabIndex = 1;
             btnAplicarFiltro.Text = "aplicar";
             btnAplicarFiltro.UseVisualStyleBackColor = true;
@@ -152,17 +154,19 @@
             flowCheckBoxGeneros.AutoScroll = true;
             flowCheckBoxGeneros.Dock = DockStyle.Top;
             flowCheckBoxGeneros.Location = new Point(0, 0);
+            flowCheckBoxGeneros.Margin = new Padding(3, 4, 3, 4);
             flowCheckBoxGeneros.Name = "flowCheckBoxGeneros";
-            flowCheckBoxGeneros.Size = new Size(198, 200);
+            flowCheckBoxGeneros.Size = new Size(226, 267);
             flowCheckBoxGeneros.TabIndex = 0;
             // 
             // btnFiltro
             // 
             btnFiltro.FlatStyle = FlatStyle.Flat;
             btnFiltro.ForeColor = Color.White;
-            btnFiltro.Location = new Point(797, 13);
+            btnFiltro.Location = new Point(911, 17);
+            btnFiltro.Margin = new Padding(3, 4, 3, 4);
             btnFiltro.Name = "btnFiltro";
-            btnFiltro.Size = new Size(62, 33);
+            btnFiltro.Size = new Size(71, 44);
             btnFiltro.TabIndex = 25;
             btnFiltro.Text = "filtrar";
             btnFiltro.UseVisualStyleBackColor = true;
@@ -170,10 +174,10 @@
             // 
             // Catalog
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(882, 500);
+            ClientSize = new Size(1008, 667);
             Controls.Add(btnFiltro);
             Controls.Add(panelFiltro);
             Controls.Add(siguienteButton);
@@ -183,7 +187,6 @@
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Catalog";
             Text = "Catalog";
             Load += Catalog_Load;

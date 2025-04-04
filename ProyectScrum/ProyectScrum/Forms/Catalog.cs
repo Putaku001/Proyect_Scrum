@@ -14,6 +14,7 @@ namespace ProyectScrum.Forms
     {
         private int paginaActual = 1;
         private int mangasPorPagina = 12;
+
         public Catalog()
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace ProyectScrum.Forms
             CargarCheckBoxGeneros();
             flowCheckBoxGeneros.FlowDirection = FlowDirection.TopDown;
             flowCheckBoxGeneros.WrapContents = false;
-
         }
 
         //obtener mangas
@@ -49,9 +49,9 @@ namespace ProyectScrum.Forms
             {
                 conn.Open();
                 string query = @"SELECT MangaID, Titulo, URLPortada
-                                 FROM Mangas
-                                 ORDER BY FechaPublicacion DESC
-                                 OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY";
+                                   FROM Mangas
+                                   ORDER BY FechaPublicacion DESC
+                                   OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@offset", (paginaActual - 1) * mangasPorPagina);
@@ -71,6 +71,7 @@ namespace ProyectScrum.Forms
 
             return mangas;
         }
+
         private int ObtenerTotalMangas()
         {
             int total = 0;
@@ -87,7 +88,6 @@ namespace ProyectScrum.Forms
             return total;
         }
 
-
         //obterner portadas
         private void MostrarPortadas()
         {
@@ -103,7 +103,7 @@ namespace ProyectScrum.Forms
                     Margin = new Padding(30, 20, 30, 20),
                     SizeMode = PictureBoxSizeMode.StretchImage,
                     Cursor = Cursors.Hand,
-                    Tag = manga.Titulo
+                    Tag = manga
                 };
                 pb.Image = Properties.Resources.LoadingGif;
                 pb.LoadCompleted += (s, e) =>
@@ -112,7 +112,6 @@ namespace ProyectScrum.Forms
                     {
                         pb.Image = Properties.Resources.DefaultCover;
                     }
-
                 };
 
                 try
@@ -127,23 +126,18 @@ namespace ProyectScrum.Forms
                 ToolTip tip = new ToolTip();
                 tip.SetToolTip(pb, manga.Titulo);
 
-                pb.Click += (s, e) =>
-                {
-                    string titulo = (string)((PictureBox)s).Tag;
-                    MessageBox.Show($"Seleccionaste: {titulo}", "Manga seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                };
+                pb.Click += PictureBox_Click; // Usa el nuevo manejador de eventos
 
                 flowLayoutPanel1.Controls.Add(pb);
 
                 int totalMangas = ObtenerTotalMangas();
                 int totalPaginas = (int)Math.Ceiling((double)totalMangas / mangasPorPagina);
-
                 // Mostrar u ocultar botones según la página actual
                 anteriorButton.Visible = paginaActual > 1;
                 siguienteButton.Visible = paginaActual < totalPaginas;
             }
         }
-        //botones 
+        //botones
         private void siguienteButton_Click(object sender, EventArgs e)
         {
             paginaActual++;
@@ -158,17 +152,13 @@ namespace ProyectScrum.Forms
                 MostrarPortadas();
             }
         }
-
         //redibujo para slidebar
         public void ForzarRedibujarLayout()
         {
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanel1.Refresh();
         }
-
-
         //filtro 
-
         private void CargarCheckBoxGeneros()
         {
             flowCheckBoxGeneros.Controls.Clear();
@@ -193,7 +183,6 @@ namespace ProyectScrum.Forms
                 }
             }
         }
-
         //mostrar portadas filtradas
         private void MostrarPortadasFiltradas(List<int> generosSeleccionados)
         {
@@ -213,10 +202,10 @@ namespace ProyectScrum.Forms
                 conn.Open();
 
                 string query = $@"
-            SELECT MangaID, Titulo, URLPortada, GeneroID
-            FROM Mangas
-            WHERE GeneroID IN ({string.Join(",", generosSeleccionados)})
-            ORDER BY FechaPublicacion DESC";
+                    SELECT MangaID, Titulo, URLPortada, GeneroID
+                    FROM Mangas
+                    WHERE GeneroID IN ({string.Join(",", generosSeleccionados)})
+                    ORDER BY FechaPublicacion DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -241,7 +230,7 @@ namespace ProyectScrum.Forms
                     Margin = new Padding(30, 20, 30, 20),
                     SizeMode = PictureBoxSizeMode.StretchImage,
                     Cursor = Cursors.Hand,
-                    Tag = manga.Titulo,
+                    Tag = manga,
                     Image = Properties.Resources.LoadingGif
                 };
 
@@ -262,11 +251,8 @@ namespace ProyectScrum.Forms
 
                 ToolTip tip = new ToolTip();
                 tip.SetToolTip(pb, manga.Titulo);
-                pb.Click += (s, e) =>
-                {
-                    string titulo = (string)((PictureBox)s).Tag;
-                    MessageBox.Show($"Seleccionaste: {titulo}", "Manga seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                };
+
+                pb.Click += PictureBox_Click;
 
                 flowLayoutPanel1.Controls.Add(pb);
             }
@@ -274,7 +260,6 @@ namespace ProyectScrum.Forms
             anteriorButton.Visible = false;
             siguienteButton.Visible = false;
         }
-
         // btnfiltro click
         private void btnAplicarFiltro_Click(object sender, EventArgs e)
         {
@@ -291,13 +276,12 @@ namespace ProyectScrum.Forms
             MostrarPortadasFiltradas(generosSeleccionados);
             panelFiltro.Visible = false;
         }
-
+        //cerrar filtro
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             panelFiltro.Visible = !panelFiltro.Visible;
             panelFiltro.BringToFront();
         }
-        //cerrar filtro
 
         private void Catalog_MouseDown(object sender, MouseEventArgs e)
         {
@@ -306,7 +290,6 @@ namespace ProyectScrum.Forms
             {
                 // Obtener punto del mouse en pantalla
                 Point mousePos = this.PointToClient(Cursor.Position);
-
                 // Si el mouse no está dentro del panel
                 if (!panelFiltro.Bounds.Contains(mousePos))
                 {
@@ -315,5 +298,94 @@ namespace ProyectScrum.Forms
             }
         }
 
+        //Nuevo manejador de eventos para PictureBox al dar click
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            PictureBox clickedPictureBox = (PictureBox)sender;
+            Manga selectedManga = (Manga)clickedPictureBox.Tag;
+
+            MostrarDetallesManga(selectedManga.MangaID);
+        }
+
+        //Para mostrar la info de los mangas desde la DB
+        private void MostrarDetallesManga(int mangaId)
+        {
+            try
+            {
+                SqlDataAccess db = new SqlDataAccess();
+                using (SqlConnection connection = db.GetConnection())
+                {
+                    connection.Open();
+                    string query = "SELECT Mangas.Titulo, Mangas.Autor, Mangas.Descripcion, Mangas.Estado, " +
+                                    "Mangas.FechaPublicacion, Mangas.URLPortada, Generos.Nombre AS Genero FROM Mangas JOIN Generos " +
+                                    "ON Mangas.GeneroID = Generos.GeneroID WHERE Mangas.MangaID = @MangaID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MangaID", mangaId);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string titulo = reader.GetString(0);
+                                string autor = reader.GetString(1);
+                                string descripcion = reader.GetString(2);
+                                string estado = reader.GetString(3);
+                                DateTime fechaPublicacion = reader.GetDateTime(4);
+                                string urlPortada = reader.GetString(5);
+                                string genero = reader.GetString(6);
+
+                                Form detallesForm = new Form();
+                                detallesForm.Text = titulo;
+                                detallesForm.Size = new Size(600, 400);
+
+                                PictureBox portadaPictureBox = new PictureBox();
+                                portadaPictureBox.Load(urlPortada);
+                                portadaPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                                portadaPictureBox.Location = new Point(10, 10);
+                                portadaPictureBox.Size = new Size(200, 300);
+
+                                Label descripcionLabel = new Label();
+                                descripcionLabel.Text = $"Descripción: {descripcion}";
+                                descripcionLabel.Location = new Point(220, 10);
+                                descripcionLabel.AutoSize = true;
+
+                                Label autorLabel = new Label();
+                                autorLabel.Text = $"Autor: {autor}";
+                                autorLabel.Location = new Point(220, 50);
+                                autorLabel.AutoSize = true;
+
+                                Label estadoLabel = new Label();
+                                estadoLabel.Text = $"Estado: {estado}";
+                                estadoLabel.Location = new Point(220, 70);
+                                estadoLabel.AutoSize = true;
+
+                                Label fechaPublicacionLabel = new Label();
+                                fechaPublicacionLabel.Text = $"Fecha de publicación: {fechaPublicacion.ToShortDateString()}";
+                                fechaPublicacionLabel.Location = new Point(220, 90);
+                                fechaPublicacionLabel.AutoSize = true;
+
+                                Label generoLabel = new Label();
+                                generoLabel.Text = $"Género: {genero}";
+                                generoLabel.Location = new Point(220, 110);
+                                generoLabel.AutoSize = true;
+
+                                detallesForm.Controls.Add(portadaPictureBox);
+                                detallesForm.Controls.Add(descripcionLabel);
+                                detallesForm.Controls.Add(autorLabel);
+                                detallesForm.Controls.Add(estadoLabel);
+                                detallesForm.Controls.Add(fechaPublicacionLabel);
+                                detallesForm.Controls.Add(generoLabel);
+
+                                detallesForm.Show();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los detalles del manga: " + ex.Message);
+            }
+        }
     }
 }

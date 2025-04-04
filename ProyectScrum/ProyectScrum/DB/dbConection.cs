@@ -14,7 +14,7 @@ namespace ProyectScrum.Data
 
         public SqlDataAccess()
         {
-            _connectionString = "Data Source=LAPTOP-PHCFNULN\\SQLEXPRESS;Initial Catalog=proyectoDBSS;Integrated Security=True;";
+            _connectionString = "Data Source=AlePC\\SQLEXPRESS;Initial Catalog=proyectoDBSS;Integrated Security=True;";
         }
 
         public SqlConnection GetConnection()
