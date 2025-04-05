@@ -1,0 +1,290 @@
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\blanc_ma7kouo\Documents\aprendiendo C#\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\MIKE\Downloads\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.sourcelink.json
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.sourcelink.json
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Catalog.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Catalog.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.sourcelink.json
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\aleja\Videos\Proyect\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Catalog.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Catalog.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.sourcelink.json
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Catalog.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.sourcelink.json
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\kenne\OneDrive\Desktop\ps\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Catalog.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.sourcelink.json
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\kenne\OneDrive\Desktop\ps\pScrumgit\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.exe
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.deps.json
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.runtimeconfig.json
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.Auth.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.Core.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.Drive.v3.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Management.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.AssemblyReference.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Catalog.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.FPassword.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.mangaForm.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfoInputs.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.AssemblyInfo.cs
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.CoreCompileInputs.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.sourcelink.json
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectS.1BE354AE.Up2Date
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\refint\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\blanc_ma7kouo\Desktop\PS\descarga del proyecto\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Recursos\client_secret_575258247418-j2j23d6abc5a7jtnnrbgn4ldpg1is6tn.apps.googleusercontent.com.json
