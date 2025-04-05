@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - Manga Verse</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="./imgs/Logito.png" alt="Logo Manga Verse" class="header-logo" />
+        <span>Manga Verse</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Mi Lista</a></li>
+          <li><a href="#">Catálogo</a></li>
+        </ul>
+      </nav>
+      <div class="profile">
+        <a href="login.html" id="login-link">Iniciar Sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal: Formulario de login -->
+  <main class="login-container">
+    <div class="login-box">
+      <h2>Inicia Sesión</h2>
+      <form action="login.php" method="POST">
+        <label for="email">Correo electrónico</label>
+        <input type="email" name="email" id="email" required placeholder="Correo">
+
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" required placeholder="Contraseña">
+
+        <button type="submit">Ingresar</button>
+      </form>
+      <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Manga Verse. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

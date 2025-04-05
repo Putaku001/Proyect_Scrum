@@ -311,3 +311,65 @@ footer {
     font-size: 1.1rem;
   }
 }
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #1c1c1c;
+}
+
+.login-box {
+  background: #2a2a2a;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.login-box h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-box label {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.login-box input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.login-box button {
+  padding: 0.75rem;
+  border: none;
+  background: #e63946;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-box button:hover {
+  background: #d62828;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}

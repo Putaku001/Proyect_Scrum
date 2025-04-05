@@ -116,8 +116,3 @@ function resetModalContent() {
   });
 }
 
-// ===== Funcionalidad para "Iniciar Sesión" =====
-document.getElementById('login-link')?.addEventListener('click', function(e) {
-  e.preventDefault();
-  alert("Funcionalidad de iniciar sesión");
-});
