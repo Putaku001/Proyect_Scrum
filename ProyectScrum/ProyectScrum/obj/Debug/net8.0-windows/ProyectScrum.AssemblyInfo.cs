@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProyectScrum")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3500cabf92e7babc26782fd1ef4aa32e8402afc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+543247095e956ef416dc669c1bba7714162a7e22")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProyectScrum")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProyectScrum")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

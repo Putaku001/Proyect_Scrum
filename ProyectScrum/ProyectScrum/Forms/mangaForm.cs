@@ -18,19 +18,43 @@ namespace ProyectScrum.Forms
 {
     public partial class mangaForm : Form
     {
+        private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
         public mangaForm()
         {
             InitializeComponent();
         }
         public void CargarManga(Manga manga, string genero)
         {
-            try
+            // Mostrar imagen de carga
+            picturePortada.Image = Properties.Resources.LoadingGif;
+
+            if (cacheImagenes.ContainsKey(manga.URLPortada))
             {
-                picturePortada.LoadAsync(manga.URLPortada);
+                picturePortada.Image = cacheImagenes[manga.URLPortada];
             }
-            catch
+            else
             {
-                picturePortada.Image = Properties.Resources.DefaultCover;
+                try
+                {
+                    picturePortada.LoadCompleted += (s, e) =>
+                    {
+                        if (e.Error != null)
+                        {
+                            picturePortada.Image = Properties.Resources.DefaultCover;
+                        }
+                        else
+                        {
+                            // Guardar en cache si se carga bien
+                            cacheImagenes[manga.URLPortada] = picturePortada.Image;
+                        }
+                    };
+
+                    picturePortada.LoadAsync(manga.URLPortada);
+                }
+                catch
+                {
+                    picturePortada.Image = Properties.Resources.DefaultCover;
+                }
             }
 
             textTitle.Text = manga.Titulo;
@@ -40,8 +64,8 @@ namespace ProyectScrum.Forms
             labelDescripcion.Text = manga.Descripcion;
             labelGenero.Text = genero;
             CargarVolumenes(manga.URLMangaDrive);
-
         }
+        //extraer carpetas de los links
         private string ExtraerIdCarpeta(string url)
         {
             var partes = url.Split(new string[] { "folders/" }, StringSplitOptions.None);
@@ -51,7 +75,7 @@ namespace ProyectScrum.Forms
             }
             return string.Empty;
         }
-
+        //carga de volumenes
         private void CargarVolumenes(string urlMangaDrive)
         {
             flowPanelVolumenes.Controls.Clear();
@@ -98,7 +122,7 @@ namespace ProyectScrum.Forms
             {
                 Button tomoBtn = new Button
                 {
-                    Text = $"📖 {file.Name}",
+                    Text = $" {file.Name}",
                     Width = flowPanelVolumenes.Width - 40,
                     Height = 45,
                     BackColor = Color.FromArgb(35, 35, 35),
@@ -158,5 +182,12 @@ namespace ProyectScrum.Forms
             }
         }
 
+        private void labelCerrar_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Main"] is Main mainForm)
+            {
+                mainForm.AbrirFormularioEnPanel(mainForm.catalogForm);
+            }
+        }
     }
 }

@@ -40,6 +40,7 @@
             btnAplicarFiltro = new Button();
             flowCheckBoxGeneros = new FlowLayoutPanel();
             btnFiltro = new Button();
+            txtBuscar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelFiltro.SuspendLayout();
             SuspendLayout();
@@ -168,14 +169,28 @@
             btnFiltro.UseVisualStyleBackColor = true;
             btnFiltro.Click += btnFiltro_Click;
             // 
+            // txtBuscar
+            // 
+            txtBuscar.BackColor = Color.Black;
+            txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+            txtBuscar.Cursor = Cursors.IBeam;
+            txtBuscar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtBuscar.ForeColor = Color.White;
+            txtBuscar.Location = new Point(325, 18);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(273, 25);
+            txtBuscar.TabIndex = 26;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
+            // 
             // Catalog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(882, 500);
-            Controls.Add(btnFiltro);
             Controls.Add(panelFiltro);
+            Controls.Add(txtBuscar);
+            Controls.Add(btnFiltro);
             Controls.Add(siguienteButton);
             Controls.Add(anteriorButton);
             Controls.Add(flowLayoutPanel1);
@@ -206,5 +221,6 @@
         private Button btnAplicarFiltro;
         private FlowLayoutPanel flowCheckBoxGeneros;
         private Button btnFiltro;
+        private TextBox txtBuscar;
     }
 }

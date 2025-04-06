@@ -35,6 +35,8 @@
             labelGeneroInfo = new Label();
             picturePortada = new PictureBox();
             panel2 = new Panel();
+            labelList = new Label();
+            flowPanelVolumenes = new FlowLayoutPanel();
             txtTitulo = new TextBox();
             labelDescripcion = new TextBox();
             labelDescripcionInfo = new Label();
@@ -48,7 +50,7 @@
             textTitle = new TextBox();
             label8 = new Label();
             label7 = new Label();
-            flowPanelVolumenes = new FlowLayoutPanel();
+            labelCerrar = new Label();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picturePortada).BeginInit();
@@ -109,6 +111,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(labelList);
             panel2.Controls.Add(flowPanelVolumenes);
             panel2.Controls.Add(txtTitulo);
             panel2.Controls.Add(labelDescripcion);
@@ -123,6 +126,25 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(641, 431);
             panel2.TabIndex = 1;
+            // 
+            // labelList
+            // 
+            labelList.AutoSize = true;
+            labelList.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelList.ForeColor = Color.White;
+            labelList.Location = new Point(256, 201);
+            labelList.Name = "labelList";
+            labelList.Size = new Size(122, 21);
+            labelList.TabIndex = 27;
+            labelList.Text = "Lista de Tomos";
+            // 
+            // flowPanelVolumenes
+            // 
+            flowPanelVolumenes.AutoScroll = true;
+            flowPanelVolumenes.Location = new Point(3, 225);
+            flowPanelVolumenes.Name = "flowPanelVolumenes";
+            flowPanelVolumenes.Size = new Size(635, 203);
+            flowPanelVolumenes.TabIndex = 26;
             // 
             // txtTitulo
             // 
@@ -275,13 +297,18 @@
             label7.TabIndex = 26;
             label7.Text = "Catálago";
             // 
-            // flowPanelVolumenes
+            // labelCerrar
             // 
-            flowPanelVolumenes.AutoScroll = true;
-            flowPanelVolumenes.Location = new Point(3, 204);
-            flowPanelVolumenes.Name = "flowPanelVolumenes";
-            flowPanelVolumenes.Size = new Size(635, 224);
-            flowPanelVolumenes.TabIndex = 26;
+            labelCerrar.AutoSize = true;
+            labelCerrar.Cursor = Cursors.Hand;
+            labelCerrar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelCerrar.ForeColor = Color.White;
+            labelCerrar.Location = new Point(817, 15);
+            labelCerrar.Name = "labelCerrar";
+            labelCerrar.Size = new Size(45, 17);
+            labelCerrar.TabIndex = 28;
+            labelCerrar.Text = "Cerrar";
+            labelCerrar.Click += labelCerrar_Click;
             // 
             // mangaForm
             // 
@@ -289,6 +316,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(882, 500);
+            Controls.Add(labelCerrar);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(textTitle);
@@ -329,5 +357,7 @@
         private Label label8;
         private Label label7;
         private FlowLayoutPanel flowPanelVolumenes;
+        private Label labelList;
+        private Label labelCerrar;
     }
 }

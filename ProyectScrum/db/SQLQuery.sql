@@ -1,4 +1,4 @@
-﻿use proyectoDBS2
+use proyectoDBS2
 go
 
 
@@ -111,35 +111,25 @@ VALUES
     5);
 
 
-	CREATE TABLE Volumenes (
-    VolumenID INT IDENTITY(1,1) PRIMARY KEY,
-    MangaID INT NOT NULL,
-    Nombre NVARCHAR(100) NOT NULL,
-    URL NVARCHAR(255) NOT NULL,
-    FOREIGN KEY (MangaID) REFERENCES Mangas(MangaID) ON DELETE CASCADE
+CREATE TABLE TitulosAlternativos (
+    ID INT PRIMARY KEY IDENTITY,
+    MangaID INT FOREIGN KEY REFERENCES Mangas(MangaID),
+    TituloAlternativo NVARCHAR(255)
 );
 
--- Insertar tomos para Ruri Dragon (ID: 4)
-INSERT INTO Volumenes (MangaID, Nombre, URL) VALUES
-(4, 'Volumen 1', 'https://drive.google.com/uc?export=view&id=1GUkMoBVIAkcrEGcTFqhJWucdXgIp4cQZ');
+-- Koe no Katachi → Silent Voice
+INSERT INTO TitulosAlternativos (MangaID, TituloAlternativo)
+VALUES (1, 'a Silent Voice');
 
--- Insertar tomos para Onanie Master Kurosawa (ID: 3)
-INSERT INTO Volumenes (MangaID, Nombre, URL) VALUES
-(3, 'Volumen 1', 'https://drive.google.com/uc?export=view&id=17IjQGamseRmbG0yXtSlGSVty8Iku2GKe');
-
--- Insertar tomos para Kimi no Na wa (ID: 5)
-INSERT INTO Volumenes (MangaID, Nombre, URL) VALUES
-(5, 'Volumen 1', 'https://drive.google.com/uc?export=view&id=1cMWvfzju9I92nXn9K8ZE2f79xD8nrEF0');
-
--- Insertar tomos para Kaichou-kun no Shimobe (ID: 6)
-INSERT INTO Volumenes (MangaID, Nombre, URL) VALUES
-(6, 'Volumen 1', 'https://drive.google.com/uc?export=view&id=1grC9VA25fjf-xjzERZAn6J10sDnjx024');
+-- Kimi no Na wa → Your Name
+INSERT INTO TitulosAlternativos (MangaID, TituloAlternativo)
+VALUES (5, 'Your Name');
 
 
+select * from TitulosAlternativos
 select * from Generos
 select * from Mangas
 SELECT * FROM Roles;
 SELECT * FROM Usuarios;
 SELECT * FROM Favoritos;
-SELECT * FROM Volumenes;
 

@@ -13,10 +13,14 @@ namespace ProyectScrum
 {
     public partial class Main : Form
     {
+        public Catalog catalogForm;
+       
+
         bool slideBarExpand;
         public Main()
         {
             InitializeComponent();
+
         }
 
         private void perfilButton_Click(object sender, EventArgs e)
@@ -69,7 +73,10 @@ namespace ProyectScrum
 
         private void catalogbtn_Click(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new Catalog());
+            if (catalogForm == null || catalogForm.IsDisposed)
+                catalogForm = new Catalog();
+
+            AbrirFormularioEnPanel(catalogForm);
         }
 
         private void cerrarSesionButton_Click(object sender, EventArgs e)
