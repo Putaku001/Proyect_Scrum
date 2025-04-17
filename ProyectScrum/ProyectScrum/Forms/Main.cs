@@ -14,12 +14,15 @@ namespace ProyectScrum
     public partial class Main : Form
     {
         public Catalog catalogForm;
-       
+        public favs favsForm;
+        public int UsuarioID { get; set; }
+
 
         bool slideBarExpand;
-        public Main()
+        public Main(int usuarioID)
         {
             InitializeComponent();
+            UsuarioID = usuarioID;
 
         }
 
@@ -65,16 +68,32 @@ namespace ProyectScrum
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Dock = DockStyle.Fill;
 
+            if (formularioHijo is mangaForm manga)
+            {
+                manga.FavoritoAgregado += Manga_FavoritoAgregado;
+            }
+
             panelContenedor.Controls.Add(formularioHijo);
             panelContenedor.Tag = formularioHijo;
 
             formularioHijo.Show();
         }
 
+        private void Manga_FavoritoAgregado(object sender, EventArgs e)
+        {
+            // Este método se ejecutará cuando el evento FavoritoAgregado se dispare desde un mangaForm
+            // Aquí debemos actualizar la lista de favoritos en el formulario favs si está visible.
+            if (favsForm != null && !favsForm.IsDisposed && favsForm.Visible)
+            {
+                favsForm.CargarFavoritos(); // Llama al método para recargar los favoritos en favs
+            }
+            // Si favsForm no está visible, la actualización ocurrirá la próxima vez que se abra.
+        }
+
         private void catalogbtn_Click(object sender, EventArgs e)
         {
             if (catalogForm == null || catalogForm.IsDisposed)
-                catalogForm = new Catalog();
+                catalogForm = new Catalog(UsuarioID);
 
             AbrirFormularioEnPanel(catalogForm);
         }
@@ -85,11 +104,20 @@ namespace ProyectScrum
 
             if (result == DialogResult.Yes)
             {
-                this.Hide(); 
-                Login loginForm = new Login(); 
+                this.Hide();
+                Login loginForm = new Login();
                 loginForm.FormClosed += (s, args) => this.Close();
                 loginForm.Show();
             }
+        }
+
+        //Boton para abrir form de favoritos
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (favsForm == null || favsForm.IsDisposed)
+                favsForm = new favs(UsuarioID); // Asegúrate de tener esta variable definida en Main
+
+            AbrirFormularioEnPanel(favsForm);
         }
     }
 }

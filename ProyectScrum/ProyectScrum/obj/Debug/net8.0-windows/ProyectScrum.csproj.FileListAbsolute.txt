@@ -370,3 +370,13 @@ C:\Users\blanc_ma7kouo\Desktop\PS\proyect\Proyect_Scrum\ProyectScrum\ProyectScru
 C:\Users\blanc_ma7kouo\Desktop\PS\proyect\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
 C:\Users\blanc_ma7kouo\Desktop\PS\proyect\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
 C:\Users\blanc_ma7kouo\Desktop\PS\proyect\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Recursos\client_secret_575258247418-j2j23d6abc5a7jtnnrbgn4ldpg1is6tn.apps.googleusercontent.com.json
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.Auth.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.Core.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Google.Apis.Drive.v3.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\System.Management.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.mangaForm.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.favs.resources

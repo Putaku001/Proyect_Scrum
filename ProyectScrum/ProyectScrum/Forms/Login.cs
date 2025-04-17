@@ -21,6 +21,7 @@ namespace ProyectScrum.Forms
     {
         private readonly EmailSettings _emailSettings = new EmailSettings();
         private DateTime _codeTime;
+        private int usuarioID;
         public Login()
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace ProyectScrum.Forms
         {
             if (ValidarUsuario(txtUsuario.Text, txtContrasena.Text))
             {
-                Main mainForm = new Main();
+                Main mainForm = new Main(usuarioID);
                 mainForm.FormClosed += MainForm_FormClosed;
                 mainForm.Show();
                 this.Hide();
@@ -62,19 +63,21 @@ namespace ProyectScrum.Forms
             using (var conn = dataAccess.GetConnection())
             {
                 conn.Open();
-                var cmd = new SqlCommand("SELECT ContrasenaHash FROM Usuarios WHERE NombreUsuario = @Usuario", conn);
+                var cmd = new SqlCommand("SELECT UsuarioID, ContrasenaHash FROM Usuarios WHERE NombreUsuario = @Usuario", conn);
                 cmd.Parameters.AddWithValue("@Usuario", usuario);
 
                 var reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     string hashedPassword = reader["ContrasenaHash"].ToString();
-                    return VerificarContrasena(contrasena, hashedPassword);
+
+                    if (VerificarContrasena(contrasena, hashedPassword))
+                    {
+                        usuarioID = reader.GetInt32(reader.GetOrdinal("UsuarioID")); // Guardamos el ID aquí
+                        return true;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
         }
         private bool VerificarContrasena(string contrasena, string hashedPassword)

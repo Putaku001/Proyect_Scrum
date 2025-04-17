@@ -18,16 +18,18 @@ namespace ProyectScrum.Forms
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
         private int paginaActual = 1;
         private int mangasPorPagina = 12;
+        private int _usuarioID;
 
 
-        public Catalog()
+        public Catalog(int usuarioID)
         {
             InitializeComponent();
+            _usuarioID = usuarioID;
         }
 
         private void menuButton_Click(object sender, EventArgs e)
         {
-            Main mainForm = new Main();
+            Main mainForm = new Main(_usuarioID);
             mainForm.Show();
             this.Close();
         }
@@ -162,7 +164,7 @@ namespace ProyectScrum.Forms
                     {
                         string genero = ObtenerGenero(manga.GeneroID);
 
-                        mangaForm mangaForm = new mangaForm();
+                        mangaForm mangaForm = new mangaForm(_usuarioID);
                         mangaForm.CargarManga(manga, genero);
 
                         if (this.TopLevelControl is Main main)
@@ -336,7 +338,7 @@ namespace ProyectScrum.Forms
                     {
                         string genero = ObtenerGenero(manga.GeneroID);
 
-                        mangaForm mangaForm = new mangaForm();
+                        mangaForm mangaForm = new mangaForm(_usuarioID);
                         mangaForm.CargarManga(manga, genero);
 
                         if (this.TopLevelControl is Main main)
@@ -552,7 +554,7 @@ namespace ProyectScrum.Forms
                     if (mangaSeleccionado != null)
                     {
                         string genero = ObtenerGenero(mangaSeleccionado.GeneroID);
-                        mangaForm form = new mangaForm();
+                        mangaForm form = new mangaForm(_usuarioID);
                         form.CargarManga(mangaSeleccionado, genero);
 
                         if (this.TopLevelControl is Main main)

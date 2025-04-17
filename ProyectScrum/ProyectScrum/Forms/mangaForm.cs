@@ -13,19 +13,27 @@ using Google.Apis.Drive.v3;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using File = Google.Apis.Drive.v3.Data.File;
+using ProyectScrum.Data;
+using System.Data.SqlClient;
 
 namespace ProyectScrum.Forms
 {
     public partial class mangaForm : Form
     {
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
-        public mangaForm()
+        private Manga mangaActual;
+        public int UsuarioID { get; set; }
+        public event EventHandler FavoritoAgregado;
+
+        public mangaForm(int usuarioID)
         {
             InitializeComponent();
+            UsuarioID = usuarioID;
         }
         public void CargarManga(Manga manga, string genero)
         {
             // Mostrar imagen de carga
+            mangaActual = manga;
             picturePortada.Image = Properties.Resources.LoadingGif;
 
             if (cacheImagenes.ContainsKey(manga.URLPortada))
@@ -187,6 +195,55 @@ namespace ProyectScrum.Forms
             if (Application.OpenForms["Main"] is Main mainForm)
             {
                 mainForm.AbrirFormularioEnPanel(mainForm.catalogForm);
+            }
+        }
+
+        private void btnAgregarFavoritos_Click(object sender, EventArgs e)
+        {
+            if (mangaActual == null)
+            {
+                MessageBox.Show("No hay manga cargado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (UsuarioID <= 0)
+            {
+                MessageBox.Show("No se ha identificado un usuario válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int mangaID = mangaActual.MangaID;
+
+            SqlDataAccess db = new SqlDataAccess();
+
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string query = @"
+            IF NOT EXISTS (
+                SELECT 1 FROM Favoritos 
+                WHERE MangaID = @MangaID AND UsuarioID = @UsuarioID
+            )
+            BEGIN
+                INSERT INTO Favoritos (MangaID, UsuarioID) VALUES (@MangaID, @UsuarioID)
+            END";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MangaID", mangaID);
+                cmd.Parameters.AddWithValue("@UsuarioID", UsuarioID);
+
+                int result = cmd.ExecuteNonQuery();
+
+                if (result > 0)
+                {
+                    MessageBox.Show("Manga agregado a favoritos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FavoritoAgregado?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    MessageBox.Show("Este manga ya está en favoritos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
     }
