@@ -31,10 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mangaForm));
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
+            btnQuitarFavoritos = new Button();
+            btnAgregarFavoritos = new Button();
             labelGenero = new Label();
             labelGeneroInfo = new Label();
             picturePortada = new PictureBox();
             panel2 = new Panel();
+            panelCargandoManga = new Panel();
+            pictureBoxCargandoManga = new PictureBox();
             labelList = new Label();
             flowPanelVolumenes = new FlowLayoutPanel();
             txtTitulo = new TextBox();
@@ -51,11 +55,12 @@
             label8 = new Label();
             label7 = new Label();
             labelCerrar = new Label();
-            btnAgregarFavoritos = new Button();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picturePortada).BeginInit();
             panel2.SuspendLayout();
+            panelCargandoManga.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCargandoManga).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -63,32 +68,63 @@
             // 
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(panel2);
-            flowLayoutPanel1.Location = new Point(14, 72);
-            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel1.Location = new Point(12, 54);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(981, 579);
+            flowLayoutPanel1.Size = new Size(858, 434);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnQuitarFavoritos);
             panel1.Controls.Add(btnAgregarFavoritos);
             panel1.Controls.Add(labelGenero);
             panel1.Controls.Add(labelGeneroInfo);
             panel1.Controls.Add(picturePortada);
-            panel1.Location = new Point(3, 4);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(229, 575);
+            panel1.Size = new Size(200, 431);
             panel1.TabIndex = 0;
+            // 
+            // btnQuitarFavoritos
+            // 
+            btnQuitarFavoritos.BackColor = Color.DarkRed;
+            btnQuitarFavoritos.Cursor = Cursors.Hand;
+            btnQuitarFavoritos.FlatStyle = FlatStyle.Flat;
+            btnQuitarFavoritos.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnQuitarFavoritos.ForeColor = Color.White;
+            btnQuitarFavoritos.Location = new Point(21, 297);
+            btnQuitarFavoritos.Margin = new Padding(3, 2, 3, 2);
+            btnQuitarFavoritos.Name = "btnQuitarFavoritos";
+            btnQuitarFavoritos.Size = new Size(151, 35);
+            btnQuitarFavoritos.TabIndex = 4;
+            btnQuitarFavoritos.Text = "Eliminar de 💔";
+            btnQuitarFavoritos.UseVisualStyleBackColor = false;
+            btnQuitarFavoritos.Visible = false;
+            // 
+            // btnAgregarFavoritos
+            // 
+            btnAgregarFavoritos.BackColor = Color.Black;
+            btnAgregarFavoritos.Cursor = Cursors.Hand;
+            btnAgregarFavoritos.FlatStyle = FlatStyle.Flat;
+            btnAgregarFavoritos.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarFavoritos.ForeColor = Color.White;
+            btnAgregarFavoritos.Location = new Point(21, 297);
+            btnAgregarFavoritos.Margin = new Padding(3, 2, 3, 2);
+            btnAgregarFavoritos.Name = "btnAgregarFavoritos";
+            btnAgregarFavoritos.Size = new Size(151, 35);
+            btnAgregarFavoritos.TabIndex = 3;
+            btnAgregarFavoritos.Text = "Agregar a ❤";
+            btnAgregarFavoritos.UseVisualStyleBackColor = false;
+            btnAgregarFavoritos.Click += btnAgregarFavoritos_Click;
             // 
             // labelGenero
             // 
             labelGenero.AutoSize = true;
             labelGenero.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelGenero.ForeColor = Color.White;
-            labelGenero.Location = new Point(59, 370);
+            labelGenero.Location = new Point(52, 278);
             labelGenero.Name = "labelGenero";
-            labelGenero.Size = new Size(103, 23);
+            labelGenero.Size = new Size(78, 17);
             labelGenero.TabIndex = 2;
             labelGenero.Text = "Genero-Info";
             // 
@@ -97,24 +133,25 @@
             labelGeneroInfo.AutoSize = true;
             labelGeneroInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelGeneroInfo.ForeColor = Color.White;
-            labelGeneroInfo.Location = new Point(77, 336);
+            labelGeneroInfo.Location = new Point(67, 252);
             labelGeneroInfo.Name = "labelGeneroInfo";
-            labelGeneroInfo.Size = new Size(66, 23);
+            labelGeneroInfo.Size = new Size(51, 17);
             labelGeneroInfo.TabIndex = 1;
             labelGeneroInfo.Text = "Genero";
             // 
             // picturePortada
             // 
-            picturePortada.Location = new Point(3, 4);
-            picturePortada.Margin = new Padding(11, 13, 11, 13);
+            picturePortada.Location = new Point(3, 3);
+            picturePortada.Margin = new Padding(10);
             picturePortada.Name = "picturePortada";
-            picturePortada.Size = new Size(211, 320);
+            picturePortada.Size = new Size(185, 240);
             picturePortada.SizeMode = PictureBoxSizeMode.Zoom;
             picturePortada.TabIndex = 0;
             picturePortada.TabStop = false;
             // 
             // panel2
             // 
+            panel2.Controls.Add(panelCargandoManga);
             panel2.Controls.Add(labelList);
             panel2.Controls.Add(flowPanelVolumenes);
             panel2.Controls.Add(txtTitulo);
@@ -126,30 +163,49 @@
             panel2.Controls.Add(labelAutorInfo);
             panel2.Controls.Add(labelTitulo);
             panel2.Controls.Add(labelTituloInfo);
-            panel2.Location = new Point(238, 4);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(209, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(733, 575);
+            panel2.Size = new Size(641, 431);
             panel2.TabIndex = 1;
+            // 
+            // panelCargandoManga
+            // 
+            panelCargandoManga.Controls.Add(pictureBoxCargandoManga);
+            panelCargandoManga.Dock = DockStyle.Bottom;
+            panelCargandoManga.Location = new Point(0, 400);
+            panelCargandoManga.Name = "panelCargandoManga";
+            panelCargandoManga.Size = new Size(641, 31);
+            panelCargandoManga.TabIndex = 28;
+            panelCargandoManga.Visible = false;
+            // 
+            // pictureBoxCargandoManga
+            // 
+            pictureBoxCargandoManga.Dock = DockStyle.Fill;
+            pictureBoxCargandoManga.Image = (Image)resources.GetObject("pictureBoxCargandoManga.Image");
+            pictureBoxCargandoManga.Location = new Point(0, 0);
+            pictureBoxCargandoManga.Name = "pictureBoxCargandoManga";
+            pictureBoxCargandoManga.Size = new Size(641, 31);
+            pictureBoxCargandoManga.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBoxCargandoManga.TabIndex = 0;
+            pictureBoxCargandoManga.TabStop = false;
             // 
             // labelList
             // 
             labelList.AutoSize = true;
             labelList.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelList.ForeColor = Color.White;
-            labelList.Location = new Point(293, 268);
+            labelList.Location = new Point(256, 201);
             labelList.Name = "labelList";
-            labelList.Size = new Size(152, 28);
+            labelList.Size = new Size(122, 21);
             labelList.TabIndex = 27;
             labelList.Text = "Lista de Tomos";
             // 
             // flowPanelVolumenes
             // 
             flowPanelVolumenes.AutoScroll = true;
-            flowPanelVolumenes.Location = new Point(3, 300);
-            flowPanelVolumenes.Margin = new Padding(3, 4, 3, 4);
+            flowPanelVolumenes.Location = new Point(3, 225);
             flowPanelVolumenes.Name = "flowPanelVolumenes";
-            flowPanelVolumenes.Size = new Size(726, 271);
+            flowPanelVolumenes.Size = new Size(635, 176);
             flowPanelVolumenes.TabIndex = 26;
             // 
             // txtTitulo
@@ -158,13 +214,12 @@
             txtTitulo.BorderStyle = BorderStyle.None;
             txtTitulo.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtTitulo.ForeColor = Color.White;
-            txtTitulo.Location = new Point(-65, -61);
-            txtTitulo.Margin = new Padding(3, 4, 3, 4);
+            txtTitulo.Location = new Point(-57, -46);
             txtTitulo.Multiline = true;
             txtTitulo.Name = "txtTitulo";
             txtTitulo.ReadOnly = true;
             txtTitulo.ScrollBars = ScrollBars.Vertical;
-            txtTitulo.Size = new Size(537, 48);
+            txtTitulo.Size = new Size(470, 36);
             txtTitulo.TabIndex = 25;
             // 
             // labelDescripcion
@@ -173,13 +228,12 @@
             labelDescripcion.BorderStyle = BorderStyle.None;
             labelDescripcion.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelDescripcion.ForeColor = Color.White;
-            labelDescripcion.Location = new Point(3, 148);
-            labelDescripcion.Margin = new Padding(3, 4, 3, 4);
+            labelDescripcion.Location = new Point(3, 111);
             labelDescripcion.Multiline = true;
             labelDescripcion.Name = "labelDescripcion";
             labelDescripcion.ReadOnly = true;
             labelDescripcion.ScrollBars = ScrollBars.Vertical;
-            labelDescripcion.Size = new Size(726, 116);
+            labelDescripcion.Size = new Size(635, 87);
             labelDescripcion.TabIndex = 7;
             // 
             // labelDescripcionInfo
@@ -187,9 +241,9 @@
             labelDescripcionInfo.AutoSize = true;
             labelDescripcionInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelDescripcionInfo.ForeColor = Color.White;
-            labelDescripcionInfo.Location = new Point(3, 121);
+            labelDescripcionInfo.Location = new Point(3, 91);
             labelDescripcionInfo.Name = "labelDescripcionInfo";
-            labelDescripcionInfo.Size = new Size(108, 23);
+            labelDescripcionInfo.Size = new Size(84, 17);
             labelDescripcionInfo.TabIndex = 6;
             labelDescripcionInfo.Text = "Descripción:";
             // 
@@ -198,9 +252,9 @@
             labelFecha.AutoSize = true;
             labelFecha.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelFecha.ForeColor = Color.White;
-            labelFecha.Location = new Point(57, 84);
+            labelFecha.Location = new Point(50, 63);
             labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(93, 23);
+            labelFecha.Size = new Size(72, 17);
             labelFecha.TabIndex = 5;
             labelFecha.Text = "Fecha-Info";
             // 
@@ -209,9 +263,9 @@
             labelFechaInfo.AutoSize = true;
             labelFechaInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelFechaInfo.ForeColor = Color.White;
-            labelFechaInfo.Location = new Point(3, 84);
+            labelFechaInfo.Location = new Point(3, 63);
             labelFechaInfo.Name = "labelFechaInfo";
-            labelFechaInfo.Size = new Size(60, 23);
+            labelFechaInfo.Size = new Size(47, 17);
             labelFechaInfo.TabIndex = 4;
             labelFechaInfo.Text = "Fecha:";
             // 
@@ -220,9 +274,9 @@
             labelAutor.AutoSize = true;
             labelAutor.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelAutor.ForeColor = Color.White;
-            labelAutor.Location = new Point(57, 47);
+            labelAutor.Location = new Point(50, 35);
             labelAutor.Name = "labelAutor";
-            labelAutor.Size = new Size(90, 23);
+            labelAutor.Size = new Size(71, 17);
             labelAutor.TabIndex = 3;
             labelAutor.Text = "Autor-Info";
             // 
@@ -231,9 +285,9 @@
             labelAutorInfo.AutoSize = true;
             labelAutorInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelAutorInfo.ForeColor = Color.White;
-            labelAutorInfo.Location = new Point(3, 47);
+            labelAutorInfo.Location = new Point(3, 35);
             labelAutorInfo.Name = "labelAutorInfo";
-            labelAutorInfo.Size = new Size(62, 23);
+            labelAutorInfo.Size = new Size(48, 17);
             labelAutorInfo.TabIndex = 2;
             labelAutorInfo.Text = "Autor:";
             // 
@@ -242,9 +296,9 @@
             labelTitulo.AutoSize = true;
             labelTitulo.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTitulo.ForeColor = Color.White;
-            labelTitulo.Location = new Point(57, 12);
+            labelTitulo.Location = new Point(50, 9);
             labelTitulo.Name = "labelTitulo";
-            labelTitulo.Size = new Size(91, 23);
+            labelTitulo.Size = new Size(71, 17);
             labelTitulo.TabIndex = 1;
             labelTitulo.Text = "Titulo-Info";
             // 
@@ -253,9 +307,9 @@
             labelTituloInfo.AutoSize = true;
             labelTituloInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTituloInfo.ForeColor = Color.White;
-            labelTituloInfo.Location = new Point(3, 12);
+            labelTituloInfo.Location = new Point(3, 9);
             labelTituloInfo.Name = "labelTituloInfo";
-            labelTituloInfo.Size = new Size(67, 23);
+            labelTituloInfo.Size = new Size(53, 17);
             labelTituloInfo.TabIndex = 0;
             labelTituloInfo.Text = "Titulo: ";
             // 
@@ -263,9 +317,10 @@
             // 
             pictureBox1.BackColor = Color.Black;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(110, 8);
+            pictureBox1.Location = new Point(96, 6);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(69, 49);
+            pictureBox1.Size = new Size(60, 37);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
@@ -276,11 +331,10 @@
             textTitle.BorderStyle = BorderStyle.None;
             textTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textTitle.ForeColor = Color.White;
-            textTitle.Location = new Point(187, 20);
-            textTitle.Margin = new Padding(3, 4, 3, 4);
+            textTitle.Location = new Point(164, 15);
             textTitle.Multiline = true;
             textTitle.Name = "textTitle";
-            textTitle.Size = new Size(610, 48);
+            textTitle.Size = new Size(534, 36);
             textTitle.TabIndex = 25;
             // 
             // label8
@@ -288,9 +342,9 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ButtonFace;
-            label8.Location = new Point(14, 29);
+            label8.Location = new Point(12, 22);
             label8.Name = "label8";
-            label8.Size = new Size(117, 28);
+            label8.Size = new Size(94, 21);
             label8.TabIndex = 27;
             label8.Text = "COMPLETO";
             // 
@@ -299,9 +353,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(14, 5);
+            label7.Location = new Point(12, 4);
             label7.Name = "label7";
-            label7.Size = new Size(82, 25);
+            label7.Size = new Size(69, 20);
             label7.TabIndex = 26;
             label7.Text = "Catálago";
             // 
@@ -311,39 +365,25 @@
             labelCerrar.Cursor = Cursors.Hand;
             labelCerrar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelCerrar.ForeColor = Color.White;
-            labelCerrar.Location = new Point(934, 20);
+            labelCerrar.Location = new Point(817, 15);
             labelCerrar.Name = "labelCerrar";
-            labelCerrar.Size = new Size(60, 23);
+            labelCerrar.Size = new Size(45, 17);
             labelCerrar.TabIndex = 28;
             labelCerrar.Text = "Cerrar";
             labelCerrar.Click += labelCerrar_Click;
             // 
-            // btnAgregarFavoritos
-            // 
-            btnAgregarFavoritos.BackColor = Color.Black;
-            btnAgregarFavoritos.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            btnAgregarFavoritos.ForeColor = SystemColors.ButtonFace;
-            btnAgregarFavoritos.Location = new Point(41, 396);
-            btnAgregarFavoritos.Name = "btnAgregarFavoritos";
-            btnAgregarFavoritos.Size = new Size(147, 57);
-            btnAgregarFavoritos.TabIndex = 3;
-            btnAgregarFavoritos.Text = "Agregar a Favoritos";
-            btnAgregarFavoritos.UseVisualStyleBackColor = false;
-            btnAgregarFavoritos.Click += btnAgregarFavoritos_Click;
-            // 
             // mangaForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1008, 667);
+            ClientSize = new Size(882, 500);
             Controls.Add(labelCerrar);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(textTitle);
             Controls.Add(pictureBox1);
             Controls.Add(flowLayoutPanel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "mangaForm";
             Text = "mangaForm";
             flowLayoutPanel1.ResumeLayout(false);
@@ -352,6 +392,8 @@
             ((System.ComponentModel.ISupportInitialize)picturePortada).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panelCargandoManga.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCargandoManga).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -382,5 +424,6 @@
         private Label labelList;
         private Label labelCerrar;
         private Button btnAgregarFavoritos;
+        private Button btnQuitarFavoritos;
     }
 }

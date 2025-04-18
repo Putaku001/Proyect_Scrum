@@ -20,15 +20,22 @@ namespace ProyectScrum.Forms
 {
     public partial class mangaForm : Form
     {
+
+        private Panel panelCargandoManga;
+        private PictureBox pictureBoxCargandoManga;
+
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
         private Manga mangaActual;
         public int UsuarioID { get; set; }
         public event EventHandler FavoritoAgregado;
+        private visorForm visorActual = null;
 
         public mangaForm(int usuarioID)
         {
             InitializeComponent();
             UsuarioID = usuarioID;
+            btnQuitarFavoritos.Click += btnQuitarFavoritos_Click;
+
         }
         public void CargarManga(Manga manga, string genero)
         {
@@ -72,6 +79,12 @@ namespace ProyectScrum.Forms
             labelDescripcion.Text = manga.Descripcion;
             labelGenero.Text = genero;
             CargarVolumenes(manga.URLMangaDrive);
+
+            bool enFavoritos = EstaEnFavoritos(manga.MangaID, UsuarioID);
+            btnAgregarFavoritos.Visible = !enFavoritos;
+            btnQuitarFavoritos.Visible = enFavoritos;
+
+
         }
         //extraer carpetas de los links
         private string ExtraerIdCarpeta(string url)
@@ -113,7 +126,7 @@ namespace ProyectScrum.Forms
             {
                 var request = service.Files.List();
                 request.Q = $"'{folderId}' in parents and mimeType='application/pdf'";
-                request.Fields = "nextPageToken, files(id, name, webViewLink)";
+                request.Fields = "nextPageToken, files(id, name)";
                 request.PageSize = 1000;
                 request.PageToken = pageToken;
 
@@ -122,9 +135,7 @@ namespace ProyectScrum.Forms
                 pageToken = result.NextPageToken;
             } while (pageToken != null);
 
-            files = files
-                .OrderBy(f => f.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList();
+            files = files.OrderBy(f => f.Name, StringComparer.OrdinalIgnoreCase).ToList();
 
             foreach (var file in files)
             {
@@ -137,15 +148,64 @@ namespace ProyectScrum.Forms
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
                     Margin = new Padding(5),
-                    Tag = file.WebViewLink,
+                    Tag = file.Id,
                     TextAlign = ContentAlignment.MiddleLeft
                 };
 
-                tomoBtn.Click += (s, e) =>
+                tomoBtn.Click += async (s, e) =>
                 {
-                    string link = ((Button)s).Tag.ToString();
-                    MessageBox.Show($"Este tomo se abrirá en el visor en el futuro.\nURL: {link}", "Tomo detectado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (visorActual != null && !visorActual.IsDisposed)
+                    {
+                        MessageBox.Show("Ya tienes un visor abierto. Ciérralo antes de abrir otro tomo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    string fileId = ((Button)s).Tag.ToString();
+
+                    // Deshabilitar todos los botones mientras carga
+                    foreach (Control control in flowPanelVolumenes.Controls)
+                        if (control is Button btn) btn.Enabled = false;
+
+
+                    panelCargandoManga.Visible = true;
+                    panelCargandoManga.BringToFront();
+                    panelCargandoManga.Refresh();
+
+
+
+                    panelCargandoManga.Visible = true;
+                    panelCargandoManga.BringToFront();
+                    panelCargandoManga.Refresh();
+
+                    try
+                    {
+                        var request = service.Files.Get(fileId);
+                        var stream = new MemoryStream();
+                        await request.DownloadAsync(stream);
+                        stream.Position = 0;
+
+                        visorActual = new visorForm(stream, this);
+
+                        visorActual.FormClosed += (sender2, args) =>
+                        {
+                            visorActual = null;
+
+                            foreach (Control control in flowPanelVolumenes.Controls)
+                                if (control is Button btn) btn.Enabled = true;
+                        };
+
+                        Main mainForm = (Main)Application.OpenForms["Main"];
+                        mainForm.AbrirFormularioEnPanel(visorActual);
+                    }
+                    finally
+                    {
+                        panelCargandoManga.Visible = false;
+                    }
+
                 };
+
+
+
 
                 flowPanelVolumenes.Controls.Add(tomoBtn);
             }
@@ -189,7 +249,7 @@ namespace ProyectScrum.Forms
                 return null;
             }
         }
-
+        //Btn o Label para Cerrar
         private void labelCerrar_Click(object sender, EventArgs e)
         {
             if (Application.OpenForms["Main"] is Main mainForm)
@@ -198,6 +258,7 @@ namespace ProyectScrum.Forms
             }
         }
 
+        // btn Favoritos
         private void btnAgregarFavoritos_Click(object sender, EventArgs e)
         {
             if (mangaActual == null)
@@ -237,7 +298,10 @@ namespace ProyectScrum.Forms
 
                 if (result > 0)
                 {
-                    MessageBox.Show("Manga agregado a favoritos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    btnAgregarFavoritos.Visible = false;
+                    btnQuitarFavoritos.Visible = true;
+
                     FavoritoAgregado?.Invoke(this, EventArgs.Empty);
                 }
                 else
@@ -246,5 +310,57 @@ namespace ProyectScrum.Forms
                 }
             }
         }
+        // esta en favoritos
+        private bool EstaEnFavoritos(int mangaID, int usuarioID)
+        {
+            SqlDataAccess db = new SqlDataAccess();
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM Favoritos WHERE MangaID = @MangaID AND UsuarioID = @UsuarioID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MangaID", mangaID);
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioID);
+
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        //quitar de favoritos
+        private void btnQuitarFavoritos_Click(object sender, EventArgs e)
+        {
+            if (mangaActual == null || UsuarioID <= 0)
+            {
+                MessageBox.Show("Datos inválidos.");
+                return;
+            }
+
+            SqlDataAccess db = new SqlDataAccess();
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "DELETE FROM Favoritos WHERE MangaID = @MangaID AND UsuarioID = @UsuarioID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MangaID", mangaActual.MangaID);
+                cmd.Parameters.AddWithValue("@UsuarioID", UsuarioID);
+
+                int result = cmd.ExecuteNonQuery();
+
+                if (result > 0)
+                {
+                   
+                    btnAgregarFavoritos.Visible = true;
+                    btnQuitarFavoritos.Visible = false;
+                    FavoritoAgregado?.Invoke(this, EventArgs.Empty); // opcional
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar.");
+                }
+            }
+        }
+
     }
 }

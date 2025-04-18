@@ -28,6 +28,12 @@
     <Compile Update="Forms\Register.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\visorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\visorMaxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
