@@ -1,4 +1,5 @@
-﻿using ProyectScrum.Forms;
+﻿using ProyectScrum.Entities;
+using ProyectScrum.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,22 +14,28 @@ namespace ProyectScrum
 {
     public partial class Main : Form
     {
+        public EmailSettings _emailSettings;
         public Catalog catalogForm;
+        public Perfil perfilForm;
         public favs favsForm;
         public int UsuarioID { get; set; }
 
 
         bool slideBarExpand;
-        public Main(int usuarioID)
+        public Main(int usuarioID, EmailSettings emailSettings)
         {
             InitializeComponent();
             UsuarioID = usuarioID;
+            _emailSettings = emailSettings;
 
         }
 
         private void perfilButton_Click(object sender, EventArgs e)
         {
+            if (perfilForm == null || perfilForm.IsDisposed)
+                perfilForm = new Perfil(_emailSettings);
 
+            AbrirFormularioEnPanel(perfilForm);
         }
 
         private void slideBarTime_Tick(object sender, EventArgs e)
@@ -93,7 +100,7 @@ namespace ProyectScrum
         private void catalogbtn_Click(object sender, EventArgs e)
         {
             if (catalogForm == null || catalogForm.IsDisposed)
-                catalogForm = new Catalog(UsuarioID);
+                catalogForm = new Catalog(UsuarioID, _emailSettings);
 
             AbrirFormularioEnPanel(catalogForm);
         }

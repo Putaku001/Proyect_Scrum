@@ -16,20 +16,23 @@ namespace ProyectScrum.Forms
     {
         
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
+        public EmailSettings _emailSettings;
         private int paginaActual = 1;
         private int mangasPorPagina = 12;
         private int _usuarioID;
 
 
-        public Catalog(int usuarioID)
+        public Catalog(int usuarioID, EmailSettings emailSettings)
         {
             InitializeComponent();
             _usuarioID = usuarioID;
+            _emailSettings = emailSettings;
+            _emailSettings = emailSettings;
         }
 
         private void menuButton_Click(object sender, EventArgs e)
         {
-            Main mainForm = new Main(_usuarioID);
+            Main mainForm = new Main(_usuarioID, _emailSettings);
             mainForm.Show();
             this.Close();
         }

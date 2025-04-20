@@ -45,9 +45,21 @@ namespace ProyectScrum.Forms
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            if (ValidarUsuario(txtUsuario.Text, txtContrasena.Text))
+            var usuario = ValidarUsuario(txtUsuario.Text, txtContrasena.Text);
+
+
+            if (usuario != null)
             {
-                Main mainForm = new Main(usuarioID);
+                CapturedData.UsuarioID = usuario.UsuarioID;
+                CapturedData.NombreUsuario = usuario.NombreUsuario;
+                CapturedData.Email = usuario.Email;
+                CapturedData.EsPremium = usuario.EsPremium;
+                CapturedData.RolID = usuario.RolID;
+                CapturedData.Avatar = usuario.Avatar;
+
+                _emailSettings.EmailDestino = usuario.Email;
+
+                Main mainForm = new Main(usuarioID, _emailSettings);
                 mainForm.FormClosed += MainForm_FormClosed;
                 mainForm.Show();
                 this.Hide();
@@ -57,13 +69,13 @@ namespace ProyectScrum.Forms
                 MessageBox.Show("Usuario o contraseña incorrectos.");
             }
         }
-        private bool ValidarUsuario(string usuario, string contrasena)
+        private Users ValidarUsuario(string usuario, string contrasena)
         {
             var dataAccess = new SqlDataAccess();
             using (var conn = dataAccess.GetConnection())
             {
                 conn.Open();
-                var cmd = new SqlCommand("SELECT UsuarioID, ContrasenaHash FROM Usuarios WHERE NombreUsuario = @Usuario", conn);
+                var cmd = new SqlCommand("SELECT UsuarioID, Avatar, NombreUsuario, Email, ContrasenaHash, EsPremium, RolID FROM Usuarios WHERE NombreUsuario = @Usuario", conn);
                 cmd.Parameters.AddWithValue("@Usuario", usuario);
 
                 var reader = cmd.ExecuteReader();
@@ -73,11 +85,18 @@ namespace ProyectScrum.Forms
 
                     if (VerificarContrasena(contrasena, hashedPassword))
                     {
-                        usuarioID = reader.GetInt32(reader.GetOrdinal("UsuarioID")); // Guardamos el ID aquí
-                        return true;
+                        return new Users
+                        {
+                            UsuarioID = Convert.ToInt32(reader["UsuarioID"]),
+                            Avatar = reader["Avatar"].ToString(),
+                            NombreUsuario = reader["NombreUsuario"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            EsPremium = Convert.ToBoolean(reader["EsPremium"]),
+                            RolID = Convert.ToInt32(reader["RolID"]),
+                        };
                     }
                 }
-                return false;
+                return null;
             }
         }
         private bool VerificarContrasena(string contrasena, string hashedPassword)

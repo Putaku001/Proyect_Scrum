@@ -1,34 +1,86 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\",
+  "WorkspaceRootPath": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\aleja\\source\\repos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\aleja\\source\\repos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\aleja\\source\\repos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\perfil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\perfil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\aleja\\source\\repos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\aleja\\source\\repos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\mangaform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\mangaform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\fpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\fpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\entities\\captureddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\entities\\captureddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\visormaxform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visormaxform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\db\\dbconection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\db\\dbconection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\visormaxform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visormaxform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\visorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\videos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\visorform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visorform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +90,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Perfil.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Perfil.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs*",
+              "RelativeToolTip": "ProyectScrum\\Forms\\Perfil.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T23:52:49.279Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Login.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\Login.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAA1wC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T22:30:38.996Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Perfil.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.Designer.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Perfil.Designer.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.Designer.cs*",
+              "RelativeToolTip": "ProyectScrum\\Forms\\Perfil.Designer.cs*",
+              "ViewState": "AgIAANoAAAAAAAAAAAAYwGsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T00:57:35.639Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Perfil.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Perfil.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "ProyectScrum\\Forms\\Perfil.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T23:56:46.054Z",
+              "IsPinned": true,
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "mangaForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\mangaForm.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ProyectScrum\\Forms\\mangaForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T01:17:13.557Z",
+              "IsPinned": true,
+              "EditorCaption": " [Dise\u00F1o]"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -86,86 +206,197 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
+              "Title": "FPassword.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\FPassword.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\FPassword.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\FPassword.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\FPassword.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T00:34:32.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "New_Password.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\New_Password.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\New_Password.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T00:31:00.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "mangaForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.Designer.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\mangaForm.Designer.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.Designer.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\mangaForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T06:46:31.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "New_Password.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\New_Password.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ProyectScrum\\Forms\\New_Password.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T00:30:56.385Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CapturedData.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\CapturedData.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Entities\\CapturedData.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\CapturedData.cs",
+              "RelativeToolTip": "ProyectScrum\\Entities\\CapturedData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T00:10:57.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\Users.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Entities\\Users.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\Users.cs",
+              "RelativeToolTip": "ProyectScrum\\Entities\\Users.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T00:10:35.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "visorMaxForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.Designer.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\visorMaxForm.Designer.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.Designer.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\visorMaxForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T06:48:14.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "visorForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.Designer.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\visorForm.Designer.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.Designer.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\visorForm.Designer.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAmwBYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T02:34:50.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "dbConection.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\DB\\dbConection.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\DB\\dbConection.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\DB\\dbConection.cs",
+              "RelativeToolTip": "ProyectScrum\\DB\\dbConection.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T01:37:02.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Catalog.cs",
-              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Catalog.cs",
-              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\Catalog.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAB0AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T22:42:22.406Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Login.cs",
-              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
-              "RelativeToolTip": "ProyectScrum\\Forms\\Login.cs",
-              "ViewState": "AgIAAAABAAAAAAAAAAAqwAUBAAAJAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Main.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\Main.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T22:30:38.996Z"
+              "WhenOpened": "2025-04-16T22:18:57.817Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Main.cs",
-              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Main.cs",
-              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
-              "RelativeToolTip": "ProyectScrum\\Forms\\Main.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAABAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "favs.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\favs.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\favs.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAowJEAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T22:18:57.817Z"
+              "WhenOpened": "2025-04-16T16:11:55.992Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "favs.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\favs.cs",
-              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ProyectScrum\\Forms\\favs.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T17:13:17.181Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "mangaForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\mangaForm.cs",
-              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ProyectScrum\\Forms\\mangaForm.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T03:18:53.679Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "favs.cs",
-              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\favs.cs",
-              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
-              "RelativeToolTip": "ProyectScrum\\Forms\\favs.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T16:11:55.992Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "mangaForm.cs",
-              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\mangaForm.cs",
-              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\mangaForm.cs",
-              "ViewState": "AgIAANkAAAAAAAAAAADwv/AAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T03:18:28.38Z"
+              "WhenOpened": "2025-04-16T03:18:28.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "visorMaxForm.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\visorMaxForm.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\visorMaxForm.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAUwMsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T05:47:44.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "visorForm.cs",
+              "DocumentMoniker": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\visorForm.cs",
+              "ToolTip": "C:\\Users\\fuent\\Videos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\visorForm.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwC0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T01:55:15.961Z",
+              "EditorCaption": ""
             }
           ]
         }
