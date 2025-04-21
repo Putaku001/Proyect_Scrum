@@ -26,14 +26,13 @@ namespace ProyectScrum.Forms
 
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
         private Manga mangaActual;
-        public int UsuarioID { get; set; }
+        int usuarioID = CapturedData.UsuarioID;
         public event EventHandler FavoritoAgregado;
         private visorForm visorActual = null;
 
         public mangaForm(int usuarioID)
         {
             InitializeComponent();
-            UsuarioID = usuarioID;
             btnQuitarFavoritos.Click += btnQuitarFavoritos_Click;
 
         }
@@ -80,7 +79,7 @@ namespace ProyectScrum.Forms
             labelGenero.Text = genero;
             CargarVolumenes(manga.URLMangaDrive);
 
-            bool enFavoritos = EstaEnFavoritos(manga.MangaID, UsuarioID);
+            bool enFavoritos = EstaEnFavoritos(manga.MangaID, CapturedData.UsuarioID);
             btnAgregarFavoritos.Visible = !enFavoritos;
             btnQuitarFavoritos.Visible = enFavoritos;
 
@@ -267,7 +266,7 @@ namespace ProyectScrum.Forms
                 return;
             }
 
-            if (UsuarioID <= 0)
+            if (CapturedData.UsuarioID <= 0)
             {
                 MessageBox.Show("No se ha identificado un usuario válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -292,7 +291,7 @@ namespace ProyectScrum.Forms
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MangaID", mangaID);
-                cmd.Parameters.AddWithValue("@UsuarioID", UsuarioID);
+                cmd.Parameters.AddWithValue("@UsuarioID", CapturedData.UsuarioID);
 
                 int result = cmd.ExecuteNonQuery();
 
@@ -330,7 +329,7 @@ namespace ProyectScrum.Forms
         //quitar de favoritos
         private void btnQuitarFavoritos_Click(object sender, EventArgs e)
         {
-            if (mangaActual == null || UsuarioID <= 0)
+            if (mangaActual == null || CapturedData.UsuarioID <= 0)
             {
                 MessageBox.Show("Datos inválidos.");
                 return;
@@ -344,7 +343,7 @@ namespace ProyectScrum.Forms
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MangaID", mangaActual.MangaID);
-                cmd.Parameters.AddWithValue("@UsuarioID", UsuarioID);
+                cmd.Parameters.AddWithValue("@UsuarioID", CapturedData.UsuarioID);
 
                 int result = cmd.ExecuteNonQuery();
 

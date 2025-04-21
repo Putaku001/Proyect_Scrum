@@ -50,6 +50,7 @@ namespace ProyectScrum.Forms
 
             if (usuario != null)
             {
+                usuarioID = usuario.UsuarioID;
                 CapturedData.UsuarioID = usuario.UsuarioID;
                 CapturedData.NombreUsuario = usuario.NombreUsuario;
                 CapturedData.Email = usuario.Email;
@@ -59,7 +60,7 @@ namespace ProyectScrum.Forms
 
                 _emailSettings.EmailDestino = usuario.Email;
 
-                Main mainForm = new Main(usuarioID, _emailSettings);
+                Main mainForm = new Main( _emailSettings);
                 mainForm.FormClosed += MainForm_FormClosed;
                 mainForm.Show();
                 this.Hide();

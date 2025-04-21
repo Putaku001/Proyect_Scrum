@@ -10,29 +10,22 @@ using System.Windows.Forms;
 
 namespace ProyectScrum.Forms
 {
-    
-
     public partial class Catalog : Form
     {
-        
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
         public EmailSettings _emailSettings;
         private int paginaActual = 1;
         private int mangasPorPagina = 12;
-        private int _usuarioID;
 
-
-        public Catalog(int usuarioID, EmailSettings emailSettings)
+        public Catalog(EmailSettings emailSettings)
         {
             InitializeComponent();
-            _usuarioID = usuarioID;
-            _emailSettings = emailSettings;
             _emailSettings = emailSettings;
         }
 
         private void menuButton_Click(object sender, EventArgs e)
         {
-            Main mainForm = new Main(_usuarioID, _emailSettings);
+            Main mainForm = new Main( _emailSettings);
             mainForm.Show();
             this.Close();
         }
@@ -40,17 +33,13 @@ namespace ProyectScrum.Forms
         private void Catalog_Load(object sender, EventArgs e)
         {
             MostrarPortadas();
-
             anteriorButton.Visible = false;
             siguienteButton.Visible = false;
-
             CargarCheckBoxGeneros();
             flowCheckBoxGeneros.FlowDirection = FlowDirection.TopDown;
             flowCheckBoxGeneros.WrapContents = false;
-
         }
 
-        //obtener mangas
         private List<Manga> ObtenerMangas()
         {
             List<Manga> mangas = new List<Manga>();
@@ -82,24 +71,18 @@ namespace ProyectScrum.Forms
 
             return mangas;
         }
+
         private int ObtenerTotalMangas()
         {
-            int total = 0;
             SqlDataAccess db = new SqlDataAccess();
-
             using (SqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT COUNT(*) FROM Mangas";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                total = (int)cmd.ExecuteScalar();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Mangas", conn);
+                return (int)cmd.ExecuteScalar();
             }
-
-            return total;
         }
 
-
-        //obterner portadas
         private void MostrarPortadas()
         {
             flowLayoutPanel1.Controls.Clear();
@@ -116,15 +99,8 @@ namespace ProyectScrum.Forms
                     Cursor = Cursors.Hand,
                     Tag = manga.Titulo
                 };
-                pb.Image = Properties.Resources.LoadingGif;
-                pb.LoadCompleted += (s, e) =>
-                {
-                    if (e.Error != null)
-                    {
-                        pb.Image = Properties.Resources.DefaultCover;
-                    }
 
-                };
+                pb.Image = Properties.Resources.LoadingGif;
 
                 if (cacheImagenes.ContainsKey(manga.URLPortada))
                 {
@@ -135,13 +111,9 @@ namespace ProyectScrum.Forms
                     pb.LoadCompleted += (s, e) =>
                     {
                         if (e.Error == null && pb.Image != null)
-                        {
                             cacheImagenes[manga.URLPortada] = pb.Image;
-                        }
                         else
-                        {
                             pb.Image = Properties.Resources.DefaultCover;
-                        }
                     };
 
                     try
@@ -154,27 +126,21 @@ namespace ProyectScrum.Forms
                     }
                 }
 
-
-                ToolTip tip = new ToolTip();
-                tip.SetToolTip(pb, manga.Titulo);
-
                 pb.Click += (s, e) =>
                 {
                     string titulo = (string)((PictureBox)s).Tag;
-                    Manga manga = ObtenerMangaPorTitulo(titulo);
+                    Manga m = ObtenerMangaPorTitulo(titulo);
 
-                    if (manga != null)
+                    if (m != null)
                     {
-                        string genero = ObtenerGenero(manga.GeneroID);
-
-                        mangaForm mangaForm = new mangaForm(_usuarioID);
-                        mangaForm.CargarManga(manga, genero);
+                        string genero = ObtenerGenero(m.GeneroID);
+                        mangaForm mangaForm = new mangaForm(CapturedData.UsuarioID);
+                        mangaForm.CargarManga(m, genero);
 
                         if (this.TopLevelControl is Main main)
                         {
                             main.AbrirFormularioEnPanel(mangaForm);
                         }
-
                     }
                     else
                     {
@@ -182,18 +148,15 @@ namespace ProyectScrum.Forms
                     }
                 };
 
-
                 flowLayoutPanel1.Controls.Add(pb);
-
-                int totalMangas = ObtenerTotalMangas();
-                int totalPaginas = (int)Math.Ceiling((double)totalMangas / mangasPorPagina);
-
-                // Mostrar u ocultar botones según la página actual
-                anteriorButton.Visible = paginaActual > 1;
-                siguienteButton.Visible = paginaActual < totalPaginas;
             }
+
+            int totalMangas = ObtenerTotalMangas();
+            int totalPaginas = (int)Math.Ceiling((double)totalMangas / mangasPorPagina);
+            anteriorButton.Visible = paginaActual > 1;
+            siguienteButton.Visible = paginaActual < totalPaginas;
         }
-        //botones 
+
         private void siguienteButton_Click(object sender, EventArgs e)
         {
             paginaActual++;
@@ -209,26 +172,23 @@ namespace ProyectScrum.Forms
             }
         }
 
-        //redibujo para slidebar
         public void ForzarRedibujarLayout()
         {
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanel1.Refresh();
         }
 
-
-        //filtro 
-
         private void CargarCheckBoxGeneros()
         {
             flowCheckBoxGeneros.Controls.Clear();
-
             SqlDataAccess db = new SqlDataAccess();
+
             using (SqlConnection conn = db.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT GeneroID, Nombre FROM Generos", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     CheckBox chk = new CheckBox
@@ -244,32 +204,42 @@ namespace ProyectScrum.Forms
             }
         }
 
-        //mostrar portadas filtradas
+        private void btnAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            List<int> generosSeleccionados = new List<int>();
+
+            foreach (CheckBox chk in flowCheckBoxGeneros.Controls)
+                if (chk.Checked)
+                    generosSeleccionados.Add((int)chk.Tag);
+
+            MostrarPortadasFiltradas(generosSeleccionados);
+            panelFiltro.Visible = false;
+        }
+
         private void MostrarPortadasFiltradas(List<int> generosSeleccionados)
         {
-            flowLayoutPanel1.Controls.Clear();
-
             if (generosSeleccionados.Count == 0)
             {
                 MostrarPortadas();
                 return;
             }
 
+            flowLayoutPanel1.Controls.Clear();
             List<Manga> mangas = new List<Manga>();
             SqlDataAccess db = new SqlDataAccess();
 
             using (SqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-
                 string query = $@"
-            SELECT MangaID, Titulo, URLPortada, GeneroID
-            FROM Mangas
-            WHERE GeneroID IN ({string.Join(",", generosSeleccionados)})
-            ORDER BY FechaPublicacion DESC";
+                SELECT MangaID, Titulo, URLPortada, GeneroID
+                FROM Mangas
+                WHERE GeneroID IN ({string.Join(",", generosSeleccionados)})
+                ORDER BY FechaPublicacion DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     mangas.Add(new Manga
@@ -291,15 +261,10 @@ namespace ProyectScrum.Forms
                     Margin = new Padding(30, 20, 30, 20),
                     SizeMode = PictureBoxSizeMode.StretchImage,
                     Cursor = Cursors.Hand,
-                    Tag = manga.Titulo,
-                    Image = Properties.Resources.LoadingGif
+                    Tag = manga.Titulo
                 };
 
-                pb.LoadCompleted += (s, e) =>
-                {
-                    if (e.Error != null)
-                        pb.Image = Properties.Resources.DefaultCover;
-                };
+                pb.Image = Properties.Resources.LoadingGif;
 
                 if (cacheImagenes.ContainsKey(manga.URLPortada))
                 {
@@ -310,13 +275,9 @@ namespace ProyectScrum.Forms
                     pb.LoadCompleted += (s, e) =>
                     {
                         if (e.Error == null && pb.Image != null)
-                        {
                             cacheImagenes[manga.URLPortada] = pb.Image;
-                        }
                         else
-                        {
                             pb.Image = Properties.Resources.DefaultCover;
-                        }
                     };
 
                     try
@@ -329,33 +290,20 @@ namespace ProyectScrum.Forms
                     }
                 }
 
-
-                ToolTip tip = new ToolTip();
-                tip.SetToolTip(pb, manga.Titulo);
                 pb.Click += (s, e) =>
                 {
                     string titulo = (string)((PictureBox)s).Tag;
-                    Manga manga = ObtenerMangaPorTitulo(titulo);
-
-                    if (manga != null)
+                    Manga m = ObtenerMangaPorTitulo(titulo);
+                    if (m != null)
                     {
-                        string genero = ObtenerGenero(manga.GeneroID);
-
-                        mangaForm mangaForm = new mangaForm(_usuarioID);
-                        mangaForm.CargarManga(manga, genero);
+                        string genero = ObtenerGenero(m.GeneroID);
+                        mangaForm form = new mangaForm(CapturedData.UsuarioID);
+                        form.CargarManga(m, genero);
 
                         if (this.TopLevelControl is Main main)
-                        {
-                            main.AbrirFormularioEnPanel(mangaForm);
-                        }
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo cargar el manga.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            main.AbrirFormularioEnPanel(form);
                     }
                 };
-
 
                 flowLayoutPanel1.Controls.Add(pb);
             }
@@ -364,46 +312,6 @@ namespace ProyectScrum.Forms
             siguienteButton.Visible = false;
         }
 
-        // btnfiltro click
-        private void btnAplicarFiltro_Click(object sender, EventArgs e)
-        {
-            List<int> generosSeleccionados = new List<int>();
-
-            foreach (CheckBox chk in flowCheckBoxGeneros.Controls)
-            {
-                if (chk.Checked)
-                {
-                    generosSeleccionados.Add((int)chk.Tag);
-                }
-            }
-
-            MostrarPortadasFiltradas(generosSeleccionados);
-            panelFiltro.Visible = false;
-        }
-
-        private void btnFiltro_Click(object sender, EventArgs e)
-        {
-            panelFiltro.Visible = !panelFiltro.Visible;
-            panelFiltro.BringToFront();
-        }
-        //cerrar filtro
-
-        private void Catalog_MouseDown(object sender, MouseEventArgs e)
-        {
-            // Solo cerrar si el panel está visible
-            if (panelFiltro.Visible)
-            {
-                // Obtener punto del mouse en pantalla
-                Point mousePos = this.PointToClient(Cursor.Position);
-
-                // Si el mouse no está dentro del panel
-                if (!panelFiltro.Bounds.Contains(mousePos))
-                {
-                    panelFiltro.Visible = false;
-                }
-            } 
-        }
-        //para seleciionar
         private Manga ObtenerMangaPorTitulo(string titulo)
         {
             SqlDataAccess db = new SqlDataAccess();
@@ -411,7 +319,7 @@ namespace ProyectScrum.Forms
             {
                 conn.Open();
                 string query = @"SELECT MangaID, Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada, GeneroID
-                         FROM Mangas WHERE Titulo = @Titulo";
+                                 FROM Mangas WHERE Titulo = @Titulo";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Titulo", titulo);
@@ -436,7 +344,7 @@ namespace ProyectScrum.Forms
 
             return null;
         }
-        //obtener genero
+
         private string ObtenerGenero(int generoId)
         {
             SqlDataAccess db = new SqlDataAccess();
@@ -450,23 +358,35 @@ namespace ProyectScrum.Forms
                 return result?.ToString() ?? "Sin género";
             }
         }
-        // barra de busqueda 
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            panelFiltro.Visible = !panelFiltro.Visible;
+            panelFiltro.BringToFront();
+        }
+
+        private void Catalog_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (panelFiltro.Visible)
+            {
+                Point mousePos = this.PointToClient(Cursor.Position);
+                if (!panelFiltro.Bounds.Contains(mousePos))
+                {
+                    panelFiltro.Visible = false;
+                }
+            }
+        }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             string texto = txtBuscar.Text.Trim();
 
             if (string.IsNullOrEmpty(texto))
-            {
-                MostrarPortadas(); 
-            }
+                MostrarPortadas();
             else
-            {
                 MostrarPortadasBusqueda(texto);
-            }
         }
-        //metodo de busqueda
-      
+
         private void MostrarPortadasBusqueda(string texto)
         {
             flowLayoutPanel1.Controls.Clear();
@@ -478,11 +398,11 @@ namespace ProyectScrum.Forms
             {
                 conn.Open();
                 string query = @"SELECT m.MangaID, m.Titulo, m.URLPortada 
-                                FROM Mangas m
-                                LEFT JOIN TitulosAlternativos t ON m.MangaID = t.MangaID
-                                WHERE m.Titulo LIKE @texto OR t.TituloAlternativo LIKE @texto
-                                GROUP BY m.MangaID, m.Titulo, m.URLPortada
-                                ORDER BY MAX(m.FechaPublicacion) DESC";
+                                 FROM Mangas m
+                                 LEFT JOIN TitulosAlternativos t ON m.MangaID = t.MangaID
+                                 WHERE m.Titulo LIKE @texto OR t.TituloAlternativo LIKE @texto
+                                 GROUP BY m.MangaID, m.Titulo, m.URLPortada
+                                 ORDER BY MAX(m.FechaPublicacion) DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@texto", "%" + texto + "%");
@@ -512,12 +432,6 @@ namespace ProyectScrum.Forms
                     Image = Properties.Resources.LoadingGif
                 };
 
-                pb.LoadCompleted += (s, e) =>
-                {
-                    if (e.Error != null)
-                        pb.Image = Properties.Resources.DefaultCover;
-                };
-
                 if (cacheImagenes.ContainsKey(manga.URLPortada))
                 {
                     pb.Image = cacheImagenes[manga.URLPortada];
@@ -527,13 +441,9 @@ namespace ProyectScrum.Forms
                     pb.LoadCompleted += (s, e) =>
                     {
                         if (e.Error == null && pb.Image != null)
-                        {
                             cacheImagenes[manga.URLPortada] = pb.Image;
-                        }
                         else
-                        {
                             pb.Image = Properties.Resources.DefaultCover;
-                        }
                     };
 
                     try
@@ -546,19 +456,16 @@ namespace ProyectScrum.Forms
                     }
                 }
 
-
-                ToolTip tip = new ToolTip();
-                tip.SetToolTip(pb, manga.Titulo);
-
                 pb.Click += (s, e) =>
                 {
                     string titulo = (string)((PictureBox)s).Tag;
-                    Manga mangaSeleccionado = ObtenerMangaPorTitulo(titulo);
-                    if (mangaSeleccionado != null)
+                    Manga m = ObtenerMangaPorTitulo(titulo);
+
+                    if (m != null)
                     {
-                        string genero = ObtenerGenero(mangaSeleccionado.GeneroID);
-                        mangaForm form = new mangaForm(_usuarioID);
-                        form.CargarManga(mangaSeleccionado, genero);
+                        string genero = ObtenerGenero(m.GeneroID);
+                        mangaForm form = new mangaForm(CapturedData.UsuarioID);
+                        form.CargarManga(m, genero);
 
                         if (this.TopLevelControl is Main main)
                         {
@@ -570,6 +477,5 @@ namespace ProyectScrum.Forms
                 flowLayoutPanel1.Controls.Add(pb);
             }
         }
-
     }
 }

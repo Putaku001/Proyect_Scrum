@@ -16,7 +16,8 @@ namespace ProyectScrum.Forms
     public partial class favs : Form
     {
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
-        private int UsuarioID;  // <-- Añadido
+        private int UsuarioID = CapturedData.UsuarioID;
+        // <-- Añadido
         public favs(int usuarioID)
         {
             InitializeComponent();
