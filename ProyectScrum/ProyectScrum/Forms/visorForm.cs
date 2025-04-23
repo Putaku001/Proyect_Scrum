@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 using PdfiumViewer;
+using ProyectScrum.Data;
+using ProyectScrum.Entities;
+
 
 namespace ProyectScrum.Forms
 {
     public partial class visorForm : Form
     {
+        private DateTime tiempoInicioLectura;
+        private int tiempoTotalMinutos => (int)(DateTime.Now - tiempoInicioLectura).TotalMinutes;
+
         private MemoryStream pdfStream;
         private Form mangaFormReferencia;
         private PdfRenderer pdfRenderer;
@@ -15,18 +22,23 @@ namespace ProyectScrum.Forms
         private PictureBox visorUnico;
         private int paginaActual = 0;
         private enum ModoLectura { Cascada, Libro, Manga }
-        private ModoLectura modoActual = ModoLectura.Cascada;
+        private ModoLectura modoActual = ModoLectura.Libro;
 
         private Panel panelOverlay;
         private Label lblOverlay;
 
-        public visorForm(MemoryStream stream, Form origen)
+        private Manga mangaActual;
+
+        public visorForm(MemoryStream stream, Form origen, Manga manga)
         {
             InitializeComponent();
             pdfStream = stream;
             mangaFormReferencia = origen;
             this.Load += visorForm_Load;
             btnCerrar.Click += btnCerrar_Click;
+
+            mangaActual = manga;
+            tiempoInicioLectura = DateTime.Now;
 
             //btn herramientas
 
@@ -71,8 +83,8 @@ namespace ProyectScrum.Forms
                 pdfStream.Position = 0;
                 documentoPdf = PdfiumViewer.PdfDocument.Load(pdfStream);
 
-                paginaActual = 0;
-                CambiarModo(ModoLectura.Cascada);
+                paginaActual = ObtenerPaginaGuardada(CapturedData.UsuarioID, mangaActual?.MangaID ?? 0);
+                CambiarModo(ModoLectura.Libro);
             }
             catch (Exception ex)
             {
@@ -177,6 +189,7 @@ namespace ProyectScrum.Forms
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             Application.RemoveMessageFilter(filtroClick);
+            GuardarProgresoLectura(CapturedData.UsuarioID, mangaActual.MangaID, paginaActual, tiempoTotalMinutos);
             base.OnFormClosed(e);
         }
 
@@ -253,12 +266,93 @@ namespace ProyectScrum.Forms
 
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            
-            visorMaxForm visorFull = new visorMaxForm(documentoPdf, paginaActual, modoActual.ToString());
-            visorFull.FormClosed += (s, args) => MostrarOverlayMaximizado(false); 
-            MostrarOverlayMaximizado(true); 
+            if (mangaActual == null)
+            {
+                MessageBox.Show("No se ha cargado ningún manga.");
+                return;
+            }
+
+            visorMaxForm visorFull = new visorMaxForm(documentoPdf, paginaActual, modoActual.ToString(), mangaActual.MangaID);
+            visorFull.PaginaCerrada += (ultimaPagina) =>
+            {
+                paginaActual = ultimaPagina;
+                MostrarPagina();
+                MostrarOverlayMaximizado(false);
+            };
+
+            MostrarOverlayMaximizado(true);
             visorFull.Show();
         }
+
+        //metodo para paginas guardadas:
+        private int ObtenerPaginaGuardada(int usuarioId, int mangaId)
+        {
+            if (usuarioId <= 0 || mangaId <= 0) return 0;
+
+            SqlDataAccess db = new SqlDataAccess();
+
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string query = @"
+                    SELECT PaginaActual FROM ProgresoLectura
+                    WHERE UsuarioID = @UsuarioID AND MangaID = @MangaID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+                cmd.Parameters.AddWithValue("@MangaID", mangaId);
+
+                var result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+        }
+
+        public void AsignarMangaActual(Manga manga)
+        {
+            this.mangaActual = manga;
+        }
+        private void GuardarProgresoLectura(int usuarioId, int mangaId, int paginaActual, int tiempoMinutos)
+        {
+            if (usuarioId <= 0 || mangaId <= 0) return;
+
+            SqlDataAccess db = new SqlDataAccess();
+
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string query = @"
+            IF EXISTS (
+                SELECT 1 FROM ProgresoLectura 
+                WHERE UsuarioID = @UsuarioID AND MangaID = @MangaID
+            )
+            BEGIN
+                UPDATE ProgresoLectura
+                SET PaginaActual = @PaginaActual,
+                    TiempoLecturaTotal = TiempoLecturaTotal + @Tiempo,
+                    Status = 'Pausado',
+                    FechaUltimaLectura = GETDATE(),
+                    VecesLeido = VecesLeido + 1
+                WHERE UsuarioID = @UsuarioID AND MangaID = @MangaID
+            END
+            ELSE
+            BEGIN
+                INSERT INTO ProgresoLectura (UsuarioID, MangaID, PaginaActual, TiempoLecturaTotal, Status, FechaUltimaLectura, VecesLeido)
+                VALUES (@UsuarioID, @MangaID, @PaginaActual, @Tiempo, 'Leyendo', GETDATE(), 1)
+            END";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+                cmd.Parameters.AddWithValue("@MangaID", mangaId);
+                cmd.Parameters.AddWithValue("@PaginaActual", paginaActual);
+                cmd.Parameters.AddWithValue("@Tiempo", tiempoMinutos);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
     }
     //clase para recorrer el mouse y cerrar
     public class ClickOutsidePanelFilter : IMessageFilter

@@ -17,7 +17,6 @@ namespace ProyectScrum.Forms
     {
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
         private int UsuarioID = CapturedData.UsuarioID;
-        // <-- Añadido
         public favs(int usuarioID)
         {
             InitializeComponent();
@@ -35,13 +34,13 @@ namespace ProyectScrum.Forms
             {
                 conn.Open();
                 string query = @"
-                SELECT M.MangaID, M.Titulo, M.URLPortada, M.GeneroID
+                SELECT M.MangaID, M.Titulo, M.URLPortada, M.GeneroID, M.URLMangaDrive
                 FROM Favoritos F
                 JOIN Mangas M ON F.MangaID = M.MangaID
-                WHERE F.UsuarioID = @UsuarioID";  // <-- Filtrado por usuario
+                WHERE F.UsuarioID = @UsuarioID";  
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@UsuarioID", UsuarioID);  // <-- Pasar el ID
+                cmd.Parameters.AddWithValue("@UsuarioID", UsuarioID); 
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -54,17 +53,25 @@ namespace ProyectScrum.Forms
                         MangaID = reader.GetInt32(0),
                         Titulo = reader.GetString(1),
                         URLPortada = reader.GetString(2),
-                        GeneroID = reader.GetInt32(3)
+                        GeneroID = reader.GetInt32(3),
+                        URLMangaDrive = reader.GetString(4)
                     });
                 }
 
                 foreach (var manga in mangasFavoritos)
                 {
+                    Panel contenedor = new Panel
+                    {
+                        Width = 185,
+                        Height = 265,
+                        Margin = new Padding(30, 20, 30, 20),
+                        BackColor = Color.Transparent
+                    };
+
                     PictureBox pb = new PictureBox
                     {
                         Width = 185,
                         Height = 240,
-                        Margin = new Padding(30, 20, 30, 20),
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Cursor = Cursors.Hand,
                         Tag = manga.Titulo
@@ -122,6 +129,8 @@ namespace ProyectScrum.Forms
 
                             if (this.TopLevelControl is Main main)
                             {
+                                main.catalogForm = null; // Asegura que no vuelva al catálogo
+                                main.favsForm = this;     // Guarda que el origen fue favs
                                 main.AbrirFormularioEnPanel(mangaForm);
                             }
                         }
@@ -131,8 +140,54 @@ namespace ProyectScrum.Forms
                         }
                     };
 
-                    flowLayoutPanel1.Controls.Add(pb);
+                    // Botón Eliminar de 💔
+                    Button btnEliminar = new Button
+                    {
+                        Text = "Eliminar de 💔",
+                        Dock = DockStyle.Bottom,
+                        Height = 25,
+                        BackColor = Color.Black,
+                        ForeColor = Color.White,
+                        FlatStyle = FlatStyle.Flat,
+                        Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                        Tag = manga.MangaID,
+                        Cursor = Cursors.Hand
+                    };
+                    btnEliminar.FlatAppearance.BorderColor = Color.White;
+                    btnEliminar.FlatAppearance.BorderSize = 1;
+
+                    btnEliminar.Click += (s, e) =>
+                    {
+                        int mangaIdEliminar = (int)((Button)s).Tag;
+
+                        SqlDataAccess dbEliminar = new SqlDataAccess();
+                        using (SqlConnection connEliminar = dbEliminar.GetConnection())
+                        {
+                            connEliminar.Open();
+                            string deleteQuery = "DELETE FROM Favoritos WHERE MangaID = @MangaID AND UsuarioID = @UsuarioID";
+
+                            SqlCommand cmdEliminar = new SqlCommand(deleteQuery, connEliminar);
+                            cmdEliminar.Parameters.AddWithValue("@MangaID", mangaIdEliminar);
+                            cmdEliminar.Parameters.AddWithValue("@UsuarioID", UsuarioID);
+
+                            int result = cmdEliminar.ExecuteNonQuery();
+                            if (result > 0)
+                            {
+                                
+                                CargarFavoritos(); // Refrescar la vista
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo eliminar.");
+                            }
+                        }
+                    };
+
+                    contenedor.Controls.Add(pb);
+                    contenedor.Controls.Add(btnEliminar);
+                    flowLayoutPanel1.Controls.Add(contenedor);
                 }
+
             }
         }
 
@@ -144,7 +199,11 @@ namespace ProyectScrum.Forms
             using (SqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT MangaID, Titulo, URLPortada, GeneroID FROM Mangas WHERE Titulo = @titulo";
+                string query = @"
+                        SELECT MangaID, Titulo, Autor, Descripcion, Estado, FechaPublicacion,
+                               URLMangaDrive, URLPortada, GeneroID
+                        FROM Mangas
+                        WHERE Titulo = @titulo";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@titulo", titulo);
@@ -156,14 +215,20 @@ namespace ProyectScrum.Forms
                     {
                         MangaID = reader.GetInt32(0),
                         Titulo = reader.GetString(1),
-                        URLPortada = reader.GetString(2),
-                        GeneroID = reader.GetInt32(3)
+                        Autor = reader.GetString(2),
+                        Descripcion = reader.GetString(3),
+                        Estado = reader.GetString(4),
+                        FechaPublicacion = reader.GetDateTime(5),
+                        URLMangaDrive = reader.GetString(6),
+                        URLPortada = reader.GetString(7),
+                        GeneroID = reader.GetInt32(8)
                     };
                 }
             }
 
             return manga;
         }
+
 
         private string ObtenerGenero(int generoID)
         {

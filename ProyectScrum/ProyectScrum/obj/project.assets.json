@@ -529,11 +529,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\proyect\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
+      "projectUniqueName": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
       "projectName": "ProyectScrum",
-      "projectPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\proyect\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
+      "projectPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
       "packagesPath": "C:\\Users\\blanc_ma7kouo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\proyect\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\obj\\",
+      "outputPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

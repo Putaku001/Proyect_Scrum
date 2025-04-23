@@ -136,21 +136,41 @@ namespace ProyectScrum.Forms
 
             files = files.OrderBy(f => f.Name, StringComparer.OrdinalIgnoreCase).ToList();
 
+            // Obtener progreso general del manga
+            var progreso = ObtenerProgresoLectura(CapturedData.UsuarioID, mangaActual.MangaID);
+
+            // Solo mostrar detalles en el primer tomo por ahora (puedes mejorar esto si guardás el tomo exacto)
+            string primerTomoId = files.FirstOrDefault()?.Id;
+
+            // Obtener progreso general del manga
+            var progresoGlobal = ObtenerProgresoLectura(CapturedData.UsuarioID, mangaActual.MangaID);
+
             foreach (var file in files)
             {
+                var contenedor = new Panel
+                {
+                    Width = flowPanelVolumenes.Width - 25,
+                    Height = 50, // Altura mínima (sin progreso)
+                    Margin = new Padding(2),
+                    BackColor = Color.Transparent
+                };
+
+                // Botón del tomo
                 Button tomoBtn = new Button
                 {
                     Text = $" {file.Name}",
-                    Width = flowPanelVolumenes.Width - 40,
+                    Width = contenedor.Width,
                     Height = 45,
                     BackColor = Color.FromArgb(35, 35, 35),
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
-                    Margin = new Padding(5),
+                    Margin = new Padding(0),
                     Tag = file.Id,
-                    TextAlign = ContentAlignment.MiddleLeft
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Cursor = Cursors.Hand
                 };
 
+                // Evento click para abrir visor
                 tomoBtn.Click += async (s, e) =>
                 {
                     if (visorActual != null && !visorActual.IsDisposed)
@@ -161,16 +181,10 @@ namespace ProyectScrum.Forms
 
                     string fileId = ((Button)s).Tag.ToString();
 
-                    // Deshabilitar todos los botones mientras carga
                     foreach (Control control in flowPanelVolumenes.Controls)
-                        if (control is Button btn) btn.Enabled = false;
-
-
-                    panelCargandoManga.Visible = true;
-                    panelCargandoManga.BringToFront();
-                    panelCargandoManga.Refresh();
-
-
+                        if (control is Panel p)
+                            foreach (Control c in p.Controls)
+                                if (c is Button b) b.Enabled = false;
 
                     panelCargandoManga.Visible = true;
                     panelCargandoManga.BringToFront();
@@ -183,14 +197,13 @@ namespace ProyectScrum.Forms
                         await request.DownloadAsync(stream);
                         stream.Position = 0;
 
-                        visorActual = new visorForm(stream, this);
+                        visorActual = new visorForm(stream, this, mangaActual);
+                        visorActual.AsignarMangaActual(mangaActual);
 
                         visorActual.FormClosed += (sender2, args) =>
                         {
                             visorActual = null;
-
-                            foreach (Control control in flowPanelVolumenes.Controls)
-                                if (control is Button btn) btn.Enabled = true;
+                            CargarVolumenes(mangaActual.URLMangaDrive); // Recarga progreso actualizado
                         };
 
                         Main mainForm = (Main)Application.OpenForms["Main"];
@@ -200,18 +213,106 @@ namespace ProyectScrum.Forms
                     {
                         panelCargandoManga.Visible = false;
                     }
-
                 };
 
+                contenedor.Controls.Add(tomoBtn);
+
+                // Mostrar progreso solo si existe y solo en el primer tomo
+                if (progresoGlobal is (int pagina, string status, int tiempo, int veces)
+                    && pagina > 0
+                    && file == files.First())
+                {
+                    FlowLayoutPanel panelProgreso = new FlowLayoutPanel
+                    {
+                        FlowDirection = FlowDirection.LeftToRight,
+                        Width = contenedor.Width,
+                        Height = 35,
+                        Location = new Point(0, tomoBtn.Bottom),
+                        AutoSize = true,
+                        Margin = new Padding(0)
+                    };
+
+                    panelProgreso.Controls.Add(CrearBloqueProgreso($"Continuar (pág {pagina + 1})"));
+                    panelProgreso.Controls.Add(CrearBloqueProgreso($"Estado: {status}"));
+                    panelProgreso.Controls.Add(CrearBloqueProgreso($"Veces leído: {veces}"));
+                    panelProgreso.Controls.Add(CrearBloqueProgreso($"Tiempo: {tiempo} min"));
+
+                    // bloque ya no me interesa
+                    Label lblEliminar = CrearBloqueProgreso("Ya no me interesa");
+                    lblEliminar.Cursor = Cursors.Hand;
+                    lblEliminar.BackColor = Color.FromArgb(40, 0, 0); // color diferente
+                    lblEliminar.Click += (s, e) =>
+                    {
+                        var confirm = MessageBox.Show("¿Seguro que deseas eliminar tu progreso de lectura?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (confirm == DialogResult.Yes)
+                        {
+                            EliminarProgresoLectura(CapturedData.UsuarioID, mangaActual.MangaID);
+                            CargarVolumenes(mangaActual.URLMangaDrive); // Refrescar la vista
+                        }
+                    };
+                    panelProgreso.Controls.Add(lblEliminar);
+
+                    contenedor.Controls.Add(panelProgreso);
+                    contenedor.Height += 35;
+                }
 
 
-
-                flowPanelVolumenes.Controls.Add(tomoBtn);
+                flowPanelVolumenes.Controls.Add(contenedor);
             }
+
+
+
 
             flowPanelVolumenes.ResumeLayout();
             flowPanelVolumenes.Refresh();
         }
+        private (int PaginaActual, string Status, int TiempoLecturaTotal, int VecesLeido)? ObtenerProgresoLectura(int usuarioID, int mangaID)
+        {
+            SqlDataAccess db = new SqlDataAccess();
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = @"
+            SELECT PaginaActual, Status, TiempoLecturaTotal, VecesLeido
+            FROM ProgresoLectura
+            WHERE UsuarioID = @UsuarioID AND MangaID = @MangaID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioID);
+                cmd.Parameters.AddWithValue("@MangaID", mangaID);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return (
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            reader.GetInt32(2),
+                            reader.GetInt32(3)
+                        );
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        //metodo no me interesa
+        private void EliminarProgresoLectura(int usuarioID, int mangaID)
+        {
+            SqlDataAccess db = new SqlDataAccess();
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "DELETE FROM ProgresoLectura WHERE UsuarioID = @UsuarioID AND MangaID = @MangaID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioID);
+                cmd.Parameters.AddWithValue("@MangaID", mangaID);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
 
 
         //obtener servivios Drive
@@ -253,7 +354,20 @@ namespace ProyectScrum.Forms
         {
             if (Application.OpenForms["Main"] is Main mainForm)
             {
-                mainForm.AbrirFormularioEnPanel(mainForm.catalogForm);
+                if (mainForm.favsForm != null && !mainForm.favsForm.IsDisposed)
+                {
+                    mainForm.AbrirFormularioEnPanel(mainForm.favsForm);
+                }
+                else if (mainForm.catalogForm != null && !mainForm.catalogForm.IsDisposed)
+                {
+                    mainForm.AbrirFormularioEnPanel(mainForm.catalogForm);
+                }
+                else
+                {
+                    // Fallback
+                    mainForm.catalogForm = new Catalog(mainForm._emailSettings);
+                    mainForm.AbrirFormularioEnPanel(mainForm.catalogForm);
+                }
             }
         }
 
@@ -360,6 +474,23 @@ namespace ProyectScrum.Forms
                 }
             }
         }
+        private Label CrearBloqueProgreso(string texto)
+        {
+            return new Label
+            {
+                Text = texto,
+                BackColor = Color.FromArgb(25, 25, 25),
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 7, FontStyle.Regular),
+                AutoSize = false,
+                Height = 30,
+                Width = 110,
+                Margin = new Padding(3, 0, 3, 0),
+                TextAlign = ContentAlignment.MiddleCenter,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+        }
+
 
     }
 }

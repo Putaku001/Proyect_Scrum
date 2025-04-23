@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using PdfiumViewer;
+using ProyectScrum.Data;
+using ProyectScrum.Entities;
 
 namespace ProyectScrum.Forms
 {
@@ -11,6 +14,10 @@ namespace ProyectScrum.Forms
         private PdfiumViewer.PdfDocument documentoPdf;
         private int paginaActual;
         private string modoActual;
+        private int mangaID;
+
+        private DateTime tiempoInicioLectura;
+        private int TiempoLecturaTotal => (int)(DateTime.Now - tiempoInicioLectura).TotalMinutes;
 
         private PictureBox visor;
         private Label lblContador;
@@ -22,7 +29,8 @@ namespace ProyectScrum.Forms
         private Button btnCascada;
         private PdfRenderer pdfRenderer;
 
-        public visorMaxForm(PdfiumViewer.PdfDocument document, int paginaInicial, string modo)
+
+        public visorMaxForm(PdfiumViewer.PdfDocument document, int paginaInicial, string modo, int mangaID)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -32,10 +40,12 @@ namespace ProyectScrum.Forms
             documentoPdf = document;
             paginaActual = paginaInicial;
             modoActual = modo;
-
+            this.mangaID = mangaID; // <-- aquí se guarda
             CrearControles();
             CambiarModo(modo);
+            tiempoInicioLectura = DateTime.Now;
         }
+
 
         private void CrearControles()
         {
@@ -199,5 +209,61 @@ namespace ProyectScrum.Forms
         {
             CambiarPagina(1);
         }
+
+        //metodos de guardado de pagina 
+
+        public event Action<int> PaginaCerrada;
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            PaginaCerrada?.Invoke(paginaActual); // Notificamos la última página
+            GuardarProgresoLectura(CapturedData.UsuarioID, mangaID, paginaActual, TiempoLecturaTotal); //para guardarla en la db para volver a leer
+            base.OnFormClosed(e);
+        }
+
+        //metodo para guardar en la db
+        private void GuardarProgresoLectura(int usuarioId, int mangaId, int paginaActual, int tiempoMinutos)
+        {
+            if (usuarioId <= 0 || mangaId <= 0) return;
+
+            SqlDataAccess db = new SqlDataAccess();
+
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string query = @"
+            IF EXISTS (
+                SELECT 1 FROM ProgresoLectura 
+                WHERE UsuarioID = @UsuarioID AND MangaID = @MangaID
+            )
+            BEGIN
+                UPDATE ProgresoLectura
+                SET PaginaActual = @PaginaActual,
+                    TiempoLecturaTotal = TiempoLecturaTotal + @Tiempo,
+                    Status = 'Pausado',
+                    FechaUltimaLectura = GETDATE(),
+                    VecesLeido = VecesLeido + 1
+                WHERE UsuarioID = @UsuarioID AND MangaID = @MangaID
+            END
+            ELSE
+            BEGIN
+                INSERT INTO ProgresoLectura (UsuarioID, MangaID, PaginaActual, TiempoLecturaTotal, Status, FechaUltimaLectura, VecesLeido)
+                VALUES (@UsuarioID, @MangaID, @PaginaActual, @Tiempo, 'Leyendo', GETDATE(), 1)
+            END";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+                cmd.Parameters.AddWithValue("@MangaID", mangaId);
+                cmd.Parameters.AddWithValue("@PaginaActual", paginaActual);
+                cmd.Parameters.AddWithValue("@Tiempo", tiempoMinutos);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+
     }
+
 }

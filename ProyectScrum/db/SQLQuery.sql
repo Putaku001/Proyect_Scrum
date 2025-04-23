@@ -125,6 +125,19 @@ VALUES (1, 'a Silent Voice');
 INSERT INTO TitulosAlternativos (MangaID, TituloAlternativo)
 VALUES (5, 'Your Name');
 
+CREATE TABLE ProgresoLectura (
+    ProgresoID INT PRIMARY KEY IDENTITY(1,1),
+    UsuarioID INT NOT NULL,
+    MangaID INT NOT NULL,
+    PaginaActual INT NOT NULL DEFAULT 0,
+    Status NVARCHAR(20) DEFAULT 'Leyendo', -- Ej: Leyendo, Pausado, Finalizado
+    FechaUltimaLectura DATETIME DEFAULT GETDATE(),
+    TiempoLecturaTotal INT DEFAULT 0, -- en minutos
+    VecesLeido INT DEFAULT 1, -- cuántas veces ha iniciado desde la página 0
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID) ON DELETE CASCADE,
+    FOREIGN KEY (MangaID) REFERENCES Mangas(MangaID) ON DELETE CASCADE,
+    UNIQUE (UsuarioID, MangaID)
+);
 
 select * from TitulosAlternativos
 select * from Generos
@@ -132,4 +145,5 @@ select * from Mangas
 SELECT * FROM Roles;
 SELECT * FROM Usuarios;
 SELECT * FROM Favoritos;
+select * from ProgresoLectura
 
