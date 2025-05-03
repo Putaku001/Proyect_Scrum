@@ -25,11 +25,12 @@ namespace ProyectScrum
         public Main(EmailSettings emailSettings)
         {
             InitializeComponent();
-            
-            _emailSettings = emailSettings;
 
-            // Almacenar globalmente en CapturedData
+            _emailSettings = emailSettings;
             UsuarioID = CapturedData.UsuarioID;
+
+            // Mostrar inicioForm por defecto al iniciar
+            AbrirFormularioEnPanel(new inicioForm());
         }
 
         private void perfilButton_Click(object sender, EventArgs e)
@@ -69,11 +70,9 @@ namespace ProyectScrum
 
         public void AbrirFormularioEnPanel(Form formularioHijo)
         {
-            // Limpia contenido anterior
             if (panelContenedor.Controls.Count > 0)
                 panelContenedor.Controls.RemoveAt(0);
 
-            // Ajusta el nuevo formulario
             formularioHijo.TopLevel = false;
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Dock = DockStyle.Fill;
@@ -99,7 +98,7 @@ namespace ProyectScrum
         private void catalogbtn_Click(object sender, EventArgs e)
         {
             if (catalogForm == null || catalogForm.IsDisposed)
-                catalogForm = new Catalog(_emailSettings); // Ya no pasamos UsuarioID
+                catalogForm = new Catalog(_emailSettings);
 
             AbrirFormularioEnPanel(catalogForm);
         }
@@ -124,6 +123,5 @@ namespace ProyectScrum
 
             AbrirFormularioEnPanel(favsForm);
         }
-
     }
 }

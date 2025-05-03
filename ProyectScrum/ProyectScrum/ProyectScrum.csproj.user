@@ -10,6 +10,9 @@
     <Compile Update="Forms\FPassword.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\inicioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>

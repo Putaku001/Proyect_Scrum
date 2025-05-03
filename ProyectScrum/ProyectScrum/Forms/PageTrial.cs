@@ -33,6 +33,11 @@ namespace ProyectScrum.Forms
         {
 
         }
+
+        private void SlideBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
-    
+

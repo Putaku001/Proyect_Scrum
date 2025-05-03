@@ -32,7 +32,7 @@ CREATE TABLE Mangas (
     Titulo NVARCHAR(100) NOT NULL,
     Autor NVARCHAR(100) NOT NULL,
     Descripcion NVARCHAR(500),
-    Estado NVARCHAR(20) DEFAULT 'En publicaci�n',
+    Estado NVARCHAR(20) DEFAULT 'En publicacion',
     FechaPublicacion DATE,
     URLMangaDrive NVARCHAR(100) NOT NULL, --carpeta de volumes de manga en pdf ubicado en drive
 	URLPortada NVARCHAR(255) NOT NULL -- portadas de los mangas jpg ubicados en drive

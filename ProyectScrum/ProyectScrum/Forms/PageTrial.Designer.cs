@@ -31,15 +31,6 @@
             components = new System.ComponentModel.Container();
             PictureBox manga2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageTrial));
-            SlideBar = new FlowLayoutPanel();
-            panel1 = new Panel();
-            panel6 = new Panel();
-            menuButton = new Button();
-            panel2 = new Panel();
-            label1 = new Label();
-            panel3 = new Panel();
-            ISButton = new Button();
-            button1 = new Button();
             slideBarTime = new System.Windows.Forms.Timer(components);
             panel4 = new Panel();
             GalleryFlow1 = new FlowLayoutPanel();
@@ -59,14 +50,18 @@
             panel11 = new Panel();
             GalleryFlow7 = new FlowLayoutPanel();
             manga7 = new PictureBox();
+            SlideBar = new FlowLayoutPanel();
+            panel1 = new Panel();
+            panel6 = new Panel();
+            menuButton = new Button();
+            panel2 = new Panel();
+            label1 = new Label();
+            panel3 = new Panel();
+            ISButton = new Button();
+            button1 = new Button();
             label2 = new Label();
             manga2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)manga2).BeginInit();
-            SlideBar.SuspendLayout();
-            panel1.SuspendLayout();
-            panel6.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
             panel4.SuspendLayout();
             GalleryFlow1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manga1).BeginInit();
@@ -85,6 +80,11 @@
             panel11.SuspendLayout();
             GalleryFlow7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manga7).BeginInit();
+            SlideBar.SuspendLayout();
+            panel1.SuspendLayout();
+            panel6.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // manga2
@@ -98,120 +98,6 @@
             manga2.SizeMode = PictureBoxSizeMode.Zoom;
             manga2.TabIndex = 0;
             manga2.TabStop = false;
-            // 
-            // SlideBar
-            // 
-            SlideBar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SlideBar.BackColor = Color.DimGray;
-            SlideBar.Controls.Add(panel1);
-            SlideBar.Controls.Add(panel2);
-            SlideBar.Controls.Add(panel3);
-            SlideBar.Controls.Add(button1);
-            SlideBar.Location = new Point(0, 0);
-            SlideBar.MaximumSize = new Size(194, 539);
-            SlideBar.MinimumSize = new Size(77, 539);
-            SlideBar.Name = "SlideBar";
-            SlideBar.Size = new Size(194, 539);
-            SlideBar.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(panel6);
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(191, 100);
-            panel1.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(menuButton);
-            panel6.Location = new Point(0, 9);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(191, 65);
-            panel6.TabIndex = 5;
-            // 
-            // menuButton
-            // 
-            menuButton.BackColor = Color.Transparent;
-            menuButton.Cursor = Cursors.Hand;
-            menuButton.Dock = DockStyle.Left;
-            menuButton.FlatAppearance.BorderSize = 0;
-            menuButton.FlatStyle = FlatStyle.Flat;
-            menuButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menuButton.ForeColor = SystemColors.ControlLightLight;
-            menuButton.Image = (Image)resources.GetObject("menuButton.Image");
-            menuButton.ImageAlign = ContentAlignment.MiddleLeft;
-            menuButton.Location = new Point(0, 0);
-            menuButton.Name = "menuButton";
-            menuButton.Padding = new Padding(15, 0, 0, 0);
-            menuButton.Size = new Size(188, 65);
-            menuButton.TabIndex = 1;
-            menuButton.Text = "Menu";
-            menuButton.UseVisualStyleBackColor = false;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(label1);
-            panel2.Location = new Point(3, 109);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(191, 65);
-            panel2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(26, 12);
-            label1.Name = "label1";
-            label1.Size = new Size(128, 42);
-            label1.TabIndex = 0;
-            label1.Text = "Para Continuar \r\n  Inicia Sesion";
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(ISButton);
-            panel3.Location = new Point(3, 180);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(191, 62);
-            panel3.TabIndex = 2;
-            // 
-            // ISButton
-            // 
-            ISButton.Cursor = Cursors.Hand;
-            ISButton.Dock = DockStyle.Left;
-            ISButton.FlatAppearance.BorderSize = 0;
-            ISButton.FlatStyle = FlatStyle.Flat;
-            ISButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ISButton.ForeColor = Color.White;
-            ISButton.Image = (Image)resources.GetObject("ISButton.Image");
-            ISButton.ImageAlign = ContentAlignment.MiddleLeft;
-            ISButton.Location = new Point(0, 0);
-            ISButton.Name = "ISButton";
-            ISButton.Padding = new Padding(15, 0, 0, 0);
-            ISButton.Size = new Size(192, 62);
-            ISButton.TabIndex = 1;
-            ISButton.Text = "  Iniciar Sesión";
-            ISButton.UseVisualStyleBackColor = true;
-            ISButton.Click += ISButton_Click;
-            // 
-            // button1
-            // 
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Left;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(3, 248);
-            button1.Name = "button1";
-            button1.Padding = new Padding(15, 0, 0, 0);
-            button1.Size = new Size(192, 0);
-            button1.TabIndex = 3;
-            button1.Text = "  Iniciar Sesión";
-            button1.UseVisualStyleBackColor = true;
             // 
             // slideBarTime
             // 
@@ -401,17 +287,130 @@
             manga7.TabIndex = 0;
             manga7.TabStop = false;
             // 
+            // SlideBar
+            // 
+            SlideBar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SlideBar.BackColor = Color.DimGray;
+            SlideBar.Controls.Add(panel1);
+            SlideBar.Controls.Add(panel2);
+            SlideBar.Controls.Add(panel3);
+            SlideBar.Controls.Add(button1);
+            SlideBar.Location = new Point(3, -1);
+            SlideBar.MaximumSize = new Size(194, 539);
+            SlideBar.MinimumSize = new Size(77, 539);
+            SlideBar.Name = "SlideBar";
+            SlideBar.Size = new Size(194, 539);
+            SlideBar.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(panel6);
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(191, 100);
+            panel1.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(menuButton);
+            panel6.Location = new Point(0, 9);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(191, 65);
+            panel6.TabIndex = 5;
+            // 
+            // menuButton
+            // 
+            menuButton.BackColor = Color.Transparent;
+            menuButton.Cursor = Cursors.Hand;
+            menuButton.Dock = DockStyle.Left;
+            menuButton.FlatAppearance.BorderSize = 0;
+            menuButton.FlatStyle = FlatStyle.Flat;
+            menuButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            menuButton.ForeColor = SystemColors.ControlLightLight;
+            menuButton.Image = (Image)resources.GetObject("menuButton.Image");
+            menuButton.ImageAlign = ContentAlignment.MiddleLeft;
+            menuButton.Location = new Point(0, 0);
+            menuButton.Name = "menuButton";
+            menuButton.Padding = new Padding(15, 0, 0, 0);
+            menuButton.Size = new Size(188, 65);
+            menuButton.TabIndex = 1;
+            menuButton.Text = "Menu";
+            menuButton.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(label1);
+            panel2.Location = new Point(3, 109);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(191, 65);
+            panel2.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(26, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(128, 42);
+            label1.TabIndex = 0;
+            label1.Text = "Para Continuar \r\n  Inicia Sesion";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(ISButton);
+            panel3.Location = new Point(3, 180);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(191, 62);
+            panel3.TabIndex = 2;
+            // 
+            // ISButton
+            // 
+            ISButton.Cursor = Cursors.Hand;
+            ISButton.Dock = DockStyle.Left;
+            ISButton.FlatAppearance.BorderSize = 0;
+            ISButton.FlatStyle = FlatStyle.Flat;
+            ISButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ISButton.ForeColor = Color.White;
+            ISButton.Image = (Image)resources.GetObject("ISButton.Image");
+            ISButton.ImageAlign = ContentAlignment.MiddleLeft;
+            ISButton.Location = new Point(0, 0);
+            ISButton.Name = "ISButton";
+            ISButton.Padding = new Padding(15, 0, 0, 0);
+            ISButton.Size = new Size(192, 62);
+            ISButton.TabIndex = 1;
+            ISButton.Text = "  Iniciar Sesión";
+            ISButton.UseVisualStyleBackColor = true;
+            ISButton.Click += ISButton_Click;
+            // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Left;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(3, 248);
+            button1.Name = "button1";
+            button1.Padding = new Padding(15, 0, 0, 0);
+            button1.Size = new Size(192, 0);
+            button1.TabIndex = 3;
+            button1.Text = "  Iniciar Sesión";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(200, 4);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(283, 11);
             label2.Name = "label2";
-            label2.Size = new Size(258, 25);
-            label2.TabIndex = 5;
-            label2.Text = "MANGAS RECOMENDADOS";
+            label2.Size = new Size(191, 21);
+            label2.TabIndex = 14;
+            label2.Text = "Mangas Recomendados";
             // 
             // PageTrial
             // 
@@ -420,23 +419,17 @@
             BackColor = Color.Black;
             ClientSize = new Size(1092, 539);
             Controls.Add(label2);
+            Controls.Add(SlideBar);
             Controls.Add(panel11);
             Controls.Add(panel10);
             Controls.Add(panel9);
             Controls.Add(panel7);
             Controls.Add(panel5);
             Controls.Add(panel4);
-            Controls.Add(SlideBar);
             Name = "PageTrial";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PageTrial";
             ((System.ComponentModel.ISupportInitialize)manga2).EndInit();
-            SlideBar.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             GalleryFlow1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)manga1).EndInit();
@@ -455,20 +448,17 @@
             panel11.ResumeLayout(false);
             GalleryFlow7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)manga7).EndInit();
+            SlideBar.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private FlowLayoutPanel SlideBar;
-        private Panel panel1;
-        private Panel panel6;
-        private Button menuButton;
-        private Panel panel2;
-        private Panel panel3;
-        private Button ISButton;
-        private Label label1;
         private System.Windows.Forms.Timer slideBarTime;
         private Panel panel4;
         private Panel panel5;
@@ -488,6 +478,14 @@
         private PictureBox manga5;
         private PictureBox manga6;
         private PictureBox manga7;
+        private FlowLayoutPanel SlideBar;
+        private Panel panel1;
+        private Panel panel6;
+        private Button menuButton;
+        private Panel panel2;
+        private Label label1;
+        private Panel panel3;
+        private Button ISButton;
         private Button button1;
         private Label label2;
     }

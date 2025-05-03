@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mdbrzob4/YhStXuIupcTiuuoYoF3xPu+qRFvbZJjkTucnbsvHQ7oJXaSxFmHQUatherZkqlGMGzVxlfzUPElsg==",
+  "dgSpecHash": "oag2Rk7YJgnpwX4ovu0RUeECNfYPUYhqlBAzAM+l+yJRMWNy8fZWv2kaJxq/DV3y3oTf9c5E5UtHAmna24gBMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
+  "projectFilePath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\blanc_ma7kouo\\.nuget\\packages\\google.apis\\1.69.0\\google.apis.1.69.0.nupkg.sha512",
     "C:\\Users\\blanc_ma7kouo\\.nuget\\packages\\google.apis.auth\\1.69.0\\google.apis.auth.1.69.0.nupkg.sha512",

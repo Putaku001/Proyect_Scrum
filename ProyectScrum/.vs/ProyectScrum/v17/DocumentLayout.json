@@ -1,61 +1,81 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\",
+  "WorkspaceRootPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\blanc_ma7kouo\\desktop\\ps\\pal git\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\blanc_ma7kouo\\desktop\\ps\\nuevamente\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\visormaxform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visormaxform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\visorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\entities\\captureddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\entities\\captureddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\pagetrial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\pagetrial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\pagetrial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\pagetrial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\mangaform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\db\\dbconection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\db\\dbconection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\favs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\visormaxform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visormaxform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\visorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\visorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\new_password.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\entities\\captureddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\entities\\captureddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\fpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\forms\\fpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\fpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\proyectscrum\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -66,15 +86,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "Perfil.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Perfil.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\Perfil.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAANcAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -83,36 +103,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Login.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\Login.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowD4AAAApAAAA",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAAwK8AAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T22:30:38.996Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "Perfil.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Perfil.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\proyect\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs [Dise\u00F1o]",
-              "RelativeToolTip": "..\\..\\..\\proyect\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\..\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Perfil.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-19T23:56:46.054Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "mangaForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\mangaForm.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs [Design]",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs [Design]",
               "RelativeToolTip": "ProyectScrum\\Forms\\mangaForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-20T01:17:13.557Z",
@@ -145,11 +165,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
+              "Title": "Main.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Main.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\..\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T01:36:15.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PageTrial.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\PageTrial.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\PageTrial.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\PageTrial.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\..\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\PageTrial.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T01:34:51.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "New_Password.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\New_Password.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\New_Password.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\New_Password.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -157,11 +199,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "CapturedData.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\CapturedData.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\CapturedData.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Entities\\CapturedData.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\CapturedData.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\CapturedData.cs",
               "RelativeToolTip": "ProyectScrum\\Entities\\CapturedData.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -169,11 +211,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "Users.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\Users.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\Users.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Entities\\Users.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\Users.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Entities\\Users.cs",
               "RelativeToolTip": "ProyectScrum\\Entities\\Users.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -181,11 +223,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "FPassword.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\FPassword.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\FPassword.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\FPassword.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\FPassword.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\FPassword.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\FPassword.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -193,11 +235,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "Catalog.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Catalog.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\Catalog.cs",
               "ViewState": "AQIAAJIBAAAAAAAAAAAUwMoBAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -205,23 +247,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "Main.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Main.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Main.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\Main.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAYwGkAAAAAAAAA",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAiwH8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T22:18:57.817Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
+              "Title": "dbConection.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\DB\\dbConection.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\DB\\dbConection.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\DB\\dbConection.cs",
+              "RelativeToolTip": "ProyectScrum\\DB\\dbConection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T00:48:38.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "favs.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\favs.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\favs.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\favs.cs",
               "ViewState": "AQIAAF8AAAAAAAAAAADwv4UAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -231,22 +285,45 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "mangaForm.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\mangaForm.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\mangaForm.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\mangaForm.cs",
-              "ViewState": "AQIAAE0BAAAAAAAAAAAYwHIBAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIMAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T03:18:28.38Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
+              "Title": "PageTrial.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\PageTrial.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\PageTrial.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\PageTrial.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\PageTrial.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T01:44:54.245Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Login.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\..\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Login.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T02:56:25.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "visorForm.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\visorForm.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorForm.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\visorForm.cs",
               "ViewState": "AQIAAI8AAAAAAAAAAAAQwGEBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -254,11 +331,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "visorMaxForm.cs",
-              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.cs",
+              "DocumentMoniker": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\visorMaxForm.cs",
-              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\pal git\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.cs",
+              "ToolTip": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\nuevamente\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\visorMaxForm.cs",
               "RelativeToolTip": "ProyectScrum\\Forms\\visorMaxForm.cs",
               "ViewState": "AQIAAM4AAAAAAAAAAAAowAcBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
