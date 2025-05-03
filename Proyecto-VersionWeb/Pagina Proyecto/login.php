@@ -1,18 +1,21 @@
 <?php
 session_start();
-include("db.php");
+include("db.php"); // Asegúrate que la ruta es correcta
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Aplicar el mismo hash que en el registro
+    $passwordHash = hash('sha256', $password);
+
     $sql = "
         SELECT UsuarioID, NombreUsuario, RolID 
         FROM Usuarios 
         WHERE Email = ? 
-        AND ContrasenaHash = HASHBYTES('SHA2_256', CONVERT(VARCHAR, ?))
+        AND ContrasenaHash = ?
     ";
-    $params = array($email, $password);
+    $params = array($email, $passwordHash);
     $stmt = sqlsrv_query($conn, $sql, $params);
 
     if ($stmt && sqlsrv_has_rows($stmt)) {

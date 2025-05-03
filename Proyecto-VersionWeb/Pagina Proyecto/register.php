@@ -1,18 +1,18 @@
 <?php
-include("db.php");
+include("db.php"); // Asegúrate que la ruta es correcta
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $rolId = 2; // Usuario normal
+    $rolId = 1;
 
-    $sql = "
-        INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID)
-        VALUES (?, ?, HASHBYTES('SHA2_256', CONVERT(VARCHAR, ?)), ?)
-    ";
+    // Hashear en PHP usando SHA-256
+    $passwordHash = hash('sha256', $password);
 
-    $params = [$nombre, $email, $password, $rolId];
+    $sql = "INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID)
+            VALUES (?, ?, ?, ?)";
+    $params = [$nombre, $email, $passwordHash, $rolId];
     $stmt = sqlsrv_query($conn, $sql, $params);
 
     if ($stmt) {

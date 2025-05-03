@@ -5,7 +5,6 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
-// Ruta de la foto actual del usuario (temporalmente usaremos el default)
 $fotoPerfil = './imgs/default.png';
 if (isset($_SESSION['foto_perfil']) && file_exists($_SESSION['foto_perfil'])) {
     $fotoPerfil = $_SESSION['foto_perfil'];
@@ -20,7 +19,9 @@ if (isset($_SESSION['foto_perfil']) && file_exists($_SESSION['foto_perfil'])) {
   <style>
     .profile-dropdown {
       position: relative;
-      display: inline-block;
+      display: flex;
+      align-items: center; /* Alinea verticalmente */
+      gap: 8px;
       cursor: pointer;
     }
     .profile-dropdown img {
@@ -28,16 +29,17 @@ if (isset($_SESSION['foto_perfil']) && file_exists($_SESSION['foto_perfil'])) {
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
-      margin-right: 8px;
     }
     .profile-name {
       color: #f0f0f0;
       font-weight: bold;
+      white-space: nowrap;
     }
     .dropdown-content {
       display: none;
       position: absolute;
       right: 0;
+      top: 100%;
       background-color: #2a2a2a;
       min-width: 200px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -75,7 +77,7 @@ if (isset($_SESSION['foto_perfil']) && file_exists($_SESSION['foto_perfil'])) {
       <ul>
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Mi Lista</a></li>
-        <li><a href="#">Catálogo</a></li>
+        <li><a href="./catalogo.php">Catálogo</a></li>
       </ul>
     </nav>
     <div class="profile">
