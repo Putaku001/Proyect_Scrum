@@ -1,4 +1,4 @@
-:<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,7 @@
         <ul>
           <li><a href="#">Inicio</a></li>
           <li><a href="#">Mi Lista</a></li>
-          <li><a href="#">Catalogo</a></li>
+          <li><a href="#">Catálogo</a></li>
         </ul>
       </nav>
       <div class="profile">
@@ -37,33 +37,33 @@
     </div>
   </section>
 
-  <!-- Slider de Recomendados -->
+  <!-- Slider de Recomendados (sin funcionalidad de lectura) -->
   <main>
     <section class="slider-section" id="recomendados">
       <h2>Recomendados</h2>
       <div class="slider">
         <button class="slider-btn left" onclick="slideLeft('recomendados-slider')">&#10094;</button>
         <div class="slider-container" id="recomendados-slider">
-          <!-- Cada tarjeta tiene atributo data-pdf con el enlace del PDF (Tomo 1) -->
-          <div class="manga-card" data-pdf="https://drive.google.com/file/d/1yTpv2PD5css7IS9FSgSRsTI7PbcmVUj1/preview" id="first-manga">
+          <!-- Solo se muestran las portadas, sin enlaces ni funciones -->
+          <div class="manga-card">
             <img src="./imgs/koe no katachi.jpg" alt="Manga 1">
           </div>
-          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_2/preview">
+          <div class="manga-card">
             <img src="./imgs/Kurosawa.jpg" alt="Manga 2">
           </div>
-          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_3/preview">
+          <div class="manga-card">
             <img src="./imgs/akunohana.jpg" alt="Manga 3">
           </div>
-          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_4/preview">
+          <div class="manga-card">
             <img src="./imgs/ruri-dragon-vol1.jpg" alt="Manga 4">
           </div>
-          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_5/preview">
+          <div class="manga-card">
             <img src="./imgs/yourname.jpg" alt="Manga 5">
           </div>
-          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_6/preview">
+          <div class="manga-card">
             <img src="./imgs/KS.jpg" alt="Manga 6">
           </div>
-          <div class="manga-card" data-pdf="https://drive.google.com/file/d/EXAMPLE_LINK_7/preview">
+          <div class="manga-card">
             <img src="./imgs/LOTM.webp" alt="Manga 7">
           </div>
         </div>
@@ -71,19 +71,6 @@
       </div>
     </section>
   </main>
-
-  <!-- Modal para Selección de Tomo -->
-  <div id="volumeModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Elige el tomo que quieras leer</h2>
-      <div class="volume-options">
-        <button class="volume-btn" data-volume="1">Tomo 1</button>
-        <button class="volume-btn" data-volume="2">Tomo 2</button>
-        <button class="volume-btn" data-volume="3">Tomo 3</button>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer>
