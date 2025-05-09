@@ -28,16 +28,13 @@ namespace ProyectScrum
 
             _emailSettings = emailSettings;
             UsuarioID = CapturedData.UsuarioID;
-
+            perfilForm = new Perfil(_emailSettings);
             // Mostrar inicioForm por defecto al iniciar
             AbrirFormularioEnPanel(new inicioForm());
         }
 
         private void perfilButton_Click(object sender, EventArgs e)
         {
-            if (perfilForm == null || perfilForm.IsDisposed)
-                perfilForm = new Perfil(_emailSettings);
-
             AbrirFormularioEnPanel(perfilForm);
         }
 

@@ -31,6 +31,7 @@
             btnGestionarSuscripcion = new Button();
             label3 = new Label();
             panel1 = new Panel();
+            lblFechaFinSuscripcion = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxAvatar).BeginInit();
             SuspendLayout();
             // 
@@ -125,7 +126,7 @@
             labelEsPremium.AutoSize = true;
             labelEsPremium.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelEsPremium.ForeColor = Color.White;
-            labelEsPremium.Location = new Point(184, 99);
+            labelEsPremium.Location = new Point(191, 99);
             labelEsPremium.Name = "labelEsPremium";
             labelEsPremium.Size = new Size(137, 23);
             labelEsPremium.TabIndex = 11;
@@ -155,7 +156,7 @@
             btnCambiarContraseña.Cursor = Cursors.Hand;
             btnCambiarContraseña.FlatStyle = FlatStyle.Flat;
             btnCambiarContraseña.Font = new Font("Segoe UI", 10F);
-            btnCambiarContraseña.Location = new Point(132, 335);
+            btnCambiarContraseña.Location = new Point(132, 347);
             btnCambiarContraseña.Name = "btnCambiarContraseña";
             btnCambiarContraseña.Size = new Size(240, 40);
             btnCambiarContraseña.TabIndex = 8;
@@ -187,7 +188,7 @@
             btnGestionarSuscripcion.Cursor = Cursors.Hand;
             btnGestionarSuscripcion.FlatStyle = FlatStyle.Flat;
             btnGestionarSuscripcion.Font = new Font("Segoe UI", 10F);
-            btnGestionarSuscripcion.Location = new Point(132, 385);
+            btnGestionarSuscripcion.Location = new Point(132, 393);
             btnGestionarSuscripcion.Name = "btnGestionarSuscripcion";
             btnGestionarSuscripcion.Size = new Size(240, 40);
             btnGestionarSuscripcion.TabIndex = 10;
@@ -203,7 +204,7 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(12, 9);
             label3.Name = "label3";
-            label3.Size = new Size(146, 31);
+            label3.Size = new Size(151, 31);
             label3.TabIndex = 12;
             label3.Text = "Mi perfil 👤";
             // 
@@ -216,10 +217,22 @@
             panel1.Size = new Size(967, 10);
             panel1.TabIndex = 13;
             // 
+            // lblFechaFinSuscripcion
+            // 
+            lblFechaFinSuscripcion.AutoSize = true;
+            lblFechaFinSuscripcion.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblFechaFinSuscripcion.ForeColor = SystemColors.ButtonFace;
+            lblFechaFinSuscripcion.Location = new Point(180, 436);
+            lblFechaFinSuscripcion.Name = "lblFechaFinSuscripcion";
+            lblFechaFinSuscripcion.Size = new Size(148, 20);
+            lblFechaFinSuscripcion.TabIndex = 14;
+            lblFechaFinSuscripcion.Text = "labelFinSuscripcion";
+            // 
             // Perfil
             // 
             BackColor = Color.Black;
             ClientSize = new Size(991, 498);
+            Controls.Add(lblFechaFinSuscripcion);
             Controls.Add(panel1);
             Controls.Add(label3);
             Controls.Add(pictureBoxAvatar);
@@ -239,6 +252,7 @@
             MaximizeBox = false;
             Name = "Perfil";
             Text = "👤 Mi Perfil";
+            Activated += Perfil_Activated;
             ((System.ComponentModel.ISupportInitialize)pictureBoxAvatar).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -260,5 +274,6 @@
         private Label labelEsPremium;
         private Label label3;
         private Panel panel1;
+        private Label lblFechaFinSuscripcion;
     }
 }

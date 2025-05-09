@@ -28,10 +28,16 @@
     <Compile Update="Forms\PageTrial.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Pago.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Perfil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Suscripcion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\visorForm.cs">

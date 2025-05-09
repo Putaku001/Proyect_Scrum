@@ -9,6 +9,7 @@ namespace ProyectScrum.Entities
     public static class CapturedData
     {
         public static int UsuarioID { get; set; }
+        public static DateTime? FechaFinSuscripcion { get; set; }
         public static string Avatar { get; set; }
         public static string NombreUsuario { get; set; }
         public static string Email { get; set; }

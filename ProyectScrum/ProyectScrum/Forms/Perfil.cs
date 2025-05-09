@@ -21,6 +21,7 @@ namespace ProyectScrum.Forms
         private int avatarSeleccionadoIndex = 0;
         private byte[] _avatarSeleccionadoBytes;
         EmailSettings _emailSettings;
+        public Suscripcion suscripcionForm;
 
         public Perfil(EmailSettings emailSettings)
         {
@@ -53,6 +54,11 @@ namespace ProyectScrum.Forms
             CargarAvatarUsuario();
         }
 
+        private void Perfil_Activated(object sender, EventArgs e)
+        {
+            CargarDatosUsuario();
+        }   
+
         private void CargarAvatarUsuario()
         {
             var dataAccess = new SqlDataAccess();
@@ -71,7 +77,7 @@ namespace ProyectScrum.Forms
                     using (var ms = new MemoryStream(avatarBytes))
                     {
                         pictureBoxAvatar.Image = Image.FromStream(ms);
-                        pictureBoxAvatar.AccessibleName = "AvatarUsuario"; 
+                        pictureBoxAvatar.AccessibleName = "AvatarUsuario";
                     }
                 }
                 else
@@ -95,20 +101,32 @@ namespace ProyectScrum.Forms
             }
         }
 
-        private void CargarDatosUsuario()
+        public void CargarDatosUsuario()
         {
             txtNombre.Text = CapturedData.NombreUsuario;
             txtEmail.Text = CapturedData.Email;
 
-            if (CapturedData.EsPremium != true)
-            {
-                labelEsPremium.Text = "No es Premium";
-                labelEsPremium.ForeColor = Color.Red;
-            }
-            else
+            if (CapturedData.EsPremium)
             {
                 labelEsPremium.Text = "Es Premium";
                 labelEsPremium.ForeColor = Color.Green;
+
+                if (CapturedData.FechaFinSuscripcion.HasValue)
+                {
+                    lblFechaFinSuscripcion.Text = $"Vence el: {CapturedData.FechaFinSuscripcion.Value.ToShortDateString()}";
+                    lblFechaFinSuscripcion.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblFechaFinSuscripcion.Text = "Fecha de vencimiento no disponible";
+                    lblFechaFinSuscripcion.ForeColor = Color.Orange;
+                }
+            }
+            else
+            {
+                labelEsPremium.Text = "No es Premium";
+                labelEsPremium.ForeColor = Color.Red;
+                lblFechaFinSuscripcion.Text = "";
             }
         }
 
@@ -219,7 +237,14 @@ namespace ProyectScrum.Forms
 
         private void btnGestionarSuscripcion_Click(object sender, EventArgs e)
         {
+            if (CapturedData.EsPremium && CapturedData.FechaFinSuscripcion.HasValue && CapturedData.FechaFinSuscripcion.Value > DateTime.Now)
+            {
+                MessageBox.Show("Usted ya posee una suscripción activa hasta el " + CapturedData.FechaFinSuscripcion.Value.ToString("dd/MM/yyyy"), "Suscripción activa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            var suscripcionForm = new Suscripcion(CapturedData.UsuarioID, this);
+            suscripcionForm.ShowDialog();
         }
 
 

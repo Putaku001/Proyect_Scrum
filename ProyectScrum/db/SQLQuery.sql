@@ -20,6 +20,16 @@ CREATE TABLE Usuarios (
     FOREIGN KEY (RolID) REFERENCES Roles(RolID)
 );
 
+CREATE TABLE Suscripciones (
+    SuscripcionID INT PRIMARY KEY IDENTITY(1,1),
+    UsuarioID INT NOT NULL,
+    TipoSuscripcion NVARCHAR(20) NOT NULL, 
+    FechaInicio DATE NOT NULL DEFAULT GETDATE(),
+    FechaFin DATE NOT NULL,
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID) ON DELETE CASCADE
+);
+
+
 -- Tabla de G�neros
 CREATE TABLE Generos (
     GeneroID INT IDENTITY(1,1) PRIMARY KEY,
@@ -50,6 +60,11 @@ CREATE TABLE Favoritos (
 );
 
 ALTER TABLE Mangas ADD GeneroID INT;
+
+ALTER TABLE Usuarios
+
+ADD FechaFinSuscripcion DATETIME;
+GO
 
 ALTER TABLE Mangas ADD CONSTRAINT FK_Mangas_Generos FOREIGN KEY (GeneroID) REFERENCES Generos(GeneroID);
 
@@ -143,7 +158,7 @@ select * from TitulosAlternativos
 select * from Generos
 select * from Mangas
 SELECT * FROM Roles;
-SELECT * FROM Usuarios;
+SELECT * FROM Usuarios
 SELECT * FROM Favoritos;
 select * from ProgresoLectura
 

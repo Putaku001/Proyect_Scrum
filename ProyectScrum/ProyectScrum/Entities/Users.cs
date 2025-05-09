@@ -9,6 +9,7 @@ namespace ProyectScrum.Entities
     public class Users
     {
         public int UsuarioID { get; set; }
+        public DateTime? FechaFinSuscripcion { get; set; }
         public string Avatar { get; set; }
         public string NombreUsuario { get; set; }
         public string Email { get; set; }

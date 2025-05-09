@@ -57,6 +57,7 @@ namespace ProyectScrum.Forms
                 CapturedData.EsPremium = usuario.EsPremium;
                 CapturedData.RolID = usuario.RolID;
                 CapturedData.Avatar = usuario.Avatar;
+                CapturedData.FechaFinSuscripcion = usuario.FechaFinSuscripcion;
 
                 _emailSettings.EmailDestino = usuario.Email;
 
@@ -76,7 +77,8 @@ namespace ProyectScrum.Forms
             using (var conn = dataAccess.GetConnection())
             {
                 conn.Open();
-                var cmd = new SqlCommand("SELECT UsuarioID, Avatar, NombreUsuario, Email, ContrasenaHash, EsPremium, RolID FROM Usuarios WHERE NombreUsuario = @Usuario", conn);
+                // MODIFICACIÓN: Incluir FechaFinSuscripcion en la consulta
+                var cmd = new SqlCommand("SELECT UsuarioID, Avatar, NombreUsuario, Email, ContrasenaHash, EsPremium, RolID, FechaFinSuscripcion FROM Usuarios WHERE NombreUsuario = @Usuario", conn);
                 cmd.Parameters.AddWithValue("@Usuario", usuario);
 
                 var reader = cmd.ExecuteReader();
@@ -94,6 +96,7 @@ namespace ProyectScrum.Forms
                             Email = reader["Email"].ToString(),
                             EsPremium = Convert.ToBoolean(reader["EsPremium"]),
                             RolID = Convert.ToInt32(reader["RolID"]),
+                            FechaFinSuscripcion = reader["FechaFinSuscripcion"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["FechaFinSuscripcion"])
                         };
                     }
                 }
