@@ -29,8 +29,6 @@
             btnCambiarContraseña = new Button();
             btnEliminarCuenta = new Button();
             btnGestionarSuscripcion = new Button();
-            label3 = new Label();
-            panel1 = new Panel();
             lblFechaFinSuscripcion = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxAvatar).BeginInit();
             SuspendLayout();
@@ -196,29 +194,9 @@
             btnGestionarSuscripcion.UseVisualStyleBackColor = false;
             btnGestionarSuscripcion.Click += btnGestionarSuscripcion_Click;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(12, 9);
-            label3.Name = "label3";
-            label3.Size = new Size(151, 31);
-            label3.TabIndex = 12;
-            label3.Text = "Mi perfil 👤";
-            // 
-            // panel1
-            // 
-            panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.ForeColor = Color.White;
-            panel1.Location = new Point(12, 47);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(967, 10);
-            panel1.TabIndex = 13;
-            // 
             // lblFechaFinSuscripcion
             // 
+            lblFechaFinSuscripcion.Anchor = AnchorStyles.None;
             lblFechaFinSuscripcion.AutoSize = true;
             lblFechaFinSuscripcion.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblFechaFinSuscripcion.ForeColor = SystemColors.ButtonFace;
@@ -233,8 +211,6 @@
             BackColor = Color.Black;
             ClientSize = new Size(991, 498);
             Controls.Add(lblFechaFinSuscripcion);
-            Controls.Add(panel1);
-            Controls.Add(label3);
             Controls.Add(pictureBoxAvatar);
             Controls.Add(btnAvatarAnterior);
             Controls.Add(btnAvatarSiguiente);
@@ -272,8 +248,8 @@
         private System.Windows.Forms.Button btnEliminarCuenta;
         private System.Windows.Forms.Button btnGestionarSuscripcion;
         private Label labelEsPremium;
-        private Label label3;
-        private Panel panel1;
         private Label lblFechaFinSuscripcion;
+        private Panel panel1;
+        private Label label3;
     }
 }
