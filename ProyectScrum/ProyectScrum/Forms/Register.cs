@@ -45,6 +45,7 @@ namespace ProyectScrum.Forms
                 MessageBox.Show("Error al registrar el usuario.");
             }
         }
+
         private bool RegistrarUsuario(string nombreUsuario, string email, string contrasena)
         {
             try
@@ -53,11 +54,16 @@ namespace ProyectScrum.Forms
                 using (var conn = dataAccess.GetConnection())
                 {
                     conn.Open();
-                    var cmd = new SqlCommand("INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID) VALUES (@NombreUsuario, @Email, @ContrasenaHash, @RolID)", conn);
+
+                    byte[] avatarBytes = Properties.Resources.Avatar_Default;
+
+                    var cmd = new SqlCommand("INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID, Avatar) VALUES (@NombreUsuario, @Email, @ContrasenaHash, @RolID, @Avatar)", conn);
                     cmd.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@ContrasenaHash", HashPassword(contrasena));
-                    cmd.Parameters.AddWithValue("@RolID", 1); // 1 es el RolID de usuario
+                    cmd.Parameters.AddWithValue("@RolID", 2); // Rol de usuario
+                    cmd.Parameters.Add("@Avatar", SqlDbType.VarBinary).Value = avatarBytes;
+
                     cmd.ExecuteNonQuery();
                 }
                 return true;

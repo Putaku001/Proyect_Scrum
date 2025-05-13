@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fuent\\Documents\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj": {}
+    "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fuent\\Documents\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj": {
+    "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fuent\\Documents\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
+        "projectUniqueName": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
         "projectName": "ProyectScrum",
-        "projectPath": "C:\\Users\\fuent\\Documents\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
+        "projectPath": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
         "packagesPath": "C:\\Users\\fuent\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fuent\\Documents\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\obj\\",
+        "outputPath": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fuent\\AppData\\Roaming\\NuGet\\NuGet.Config",

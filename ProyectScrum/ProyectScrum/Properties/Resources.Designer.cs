@@ -63,6 +63,16 @@ namespace ProyectScrum.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
+        internal static byte[] Avatar_Default {
+            get {
+                object obj = ResourceManager.GetObject("Avatar Default", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
         internal static byte[] Avatar1 {
             get {
                 object obj = ResourceManager.GetObject("Avatar1", resourceCulture);

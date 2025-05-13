@@ -106,7 +106,10 @@ namespace ProyectScrum.Forms
             txtNombre.Text = CapturedData.NombreUsuario;
             txtEmail.Text = CapturedData.Email;
 
-            if (CapturedData.EsPremium)
+            btnGestionarSuscripcion.Visible = (CapturedData.RolID != 1);
+            labelEsPremium.Visible = (CapturedData.RolID != 1);
+
+            if (CapturedData.EsPremium && CapturedData.RolID == 2)
             {
                 labelEsPremium.Text = "Es Premium";
                 labelEsPremium.ForeColor = Color.Green;

@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainAdminLayout));
             panelSidebar = new Panel();
             btnProfile = new Button();
             panelReportsSubmenu = new Panel();
@@ -66,15 +67,16 @@
             btnProfile.FlatAppearance.BorderSize = 0;
             btnProfile.FlatStyle = FlatStyle.Flat;
             btnProfile.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            btnProfile.ForeColor = Color.Gainsboro;
-            btnProfile.Location = new Point(0, 576);
+            btnProfile.ForeColor = Color.White;
+            btnProfile.Image = (Image)resources.GetObject("btnProfile.Image");
+            btnProfile.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProfile.Location = new Point(0, 626);
             btnProfile.Margin = new Padding(4, 5, 4, 5);
             btnProfile.Name = "btnProfile";
             btnProfile.Padding = new Padding(13, 0, 0, 0);
-            btnProfile.Size = new Size(228, 62);
+            btnProfile.Size = new Size(228, 87);
             btnProfile.TabIndex = 7;
             btnProfile.Text = "Mi perfil";
-            btnProfile.TextAlign = ContentAlignment.MiddleLeft;
             btnProfile.UseVisualStyleBackColor = true;
             btnProfile.Click += btnProfile_Click;
             // 
@@ -84,7 +86,7 @@
             panelReportsSubmenu.Controls.Add(btnUserReports);
             panelReportsSubmenu.Controls.Add(btnActivityReports);
             panelReportsSubmenu.Dock = DockStyle.Top;
-            panelReportsSubmenu.Location = new Point(0, 453);
+            panelReportsSubmenu.Location = new Point(0, 503);
             panelReportsSubmenu.Margin = new Padding(4, 5, 4, 5);
             panelReportsSubmenu.Name = "panelReportsSubmenu";
             panelReportsSubmenu.Size = new Size(228, 123);
@@ -96,7 +98,7 @@
             btnUserReports.Dock = DockStyle.Top;
             btnUserReports.FlatAppearance.BorderSize = 0;
             btnUserReports.FlatStyle = FlatStyle.Flat;
-            btnUserReports.ForeColor = Color.Gainsboro;
+            btnUserReports.ForeColor = Color.White;
             btnUserReports.Location = new Point(0, 62);
             btnUserReports.Margin = new Padding(4, 5, 4, 5);
             btnUserReports.Name = "btnUserReports";
@@ -113,7 +115,7 @@
             btnActivityReports.Dock = DockStyle.Top;
             btnActivityReports.FlatAppearance.BorderSize = 0;
             btnActivityReports.FlatStyle = FlatStyle.Flat;
-            btnActivityReports.ForeColor = Color.Gainsboro;
+            btnActivityReports.ForeColor = Color.White;
             btnActivityReports.Location = new Point(0, 0);
             btnActivityReports.Margin = new Padding(4, 5, 4, 5);
             btnActivityReports.Name = "btnActivityReports";
@@ -130,7 +132,7 @@
             panelUsersSubmenu.Controls.Add(btnAddUser);
             panelUsersSubmenu.Controls.Add(btnListUsers);
             panelUsersSubmenu.Dock = DockStyle.Top;
-            panelUsersSubmenu.Location = new Point(0, 330);
+            panelUsersSubmenu.Location = new Point(0, 380);
             panelUsersSubmenu.Margin = new Padding(4, 5, 4, 5);
             panelUsersSubmenu.Name = "panelUsersSubmenu";
             panelUsersSubmenu.Size = new Size(228, 123);
@@ -142,7 +144,7 @@
             btnAddUser.Dock = DockStyle.Top;
             btnAddUser.FlatAppearance.BorderSize = 0;
             btnAddUser.FlatStyle = FlatStyle.Flat;
-            btnAddUser.ForeColor = Color.Gainsboro;
+            btnAddUser.ForeColor = Color.White;
             btnAddUser.Location = new Point(0, 62);
             btnAddUser.Margin = new Padding(4, 5, 4, 5);
             btnAddUser.Name = "btnAddUser";
@@ -160,7 +162,7 @@
             btnListUsers.Dock = DockStyle.Top;
             btnListUsers.FlatAppearance.BorderSize = 0;
             btnListUsers.FlatStyle = FlatStyle.Flat;
-            btnListUsers.ForeColor = Color.Gainsboro;
+            btnListUsers.ForeColor = Color.White;
             btnListUsers.Location = new Point(0, 0);
             btnListUsers.Margin = new Padding(4, 5, 4, 5);
             btnListUsers.Name = "btnListUsers";
@@ -178,15 +180,16 @@
             btnUsers.FlatAppearance.BorderSize = 0;
             btnUsers.FlatStyle = FlatStyle.Flat;
             btnUsers.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            btnUsers.ForeColor = Color.Gainsboro;
-            btnUsers.Location = new Point(0, 268);
+            btnUsers.ForeColor = Color.White;
+            btnUsers.Image = (Image)resources.GetObject("btnUsers.Image");
+            btnUsers.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUsers.Location = new Point(0, 293);
             btnUsers.Margin = new Padding(4, 5, 4, 5);
             btnUsers.Name = "btnUsers";
             btnUsers.Padding = new Padding(13, 0, 0, 0);
-            btnUsers.Size = new Size(228, 62);
+            btnUsers.Size = new Size(228, 87);
             btnUsers.TabIndex = 2;
             btnUsers.Text = "Usuarios";
-            btnUsers.TextAlign = ContentAlignment.MiddleLeft;
             btnUsers.UseVisualStyleBackColor = true;
             btnUsers.Click += btnUsers_Click;
             // 
@@ -196,15 +199,16 @@
             btnDashboard.FlatAppearance.BorderSize = 0;
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            btnDashboard.ForeColor = Color.Gainsboro;
+            btnDashboard.ForeColor = Color.White;
+            btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
+            btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
             btnDashboard.Location = new Point(0, 206);
             btnDashboard.Margin = new Padding(4, 5, 4, 5);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Padding = new Padding(13, 0, 0, 0);
-            btnDashboard.Size = new Size(228, 62);
+            btnDashboard.Size = new Size(228, 87);
             btnDashboard.TabIndex = 1;
             btnDashboard.Text = "Dashboard";
-            btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
             btnDashboard.UseVisualStyleBackColor = true;
             btnDashboard.Click += btnDashboard_Click;
             // 
@@ -230,7 +234,7 @@
             // 
             // labelWelcome
             // 
-            labelWelcome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelWelcome.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelWelcome.ForeColor = Color.LavenderBlush;
             labelWelcome.Location = new Point(0, 157);
             labelWelcome.Name = "labelWelcome";
@@ -315,7 +319,6 @@
             Name = "MainAdminLayout";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Panel de Administración";
-            FormClosed += MainAdminLayout_FormClosed_1;
             panelSidebar.ResumeLayout(false);
             panelReportsSubmenu.ResumeLayout(false);
             panelUsersSubmenu.ResumeLayout(false);

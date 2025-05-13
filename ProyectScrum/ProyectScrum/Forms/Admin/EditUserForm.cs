@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using ProyectScrum.Data;
@@ -16,7 +17,28 @@ namespace ProyectScrum.Forms
             InitializeComponent();
             _userId = userId;
             _dataAccess = new SqlDataAccess();
+
+            // Configurar el ComboBox de roles
+            ConfigureRoleComboBox();
+
             LoadUserData();
+        }
+
+        private void ConfigureRoleComboBox()
+        {
+            // Crear una tabla de datos para los roles
+            DataTable roles = new DataTable();
+            roles.Columns.Add("Id", typeof(int));
+            roles.Columns.Add("Nombre", typeof(string));
+
+            // Agregar los roles (ID 1 = Admin, ID 2 = Usuario)
+            roles.Rows.Add(1, "Administrador");
+            roles.Rows.Add(2, "Usuario");
+
+            // Configurar el ComboBox
+            cmbRole.DataSource = roles;
+            cmbRole.DisplayMember = "Nombre";  // Lo que se muestra
+            cmbRole.ValueMember = "Id";       // El valor asociado
         }
 
         private void LabelSuscripcion()
@@ -25,7 +47,6 @@ namespace ProyectScrum.Forms
             {
                 labelEsPremium.Text = "Premium";
                 labelEsPremium.ForeColor = System.Drawing.Color.Green;
-
             }
             else
             {
@@ -51,7 +72,10 @@ namespace ProyectScrum.Forms
                             txtUsername.Text = reader["NombreUsuario"].ToString();
                             txtEmail.Text = reader["Email"].ToString();
                             chkPremium.Checked = Convert.ToBoolean(reader["EsPremium"]);
-                            cmbRole.SelectedIndex = Convert.ToInt32(reader["RolID"]) - 1;
+
+                            // Seleccionar el rol correcto en el ComboBox
+                            int rolId = Convert.ToInt32(reader["RolID"]);
+                            cmbRole.SelectedValue = rolId;
                         }
                     }
                 }
@@ -74,7 +98,7 @@ namespace ProyectScrum.Forms
                     cmd.Parameters.AddWithValue("@NombreUsuario", txtUsername.Text);
                     cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                     cmd.Parameters.AddWithValue("@EsPremium", chkPremium.Checked);
-                    cmd.Parameters.AddWithValue("@RolID", cmbRole.SelectedIndex + 1);
+                    cmd.Parameters.AddWithValue("@RolID", cmbRole.SelectedValue); // Usamos directamente el SelectedValue
                     cmd.Parameters.AddWithValue("@UsuarioID", _userId);
 
                     int rowsAffected = cmd.ExecuteNonQuery();

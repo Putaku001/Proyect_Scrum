@@ -28,6 +28,8 @@ namespace ProyectScrum.Forms
 
         private void CargarAvatarUsuario()
         {
+            avataresDisponibles = CargarAvataresPredeterminados();
+
             var dataAccess = new SqlDataAccess();
             using (var conn = dataAccess.GetConnection())
             {
@@ -36,22 +38,42 @@ namespace ProyectScrum.Forms
                 cmd.Parameters.AddWithValue("@ID", CapturedData.UsuarioID);
 
                 var result = cmd.ExecuteScalar();
+
                 if (result != null && result != DBNull.Value)
                 {
-                    byte[] avatarBytes = (byte[])result;
-                    _avatarSeleccionadoBytes = avatarBytes;
-
-                    using (var ms = new MemoryStream(avatarBytes))
+                    try
                     {
-                        pictureBoxAvatar.Image = Image.FromStream(ms);
-                        pictureBoxAvatar.AccessibleName = "AvatarUsuario";
+                        byte[] avatarBytes = (byte[])result;
+                        _avatarSeleccionadoBytes = avatarBytes;
+
+                        using (var ms = new MemoryStream(avatarBytes))
+                        {
+                            pictureBoxAvatar.Image = Image.FromStream(ms);
+                            pictureBoxAvatar.AccessibleName = "AvatarUsuario";
+                        }
+                        return;
+                    }
+                    catch
+                    {
+                        
                     }
                 }
-                else
+
+                if (avataresDisponibles.Count > 0)
                 {
-                    MostrarAvatar(0);
+                    MostrarAvatar(0); 
                 }
+
             }
+        }
+
+        private List<byte[]> CargarAvataresPredeterminados()
+        {
+            var avatares = new List<byte[]>();
+
+            avatares.Add(Properties.Resources.Avatar_Default);
+
+            return avatares;
         }
 
         private void MostrarAvatar(int index)
@@ -172,11 +194,6 @@ namespace ProyectScrum.Forms
             Login loginForm = new Login();
             loginForm.FormClosed += (s, args) => this.Close();
             loginForm.Show();
-        }
-        private void MainAdminLayout_FormClosed_1(object sender, FormClosedEventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
