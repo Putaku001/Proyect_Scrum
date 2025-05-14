@@ -19,6 +19,9 @@
     <Compile Update="Forms\Admin\MainAdminLayout.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Admin\SubidaMangaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Catalog.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -30,6 +30,8 @@ namespace ProyectScrum.Forms
         public event EventHandler FavoritoAgregado;
         private visorForm visorActual = null;
 
+
+
         public mangaForm(int usuarioID)
         {
             InitializeComponent();
@@ -156,64 +158,82 @@ namespace ProyectScrum.Forms
                 };
 
                 // Botón del tomo
+                bool esPremium = file.Name.StartsWith("[P]");
+
                 Button tomoBtn = new Button
                 {
-                    Text = $" {file.Name}",
+                    Text = $"{(esPremium ? "🔒" : "📄")} {file.Name.Replace("[P]", "").Trim()}",
                     Width = contenedor.Width,
                     Height = 45,
                     BackColor = Color.FromArgb(35, 35, 35),
                     ForeColor = Color.White,
                     FlatStyle = FlatStyle.Flat,
                     Margin = new Padding(0),
-                    Tag = file.Id,
+
                     TextAlign = ContentAlignment.MiddleLeft,
-                    Cursor = Cursors.Hand
+                    Cursor = Cursors.Hand,
+                    Enabled = !esPremium || CapturedData.EsPremium,
+                    Tag = file.Id
                 };
 
                 // Evento click para abrir visor
-                tomoBtn.Click += async (s, e) =>
+
+                if (esPremium && !CapturedData.EsPremium)
                 {
-                    if (visorActual != null && !visorActual.IsDisposed)
+                    // Usuario normal intenta abrir tomo premium → solo aviso
+                    tomoBtn.Click += (_, __) =>
+                        MessageBox.Show("Este tomo es exclusivo para usuarios Premium.",
+                                        "Acceso restringido", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    tomoBtn.Click += async (s, e) =>
                     {
-                        MessageBox.Show("Ya tienes un visor abierto. Ciérralo antes de abrir otro tomo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
 
-                    string fileId = ((Button)s).Tag.ToString();
-
-                    foreach (Control control in flowPanelVolumenes.Controls)
-                        if (control is Panel p)
-                            foreach (Control c in p.Controls)
-                                if (c is Button b) b.Enabled = false;
-
-                    panelCargandoManga.Visible = true;
-                    panelCargandoManga.BringToFront();
-                    panelCargandoManga.Refresh();
-
-                    try
-                    {
-                        var request = service.Files.Get(fileId);
-                        var stream = new MemoryStream();
-                        await request.DownloadAsync(stream);
-                        stream.Position = 0;
-
-                        visorActual = new visorForm(stream, this, mangaActual);
-                        visorActual.AsignarMangaActual(mangaActual);
-
-                        visorActual.FormClosed += (sender2, args) =>
+                        if (visorActual != null && !visorActual.IsDisposed)
                         {
-                            visorActual = null;
-                            CargarVolumenes(mangaActual.URLMangaDrive); // Recarga progreso actualizado
-                        };
+                            MessageBox.Show("Ya tienes un visor abierto. Ciérralo antes de abrir otro tomo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
 
-                        Main mainForm = (Main)Application.OpenForms["Main"];
-                        mainForm.AbrirFormularioEnPanel(visorActual);
-                    }
-                    finally
-                    {
-                        panelCargandoManga.Visible = false;
-                    }
-                };
+                        string fileId = ((Button)s).Tag.ToString();
+
+                        foreach (Control control in flowPanelVolumenes.Controls)
+                            if (control is Panel p)
+                                foreach (Control c in p.Controls)
+                                    if (c is Button b) b.Enabled = false;
+
+                        panelCargandoManga.Visible = true;
+                        panelCargandoManga.BringToFront();
+                        panelCargandoManga.Refresh();
+
+                        try
+                        {
+                            var request = service.Files.Get(fileId);
+                            var stream = new MemoryStream();
+                            await request.DownloadAsync(stream);
+                            stream.Position = 0;
+
+                            visorActual = new visorForm(stream, this, mangaActual);
+                            visorActual.AsignarMangaActual(mangaActual);
+
+                            visorActual.FormClosed += (sender2, args) =>
+                            {
+                                visorActual = null;
+                                CargarVolumenes(mangaActual.URLMangaDrive); // Recarga progreso actualizado
+                            };
+
+                            Main mainForm = (Main)Application.OpenForms["Main"];
+                            mainForm.AbrirFormularioEnPanel(visorActual);
+                        }
+                        finally
+                        {
+                            panelCargandoManga.Visible = false;
+                        }
+                    };
+                }
+                ;
 
                 contenedor.Controls.Add(tomoBtn);
 
@@ -411,7 +431,7 @@ namespace ProyectScrum.Forms
 
                 if (result > 0)
                 {
-                    
+
                     btnAgregarFavoritos.Visible = false;
                     btnQuitarFavoritos.Visible = true;
 
@@ -463,7 +483,7 @@ namespace ProyectScrum.Forms
 
                 if (result > 0)
                 {
-                   
+
                     btnAgregarFavoritos.Visible = true;
                     btnQuitarFavoritos.Visible = false;
                     FavoritoAgregado?.Invoke(this, EventArgs.Empty); // opcional

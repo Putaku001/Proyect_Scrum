@@ -55,13 +55,13 @@ namespace ProyectScrum.Forms
                     }
                     catch
                     {
-                        
+
                     }
                 }
 
                 if (avataresDisponibles.Count > 0)
                 {
-                    MostrarAvatar(0); 
+                    MostrarAvatar(0);
                 }
 
             }
@@ -200,6 +200,13 @@ namespace ProyectScrum.Forms
         {
             ActivateButton(sender);
             OpenChildForm(new Perfil(_emailSettings));
+            HideSubmenu();
+        }
+
+        private void btnAdminManga_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            OpenChildForm(new SubidaMangaForm());
             HideSubmenu();
         }
     }

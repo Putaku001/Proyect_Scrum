@@ -121,6 +121,16 @@ namespace ProyectScrum.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] DefaultCoverPortada {
+            get {
+                object obj = ResourceManager.GetObject("DefaultCoverPortada", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap LoadingGif {

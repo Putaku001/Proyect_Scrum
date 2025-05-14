@@ -18,13 +18,13 @@ namespace ProyectScrum.Data
             //_connectionString = "Data Source=LAPTOP-PHCFNULN\\SQLEXPRESS;Initial Catalog=proyectoDBSS;Integrated Security=True;";
 
             //connection de Rene
-            _connectionString = "Data Source=AlePC\\SQLEXPRESS;Initial Catalog=proyectoDBS2;Integrated Security=True;";
+            //_connectionString = "Data Source=AlePC\\SQLEXPRESS;Initial Catalog=proyectoDBS2;Integrated Security=True;";
 
             //connection de Pc ken
             //_connectionString = "Data Source=DESKTOP-OKJJS3Y\\SQLEXPRESS;Initial Catalog=proyectoDBS2;Integrated Security=True;";
 
             //connection de laptop ken
-            //_connectionString = "Data Source=PUTAKU\\SQLEXPRESS;Initial Catalog=proyectoDBS2;Integrated Security=True;";
+            _connectionString = "Data Source=PUTAKU\\SQLEXPRESS;Initial Catalog=proyectoDBS2;Integrated Security=True;";
         }
 
         public SqlConnection GetConnection()
