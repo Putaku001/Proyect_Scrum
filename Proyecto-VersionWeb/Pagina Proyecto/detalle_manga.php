@@ -12,21 +12,20 @@ $sql = "SELECT M.Titulo, M.Autor, M.Descripcion, M.FechaPublicacion, M.URLMangaD
 $stmt = sqlsrv_query($conn, $sql, [$mangaId]);
 if (!$stmt || !sqlsrv_fetch($stmt)) die("Manga no encontrado.");
 
-$titulo         = sqlsrv_get_field($stmt, 0);
-$autor          = sqlsrv_get_field($stmt, 1);
-$descripcion    = sqlsrv_get_field($stmt, 2);
-$fechaPublicacion = sqlsrv_get_field($stmt, 3);
-$urlDrive       = sqlsrv_get_field($stmt, 4);
-$urlPortadaDrive = sqlsrv_get_field($stmt, 5);
-$urlPortadaWeb  = sqlsrv_get_field($stmt, 6);
-$genero         = sqlsrv_get_field($stmt, 7);
+$titulo            = sqlsrv_get_field($stmt, 0);
+$autor             = sqlsrv_get_field($stmt, 1);
+$descripcion       = sqlsrv_get_field($stmt, 2);
+$fechaPublicacion  = sqlsrv_get_field($stmt, 3);
+$urlDrive          = sqlsrv_get_field($stmt, 4);
+$urlPortadaDrive   = sqlsrv_get_field($stmt, 5);
+$urlPortadaWeb     = sqlsrv_get_field($stmt, 6);
+$genero            = sqlsrv_get_field($stmt, 7);
 
+$urlPortada = './imgs/no_portada.png';
 if (!empty($urlPortadaWeb) && file_exists($urlPortadaWeb)) {
     $urlPortada = $urlPortadaWeb;
 } elseif (!empty($urlPortadaDrive)) {
     $urlPortada = $urlPortadaDrive;
-} else {
-    $urlPortada = './imgs/no_portada.png';
 }
 
 function extraerFolderId($url) {
@@ -38,26 +37,26 @@ function extraerFolderId($url) {
 $folder_id = extraerFolderId($urlDrive);
 if (!$folder_id) die("Carpeta de Google Drive inválida.");
 
+// Autenticación con Google Drive
 if (!isset($_SESSION['access_token'])) {
-    $client_id     = '719046572033-27o8382k35lnbvkeo2fn4j0hu7bfvev9.apps.googleusercontent.com';
-    $redirect_uri  = 'http://localhost/Pagina%20Proyecto/google_drive.php';
-    $scope         = 'https://www.googleapis.com/auth/drive.readonly';
+    $client_id = '719046572033-27o8382k35lnbvkeo2fn4j0hu7bfvev9.apps.googleusercontent.com';
+    $redirect_uri = 'http://localhost/Pagina%20Proyecto/google_drive.php';
+    $scope = 'https://www.googleapis.com/auth/drive.readonly';
     $state = json_encode(['page' => 'detalle_manga', 'id' => $mangaId]);
     $auth_url = "https://accounts.google.com/o/oauth2/auth?" . http_build_query([
         'response_type' => 'code',
-        'client_id'     => $client_id,
-        'redirect_uri'  => $redirect_uri,
-        'scope'         => $scope,
-        'access_type'   => 'offline',
-        'prompt'        => 'consent',
-        'state'         => $state
+        'client_id' => $client_id,
+        'redirect_uri' => $redirect_uri,
+        'scope' => $scope,
+        'access_type' => 'offline',
+        'prompt' => 'consent',
+        'state' => $state
     ]);
     header('Location: ' . $auth_url);
     exit();
 }
 
 $access_token = $_SESSION['access_token'];
-
 $ch = curl_init("https://www.googleapis.com/drive/v3/files?q=" . urlencode("'$folder_id' in parents and mimeType='application/pdf'") . "&fields=files(id,name,webViewLink)&pageSize=100");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer $access_token"]);
@@ -66,7 +65,6 @@ $data = json_decode($response, true);
 curl_close($ch);
 
 $archivos = $data['files'] ?? [];
-
 usort($archivos, function($a, $b) {
     preg_match('/(\d+)/', $a['name'], $numA);
     preg_match('/(\d+)/', $b['name'], $numB);
@@ -160,10 +158,11 @@ usort($archivos, function($a, $b) {
             <img src="./imgs/Logito.png" alt="Logo Manga Verse" class="header-logo">
             <span>Manga Verse</span>
         </div>
+        
         <nav>
             <ul>
                 <li><a href="dashboard.php">Inicio</a></li>
-                <li><a href="#">Mi Lista</a></li>
+                <li><a href="favoritos.php">Mi Lista</a></li>
                 <li><a href="catalogo.php">Catálogo</a></li>
             </ul>
         </nav>
@@ -179,7 +178,7 @@ usort($archivos, function($a, $b) {
 
 <div class="detalle-container">
     <div class="detalle-top">
-        <img src="<?php echo htmlspecialchars($urlPortada); ?>" alt="Portada" class="detalle-portada">
+        <img src="<?php echo htmlspecialchars($urlPortada); ?>" alt="Portada de <?php echo htmlspecialchars($titulo); ?>" class="detalle-portada">
         <div class="detalle-info">
             <h1><?php echo htmlspecialchars($titulo); ?></h1>
             <span class="badge-genero"><?php echo htmlspecialchars($genero); ?></span>
@@ -187,13 +186,47 @@ usort($archivos, function($a, $b) {
             <p><strong>Fecha de publicación:</strong> <?php echo htmlspecialchars($fechaPublicacion->format('d/m/Y')); ?></p>
             <h3>📖 Sinopsis</h3>
             <p><?php echo nl2br(htmlspecialchars($descripcion)); ?></p>
+
+            <?php
+            $esFavorito = false;
+            if (isset($_SESSION['usuario_id'])) {
+                $usuarioId = $_SESSION['usuario_id'];
+                $sqlFav = "SELECT 1 FROM Favoritos WHERE UsuarioID = ? AND MangaID = ?";
+                $stmtFav = sqlsrv_query($conn, $sqlFav, [$usuarioId, $mangaId]);
+                if ($stmtFav && sqlsrv_fetch($stmtFav)) {
+                    $esFavorito = true;
+                }
+            }
+            ?>
+
+            <?php if (isset($_SESSION['usuario_id'])): ?>
+                <form action="<?= $esFavorito ? 'quitar_favorito.php' : 'agregar_favorito.php' ?>" method="POST" style="margin-top: 15px;">
+                    <input type="hidden" name="manga_id" value="<?= $mangaId ?>">
+                    <button type="submit" style="
+                        padding: 10px 20px;
+                        background: <?= $esFavorito ? '#dc3545' : 'linear-gradient(135deg, #ff8c00, #ff2e63)' ?>;
+                        color: white;
+                        font-weight: bold;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    ">
+                        <?= $esFavorito ? '❌ Quitar de Favoritos' : '⭐ Agregar a Favoritos' ?>
+                    </button>
+                </form>
+            <?php else: ?>
+                <p><a href="login.html" style="color: #1e90ff;">Inicia sesión para agregar a favoritos</a></p>
+            <?php endif; ?>
+
         </div>
     </div>
+
 
     <div class="tomos-section">
         <h2>📚 Tomos disponibles:</h2>
         <?php if (!empty($archivos)): ?>
-            <?php foreach ($archivos as $archivo): ?>
+            <?php foreach ($archivos as $index => $archivo): ?>
                 <?php
                     $archivoId = $archivo['id'];
                     $archivoNombre = htmlspecialchars($archivo['name']);
@@ -201,7 +234,7 @@ usort($archivos, function($a, $b) {
                 <div class="tomo-card">
                     <strong><?= $archivoNombre ?></strong><br>
                     <a href="<?= htmlspecialchars($archivo['webViewLink']) ?>" target="_blank">🌐 Ver en Google Drive</a> |
-                    <a href="#" onclick="alert('Este visor se implementará para un siguiente sprint.'); return false;">📖 Leer aquí</a>
+                    <a href="visor.php?manga_id=<?= $mangaId ?>&index=<?= $index ?>&mode=cascade">📖 Leer aquí</a>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

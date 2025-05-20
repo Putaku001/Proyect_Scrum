@@ -5,10 +5,21 @@ $client_id = '719046572033-27o8382k35lnbvkeo2fn4j0hu7bfvev9.apps.googleuserconte
 $client_secret = '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';
 $redirect_uri = 'http://localhost/Pagina%20Proyecto/google_drive.php';
 $scope = 'https://www.googleapis.com/auth/drive.readonly';
+$token_file = 'token_guardado.json';
 
 $manga_id = $_GET['id'] ?? null;
 
+// Cargar refresh_token guardado si no está en sesión
+if (!isset($_SESSION['refresh_token']) && file_exists($token_file)) {
+    $stored = json_decode(file_get_contents($token_file), true);
+    if (isset($stored['refresh_token'])) {
+        $_SESSION['refresh_token'] = $stored['refresh_token'];
+    }
+}
+
+// Redirigir a Google si no hay token
 if (!isset($_GET['code']) && !isset($_SESSION['access_token'])) {
+    $state = json_encode(['page' => 'detalle_manga', 'id' => $manga_id]);
     $auth_url = "https://accounts.google.com/o/oauth2/auth?" . http_build_query([
         'response_type' => 'code',
         'client_id'     => $client_id,
@@ -16,15 +27,15 @@ if (!isset($_GET['code']) && !isset($_SESSION['access_token'])) {
         'scope'         => $scope,
         'access_type'   => 'offline',
         'prompt'        => 'consent',
-        'state'         => json_encode(['page' => 'detalle_manga', 'id' => $manga_id])
+        'state'         => $state
     ]);
     header('Location: ' . $auth_url);
     exit();
 }
 
+// Si venimos de Google con el "code", obtener tokens
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
-
     $ch = curl_init('https://oauth2.googleapis.com/token');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
@@ -41,14 +52,17 @@ if (isset($_GET['code'])) {
 
     if (isset($token_data['access_token'])) {
         $_SESSION['access_token'] = $token_data['access_token'];
+        $_SESSION['token_expires'] = time() + $token_data['expires_in'];
 
         if (isset($token_data['refresh_token'])) {
             $_SESSION['refresh_token'] = $token_data['refresh_token'];
+            file_put_contents($token_file, json_encode(['refresh_token' => $token_data['refresh_token']]));
         }
 
+        // Redirigir al detalle del manga
         if (isset($_GET['state'])) {
             $state = json_decode($_GET['state'], true);
-            if ($state && $state['page'] == 'detalle_manga' && isset($state['id'])) {
+            if ($state && $state['page'] === 'detalle_manga' && isset($state['id'])) {
                 header("Location: detalle_manga.php?id=" . urlencode($state['id']));
                 exit();
             }
@@ -63,7 +77,11 @@ if (isset($_GET['code'])) {
     }
 }
 
-if (!isset($_SESSION['access_token']) && isset($_SESSION['refresh_token'])) {
+// Refrescar el token si está expirado
+if (
+    isset($_SESSION['refresh_token']) &&
+    (!isset($_SESSION['access_token']) || time() >= ($_SESSION['token_expires'] ?? 0))
+) {
     $ch = curl_init('https://oauth2.googleapis.com/token');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
@@ -74,25 +92,30 @@ if (!isset($_SESSION['access_token']) && isset($_SESSION['refresh_token'])) {
     ]));
 
     $response = curl_exec($ch);
-    $new_token_data = json_decode($response, true);
+    $new_token = json_decode($response, true);
     curl_close($ch);
 
-    if (isset($new_token_data['access_token'])) {
-        $_SESSION['access_token'] = $new_token_data['access_token'];
+    if (isset($new_token['access_token'])) {
+        $_SESSION['access_token'] = $new_token['access_token'];
+        $_SESSION['token_expires'] = time() + $new_token['expires_in'];
     } else {
         echo "<h2>Error al refrescar el token:</h2>";
-        echo "<pre>" . print_r($new_token_data, true) . "</pre>";
+        echo "<pre>" . print_r($new_token, true) . "</pre>";
         exit();
     }
 }
 
-// Listar archivos PDF desde Drive
-$access_token = $_SESSION['access_token'];
+// Usar el token para listar archivos
+$access_token = $_SESSION['access_token'] ?? null;
+if (!$access_token) {
+    echo "No se pudo obtener el token de acceso.";
+    exit();
+}
 
-// ⚠️ Cambia esto al ID real de la carpeta donde están los tomos
+// ID de carpeta de prueba (puedes recibirlo por GET o desde BD)
 $folder_id = '1yg7WSwfztQeGgGWybI1ngNSn2nIs494O';
 
-$ch = curl_init("https://www.googleapis.com/drive/v3/files?q=" . urlencode("'$folder_id' in parents and mimeType='application/pdf'") . "&fields=files(id,name,webViewLink)&pageSize=100");
+$ch = curl_init("https://www.googleapis.com/drive/v3/files?q=" . urlencode("'$folder_id' in parents and mimeType='application/pdf' and trashed=false") . "&fields=files(id,name,webViewLink)&pageSize=100");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     "Authorization: Bearer $access_token"
