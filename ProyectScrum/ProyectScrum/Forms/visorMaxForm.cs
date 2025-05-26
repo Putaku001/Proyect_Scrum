@@ -11,6 +11,8 @@ namespace ProyectScrum.Forms
 {
     public partial class visorMaxForm : Form
     {
+        private TableLayoutPanel layoutPrincipal;
+
         private PdfiumViewer.PdfDocument documentoPdf;
         private int paginaActual;
         private string modoActual;
@@ -33,6 +35,7 @@ namespace ProyectScrum.Forms
         public visorMaxForm(PdfiumViewer.PdfDocument document, int paginaInicial, string modo, int mangaID)
         {
             InitializeComponent();
+
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = Color.Black;
@@ -40,12 +43,14 @@ namespace ProyectScrum.Forms
             documentoPdf = document;
             paginaActual = paginaInicial;
             modoActual = modo;
-            this.mangaID = mangaID; // <-- aquí se guarda
-            CrearControles();
+            this.mangaID = mangaID;
+
+            
+            CrearControles();         
             CambiarModo(modo);
+
             tiempoInicioLectura = DateTime.Now;
         }
-
 
         private void CrearControles()
         {
@@ -58,21 +63,30 @@ namespace ProyectScrum.Forms
                 Location = new Point(20, 20),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left
             };
-            this.Controls.Add(lblContador);
+            panelContenedor.Controls.Add(lblContador);
 
             // Botón cerrar
             btnCerrar = new Button
             {
                 Text = "Cerrar",
                 ForeColor = Color.White,
-                BackColor = Color.DarkRed,
+                BackColor = Color.FromArgb(200, 40, 40), // Rojo oscuro bonito
                 FlatStyle = FlatStyle.Flat,
-                Location = new Point(this.ClientSize.Width - 95, 10),
-                Size = new Size(90, 30),
-                Anchor = AnchorStyles.Top | AnchorStyles.Right
+                Width = 70,
+                Height = 30,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                Cursor = Cursors.Hand
             };
+            btnCerrar.FlatAppearance.BorderSize = 0;
+            btnCerrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(220, 50, 50);
+
+            // Posición al extremo superior derecho con margen
+            btnCerrar.Location = new Point(panelContenedor.Width - btnCerrar.Width - 20, 10);
+            btnCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
             btnCerrar.Click += (s, e) => this.Close();
-            this.Controls.Add(btnCerrar);
+            panelContenedor.Controls.Add(btnCerrar);
+
 
             // Botones anterior / siguiente
             btnAnterior = new Button
@@ -85,7 +99,7 @@ namespace ProyectScrum.Forms
                 Anchor = AnchorStyles.Left
             };
             btnAnterior.Click += BtnAnterior_Click;
-            this.Controls.Add(btnAnterior);
+            panelContenedor.Controls.Add(btnAnterior);
 
             btnSiguiente = new Button
             {
@@ -97,7 +111,7 @@ namespace ProyectScrum.Forms
                 Anchor = AnchorStyles.Right
             };
             btnSiguiente.Click += BtnSiguiente_Click;
-            this.Controls.Add(btnSiguiente);
+            panelContenedor.Controls.Add(btnSiguiente);
 
             // Botones de modo
             btnCascada = new Button
@@ -109,7 +123,7 @@ namespace ProyectScrum.Forms
                 Anchor = AnchorStyles.Top | AnchorStyles.Left
             };
             btnCascada.Click += (s, e) => CambiarModo("Cascada");
-            this.Controls.Add(btnCascada);
+            panelContenedor.Controls.Add(btnCascada);
 
             btnLibro = new Button
             {
@@ -120,7 +134,7 @@ namespace ProyectScrum.Forms
                 Anchor = AnchorStyles.Top | AnchorStyles.Left
             };
             btnLibro.Click += (s, e) => CambiarModo("Libro");
-            this.Controls.Add(btnLibro);
+            panelContenedor.Controls.Add(btnLibro);
 
             btnManga = new Button
             {
@@ -131,14 +145,15 @@ namespace ProyectScrum.Forms
                 Anchor = AnchorStyles.Top | AnchorStyles.Left
             };
             btnManga.Click += (s, e) => CambiarModo("Manga");
-            this.Controls.Add(btnManga);
+            panelContenedor.Controls.Add(btnManga);
         }
+
 
         private void CambiarModo(string modo)
         {
             modoActual = modo;
-            this.Controls.Remove(visor);
-            this.Controls.Remove(pdfRenderer);
+            panelContenedor.Controls.Remove(visor);
+            panelContenedor.Controls.Remove(pdfRenderer);
 
             if (modo == "Cascada")
             {
@@ -148,7 +163,7 @@ namespace ProyectScrum.Forms
                     BackColor = Color.Black
                 };
                 pdfRenderer.Load(documentoPdf);
-                this.Controls.Add(pdfRenderer);
+                panelContenedor.Controls.Add(pdfRenderer);
 
                 btnAnterior.Visible = false;
                 btnSiguiente.Visible = false;
@@ -162,7 +177,7 @@ namespace ProyectScrum.Forms
                     SizeMode = PictureBoxSizeMode.Zoom,
                     BackColor = Color.Black
                 };
-                this.Controls.Add(visor);
+                panelContenedor.Controls.Add(visor);
 
                 btnAnterior.Visible = true;
                 btnSiguiente.Visible = true;
@@ -170,6 +185,7 @@ namespace ProyectScrum.Forms
                 MostrarPagina();
             }
         }
+
 
         private void MostrarPagina()
         {

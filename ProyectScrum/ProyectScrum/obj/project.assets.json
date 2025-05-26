@@ -69,6 +69,21 @@
           }
         }
       },
+      "Guna.UI2.WinForms/2.0.4.7": {
+        "type": "package",
+        "dependencies": {
+          "System.Management": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows7.0/Guna.UI2.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/Guna.UI2.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -302,6 +317,28 @@
         "lib/netstandard2.0/Google.Apis.Drive.v3.xml"
       ]
     },
+    "Guna.UI2.WinForms/2.0.4.7": {
+      "sha512": "8BdBYsfnntuICbFMHIZsd5morwURN8Ucsvq7wJeyLV1Z1ze6CAIxVKEirufgjGIiXfF0M0sCr9EVFloZSazWew==",
+      "type": "package",
+      "path": "guna.ui2.winforms/2.0.4.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "guna.ui2.winforms.2.0.4.7.nupkg.sha512",
+        "guna.ui2.winforms.nuspec",
+        "icon.png",
+        "lib/net40/Guna.UI2.dll",
+        "lib/net45/Guna.UI2.dll",
+        "lib/net461/Guna.UI2.dll",
+        "lib/net472/Guna.UI2.dll",
+        "lib/net48/Guna.UI2.dll",
+        "lib/net6.0-windows7.0/Guna.UI2.dll",
+        "lib/net7.0-windows7.0/Guna.UI2.dll",
+        "lib/netcoreapp3.1/Guna.UI2.dll"
+      ]
+    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -517,29 +554,30 @@
     "net8.0-windows7.0": [
       "Google.Apis.Auth >= 1.69.0",
       "Google.Apis.Drive.v3 >= 1.69.0.3703",
+      "Guna.UI2.WinForms >= 2.0.4.7",
       "PdfiumViewer >= 2.13.0",
       "PdfiumViewer.Native.x86_64.v8-xfa >= 2018.4.8.256",
       "System.Data.SqlClient >= 4.9.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kenne\\.nuget\\packages\\": {},
+    "C:\\Users\\blanc_ma7kouo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kenne\\OneDrive\\Desktop\\ps\\version aristides Nuevo\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
+      "projectUniqueName": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\proyecto terminado con diseño final\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
       "projectName": "ProyectScrum",
-      "projectPath": "C:\\Users\\kenne\\OneDrive\\Desktop\\ps\\version aristides Nuevo\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
-      "packagesPath": "C:\\Users\\kenne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kenne\\OneDrive\\Desktop\\ps\\version aristides Nuevo\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\obj\\",
+      "projectPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\proyecto terminado con diseño final\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj",
+      "packagesPath": "C:\\Users\\blanc_ma7kouo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\blanc_ma7kouo\\Desktop\\PS\\proyecto terminado con diseño final\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kenne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\blanc_ma7kouo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -566,8 +604,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -580,6 +617,10 @@
           "Google.Apis.Drive.v3": {
             "target": "Package",
             "version": "[1.69.0.3703, )"
+          },
+          "Guna.UI2.WinForms": {
+            "target": "Package",
+            "version": "[2.0.4.7, )"
           },
           "PdfiumViewer": {
             "target": "Package",
@@ -613,7 +654,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

@@ -135,7 +135,7 @@ namespace ProyectScrum.Forms
 
         private void AplicarEstilo()
         {
-            this.BackColor = Color.Black;
+            this.BackColor = Color.FromArgb(2,5,20);
 
         }
 

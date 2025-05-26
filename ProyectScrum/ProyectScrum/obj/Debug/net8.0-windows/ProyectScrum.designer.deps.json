@@ -53,6 +53,17 @@
           }
         }
       },
+      "Guna.UI2.WinForms/2.0.4.7": {
+        "dependencies": {
+          "System.Management": "7.0.2"
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/Guna.UI2.dll": {
+            "assemblyVersion": "2.0.4.7",
+            "fileVersion": "2.0.4.7"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -191,6 +202,13 @@
       "sha512": "sha512-AD0q7IzzRhBuBjAm9ZYqEMrOBsp8ji+tjd2LvNa9IdIRZtSD1CCs2K+9HOSOzPFl/RHOqG2sggzt/Be9qrc7dg==",
       "path": "google.apis.drive.v3/1.69.0.3703",
       "hashPath": "google.apis.drive.v3.1.69.0.3703.nupkg.sha512"
+    },
+    "Guna.UI2.WinForms/2.0.4.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8BdBYsfnntuICbFMHIZsd5morwURN8Ucsvq7wJeyLV1Z1ze6CAIxVKEirufgjGIiXfF0M0sCr9EVFloZSazWew==",
+      "path": "guna.ui2.winforms/2.0.4.7",
+      "hashPath": "guna.ui2.winforms.2.0.4.7.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",

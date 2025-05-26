@@ -64,6 +64,7 @@ namespace ProyectScrum.Forms
                 {
                     MessageBox.Show($"Error al activar la suscripción: {ex.Message}");
                 }
+                lblResumen.Visible= true;
             }
         }
     }

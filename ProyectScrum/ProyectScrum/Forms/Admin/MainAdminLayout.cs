@@ -11,7 +11,7 @@ namespace ProyectScrum.Forms
     public partial class MainAdminLayout : Form
     {
         private Form currentChildForm;
-        private Button currentButton;
+        private Guna.UI2.WinForms.Guna2Button currentButton;
         private readonly EmailSettings _emailSettings;
         private List<byte[]> avataresDisponibles;
         private int avatarSeleccionadoIndex = 0;
@@ -147,7 +147,7 @@ namespace ProyectScrum.Forms
             if (senderBtn != null)
             {
                 DisableButton();
-                currentButton = (Button)senderBtn;
+                currentButton = (Guna.UI2.WinForms.Guna2Button)senderBtn;
                 currentButton.Font = new Font(currentButton.Font, FontStyle.Bold);
             }
         }

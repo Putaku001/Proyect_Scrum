@@ -1,14 +1,14 @@
-﻿namespace ProyectScrum.Forms
+﻿namespace ReDiseño
 {
     partial class PageTrial
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,470 +23,359 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            PictureBox manga2;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageTrial));
-            slideBarTime = new System.Windows.Forms.Timer(components);
-            panel4 = new Panel();
-            GalleryFlow1 = new FlowLayoutPanel();
-            manga1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            panel5 = new Panel();
-            GalleryFlow2 = new FlowLayoutPanel();
-            panel7 = new Panel();
-            GalleryFlow3 = new FlowLayoutPanel();
-            manga3 = new PictureBox();
-            panel9 = new Panel();
-            GalleryFlow5 = new FlowLayoutPanel();
-            manga5 = new PictureBox();
-            panel10 = new Panel();
-            GalleryFlow6 = new FlowLayoutPanel();
-            manga6 = new PictureBox();
-            panel11 = new Panel();
-            GalleryFlow7 = new FlowLayoutPanel();
-            manga7 = new PictureBox();
-            SlideBar = new FlowLayoutPanel();
-            panel1 = new Panel();
-            panel6 = new Panel();
-            menuButton = new Button();
-            panel2 = new Panel();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            ISButton = new Guna.UI2.WinForms.Guna2GradientButton();
             label1 = new Label();
+            panel1 = new Panel();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            tableLayoutPanel8 = new TableLayoutPanel();
             panel3 = new Panel();
-            ISButton = new Button();
-            button1 = new Button();
+            btnSiguiente = new Guna.UI2.WinForms.Guna2Button();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             label2 = new Label();
-            manga2 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)manga2).BeginInit();
-            panel4.SuspendLayout();
-            GalleryFlow1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)manga1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel5.SuspendLayout();
-            GalleryFlow2.SuspendLayout();
-            panel7.SuspendLayout();
-            GalleryFlow3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)manga3).BeginInit();
-            panel9.SuspendLayout();
-            GalleryFlow5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)manga5).BeginInit();
-            panel10.SuspendLayout();
-            GalleryFlow6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)manga6).BeginInit();
-            panel11.SuspendLayout();
-            GalleryFlow7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)manga7).BeginInit();
-            SlideBar.SuspendLayout();
+            tableLayoutPanel7 = new TableLayoutPanel();
+            panel2 = new Panel();
+            btnAnterior = new Guna.UI2.WinForms.Guna2Button();
+            timer1 = new System.Windows.Forms.Timer(components);
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             panel1.SuspendLayout();
-            panel6.SuspendLayout();
-            panel2.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
+            tableLayoutPanel8.SuspendLayout();
             panel3.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
+            tableLayoutPanel7.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // manga2
+            // tableLayoutPanel1
             // 
-            manga2.BackColor = Color.Black;
-            manga2.Image = (Image)resources.GetObject("manga2.Image");
-            manga2.Location = new Point(3, 2);
-            manga2.Margin = new Padding(3, 2, 3, 2);
-            manga2.Name = "manga2";
-            manga2.Size = new Size(187, 236);
-            manga2.SizeMode = PictureBoxSizeMode.Zoom;
-            manga2.TabIndex = 0;
-            manga2.TabStop = false;
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1092, 539);
+            tableLayoutPanel1.TabIndex = 0;
             // 
-            // slideBarTime
+            // tableLayoutPanel2
             // 
-            slideBarTime.Interval = 10;
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 0);
+            tableLayoutPanel2.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(1086, 533);
+            tableLayoutPanel2.TabIndex = 0;
             // 
-            // panel4
+            // tableLayoutPanel3
             // 
-            panel4.Controls.Add(GalleryFlow1);
-            panel4.Location = new Point(282, 46);
-            panel4.Margin = new Padding(3, 2, 3, 2);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(190, 226);
-            panel4.TabIndex = 2;
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 0, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(654, 3);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 3;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel3.Size = new Size(429, 527);
+            tableLayoutPanel3.TabIndex = 0;
             // 
-            // GalleryFlow1
+            // tableLayoutPanel4
             // 
-            GalleryFlow1.Controls.Add(manga1);
-            GalleryFlow1.Controls.Add(pictureBox2);
-            GalleryFlow1.Dock = DockStyle.Fill;
-            GalleryFlow1.Location = new Point(0, 0);
-            GalleryFlow1.Margin = new Padding(3, 2, 3, 2);
-            GalleryFlow1.Name = "GalleryFlow1";
-            GalleryFlow1.Size = new Size(190, 226);
-            GalleryFlow1.TabIndex = 0;
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(ISButton, 0, 1);
+            tableLayoutPanel4.Controls.Add(label1, 0, 0);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(3, 55);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Size = new Size(294, 415);
+            tableLayoutPanel4.TabIndex = 0;
             // 
-            // manga1
+            // ISButton
             // 
-            manga1.Image = (Image)resources.GetObject("manga1.Image");
-            manga1.Location = new Point(3, 2);
-            manga1.Margin = new Padding(3, 2, 3, 2);
-            manga1.Name = "manga1";
-            manga1.Size = new Size(185, 240);
-            manga1.SizeMode = PictureBoxSizeMode.Zoom;
-            manga1.TabIndex = 0;
-            manga1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Location = new Point(3, 246);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(185, 221);
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
-            // 
-            // panel5
-            // 
-            panel5.Controls.Add(GalleryFlow2);
-            panel5.Location = new Point(522, 46);
-            panel5.Margin = new Padding(3, 2, 3, 2);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(190, 226);
-            panel5.TabIndex = 3;
-            // 
-            // GalleryFlow2
-            // 
-            GalleryFlow2.Controls.Add(manga2);
-            GalleryFlow2.Dock = DockStyle.Fill;
-            GalleryFlow2.Location = new Point(0, 0);
-            GalleryFlow2.Margin = new Padding(3, 2, 3, 2);
-            GalleryFlow2.Name = "GalleryFlow2";
-            GalleryFlow2.Size = new Size(190, 226);
-            GalleryFlow2.TabIndex = 1;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(GalleryFlow3);
-            panel7.Location = new Point(750, 46);
-            panel7.Margin = new Padding(3, 2, 3, 2);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(190, 226);
-            panel7.TabIndex = 3;
-            // 
-            // GalleryFlow3
-            // 
-            GalleryFlow3.Controls.Add(manga3);
-            GalleryFlow3.Dock = DockStyle.Fill;
-            GalleryFlow3.Location = new Point(0, 0);
-            GalleryFlow3.Margin = new Padding(3, 2, 3, 2);
-            GalleryFlow3.Name = "GalleryFlow3";
-            GalleryFlow3.Size = new Size(190, 226);
-            GalleryFlow3.TabIndex = 1;
-            // 
-            // manga3
-            // 
-            manga3.BackColor = Color.Black;
-            manga3.Image = (Image)resources.GetObject("manga3.Image");
-            manga3.Location = new Point(3, 2);
-            manga3.Margin = new Padding(3, 2, 3, 2);
-            manga3.Name = "manga3";
-            manga3.Size = new Size(185, 248);
-            manga3.SizeMode = PictureBoxSizeMode.Zoom;
-            manga3.TabIndex = 0;
-            manga3.TabStop = false;
-            // 
-            // panel9
-            // 
-            panel9.Controls.Add(GalleryFlow5);
-            panel9.Location = new Point(284, 296);
-            panel9.Margin = new Padding(3, 2, 3, 2);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(190, 226);
-            panel9.TabIndex = 3;
-            // 
-            // GalleryFlow5
-            // 
-            GalleryFlow5.Controls.Add(manga5);
-            GalleryFlow5.Dock = DockStyle.Fill;
-            GalleryFlow5.Location = new Point(0, 0);
-            GalleryFlow5.Margin = new Padding(3, 2, 3, 2);
-            GalleryFlow5.Name = "GalleryFlow5";
-            GalleryFlow5.Size = new Size(190, 226);
-            GalleryFlow5.TabIndex = 1;
-            GalleryFlow5.Paint += GalleryFlow5_Paint;
-            // 
-            // manga5
-            // 
-            manga5.BackColor = Color.Black;
-            manga5.Image = (Image)resources.GetObject("manga5.Image");
-            manga5.Location = new Point(3, 2);
-            manga5.Margin = new Padding(3, 2, 3, 2);
-            manga5.Name = "manga5";
-            manga5.Size = new Size(187, 240);
-            manga5.SizeMode = PictureBoxSizeMode.Zoom;
-            manga5.TabIndex = 0;
-            manga5.TabStop = false;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(GalleryFlow6);
-            panel10.Location = new Point(522, 294);
-            panel10.Margin = new Padding(3, 2, 3, 2);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(190, 226);
-            panel10.TabIndex = 3;
-            // 
-            // GalleryFlow6
-            // 
-            GalleryFlow6.Controls.Add(manga6);
-            GalleryFlow6.Dock = DockStyle.Fill;
-            GalleryFlow6.Location = new Point(0, 0);
-            GalleryFlow6.Margin = new Padding(3, 2, 3, 2);
-            GalleryFlow6.Name = "GalleryFlow6";
-            GalleryFlow6.Size = new Size(190, 226);
-            GalleryFlow6.TabIndex = 1;
-            // 
-            // manga6
-            // 
-            manga6.BackColor = Color.Black;
-            manga6.Image = Properties.Resources.yourname;
-            manga6.Location = new Point(3, 2);
-            manga6.Margin = new Padding(3, 2, 3, 2);
-            manga6.Name = "manga6";
-            manga6.Size = new Size(185, 225);
-            manga6.SizeMode = PictureBoxSizeMode.Zoom;
-            manga6.TabIndex = 0;
-            manga6.TabStop = false;
-            // 
-            // panel11
-            // 
-            panel11.Controls.Add(GalleryFlow7);
-            panel11.Location = new Point(750, 294);
-            panel11.Margin = new Padding(3, 2, 3, 2);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(190, 226);
-            panel11.TabIndex = 4;
-            // 
-            // GalleryFlow7
-            // 
-            GalleryFlow7.Controls.Add(manga7);
-            GalleryFlow7.Dock = DockStyle.Fill;
-            GalleryFlow7.Location = new Point(0, 0);
-            GalleryFlow7.Margin = new Padding(3, 2, 3, 2);
-            GalleryFlow7.Name = "GalleryFlow7";
-            GalleryFlow7.Size = new Size(190, 226);
-            GalleryFlow7.TabIndex = 1;
-            // 
-            // manga7
-            // 
-            manga7.BackColor = Color.Black;
-            manga7.Image = (Image)resources.GetObject("manga7.Image");
-            manga7.Location = new Point(3, 2);
-            manga7.Margin = new Padding(3, 2, 3, 2);
-            manga7.Name = "manga7";
-            manga7.Size = new Size(187, 232);
-            manga7.SizeMode = PictureBoxSizeMode.Zoom;
-            manga7.TabIndex = 0;
-            manga7.TabStop = false;
-            // 
-            // SlideBar
-            // 
-            SlideBar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SlideBar.BackColor = Color.DimGray;
-            SlideBar.Controls.Add(panel1);
-            SlideBar.Controls.Add(panel2);
-            SlideBar.Controls.Add(panel3);
-            SlideBar.Controls.Add(button1);
-            SlideBar.Location = new Point(3, -1);
-            SlideBar.MaximumSize = new Size(194, 539);
-            SlideBar.MinimumSize = new Size(77, 539);
-            SlideBar.Name = "SlideBar";
-            SlideBar.Size = new Size(194, 539);
-            SlideBar.TabIndex = 6;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(panel6);
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(191, 100);
-            panel1.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(menuButton);
-            panel6.Location = new Point(0, 9);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(191, 65);
-            panel6.TabIndex = 5;
-            // 
-            // menuButton
-            // 
-            menuButton.BackColor = Color.Transparent;
-            menuButton.Cursor = Cursors.Hand;
-            menuButton.Dock = DockStyle.Left;
-            menuButton.FlatAppearance.BorderSize = 0;
-            menuButton.FlatStyle = FlatStyle.Flat;
-            menuButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menuButton.ForeColor = SystemColors.ControlLightLight;
-            menuButton.Image = (Image)resources.GetObject("menuButton.Image");
-            menuButton.ImageAlign = ContentAlignment.MiddleLeft;
-            menuButton.Location = new Point(0, 0);
-            menuButton.Name = "menuButton";
-            menuButton.Padding = new Padding(15, 0, 0, 0);
-            menuButton.Size = new Size(188, 65);
-            menuButton.TabIndex = 1;
-            menuButton.Text = "Menu";
-            menuButton.UseVisualStyleBackColor = false;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(label1);
-            panel2.Location = new Point(3, 109);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(191, 65);
-            panel2.TabIndex = 1;
+            ISButton.Animated = true;
+            ISButton.BorderRadius = 8;
+            ISButton.Cursor = Cursors.Hand;
+            ISButton.CustomizableEdges = customizableEdges1;
+            ISButton.DisabledState.BorderColor = Color.DarkGray;
+            ISButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            ISButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            ISButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            ISButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            ISButton.Dock = DockStyle.Top;
+            ISButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ISButton.ForeColor = Color.White;
+            ISButton.Location = new Point(50, 207);
+            ISButton.Margin = new Padding(50, 0, 40, 0);
+            ISButton.Name = "ISButton";
+            ISButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            ISButton.Size = new Size(204, 45);
+            ISButton.TabIndex = 2;
+            ISButton.Text = "Iniciar Sesion";
+            ISButton.Click += ISButton_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Dock = DockStyle.Bottom;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(26, 12);
+            label1.Location = new Point(50, 155);
+            label1.Margin = new Padding(50, 0, 40, 10);
             label1.Name = "label1";
-            label1.Size = new Size(128, 42);
-            label1.TabIndex = 0;
-            label1.Text = "Para Continuar \r\n  Inicia Sesion";
+            label1.Size = new Size(204, 42);
+            label1.TabIndex = 1;
+            label1.Text = "Para Continuar Inicia Sesion";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(tableLayoutPanel5);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(645, 527);
+            panel1.TabIndex = 1;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel5.Controls.Add(tableLayoutPanel8, 2, 0);
+            tableLayoutPanel5.Controls.Add(tableLayoutPanel6, 1, 0);
+            tableLayoutPanel5.Controls.Add(tableLayoutPanel7, 0, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(645, 527);
+            tableLayoutPanel5.TabIndex = 0;
+            // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 1;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel8.Controls.Add(panel3, 0, 1);
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(519, 3);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 3;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel8.Size = new Size(123, 521);
+            tableLayoutPanel8.TabIndex = 2;
             // 
             // panel3
             // 
-            panel3.Controls.Add(ISButton);
-            panel3.Location = new Point(3, 180);
+            panel3.Controls.Add(btnSiguiente);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 159);
             panel3.Name = "panel3";
-            panel3.Size = new Size(191, 62);
-            panel3.TabIndex = 2;
+            panel3.Size = new Size(117, 202);
+            panel3.TabIndex = 0;
             // 
-            // ISButton
+            // btnSiguiente
             // 
-            ISButton.Cursor = Cursors.Hand;
-            ISButton.Dock = DockStyle.Left;
-            ISButton.FlatAppearance.BorderSize = 0;
-            ISButton.FlatStyle = FlatStyle.Flat;
-            ISButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ISButton.ForeColor = Color.White;
-            ISButton.Image = (Image)resources.GetObject("ISButton.Image");
-            ISButton.ImageAlign = ContentAlignment.MiddleLeft;
-            ISButton.Location = new Point(0, 0);
-            ISButton.Name = "ISButton";
-            ISButton.Padding = new Padding(15, 0, 0, 0);
-            ISButton.Size = new Size(192, 62);
-            ISButton.TabIndex = 1;
-            ISButton.Text = "  Iniciar Sesión";
-            ISButton.UseVisualStyleBackColor = true;
-            ISButton.Click += ISButton_Click;
+            btnSiguiente.Cursor = Cursors.Hand;
+            btnSiguiente.CustomizableEdges = customizableEdges3;
+            btnSiguiente.DisabledState.BorderColor = Color.DarkGray;
+            btnSiguiente.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSiguiente.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSiguiente.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSiguiente.Dock = DockStyle.Fill;
+            btnSiguiente.FillColor = Color.Transparent;
+            btnSiguiente.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSiguiente.ForeColor = Color.White;
+            btnSiguiente.Location = new Point(0, 0);
+            btnSiguiente.Name = "btnSiguiente";
+            btnSiguiente.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnSiguiente.Size = new Size(117, 202);
+            btnSiguiente.TabIndex = 1;
+            btnSiguiente.Text = ">";
+            btnSiguiente.Click += btnSiguiente_Click;
             // 
-            // button1
+            // tableLayoutPanel6
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Left;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(3, 248);
-            button1.Name = "button1";
-            button1.Padding = new Padding(15, 0, 0, 0);
-            button1.Size = new Size(192, 0);
-            button1.TabIndex = 3;
-            button1.Text = "  Iniciar Sesión";
-            button1.UseVisualStyleBackColor = true;
+            tableLayoutPanel6.ColumnCount = 1;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel6.Controls.Add(guna2PictureBox1, 0, 1);
+            tableLayoutPanel6.Controls.Add(label2, 0, 0);
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new Point(132, 3);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 2;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
+            tableLayoutPanel6.Size = new Size(381, 521);
+            tableLayoutPanel6.TabIndex = 0;
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.BorderRadius = 20;
+            guna2PictureBox1.CustomizableEdges = customizableEdges5;
+            guna2PictureBox1.Dock = DockStyle.Fill;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(0, 52);
+            guna2PictureBox1.Margin = new Padding(0);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2PictureBox1.Size = new Size(381, 469);
+            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox1.TabIndex = 1;
+            guna2PictureBox1.TabStop = false;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(283, 11);
+            label2.Dock = DockStyle.Fill;
+            label2.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(191, 21);
-            label2.TabIndex = 14;
-            label2.Text = "Mangas Recomendados";
+            label2.Size = new Size(375, 52);
+            label2.TabIndex = 2;
+            label2.Text = "Catalogo";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel7
+            // 
+            tableLayoutPanel7.ColumnCount = 1;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel7.Controls.Add(panel2, 0, 1);
+            tableLayoutPanel7.Dock = DockStyle.Fill;
+            tableLayoutPanel7.Location = new Point(3, 3);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 3;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel7.Size = new Size(123, 521);
+            tableLayoutPanel7.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnAnterior);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 159);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(117, 202);
+            panel2.TabIndex = 0;
+            // 
+            // btnAnterior
+            // 
+            btnAnterior.Cursor = Cursors.Hand;
+            btnAnterior.CustomizableEdges = customizableEdges7;
+            btnAnterior.DisabledState.BorderColor = Color.DarkGray;
+            btnAnterior.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAnterior.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAnterior.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAnterior.Dock = DockStyle.Fill;
+            btnAnterior.FillColor = Color.Transparent;
+            btnAnterior.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAnterior.ForeColor = Color.White;
+            btnAnterior.Location = new Point(0, 0);
+            btnAnterior.Name = "btnAnterior";
+            btnAnterior.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnAnterior.Size = new Size(117, 202);
+            btnAnterior.TabIndex = 0;
+            btnAnterior.Text = "<";
+            btnAnterior.Click += btnAnterior_Click;
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 3000;
             // 
             // PageTrial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             BackColor = Color.Black;
             ClientSize = new Size(1092, 539);
-            Controls.Add(label2);
-            Controls.Add(SlideBar);
-            Controls.Add(panel11);
-            Controls.Add(panel10);
-            Controls.Add(panel9);
-            Controls.Add(panel7);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
+            Controls.Add(tableLayoutPanel1);
+            ForeColor = Color.White;
             Name = "PageTrial";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "PageTrial";
-            ((System.ComponentModel.ISupportInitialize)manga2).EndInit();
-            panel4.ResumeLayout(false);
-            GalleryFlow1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)manga1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel5.ResumeLayout(false);
-            GalleryFlow2.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            GalleryFlow3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)manga3).EndInit();
-            panel9.ResumeLayout(false);
-            GalleryFlow5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)manga5).EndInit();
-            panel10.ResumeLayout(false);
-            GalleryFlow6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)manga6).EndInit();
-            panel11.ResumeLayout(false);
-            GalleryFlow7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)manga7).EndInit();
-            SlideBar.ResumeLayout(false);
+            Text = "Form1";
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel4.PerformLayout();
             panel1.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel8.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            tableLayoutPanel6.ResumeLayout(false);
+            tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
+            tableLayoutPanel7.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private System.Windows.Forms.Timer slideBarTime;
-        private Panel panel4;
-        private Panel panel5;
-        private Panel panel7;
-        private Panel panel9;
-        private Panel panel10;
-        private Panel panel11;
-        private FlowLayoutPanel GalleryFlow1;
-        private PictureBox manga1;
-        private PictureBox pictureBox2;
-        private FlowLayoutPanel GalleryFlow2;
-        private FlowLayoutPanel GalleryFlow3;
-        private FlowLayoutPanel GalleryFlow5;
-        private FlowLayoutPanel GalleryFlow6;
-        private FlowLayoutPanel GalleryFlow7;
-        private PictureBox manga3;
-        private PictureBox manga5;
-        private PictureBox manga6;
-        private PictureBox manga7;
-        private FlowLayoutPanel SlideBar;
-        private Panel panel1;
-        private Panel panel6;
-        private Button menuButton;
-        private Panel panel2;
+
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
+        private TableLayoutPanel tableLayoutPanel4;
         private Label label1;
-        private Panel panel3;
-        private Button ISButton;
-        private Button button1;
+        private Guna.UI2.WinForms.Guna2GradientButton ISButton;
+        private Panel panel1;
+        private System.Windows.Forms.Timer timer1;
+        private TableLayoutPanel tableLayoutPanel5;
+        private TableLayoutPanel tableLayoutPanel6;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Label label2;
+        private TableLayoutPanel tableLayoutPanel8;
+        private Panel panel3;
+        private Guna.UI2.WinForms.Guna2Button btnSiguiente;
+        private TableLayoutPanel tableLayoutPanel7;
+        private Panel panel2;
+        private Guna.UI2.WinForms.Guna2Button btnAnterior;
     }
 }

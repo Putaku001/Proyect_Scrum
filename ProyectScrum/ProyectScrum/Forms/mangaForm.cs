@@ -21,9 +21,6 @@ namespace ProyectScrum.Forms
     public partial class mangaForm : Form
     {
 
-        private Panel panelCargandoManga;
-        private PictureBox pictureBoxCargandoManga;
-
         private Dictionary<string, Image> cacheImagenes = new Dictionary<string, Image>();
         private Manga mangaActual;
         int usuarioID = CapturedData.UsuarioID;
@@ -32,12 +29,52 @@ namespace ProyectScrum.Forms
 
 
 
+
         public mangaForm(int usuarioID)
         {
             InitializeComponent();
-            btnQuitarFavoritos.Click += btnQuitarFavoritos_Click;
-
+            this.Resize += mangaForm_Resize;
+            flowPanelVolumenes.Resize += flowPanelVolumenes_Resize;
         }
+        private void mangaForm_Resize(object sender, EventArgs e)
+        {
+            foreach (Control control in flowPanelVolumenes.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    panel.Width = flowPanelVolumenes.ClientSize.Width - 20;
+
+                    foreach (Control sub in panel.Controls)
+                    {
+                        if (sub is Guna.UI2.WinForms.Guna2Button btn)
+                        {
+                            btn.Width = panel.Width;
+                        }
+                    }
+                }
+            }
+        }
+        private void flowPanelVolumenes_Resize(object sender, EventArgs e)
+        {
+            foreach (Control control in flowPanelVolumenes.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    int nuevoAncho = flowPanelVolumenes.ClientSize.Width - 25;
+                    panel.Width = nuevoAncho;
+
+                    foreach (Control sub in panel.Controls)
+                    {
+                        if (sub is Guna.UI2.WinForms.Guna2Button btn)
+                        {
+                            btn.Width = nuevoAncho;
+                        }
+                    }
+                }
+            }
+        }
+
+
         public void CargarManga(Manga manga, string genero)
         {
             // Mostrar imagen de carga
@@ -80,13 +117,10 @@ namespace ProyectScrum.Forms
             labelDescripcion.Text = manga.Descripcion;
             labelGenero.Text = genero;
             CargarVolumenes(manga.URLMangaDrive);
-
-            bool enFavoritos = EstaEnFavoritos(manga.MangaID, CapturedData.UsuarioID);
-            btnAgregarFavoritos.Visible = !enFavoritos;
-            btnQuitarFavoritos.Visible = enFavoritos;
-
+            ActualizarBotonFavoritos();
 
         }
+
         //extraer carpetas de los links
         private string ExtraerIdCarpeta(string url)
         {
@@ -141,7 +175,7 @@ namespace ProyectScrum.Forms
             // Obtener progreso general del manga
             var progreso = ObtenerProgresoLectura(CapturedData.UsuarioID, mangaActual.MangaID);
 
-            // Solo mostrar detalles en el primer tomo por ahora (puedes mejorar esto si guardás el tomo exacto)
+            // Solo mostrar detalles en el primer tomo por ahora
             string primerTomoId = files.FirstOrDefault()?.Id;
 
             // Obtener progreso general del manga
@@ -151,29 +185,39 @@ namespace ProyectScrum.Forms
             {
                 var contenedor = new Panel
                 {
-                    Width = flowPanelVolumenes.Width - 25,
-                    Height = 50, // Altura mínima (sin progreso)
+                    AutoSize = true,
                     Margin = new Padding(2),
-                    BackColor = Color.Transparent
+                    BackColor = Color.Transparent,
+                    Width = flowPanelVolumenes.ClientSize.Width,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                 };
+
 
                 // Botón del tomo
                 bool esPremium = file.Name.StartsWith("[P]");
 
-                Button tomoBtn = new Button
+                var tomoBtn = new Guna.UI2.WinForms.Guna2Button
                 {
                     Text = $"{(esPremium ? "🔒" : "📄")} {file.Name.Replace("[P]", "").Trim()}",
                     Width = contenedor.Width,
                     Height = 45,
-                    BackColor = Color.FromArgb(35, 35, 35),
+                    BorderRadius = 5,
+                    FillColor = Color.FromArgb(35, 35, 35),
                     ForeColor = Color.White,
-                    FlatStyle = FlatStyle.Flat,
-                    Margin = new Padding(0),
-
-                    TextAlign = ContentAlignment.MiddleLeft,
+                    Font = new Font("Segoe UI", 9.5F, FontStyle.Bold),
+                    TextAlign = HorizontalAlignment.Left,
                     Cursor = Cursors.Hand,
                     Enabled = !esPremium || CapturedData.EsPremium,
-                    Tag = file.Id
+                    Tag = file.Id,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                    Margin = new Padding(0),
+                    DisabledState = {
+                        FillColor = Color.FromArgb(50, 50, 50),
+                        ForeColor = Color.Gray
+                    },
+                    HoverState = {
+                        FillColor = Color.FromArgb(50, 50, 50)
+                    }
                 };
 
                 // Evento click para abrir visor
@@ -197,7 +241,7 @@ namespace ProyectScrum.Forms
                             return;
                         }
 
-                        string fileId = ((Button)s).Tag.ToString();
+                        string fileId = ((Guna.UI2.WinForms.Guna2Button)s).Tag.ToString();
 
                         foreach (Control control in flowPanelVolumenes.Controls)
                             if (control is Panel p)
@@ -432,14 +476,15 @@ namespace ProyectScrum.Forms
                 if (result > 0)
                 {
 
-                    btnAgregarFavoritos.Visible = false;
-                    btnQuitarFavoritos.Visible = true;
+                    ActualizarBotonFavoritos();
+                    FavoritoAgregado?.Invoke(this, EventArgs.Empty);
+
 
                     FavoritoAgregado?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
-                    MessageBox.Show("Este manga ya está en favoritos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
         }
@@ -484,9 +529,9 @@ namespace ProyectScrum.Forms
                 if (result > 0)
                 {
 
-                    btnAgregarFavoritos.Visible = true;
-                    btnQuitarFavoritos.Visible = false;
-                    FavoritoAgregado?.Invoke(this, EventArgs.Empty); // opcional
+                    ActualizarBotonFavoritos();
+                    FavoritoAgregado?.Invoke(this, EventArgs.Empty);
+
                 }
                 else
                 {
@@ -494,6 +539,27 @@ namespace ProyectScrum.Forms
                 }
             }
         }
+        private void ActualizarBotonFavoritos()
+        {
+            bool enFavoritos = EstaEnFavoritos(mangaActual.MangaID, CapturedData.UsuarioID);
+
+            if (enFavoritos)
+            {
+                btnAgregarFavoritos.Text = "Eliminar de 💔";
+                btnAgregarFavoritos.FillColor = Color.DarkRed;
+                btnAgregarFavoritos.Click -= btnAgregarFavoritos_Click;
+                btnAgregarFavoritos.Click += btnQuitarFavoritos_Click;
+            }
+            else
+            {
+                btnAgregarFavoritos.Text = "Agregar a ♡";
+                btnAgregarFavoritos.FillColor = Color.Transparent;
+                btnAgregarFavoritos.Click -= btnQuitarFavoritos_Click;
+                btnAgregarFavoritos.Click += btnAgregarFavoritos_Click;
+            }
+        }
+
+
         private Label CrearBloqueProgreso(string texto)
         {
             return new Label
@@ -511,6 +577,9 @@ namespace ProyectScrum.Forms
             };
         }
 
+        private void flowPanelVolumenes_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }

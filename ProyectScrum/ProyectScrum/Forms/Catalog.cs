@@ -16,6 +16,8 @@ namespace ProyectScrum.Forms
         public EmailSettings _emailSettings;
         private int paginaActual = 1;
         private int mangasPorPagina = 12;
+        private Guna.UI2.WinForms.Guna2Panel panelFiltro;
+        private FlowLayoutPanel flowCheckBoxGeneros;
 
         public Catalog(EmailSettings emailSettings)
         {
@@ -25,19 +27,70 @@ namespace ProyectScrum.Forms
 
         private void menuButton_Click(object sender, EventArgs e)
         {
-            Main mainForm = new Main( _emailSettings);
+            Main mainForm = new Main(_emailSettings);
             mainForm.Show();
             this.Close();
         }
 
         private void Catalog_Load(object sender, EventArgs e)
         {
+            InicializarPanelFiltro();
+            CargarCheckBoxGeneros();
             MostrarPortadas();
+
             anteriorButton.Visible = false;
             siguienteButton.Visible = false;
-            CargarCheckBoxGeneros();
+
             flowCheckBoxGeneros.FlowDirection = FlowDirection.TopDown;
             flowCheckBoxGeneros.WrapContents = false;
+
+
+        }
+        private void InicializarPanelFiltro()
+        {
+            // Crear panel principal
+            panelFiltro = new Guna.UI2.WinForms.Guna2Panel
+            {
+                Name = "panelFiltro",
+                Size = new Size(220, 400),
+                BorderRadius = 10,
+                BorderThickness = 2,
+                BorderColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                Visible = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right,
+                Location = new Point(this.ClientSize.Width - 240, 60),
+                ShadowDecoration = { Enabled = true }
+            };
+
+            // FlowLayoutPanel para los géneros
+            flowCheckBoxGeneros = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true,
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false
+            };
+
+            // Botón aplicar filtro
+            var btnAplicar = new Guna.UI2.WinForms.Guna2Button
+            {
+                Text = "Aplicar",
+                Dock = DockStyle.Bottom,
+                FillColor = Color.DimGray,
+                ForeColor = Color.White,
+                Height = 40,
+                BorderRadius = 5
+            };
+            btnAplicar.Click += btnAplicarFiltro_Click;
+
+            // Agregar controles al panel
+            panelFiltro.Controls.Add(flowCheckBoxGeneros);
+            panelFiltro.Controls.Add(btnAplicar);
+
+            // Agregar panel al formulario
+            this.Controls.Add(panelFiltro);
+            panelFiltro.BringToFront();
         }
 
         private List<Manga> ObtenerMangas()
@@ -90,57 +143,69 @@ namespace ProyectScrum.Forms
 
             foreach (var manga in mangas)
             {
-                PictureBox pb = new PictureBox
+                var contenedor = new Guna.UI2.WinForms.Guna2Panel
                 {
-                    Width = 185,
-                    Height = 240,
-                    Margin = new Padding(30, 20, 30, 20),
-                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Width = 200,
+                    Height = 290,
+                    BorderRadius = 10,
+                    BorderThickness = 1,
+                    BorderColor = Color.FromArgb(60, 60, 60),
+                    ShadowDecoration = { Enabled = true },
+                    BackColor = Color.FromArgb(40, 40, 40),
+                    Margin = new Padding(20, 10, 20, 10),
                     Cursor = Cursors.Hand,
                     Tag = manga.Titulo
                 };
 
-                pb.Image = Properties.Resources.LoadingGif;
+                var portada = new PictureBox
+                {
+                    Width = 185,
+                    Height = 240,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Image = Properties.Resources.LoadingGif,
+                    Location = new Point(7, 7),
+                    Tag = manga.Titulo,
+                    Cursor = Cursors.Hand
+                };
 
                 if (cacheImagenes.ContainsKey(manga.URLPortada))
                 {
-                    pb.Image = cacheImagenes[manga.URLPortada];
+                    portada.Image = cacheImagenes[manga.URLPortada];
                 }
                 else
                 {
-                    pb.LoadCompleted += (s, e) =>
+                    portada.LoadCompleted += (s, e) =>
                     {
-                        if (e.Error == null && pb.Image != null)
-                            cacheImagenes[manga.URLPortada] = pb.Image;
+                        if (e.Error == null && portada.Image != null)
+                            cacheImagenes[manga.URLPortada] = portada.Image;
                         else
-                            pb.Image = Properties.Resources.DefaultCover;
+                            portada.Image = Properties.Resources.DefaultCover;
                     };
 
                     try
                     {
-                        pb.LoadAsync(manga.URLPortada);
+                        portada.LoadAsync(manga.URLPortada);
                     }
                     catch
                     {
-                        pb.Image = Properties.Resources.DefaultCover;
+                        portada.Image = Properties.Resources.DefaultCover;
                     }
                 }
 
-                pb.Click += (s, e) =>
+                // Evento al hacer clic en la portada o el contenedor
+                EventHandler abrirManga = (s, e) =>
                 {
-                    string titulo = (string)((PictureBox)s).Tag;
+                    string titulo = (string)((Control)s).Tag;
                     Manga m = ObtenerMangaPorTitulo(titulo);
 
                     if (m != null)
                     {
                         string genero = ObtenerGenero(m.GeneroID);
-                        mangaForm mangaForm = new mangaForm(CapturedData.UsuarioID);
-                        mangaForm.CargarManga(m, genero);
+                        mangaForm form = new mangaForm(CapturedData.UsuarioID);
+                        form.CargarManga(m, genero);
 
                         if (this.TopLevelControl is Main main)
-                        {
-                            main.AbrirFormularioEnPanel(mangaForm);
-                        }
+                            main.AbrirFormularioEnPanel(form);
                     }
                     else
                     {
@@ -148,8 +213,30 @@ namespace ProyectScrum.Forms
                     }
                 };
 
-                flowLayoutPanel1.Controls.Add(pb);
+                contenedor.Click += abrirManga;
+                portada.Click += abrirManga;
+
+                var lblTitulo = new Label
+                {
+                    Text = manga.Titulo,
+                    ForeColor = Color.White,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    AutoSize = false,
+                    Width = contenedor.Width,
+                    Height = 40,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Location = new Point(0, portada.Bottom + 5)
+                };
+
+                // Click también en el label
+                lblTitulo.Click += abrirManga;
+                lblTitulo.AutoEllipsis = true;
+                contenedor.Controls.Add(portada);
+                contenedor.Controls.Add(lblTitulo);
+                flowLayoutPanel1.Controls.Add(contenedor);
             }
+
 
             int totalMangas = ObtenerTotalMangas();
             int totalPaginas = (int)Math.Ceiling((double)totalMangas / mangasPorPagina);
@@ -232,10 +319,10 @@ namespace ProyectScrum.Forms
             {
                 conn.Open();
                 string query = $@"
-                SELECT MangaID, Titulo, URLPortada, GeneroID
-                FROM Mangas
-                WHERE GeneroID IN ({string.Join(",", generosSeleccionados)})
-                ORDER BY FechaPublicacion DESC";
+            SELECT MangaID, Titulo, URLPortada, GeneroID
+            FROM Mangas
+            WHERE GeneroID IN ({string.Join(",", generosSeleccionados)})
+            ORDER BY FechaPublicacion DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -254,45 +341,58 @@ namespace ProyectScrum.Forms
 
             foreach (var manga in mangas)
             {
-                PictureBox pb = new PictureBox
+                var contenedor = new Guna.UI2.WinForms.Guna2Panel
                 {
-                    Width = 185,
-                    Height = 240,
-                    Margin = new Padding(30, 20, 30, 20),
-                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Width = 200,
+                    Height = 290,
+                    BorderRadius = 10,
+                    BorderThickness = 1,
+                    BorderColor = Color.FromArgb(60, 60, 60),
+                    ShadowDecoration = { Enabled = true },
+                    BackColor = Color.FromArgb(40, 40, 40),
+                    Margin = new Padding(20, 10, 20, 10),
                     Cursor = Cursors.Hand,
                     Tag = manga.Titulo
                 };
 
-                pb.Image = Properties.Resources.LoadingGif;
+                var portada = new PictureBox
+                {
+                    Width = 185,
+                    Height = 240,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Image = Properties.Resources.LoadingGif,
+                    Location = new Point(7, 7),
+                    Tag = manga.Titulo,
+                    Cursor = Cursors.Hand
+                };
 
                 if (cacheImagenes.ContainsKey(manga.URLPortada))
                 {
-                    pb.Image = cacheImagenes[manga.URLPortada];
+                    portada.Image = cacheImagenes[manga.URLPortada];
                 }
                 else
                 {
-                    pb.LoadCompleted += (s, e) =>
+                    portada.LoadCompleted += (s, e) =>
                     {
-                        if (e.Error == null && pb.Image != null)
-                            cacheImagenes[manga.URLPortada] = pb.Image;
+                        if (e.Error == null && portada.Image != null)
+                            cacheImagenes[manga.URLPortada] = portada.Image;
                         else
-                            pb.Image = Properties.Resources.DefaultCover;
+                            portada.Image = Properties.Resources.DefaultCover;
                     };
 
                     try
                     {
-                        pb.LoadAsync(manga.URLPortada);
+                        portada.LoadAsync(manga.URLPortada);
                     }
                     catch
                     {
-                        pb.Image = Properties.Resources.DefaultCover;
+                        portada.Image = Properties.Resources.DefaultCover;
                     }
                 }
 
-                pb.Click += (s, e) =>
+                EventHandler abrirManga = (s, e) =>
                 {
-                    string titulo = (string)((PictureBox)s).Tag;
+                    string titulo = (string)((Control)s).Tag;
                     Manga m = ObtenerMangaPorTitulo(titulo);
                     if (m != null)
                     {
@@ -305,12 +405,33 @@ namespace ProyectScrum.Forms
                     }
                 };
 
-                flowLayoutPanel1.Controls.Add(pb);
+                var lblTitulo = new Label
+                {
+                    Text = manga.Titulo,
+                    ForeColor = Color.White,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    AutoSize = false,
+                    Width = contenedor.Width,
+                    Height = 40,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Location = new Point(0, portada.Bottom + 5),
+                    AutoEllipsis = true
+                };
+
+                contenedor.Click += abrirManga;
+                portada.Click += abrirManga;
+                lblTitulo.Click += abrirManga;
+
+                contenedor.Controls.Add(portada);
+                contenedor.Controls.Add(lblTitulo);
+                flowLayoutPanel1.Controls.Add(contenedor);
             }
 
             anteriorButton.Visible = false;
             siguienteButton.Visible = false;
         }
+
 
         private Manga ObtenerMangaPorTitulo(string titulo)
         {
@@ -398,11 +519,11 @@ namespace ProyectScrum.Forms
             {
                 conn.Open();
                 string query = @"SELECT m.MangaID, m.Titulo, m.URLPortada 
-                                 FROM Mangas m
-                                 LEFT JOIN TitulosAlternativos t ON m.MangaID = t.MangaID
-                                 WHERE m.Titulo LIKE @texto OR t.TituloAlternativo LIKE @texto
-                                 GROUP BY m.MangaID, m.Titulo, m.URLPortada
-                                 ORDER BY MAX(m.FechaPublicacion) DESC";
+                         FROM Mangas m
+                         LEFT JOIN TitulosAlternativos t ON m.MangaID = t.MangaID
+                         WHERE m.Titulo LIKE @texto OR t.TituloAlternativo LIKE @texto
+                         GROUP BY m.MangaID, m.Titulo, m.URLPortada
+                         ORDER BY MAX(m.FechaPublicacion) DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@texto", "%" + texto + "%");
@@ -421,44 +542,58 @@ namespace ProyectScrum.Forms
 
             foreach (var manga in mangas)
             {
-                PictureBox pb = new PictureBox
+                var contenedor = new Guna.UI2.WinForms.Guna2Panel
+                {
+                    Width = 200,
+                    Height = 290,
+                    BorderRadius = 10,
+                    BorderThickness = 1,
+                    BorderColor = Color.FromArgb(60, 60, 60),
+                    ShadowDecoration = { Enabled = true },
+                    BackColor = Color.FromArgb(40, 40, 40),
+                    Margin = new Padding(20, 10, 20, 10),
+                    Cursor = Cursors.Hand,
+                    Tag = manga.Titulo
+                };
+
+                var portada = new PictureBox
                 {
                     Width = 185,
                     Height = 240,
-                    Margin = new Padding(30, 20, 30, 20),
                     SizeMode = PictureBoxSizeMode.StretchImage,
-                    Cursor = Cursors.Hand,
+                    Image = Properties.Resources.LoadingGif,
+                    Location = new Point(7, 7),
                     Tag = manga.Titulo,
-                    Image = Properties.Resources.LoadingGif
+                    Cursor = Cursors.Hand
                 };
 
                 if (cacheImagenes.ContainsKey(manga.URLPortada))
                 {
-                    pb.Image = cacheImagenes[manga.URLPortada];
+                    portada.Image = cacheImagenes[manga.URLPortada];
                 }
                 else
                 {
-                    pb.LoadCompleted += (s, e) =>
+                    portada.LoadCompleted += (s, e) =>
                     {
-                        if (e.Error == null && pb.Image != null)
-                            cacheImagenes[manga.URLPortada] = pb.Image;
+                        if (e.Error == null && portada.Image != null)
+                            cacheImagenes[manga.URLPortada] = portada.Image;
                         else
-                            pb.Image = Properties.Resources.DefaultCover;
+                            portada.Image = Properties.Resources.DefaultCover;
                     };
 
                     try
                     {
-                        pb.LoadAsync(manga.URLPortada);
+                        portada.LoadAsync(manga.URLPortada);
                     }
                     catch
                     {
-                        pb.Image = Properties.Resources.DefaultCover;
+                        portada.Image = Properties.Resources.DefaultCover;
                     }
                 }
 
-                pb.Click += (s, e) =>
+                EventHandler abrirManga = (s, e) =>
                 {
-                    string titulo = (string)((PictureBox)s).Tag;
+                    string titulo = (string)((Control)s).Tag;
                     Manga m = ObtenerMangaPorTitulo(titulo);
 
                     if (m != null)
@@ -468,13 +603,31 @@ namespace ProyectScrum.Forms
                         form.CargarManga(m, genero);
 
                         if (this.TopLevelControl is Main main)
-                        {
                             main.AbrirFormularioEnPanel(form);
-                        }
                     }
                 };
 
-                flowLayoutPanel1.Controls.Add(pb);
+                var lblTitulo = new Label
+                {
+                    Text = manga.Titulo,
+                    ForeColor = Color.White,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    AutoSize = false,
+                    Width = contenedor.Width,
+                    Height = 40,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Location = new Point(0, portada.Bottom + 5),
+                    AutoEllipsis = true
+                };
+
+                contenedor.Click += abrirManga;
+                portada.Click += abrirManga;
+                lblTitulo.Click += abrirManga;
+
+                contenedor.Controls.Add(portada);
+                contenedor.Controls.Add(lblTitulo);
+                flowLayoutPanel1.Controls.Add(contenedor);
             }
         }
     }

@@ -25,6 +25,14 @@ namespace ProyectScrum.Forms
         private bool nuevaPortadaSeleccionada = false;
 
         private readonly Image defaultCoverPorada;
+
+        //para el rediseño se ocupa
+        private Guna.UI2.WinForms.Guna2Button btnGuardar;
+        private Guna.UI2.WinForms.Guna2Button BtnCancelar;
+        private Guna.UI2.WinForms.Guna2Button btnEliminar;
+        private System.Windows.Forms.Panel panelSeleccionManga;
+        private System.Windows.Forms.TableLayoutPanel tlpBotonesCRUD;
+
         private class TomoSeleccion
         {
             public string RutaLocal { get; init; }
@@ -36,6 +44,7 @@ namespace ProyectScrum.Forms
         public SubidaMangaForm()
         {
             InitializeComponent();
+            InicializarControlesCustom();
             CargarGeneros();
 
 
@@ -47,6 +56,83 @@ namespace ProyectScrum.Forms
 
             
         }
+
+        // ─────────────────────────────────────────────────────────────
+        //  REEMPLAZA COMPLETAMENTE tu método InicializarControlesCustom
+        // ─────────────────────────────────────────────────────────────
+        private void InicializarControlesCustom()
+        {
+            // 1)  Fabrica de botones Guna UI 2
+            Guna.UI2.WinForms.Guna2Button Make(string name, string text,
+                                                Color color, EventHandler click)
+            {
+                var b = new Guna.UI2.WinForms.Guna2Button
+                {
+                    Name = name,
+                    Text = text,
+                    Dock = DockStyle.Fill,
+                    FillColor = color,
+                    Font = new Font("Segoe UI", 11.25f, FontStyle.Bold),
+                    ForeColor = Color.White,
+                    BorderRadius = 6,
+                    Cursor = Cursors.Hand
+                };
+                b.Click += click;
+                return b;
+            }
+
+            // 2)  Crear los 3 nuevos botones (sin añadirlos aún al TLP)
+            btnGuardar = Make("btnGuardar", "Guardar", Color.FromArgb(0, 192, 0), btnGuardar_Click);
+            BtnCancelar = Make("BtnCancelar", "Cancelar", Color.FromArgb(96, 96, 96), BtnCancelar_Click);
+            btnEliminar = Make("btnEliminar", "Eliminar", Color.FromArgb(192, 0, 0), btnEliminar_Click);
+
+            // 3)  Overlay para elegir manga (igual que antes)
+            panelSeleccionManga = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(20, 20, 20),
+                AutoScroll = true,
+                Visible = false
+            };
+            this.Controls.Add(panelSeleccionManga);
+            panelSeleccionManga.BringToFront();
+        }
+        private void CambiarAModoEdicion(bool edicion)
+        {
+            var tlp = tableLayoutPanel11;
+
+            if (edicion)
+            {
+                // Quitar Agregar / Modificar si están
+                tlp.Controls.Remove(btnSubir);
+                tlp.Controls.Remove(btnModificar);
+
+                // Añadir Guardar / Cancelar / Eliminar en las filas 0-1-2
+                if (!tlp.Controls.Contains(btnGuardar))
+                    tlp.Controls.Add(btnGuardar, 0, 0);
+                if (!tlp.Controls.Contains(BtnCancelar))
+                    tlp.Controls.Add(BtnCancelar, 0, 1);
+                if (!tlp.Controls.Contains(btnEliminar))
+                    tlp.Controls.Add(btnEliminar, 0, 2);
+            }
+            else
+            {
+                // Quitar los de edición
+                tlp.Controls.Remove(btnGuardar);
+                tlp.Controls.Remove(BtnCancelar);
+                tlp.Controls.Remove(btnEliminar);
+
+                // Volver a poner Agregar / Modificar
+                if (!tlp.Controls.Contains(btnSubir))
+                    tlp.Controls.Add(btnSubir, 0, 0);
+                if (!tlp.Controls.Contains(btnModificar))
+                    tlp.Controls.Add(btnModificar, 0, 1);
+            }
+        }
+
+
+
+
 
         private void btnElegirImagen_Click(object sender, EventArgs e)
         {
@@ -407,6 +493,7 @@ namespace ProyectScrum.Forms
                     y += 50;
                 }
             }
+            CambiarAModoEdicion(true);
         }
         // cargar datos 
         private async Task CargarDatosManga(int mangaID)
@@ -622,6 +709,7 @@ namespace ProyectScrum.Forms
             }
 
             panelTomos.ResumeLayout();
+            
         }
 
         private bool UsuarioEsPremium()
@@ -837,6 +925,7 @@ namespace ProyectScrum.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             BtnCancelar_Click(null!, null!);
+            CambiarAModoEdicion(false);
         }
 
 
@@ -928,6 +1017,7 @@ namespace ProyectScrum.Forms
             mangaSeleccionadoID = 0;
             nuevaPortadaSeleccionada = false;
 
+            CambiarAModoEdicion(false);
         }
 
         //btn Eliminar

@@ -61,7 +61,7 @@ namespace ProyectScrum.Forms
 
                 _emailSettings.EmailDestino = usuario.Email;
 
-                if (usuario.RolID == 1) 
+                if (usuario.RolID == 1)
                 {
                     MainAdminLayout adminForm = new MainAdminLayout(_emailSettings);
                     adminForm.FormClosed += MainForm_FormClosed;

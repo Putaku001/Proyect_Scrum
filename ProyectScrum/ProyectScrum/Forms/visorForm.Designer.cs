@@ -28,214 +28,285 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCerrar = new Button();
-            pnlContenedorPdf = new Panel();
-            btnHerramientas = new Button();
-            panelHerramientas = new Panel();
-            btnManga = new Button();
-            btnLibro = new Button();
-            btnCascada = new Button();
-            labelTitle = new Label();
-            btnMaximizar = new Button();
-            btnSiguiente = new Button();
-            btnAnterior = new Button();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            btnHerramientas = new Guna.UI2.WinForms.Guna2Button();
+            btnMaximizar = new Guna.UI2.WinForms.Guna2Button();
+            btnCerrar = new Guna.UI2.WinForms.Guna2Button();
+            tableLayoutPanel3 = new TableLayoutPanel();
             lblContadorPaginas = new Label();
-            panelHerramientas.SuspendLayout();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            pnlContenedorPdf = new Panel();
+            btnSiguiente = new Guna.UI2.WinForms.Guna2Button();
+            btnAnterior = new Guna.UI2.WinForms.Guna2Button();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
-            // btnCerrar
+            // tableLayoutPanel1
             // 
-            btnCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCerrar.Cursor = Cursors.Hand;
-            btnCerrar.FlatAppearance.BorderSize = 0;
-            btnCerrar.FlatStyle = FlatStyle.Flat;
-            btnCerrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCerrar.ForeColor = Color.White;
-            btnCerrar.Location = new Point(806, 1);
-            btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(75, 32);
-            btnCerrar.TabIndex = 0;
-            btnCerrar.Text = "Cerrar";
-            btnCerrar.UseVisualStyleBackColor = true;
-            btnCerrar.Click += btnCerrar_Click;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 1, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel4, 1, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.Size = new Size(882, 500);
+            tableLayoutPanel1.TabIndex = 1;
             // 
-            // pnlContenedorPdf
+            // tableLayoutPanel2
             // 
-            pnlContenedorPdf.Location = new Point(111, 32);
-            pnlContenedorPdf.Name = "pnlContenedorPdf";
-            pnlContenedorPdf.Size = new Size(665, 448);
-            pnlContenedorPdf.TabIndex = 1;
+            tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel2.Controls.Add(btnHerramientas, 2, 0);
+            tableLayoutPanel2.Controls.Add(btnMaximizar, 1, 0);
+            tableLayoutPanel2.Controls.Add(btnCerrar, 3, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(13, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(856, 44);
+            tableLayoutPanel2.TabIndex = 0;
             // 
             // btnHerramientas
             // 
+            btnHerramientas.Animated = true;
+            btnHerramientas.BorderColor = Color.White;
+            btnHerramientas.BorderRadius = 5;
+            btnHerramientas.BorderThickness = 1;
             btnHerramientas.Cursor = Cursors.Hand;
-            btnHerramientas.FlatAppearance.BorderSize = 0;
-            btnHerramientas.FlatStyle = FlatStyle.Flat;
+            btnHerramientas.CustomizableEdges = customizableEdges1;
+            btnHerramientas.DisabledState.BorderColor = Color.DarkGray;
+            btnHerramientas.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnHerramientas.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnHerramientas.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnHerramientas.Dock = DockStyle.Fill;
+            btnHerramientas.FillColor = Color.Transparent;
             btnHerramientas.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHerramientas.ForeColor = Color.White;
-            btnHerramientas.Location = new Point(738, 1);
+            btnHerramientas.Location = new Point(659, 3);
             btnHerramientas.Name = "btnHerramientas";
-            btnHerramientas.Size = new Size(75, 30);
-            btnHerramientas.TabIndex = 2;
+            btnHerramientas.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnHerramientas.Size = new Size(94, 38);
+            btnHerramientas.TabIndex = 0;
             btnHerramientas.Text = "⚙";
-            btnHerramientas.UseVisualStyleBackColor = true;
             btnHerramientas.Click += btnHerramientas_Click;
-            // 
-            // panelHerramientas
-            // 
-            panelHerramientas.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panelHerramientas.BackColor = Color.FromArgb(64, 64, 64);
-            panelHerramientas.Controls.Add(btnManga);
-            panelHerramientas.Controls.Add(btnLibro);
-            panelHerramientas.Controls.Add(btnCascada);
-            panelHerramientas.Controls.Add(labelTitle);
-            panelHerramientas.Location = new Point(558, 12);
-            panelHerramientas.Name = "panelHerramientas";
-            panelHerramientas.Size = new Size(218, 176);
-            panelHerramientas.TabIndex = 0;
-            // 
-            // btnManga
-            // 
-            btnManga.FlatStyle = FlatStyle.Flat;
-            btnManga.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnManga.ForeColor = Color.White;
-            btnManga.Location = new Point(71, 124);
-            btnManga.Name = "btnManga";
-            btnManga.Size = new Size(75, 29);
-            btnManga.TabIndex = 3;
-            btnManga.Text = "Manga";
-            btnManga.UseVisualStyleBackColor = true;
-            btnManga.Click += btnManga_Click;
-            // 
-            // btnLibro
-            // 
-            btnLibro.FlatStyle = FlatStyle.Flat;
-            btnLibro.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLibro.ForeColor = Color.White;
-            btnLibro.Location = new Point(71, 79);
-            btnLibro.Name = "btnLibro";
-            btnLibro.Size = new Size(75, 29);
-            btnLibro.TabIndex = 2;
-            btnLibro.Text = "Libro";
-            btnLibro.UseVisualStyleBackColor = true;
-            btnLibro.Click += btnLibro_Click;
-            // 
-            // btnCascada
-            // 
-            btnCascada.FlatStyle = FlatStyle.Flat;
-            btnCascada.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCascada.ForeColor = Color.White;
-            btnCascada.Location = new Point(71, 33);
-            btnCascada.Name = "btnCascada";
-            btnCascada.Size = new Size(75, 29);
-            btnCascada.TabIndex = 1;
-            btnCascada.Text = "Cascada";
-            btnCascada.UseVisualStyleBackColor = true;
-            btnCascada.Click += btnCascada_Click;
-            // 
-            // labelTitle
-            // 
-            labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelTitle.ForeColor = Color.White;
-            labelTitle.Location = new Point(47, 1);
-            labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(127, 20);
-            labelTitle.TabIndex = 0;
-            labelTitle.Text = "Modo de Lectura";
             // 
             // btnMaximizar
             // 
+            btnMaximizar.Animated = true;
+            btnMaximizar.BorderColor = Color.White;
+            btnMaximizar.BorderRadius = 5;
+            btnMaximizar.BorderThickness = 1;
             btnMaximizar.Cursor = Cursors.Hand;
-            btnMaximizar.FlatAppearance.BorderSize = 0;
-            btnMaximizar.FlatStyle = FlatStyle.Flat;
-            btnMaximizar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMaximizar.CustomizableEdges = customizableEdges3;
+            btnMaximizar.DisabledState.BorderColor = Color.DarkGray;
+            btnMaximizar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnMaximizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnMaximizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnMaximizar.Dock = DockStyle.Fill;
+            btnMaximizar.FillColor = Color.Transparent;
+            btnMaximizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMaximizar.ForeColor = Color.White;
-            btnMaximizar.Location = new Point(642, 1);
+            btnMaximizar.Location = new Point(559, 3);
             btnMaximizar.Name = "btnMaximizar";
-            btnMaximizar.Size = new Size(75, 30);
-            btnMaximizar.TabIndex = 6;
+            btnMaximizar.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnMaximizar.Size = new Size(94, 38);
+            btnMaximizar.TabIndex = 1;
             btnMaximizar.Text = "⛶";
-            btnMaximizar.UseVisualStyleBackColor = true;
             btnMaximizar.Click += btnMaximizar_Click;
             // 
-            // btnSiguiente
+            // btnCerrar
             // 
-            btnSiguiente.BackColor = Color.Transparent;
-            btnSiguiente.FlatAppearance.BorderSize = 0;
-            btnSiguiente.FlatStyle = FlatStyle.Flat;
-            btnSiguiente.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSiguiente.ForeColor = Color.White;
-            btnSiguiente.Location = new Point(782, 91);
-            btnSiguiente.Name = "btnSiguiente";
-            btnSiguiente.Size = new Size(75, 322);
-            btnSiguiente.TabIndex = 4;
-            btnSiguiente.Text = ">";
-            btnSiguiente.UseVisualStyleBackColor = false;
-            btnSiguiente.Click += btnSiguiente_Click;
+            btnCerrar.Animated = true;
+            btnCerrar.BorderColor = Color.White;
+            btnCerrar.BorderRadius = 5;
+            btnCerrar.BorderThickness = 1;
+            btnCerrar.Cursor = Cursors.Hand;
+            btnCerrar.CustomizableEdges = customizableEdges5;
+            btnCerrar.DisabledState.BorderColor = Color.DarkGray;
+            btnCerrar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCerrar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCerrar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCerrar.Dock = DockStyle.Fill;
+            btnCerrar.FillColor = Color.Transparent;
+            btnCerrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCerrar.ForeColor = Color.White;
+            btnCerrar.Location = new Point(759, 3);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnCerrar.Size = new Size(94, 38);
+            btnCerrar.TabIndex = 2;
+            btnCerrar.Text = "Cerrar";
+            btnCerrar.Click += btnCerrar_Click;
             // 
-            // btnAnterior
+            // tableLayoutPanel3
             // 
-            btnAnterior.BackColor = Color.Transparent;
-            btnAnterior.FlatAppearance.BorderSize = 0;
-            btnAnterior.FlatStyle = FlatStyle.Flat;
-            btnAnterior.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAnterior.ForeColor = Color.White;
-            btnAnterior.Location = new Point(30, 91);
-            btnAnterior.Name = "btnAnterior";
-            btnAnterior.Size = new Size(75, 322);
-            btnAnterior.TabIndex = 3;
-            btnAnterior.Text = "<";
-            btnAnterior.UseVisualStyleBackColor = false;
-            btnAnterior.Click += btnAnterior_Click;
+            tableLayoutPanel3.ColumnCount = 3;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 49.9999962F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000076F));
+            tableLayoutPanel3.Controls.Add(lblContadorPaginas, 1, 0);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(13, 473);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 1;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Size = new Size(856, 24);
+            tableLayoutPanel3.TabIndex = 1;
             // 
             // lblContadorPaginas
             // 
             lblContadorPaginas.AutoSize = true;
-            lblContadorPaginas.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblContadorPaginas.Dock = DockStyle.Fill;
+            lblContadorPaginas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblContadorPaginas.ForeColor = Color.White;
-            lblContadorPaginas.Location = new Point(393, 483);
+            lblContadorPaginas.Location = new Point(330, 0);
             lblContadorPaginas.Name = "lblContadorPaginas";
-            lblContadorPaginas.Size = new Size(36, 17);
-            lblContadorPaginas.TabIndex = 5;
+            lblContadorPaginas.Size = new Size(194, 24);
+            lblContadorPaginas.TabIndex = 0;
             lblContadorPaginas.Text = "num";
-            lblContadorPaginas.Visible = false;
+            lblContadorPaginas.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 3;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Controls.Add(tableLayoutPanel5, 1, 0);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(13, 53);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Size = new Size(856, 414);
+            tableLayoutPanel4.TabIndex = 2;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel5.Controls.Add(pnlContenedorPdf, 1, 0);
+            tableLayoutPanel5.Controls.Add(btnSiguiente, 2, 0);
+            tableLayoutPanel5.Controls.Add(btnAnterior, 0, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(23, 3);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel5.Size = new Size(810, 408);
+            tableLayoutPanel5.TabIndex = 0;
+            // 
+            // pnlContenedorPdf
+            // 
+            pnlContenedorPdf.BackColor = Color.FromArgb(2, 5, 20);
+            pnlContenedorPdf.Dock = DockStyle.Fill;
+            pnlContenedorPdf.Location = new Point(103, 3);
+            pnlContenedorPdf.Name = "pnlContenedorPdf";
+            pnlContenedorPdf.Size = new Size(604, 402);
+            pnlContenedorPdf.TabIndex = 0;
+            // 
+            // btnSiguiente
+            // 
+            btnSiguiente.Cursor = Cursors.Hand;
+            btnSiguiente.CustomizableEdges = customizableEdges7;
+            btnSiguiente.DisabledState.BorderColor = Color.DarkGray;
+            btnSiguiente.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSiguiente.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSiguiente.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSiguiente.Dock = DockStyle.Fill;
+            btnSiguiente.FillColor = Color.Transparent;
+            btnSiguiente.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSiguiente.ForeColor = Color.White;
+            btnSiguiente.Location = new Point(713, 3);
+            btnSiguiente.Name = "btnSiguiente";
+            btnSiguiente.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnSiguiente.Size = new Size(94, 402);
+            btnSiguiente.TabIndex = 1;
+            btnSiguiente.Text = ">";
+            btnSiguiente.Click += btnSiguiente_Click;
+            // 
+            // btnAnterior
+            // 
+            btnAnterior.Cursor = Cursors.Hand;
+            btnAnterior.CustomizableEdges = customizableEdges9;
+            btnAnterior.DisabledState.BorderColor = Color.DarkGray;
+            btnAnterior.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAnterior.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAnterior.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAnterior.Dock = DockStyle.Fill;
+            btnAnterior.FillColor = Color.Transparent;
+            btnAnterior.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAnterior.ForeColor = Color.White;
+            btnAnterior.Location = new Point(3, 3);
+            btnAnterior.Name = "btnAnterior";
+            btnAnterior.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnAnterior.Size = new Size(94, 402);
+            btnAnterior.TabIndex = 2;
+            btnAnterior.Text = "<";
+            btnAnterior.Click += btnAnterior_Click;
             // 
             // visorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Black;
+            BackColor = Color.FromArgb(2, 5, 20);
             ClientSize = new Size(882, 500);
-            Controls.Add(panelHerramientas);
-            Controls.Add(btnMaximizar);
-            Controls.Add(lblContadorPaginas);
-            Controls.Add(btnSiguiente);
-            Controls.Add(btnAnterior);
-            Controls.Add(btnHerramientas);
-            Controls.Add(pnlContenedorPdf);
-            Controls.Add(btnCerrar);
+            Controls.Add(tableLayoutPanel1);
             Name = "visorForm";
             Text = "visor";
-            panelHerramientas.ResumeLayout(false);
-            panelHerramientas.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button btnCerrar;
-        private Panel pnlContenedorPdf;
-        private Button btnHerramientas;
-        private Panel panelHerramientas;
-        private Button btnManga;
-        private Button btnLibro;
-        private Button btnCascada;
-        private Label labelTitle;
-        private Button btnSiguiente;
-        private Button btnAnterior;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Guna.UI2.WinForms.Guna2Button btnHerramientas;
+        private Guna.UI2.WinForms.Guna2Button btnMaximizar;
+        private Guna.UI2.WinForms.Guna2Button btnCerrar;
+        private TableLayoutPanel tableLayoutPanel3;
         private Label lblContadorPaginas;
-        private Button btnMaximizar;
+        private TableLayoutPanel tableLayoutPanel4;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Panel pnlContenedorPdf;
+        private Guna.UI2.WinForms.Guna2Button btnSiguiente;
+        private Guna.UI2.WinForms.Guna2Button btnAnterior;
     }
 }

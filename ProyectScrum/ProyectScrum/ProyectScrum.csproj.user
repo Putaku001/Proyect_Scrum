@@ -28,6 +28,9 @@
     <Compile Update="Forms\favs.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\PageTrial.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -44,9 +47,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\New_Password.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\PageTrial.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Pago.cs">

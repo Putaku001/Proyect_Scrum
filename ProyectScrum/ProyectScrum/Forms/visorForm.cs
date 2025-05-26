@@ -28,6 +28,7 @@ namespace ProyectScrum.Forms
         private Label lblOverlay;
 
         private Manga mangaActual;
+        private Guna.UI2.WinForms.Guna2Panel panelHerramientas;
 
         public visorForm(MemoryStream stream, Form origen, Manga manga)
         {
@@ -36,6 +37,7 @@ namespace ProyectScrum.Forms
             mangaFormReferencia = origen;
             this.Load += visorForm_Load;
             btnCerrar.Click += btnCerrar_Click;
+            InicializarPanelHerramientas();
 
             mangaActual = manga;
             tiempoInicioLectura = DateTime.Now;
@@ -71,6 +73,81 @@ namespace ProyectScrum.Forms
             panelOverlay.BringToFront();
 
         }
+        private void InicializarPanelHerramientas()
+        {
+            panelHerramientas = new Guna.UI2.WinForms.Guna2Panel
+            {
+                Name = "panelHerramientas",
+                Size = new Size(160, 180),
+                BorderRadius = 12,
+                BorderThickness = 2,
+                BorderColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                Visible = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right,
+                Location = new Point(this.ClientSize.Width - 180, 60),
+                ShadowDecoration = { Enabled = true }
+            };
+
+            Label lblModo = new Label
+            {
+                Text = "Modo de Lectura",
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Top,
+                Height = 40
+            };
+
+            var btnCascada = new Guna.UI2.WinForms.Guna2Button
+            {
+                Text = "Cascada",
+                Dock = DockStyle.Top,
+                Height = 40,
+                Margin = new Padding(10),
+                FillColor = Color.DimGray,
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                BorderRadius = 5
+            };
+            btnCascada.Click += btnCascada_Click;
+
+            var btnLibro = new Guna.UI2.WinForms.Guna2Button
+            {
+                Text = "Libro",
+                Dock = DockStyle.Top,
+                Height = 40,
+                Margin = new Padding(10),
+                FillColor = Color.DimGray,
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                BorderRadius = 5
+            };
+            btnLibro.Click += btnLibro_Click;
+
+            var btnManga = new Guna.UI2.WinForms.Guna2Button
+            {
+                Text = "Manga",
+                Dock = DockStyle.Top,
+                Height = 40,
+                Margin = new Padding(10),
+                FillColor = Color.DimGray,
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                BorderRadius = 5
+            };
+            btnManga.Click += btnManga_Click;
+
+            // Agregar controles
+            panelHerramientas.Controls.Add(btnManga);
+            panelHerramientas.Controls.Add(btnLibro);
+            panelHerramientas.Controls.Add(btnCascada);
+            panelHerramientas.Controls.Add(lblModo);
+            this.Controls.Add(panelHerramientas);
+            panelHerramientas.BringToFront();
+        }
+
 
         private void visorForm_Load(object sender, EventArgs e)
         {
@@ -122,7 +199,7 @@ namespace ProyectScrum.Forms
                 PictureBox visor = new PictureBox
                 {
                     Dock = DockStyle.Fill,
-                    BackColor = Color.Black,
+                    BackColor = Color.Transparent,
                     SizeMode = PictureBoxSizeMode.Zoom
                 };
 
