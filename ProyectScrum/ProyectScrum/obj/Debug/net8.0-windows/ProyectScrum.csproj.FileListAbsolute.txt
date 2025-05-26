@@ -71,7 +71,6 @@ C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
-C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Properties.Resources.resources
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
@@ -806,3 +805,6 @@ C:\Users\blanc_ma7kouo\Desktop\PS\proyecto terminado con diseño final\Proyect_S
 C:\Users\blanc_ma7kouo\Desktop\PS\proyecto terminado con diseño final\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.pdb
 C:\Users\blanc_ma7kouo\Desktop\PS\proyecto terminado con diseño final\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
 C:\Users\blanc_ma7kouo\Desktop\PS\proyecto terminado con diseño final\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Guna.UI2.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.SubidaMangaForm.resources
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ReDiseño.PageTrial.resources

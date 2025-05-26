@@ -17,8 +17,6 @@ namespace ReDiseño
         {
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.Dpi;
-            CargarImagenes();
-            MostrarImagenActual();
         }
         private void ISButton_Click(object sender, EventArgs e)
         {
@@ -38,7 +36,6 @@ namespace ReDiseño
         private void CargarImagenes()
         {
             // Puedes cargar desde recursos, archivos o URLs.
-            imagenes.Add(Image.FromFile("C:\\Users\\blanc_ma7kouo\\Documents\\aprendiendo C#\\ReDiseño\\ReDiseño\\Recursos\\img\\akunohana.jpg"));
             
 
             imagenes.Add(Image.FromFile("C:\\Users\\blanc_ma7kouo\\Documents\\aprendiendo C#\\ReDiseño\\ReDiseño\\Recursos\\img\\koe no katachi.jpg"));
@@ -62,14 +59,12 @@ namespace ReDiseño
         private void timer1_Tick(object sender, EventArgs e)
         {
             indiceActual = (indiceActual + 1) % imagenes.Count;
-            MostrarImagenActual();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             timer1.Stop();
             indiceActual = (indiceActual + 1) % imagenes.Count;
-            MostrarImagenActual();
             timer1.Start();
         }
 
@@ -77,7 +72,6 @@ namespace ReDiseño
         {
             timer1.Stop();
             indiceActual = (indiceActual - 1 + imagenes.Count) % imagenes.Count;
-            MostrarImagenActual();
             timer1.Start();
         }
     }
