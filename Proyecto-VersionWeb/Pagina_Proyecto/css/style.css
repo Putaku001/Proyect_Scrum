@@ -1,0 +1,522 @@
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Variables CSS para el tema oscuro */
+:root {
+  /* ===== TEMA OSCURO (default) ===== */
+  --bg-primary: #1c1c28;           /* Color de fondo principal */
+  --bg-secondary: #2c2f4a;         /* Color de fondo secundario */
+  --bg-tertiary: #13131f;          /* Color de fondo para footer */
+  --bg-header: rgba(30, 30, 50, 0.95); /* Color del header */
+  --bg-card: #2a2a3a;              /* Color de tarjetas/boxes */
+  --text-primary: #f0f0f0;         /* Color de texto principal */
+  --text-secondary: #a0a0b0;       /* Color de texto secundario */
+  --accent-color: #8a2be2;         /* Color de acento (links, botones) */
+  --button-primary: linear-gradient(135deg, #1e90ff, #8a2be2); /* Gradiente botones */
+  --input-bg: #2a2a3a;             /* Fondo de inputs */
+  --input-border: #3a3a5a;         /* Borde de inputs */
+  --button-text-color: #ffffff; /* Blanco para modo oscuro */
+  --login-bg: rgba(141, 129, 248, 0.6); /* Morado muy claro con transparencia */
+}
+
+[data-theme="light"] {
+  /* ===== TEMA CLARO ===== */
+  --bg-primary: #f5f5f5;           /* Fondo más claro */
+  --bg-secondary: #ffffff;         /* Blanco puro */
+  --bg-tertiary: #a4a4a4;         /* Gris claro para footer */
+  --bg-header: #fffffff2; /* Header blanco */
+  --bg-card: #ffffff;              /* Tarjetas blancas */
+  --text-primary: #404040;         /* Texto oscuro */
+  --text-secondary: #3f3f3f;       /* Texto gris */
+  --accent-color: #6a0dad;         /* Morado más oscuro */
+  --button-primary: linear-gradient(135deg, #4a89dc, #8a2be2); /* Gradiente más claro */
+  --input-bg: #ffffff;             /* Inputs blancos */
+  --input-border: #d0d0d0;         /* Bordes grises */
+  --button-text-color: #000000; /* Negro para modo claro */
+  --login-bg: rgba(141, 129, 248, 0.6); /* Morado pastel para modo claro */
+}
+
+/* Reset y Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+body {
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+  color: var(--text-primary);
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--bg-header); /* Usa variable para el fondo */
+  padding: 15px 30px;
+  z-index: 1000;
+  height: 70px; /* Altura fija */
+  padding: 0 30px; /* Reducimos padding vertical */
+  animation: slideDown 0.8s ease-out;
+  box-shadow: 0 8px 32px rgba(137, 129, 248, 0.574); /* Sombra morada suave */
+  border: 1px solid var(--input-border); /* Borde sutil */
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative; /* Añadido para posicionamiento relativo */
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-color); /* Color morado del logo */
+}
+.header-logo {
+  width: 70px;
+  height: auto;
+  margin-right: 12px;
+  transition: transform 0.3s ease; /* Agregamos animación al hover */
+}
+/* TEXTO DEL LOGO */
+.logo span {
+  font-size: 1.8rem;
+  background: linear-gradient(to right, var(--accent-color), #1e90ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+/* EFECTO HOVER ELEGANTE */
+.logo:hover .header-logo {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* Centrar el menú de navegación */
+nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+}
+nav ul li {
+  margin: 0 15px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-primary); /* Color de texto normal */
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav ul li a:hover {
+  color: var(--accent-color); /* Color al hacer hover */
+}
+/* Estilos para el enlace de Iniciar Sesión */
+.profile a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  background-color: var(--login-bg); /* Nuevo color */
+  backdrop-filter: blur(4px); /* Efecto vidrio esmerilado */
+}
+.profile a:hover {
+  background-color: rgba(147, 129, 248, 0.674);
+  box-shadow: 0 0 12px rgba(137, 129, 248, 0.674);
+  transform: translateY(-1px);
+  backdrop-filter: blur(6px); /* Más blur al hover */
+}
+
+/* Sección Hero */
+.hero {
+  position: relative;
+  height: 80vh;
+  background: url('img/hero-manga.jpg') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  animation: zoomIn 3s ease;
+}
+@keyframes zoomIn {
+  from { transform: scale(1.1); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1e90ff, #8a2be2);
+  opacity: 0.75;
+  z-index: 1;
+  animation: fadeIn 2s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.75; }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+  animation: fadeInUp 1.5s ease-out;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-content h1 {
+  font-size: 3.8rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  color: white; /* Asegura contraste con el fondo */
+}
+.hero-content p {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+  color:white; /* Asegura contraste con el fondo */
+}
+.hero-content button {
+  background: var(--button-primary); /* Usa gradiente según tema */
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+.hero-content button:hover {
+  background: var(--button-hover); /* Gradiente invertido al hover */
+  transform: scale(1.08);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Slider Section */
+.slider-section {
+  margin: 60px 30px;
+  text-align: center;
+}
+.slider-section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  animation: fadeIn 1.5s ease-out;
+  color: var(--text-primary); /* Color según tema */
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider-container {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  justify-content: center;
+  align-items: center;
+}
+.manga-card {
+  flex: 0 0 auto;
+  width: 240px;
+  height: 360px;
+  margin: 0 10px;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.manga-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.manga-card img:hover {
+  transform: scale(1.08) rotate(1deg);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+}
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(30,30,50,0.85);
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 10px;
+  z-index: 10;
+  transition: background 0.3s, transform 0.3s;
+}
+.slider-btn:hover {
+  background: rgba(30,30,50,1);
+  transform: scale(1.1);
+}
+.slider-btn.left {
+  left: 10px;
+}
+.slider-btn.right {
+  right: 10px;
+}
+
+/* Modal para Selección de Tomo */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+.modal-content {
+  background-color: var(--bg-modal); /* Fondo según tema */
+  color: var(--text-primary); /* Texto legible */
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+}
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover,
+.close:focus {
+  color: #fff;
+}
+.volume-options {
+  margin-top: 20px;
+}
+.volume-btn {
+  margin: 10px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1e90ff, #8a2be2);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.volume-btn:hover {
+  transform: scale(1.05);
+}
+.pdf-viewer {
+  margin-top: 20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 35px;
+  background: var(--bg-tertiary); /* Fondo oscuro/claro */
+  color: var(--text-secondary); /* Texto secundario */
+  font-size: 0.9rem;
+  box-shadow: 0 8px 32px rgba(137, 129, 248, 0.574); /* Sombra morada suave */
+  border: 1px solid var(--input-border); /* Borde sutil */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .manga-card {
+    width: 180px;
+    height: 270px;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  nav ul li {
+    margin: 0 10px;
+  }
+}
+@media (max-width: 480px) {
+  .header-container {
+    flex-direction: column;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul li {
+    margin: 10px 0;
+  }
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+}
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: var(--bg-primary); /* Fondo según tema */
+}
+
+.login-box {
+  background: var(--bg-card); /* Color de tarjeta */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow-medium);
+  color: var(--text-primary); /* Color de texto */
+  box-shadow: 0 8px 32px rgba(137, 129, 248, 0.574); /* Sombra morada suave */
+  border: 1px solid var(--input-border); /* Borde sutil */
+}
+
+.login-box h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-box label {
+  margin: 0.5rem 0 0.25rem;
+  color: var(--text-primary); /* Etiquetas visibles */
+}
+
+.login-box input {
+  padding: 0.8rem; /* Aumenté el padding para mejor tacto */
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  background: var(--input-bg); /* Fondo input */
+  border: 1px solid var(--input-border); /* Borde input */
+  color: var(--text-primary); /* Texto input */
+  transition: border-color 0.3s ease;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+}
+
+
+.login-box button {
+  padding: 0.75rem;
+  border: none;
+  background: var(--button-primary); /* Botón con gradiente */
+  color: white;  
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease; /* Añade transición para todos los cambios */
+}
+
+.login-box button:hover {
+  background: var(--button-hover); /* Efecto hover */
+  color: var(--button-text-color); /* Cambiado a variable para consistencia */
+  transform: translateY(-2px); /* Efecto de elevación sutil */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/* ESTILOS PARA EL THEME SWITCHER */
+.theme-switcher {
+  margin-left: auto; /* Esto empujará el botón a la derecha */
+  margin-right: 15px; /* Espaciado adicional */
+}
+
+#theme-toggle {
+  background: var(--button-secondary); /* Fondo del botón */
+  border: none;
+  border-radius: 50%; /* Forma circular */
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s; /* Transición suave */
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1); /* Efecto al hover */
+  background: var(--accent-color); /* Color al hover */
+}
+
+/* Manejo de iconos (luna/sol) */
+.light-icon { display: none; } /* Sol oculto por defecto */
+.dark-icon { display: inline; } /* Luna visible por defecto */
+
+[data-theme="light"] .dark-icon { display: none; } /* Oculta luna en tema claro */
+[data-theme="light"] .light-icon { display: inline; } /* Muestra sol en tema claro */
+
+/* ESTILOS PARA ENLACES DEL LOGIN */
+.login-links {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.forgot-password {
+  color: var(--accent-color); /* Color morado */
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline; /* Subrayado al hover */
+}
+
+.login-links p {
+  color: var(--text-secondary); /* Texto menos prominente */
+}
+
+.login-links a {
+  color: var(--accent-color); /* Enlace morado */
+}
+
