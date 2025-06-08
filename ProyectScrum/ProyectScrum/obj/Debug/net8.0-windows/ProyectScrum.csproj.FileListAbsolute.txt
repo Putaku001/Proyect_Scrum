@@ -90,7 +90,6 @@ C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\ne
 C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Login.resources
 C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Main.resources
 C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.New_Password.resources
-C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.PageTrial.resources
 C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Register.resources
 C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.csproj.GenerateResource.cache
 C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.dll
@@ -808,3 +807,14 @@ C:\Users\blanc_ma7kouo\Desktop\PS\proyecto terminado con diseño final\Proyect_S
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Guna.UI2.dll
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.SubidaMangaForm.resources
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ReDiseño.PageTrial.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Guna.UI2.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.AdminAddUser.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.AdminDashboard.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.AdminPanel.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.AdminUsersList.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.EditUserForm.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.MainAdminLayout.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.SubidaMangaForm.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ReDiseño.PageTrial.resources
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\itextsharp.dll

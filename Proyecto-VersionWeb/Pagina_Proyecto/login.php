@@ -1,33 +1,43 @@
 <?php
 session_start();
-include("db.php"); // Asegúrate que la ruta es correcta
+include("db.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email    = $_POST['email'];
     $password = $_POST['password'];
+    $hash     = hash('sha256', $password);
 
-    // Aplicar el mismo hash que en el registro
-    $passwordHash = hash('sha256', $password);
+    $sql    = "SELECT UsuarioID, NombreUsuario, RolID, Avatar
+               FROM Usuarios
+               WHERE Email = ? AND ContrasenaHash = ?";
+    $params = [$email, $hash];
+    $stmt   = sqlsrv_query($conn, $sql, $params);
 
-    $sql = "
-        SELECT UsuarioID, NombreUsuario, RolID 
-        FROM Usuarios 
-        WHERE Email = ? 
-        AND ContrasenaHash = ?
-    ";
-    $params = array($email, $passwordHash);
-    $stmt = sqlsrv_query($conn, $sql, $params);
-
-    if ($stmt && sqlsrv_has_rows($stmt)) {
-        $usuario = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-        $_SESSION['usuario_id'] = $usuario['UsuarioID'];
-        $_SESSION['nombre'] = $usuario['NombreUsuario'];
-        $_SESSION['rol'] = $usuario['RolID'];
-
-        header("Location: dashboard.php");
-        exit();
-    } else {
-        echo "<script>alert('Correo o contraseña incorrectos.'); window.location.href='login.html';</script>";
+    if ($stmt === false) {
+        die(print_r(sqlsrv_errors(), true));
     }
+
+    if (sqlsrv_has_rows($stmt)) {
+        $u = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+
+        /* ── Sesión ─────────────────────────────────────── */
+        $_SESSION['usuario_id'] = $u['UsuarioID'];
+        $_SESSION['nombre']     = $u['NombreUsuario'];
+        $_SESSION['rol']        = $u['RolID'];
+
+        if (!empty($u['Avatar'])) {
+            $_SESSION['avatar_bin'] = $u['Avatar'];     // BLOB → sesión
+        } else {
+            unset($_SESSION['avatar_bin']);             // se usará default.png
+        }
+
+        /* ── Redirección según rol ────────────────────── */
+        header("Location: " . ($u['RolID'] == 2 ? 'admin_dashboard.php'
+                                                : 'dashboard.php'));
+        exit();
+    }
+
+    echo "<script>alert('Correo o contraseña incorrectos.'); 
+          window.location.href='login.html';</script>";
 }
 ?>

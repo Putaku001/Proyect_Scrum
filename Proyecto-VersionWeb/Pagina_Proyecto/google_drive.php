@@ -1,34 +1,27 @@
 <?php
 /************************************************************************
  * google_drive.php
- *  - Usa OAuth 2.0 “installed app” (flujo en navegador)
- *  - Guarda refresh-token en disco para que la sesión de Drive dure meses
- *  - Renueva access-token en cada carga SIN pedir de nuevo consentimiento
- *  - Solo redirige a Google si el refresh-token no existe o está revocado
- ***********************************************************************/
-
+ *  - Lista archivos PDF de una carpeta en Drive.
+ *──────────────────────────────────────────────────────────────────────*/
 session_start();
 
-/*───────── CONFIGURACIÓN ─────────────────────────────────────────────*/
+/* ─── CONFIG ──────────────────────────────────────────────*/
 const CLIENT_ID     = '719046572033-27o8382k35lnbvkeo2fn4j0hu7bfvev9.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
 const REDIRECT_URI  = 'http://localhost/Pagina_Proyecto/google_drive.php';
 const SCOPE         = 'https://www.googleapis.com/auth/drive.readonly';
-const TOKEN_FILE    = __DIR__ . '/token_guardado.json';   // ⚠️ Fuera del doc-root si es posible
+const TOKEN_FILE    = __DIR__ . '/token_guardado.json';
 
-/* ID de la carpeta Drive que contiene los PDFs (puedes traerla de BD) */
-const FOLDER_ID     = '1yg7WSwfztQeGgGWybI1ngNSn2nIs494O';
-/*─────────────────────────────────────────────────────────────────────*/
+const FOLDER_ID     = '1yg7WSwfztQeGgGWybI1ngNSn2nIs494O';   // ejemplo
+/*──────────────────────────────────────────────────────────*/
 
-$manga_id = $_GET['id'] ?? null;
-
-/*───────── 1) Cargar refresh-token persistente ───────────────────────*/
+/* 1 ─ Cargar refresh-token si existe */
 if (empty($_SESSION['refresh_token']) && is_file(TOKEN_FILE)) {
-    $json = json_decode(file_get_contents(TOKEN_FILE), true) ?? [];
-    $_SESSION['refresh_token'] = $json['refresh_token'] ?? null;
+    $_SESSION['refresh_token'] =
+        json_decode(file_get_contents(TOKEN_FILE), true)['refresh_token'] ?? null;
 }
 
-/*───────── 2) Renovar el access-token siempre que haya refresh ───────*/
+/* 2 ─ Renovar access-token con refresh-token */
 if (!empty($_SESSION['refresh_token'])) {
     $ch = curl_init('https://oauth2.googleapis.com/token');
     curl_setopt_array($ch, [
@@ -47,29 +40,31 @@ if (!empty($_SESSION['refresh_token'])) {
         $_SESSION['access_token']  = $tok['access_token'];
         $_SESSION['token_expires'] = time() + $tok['expires_in'];
     } else {
-        // Falló el refresh (revocado / caducado)
         unset($_SESSION['refresh_token']);
         @unlink(TOKEN_FILE);
     }
 }
 
-/*───────── 3) Si aún falta token ⇒ pedir autorización a Google ──────*/
+/* 3 ─ Pedir autorización solo si falta el access-token */
 if (empty($_SESSION['access_token']) && empty($_GET['code'])) {
-    $state = json_encode(['page' => 'detalle_manga', 'id' => $manga_id]);
+
+    $need_prompt = !is_file(TOKEN_FILE);
+
+    $state = json_encode(['page' => 'detalle_manga', 'id' => ($_GET['id'] ?? null)]);
     $auth_url = 'https://accounts.google.com/o/oauth2/auth?' . http_build_query([
         'response_type' => 'code',
         'client_id'     => CLIENT_ID,
         'redirect_uri'  => REDIRECT_URI,
         'scope'         => SCOPE,
-        'access_type'   => 'offline'       // necesario para recibir refresh-token
-        // sin 'prompt' → Google decide si muestra consentimiento
-        ,'state'        => $state
+        'access_type'   => 'offline',
+        'prompt'        => $need_prompt ? 'consent' : 'none',
+        'state'         => $state
     ]);
     header('Location: ' . $auth_url);
     exit;
 }
 
-/*───────── 4) Canjear “code” por tokens (solo primera vez) ───────────*/
+/* 4 ─ Canjear code por tokens y guardar (igual que arriba) */
 if (isset($_GET['code'])) {
     $ch = curl_init('https://oauth2.googleapis.com/token');
     curl_setopt_array($ch, [
@@ -85,42 +80,46 @@ if (isset($_GET['code'])) {
     $tok = json_decode(curl_exec($ch), true);
     curl_close($ch);
 
+    error_log('🔑 TOKENS (drive): ' . print_r($tok, true));
+
     if (!empty($tok['access_token'])) {
         $_SESSION['access_token']  = $tok['access_token'];
         $_SESSION['token_expires'] = time() + $tok['expires_in'];
 
         if (!empty($tok['refresh_token'])) {
             $_SESSION['refresh_token'] = $tok['refresh_token'];
-            file_put_contents(TOKEN_FILE, json_encode(
-                ['refresh_token' => $tok['refresh_token']],
-                JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
-            ));
+            $bytes = file_put_contents(
+                TOKEN_FILE,
+                json_encode(['refresh_token' => $tok['refresh_token']],
+                            JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+            );
+            error_log("💾 SAVE TOKEN (drive): wrote $bytes bytes");
         }
 
-        /* Redirigir a detalle_manga si veníamos de allí */
+        /* Redirección al punto de partida */
         if (!empty($_GET['state'])) {
-            $state = json_decode($_GET['state'], true);
-            if ($state && $state['page'] === 'detalle_manga' && !empty($state['id'])) {
-                header('Location: detalle_manga.php?id=' . urlencode($state['id']));
+            $s = json_decode($_GET['state'], true);
+            if ($s && $s['page'] === 'detalle_manga' && !empty($s['id'])) {
+                header('Location: detalle_manga.php?id=' . urlencode($s['id']));
                 exit;
             }
         }
 
-        header('Location: ' . REDIRECT_URI);  // recargar limpio
+        header('Location: ' . REDIRECT_URI);
         exit;
     }
 
-    die('<h2>Error al canjear el code:</h2><pre>' . print_r($tok, true) . '</pre>');
+    die('Error OAuth (drive): ' . print_r($tok, true));
 }
 
-/*───────── 5) Ya tenemos access-token válido → usar Drive API ────────*/
+/* 5 ─ Access-token listo → llamar Drive API */
 $access_token = $_SESSION['access_token'];
 
+/* ----------- TU LÓGICA PARA LISTAR ARCHIVOS ---------------- */
 $ch = curl_init(
-    'https://www.googleapis.com/drive/v3/files?' .
-    http_build_query([
-        'q'      => sprintf("'%s' in parents and mimeType='application/pdf' and trashed=false", FOLDER_ID),
-        'fields' => 'files(id,name,webViewLink)',
+    'https://www.googleapis.com/drive/v3/files?' . http_build_query([
+        'q'        => sprintf("'%s' in parents and mimeType='application/pdf' and trashed=false", FOLDER_ID),
+        'fields'   => 'files(id,name,webViewLink)',
         'pageSize' => 100
     ])
 );
@@ -136,31 +135,18 @@ curl_close($ch);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Volúmenes desde Google Drive</title>
-    <style>
-        body{font-family:Arial,Helvetica,sans-serif;background:#111;color:#eee;padding:2rem}
-        h1{margin-bottom:1rem}
-        ul{list-style:none;padding:0}
-        li{margin:.4rem 0}
-        a{color:#4ec7ff;text-decoration:none}
-        a:hover{text-decoration:underline}
-    </style>
+    <title>Volúmenes disponibles</title>
+    <style>body{font-family:Arial;background:#111;color:#eee;padding:2rem}</style>
 </head>
 <body>
     <h1>Volúmenes disponibles</h1>
-
     <?php if ($archivos): ?>
         <ul>
             <?php foreach ($archivos as $f): ?>
-                <li>
-                    <a href="<?= htmlspecialchars($f['webViewLink']) ?>" target="_blank">
-                        <?= htmlspecialchars($f['name']) ?>
-                    </a>
-                </li>
+                <li><a href="<?= htmlspecialchars($f['webViewLink']) ?>" target="_blank">
+                    <?= htmlspecialchars($f['name']) ?></a></li>
             <?php endforeach; ?>
         </ul>
-    <?php else: ?>
-        <p>No se encontraron archivos PDF en la carpeta.</p>
-    <?php endif; ?>
+    <?php else: ?><p>No se encontraron PDFs.</p><?php endif; ?>
 </body>
 </html>

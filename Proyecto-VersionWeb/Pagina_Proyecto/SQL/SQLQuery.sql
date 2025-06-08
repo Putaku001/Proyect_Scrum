@@ -1,7 +1,7 @@
-create database proyectoDBS3
+﻿create database proyectoDBS2
 go
 
-use proyectoDBS3
+use proyectoDBS2
 go
 
 
@@ -21,6 +21,15 @@ CREATE TABLE Usuarios (
     FechaRegistro DATETIME DEFAULT GETDATE(),
     RolID INT NOT NULL,
     FOREIGN KEY (RolID) REFERENCES Roles(RolID)
+);
+
+CREATE TABLE Suscripciones (
+    SuscripcionID INT PRIMARY KEY IDENTITY(1,1),
+    UsuarioID INT NOT NULL,
+    TipoSuscripcion NVARCHAR(20) NOT NULL, 
+    FechaInicio DATE NOT NULL DEFAULT GETDATE(),
+    FechaFin DATE NOT NULL,
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID) ON DELETE CASCADE
 );
 
 -- Tabla de G�neros
@@ -154,6 +163,18 @@ UPDATE Mangas SET URLPortadaWeb = 'imgs/covers/ruri-dragon-vol1.jpg' WHERE Titul
 UPDATE Mangas SET URLPortadaWeb = 'imgs/covers/yourname.jpg' WHERE Titulo = 'Kimi no Na wa';
 UPDATE Mangas SET URLPortadaWeb = 'imgs/covers/KS.jpg' WHERE Titulo = 'Kaichou-kun no Shimobe';
 
+INSERT INTO Roles (Nombre) VALUES ('Administrador');
+
+INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID)
+VALUES (
+  'admin', 
+  'admin@mangaverse.com', 
+  HASHBYTES('SHA2_256', 'admin123'), 
+  2
+);
+
+ALTER TABLE Usuarios
+ADD Avatar VARBINARY(MAX) NULL;
 
 
 select * from TitulosAlternativos

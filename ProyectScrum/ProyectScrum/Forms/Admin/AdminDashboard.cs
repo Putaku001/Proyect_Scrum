@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ProyectScrum.Data;
+using ProyectScrum.Entities;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-using ProyectScrum.Data;
 
 namespace ProyectScrum.Forms
 {
@@ -113,6 +114,20 @@ namespace ProyectScrum.Forms
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadDashboardData();
+        }
+
+        private void btnGenerarPDF_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaDestino = folderDialog.SelectedPath;
+                    var generador = new ReporteManager(_dataAccess.GetConnection().ConnectionString);
+                    string resultado = generador.GenerarReporteUsuariosPremium(rutaDestino);
+                    MessageBox.Show(resultado, "Reporte", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

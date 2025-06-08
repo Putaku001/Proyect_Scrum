@@ -1,24 +1,36 @@
 <?php
-include("db.php"); // Asegúrate que la ruta es correcta
+include("db.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
+    $nombre   = trim($_POST['nombre']);
+    $email    = trim($_POST['email']);
     $password = $_POST['password'];
-    $rolId = 1;
+    $rolId    = 1; // Rol por defecto: Usuario
 
-    // Hashear en PHP usando SHA-256
+    /* ── Hash ── */
     $passwordHash = hash('sha256', $password);
 
-    $sql = "INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID)
-            VALUES (?, ?, ?, ?)";
+    /* ── ¿Usuario o correo repetidos? ─────────────────── */
+    $checkSql    = "SELECT COUNT(*) AS total FROM Usuarios WHERE NombreUsuario = ? OR Email = ?";
+    $checkParams = [$nombre, $email];
+    $checkStmt   = sqlsrv_query($conn, $checkSql, $checkParams);
+    $exists      = sqlsrv_fetch_array($checkStmt, SQLSRV_FETCH_ASSOC);
+
+    if ($exists['total'] > 0) {
+        echo "<script>alert('El nombre de usuario o el correo ya están registrados.'); window.location.href='register.html';</script>";
+        exit();
+    }
+
+    /* ── Insertar nuevo usuario (Avatar queda NULL) ───── */
+    $sql    = "INSERT INTO Usuarios (NombreUsuario, Email, ContrasenaHash, RolID) VALUES (?, ?, ?, ?)";
     $params = [$nombre, $email, $passwordHash, $rolId];
-    $stmt = sqlsrv_query($conn, $sql, $params);
+    $stmt   = sqlsrv_query($conn, $sql, $params);
 
     if ($stmt) {
         echo "<script>alert('Registro exitoso. Puedes iniciar sesión.'); window.location.href='login.html';</script>";
     } else {
-        echo "<script>alert('Error al registrar. Verifica que el correo o nombre no estén en uso.'); window.location.href='register.html';</script>";
+        $errors = print_r(sqlsrv_errors(), true);
+        echo "<script>console.error(" . json_encode($errors) . "); alert('Error al registrar.'); window.location.href='register.html';</script>";
     }
 }
 ?>
