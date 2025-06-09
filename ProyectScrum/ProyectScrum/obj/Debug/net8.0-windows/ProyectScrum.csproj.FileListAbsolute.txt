@@ -818,3 +818,5 @@ C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\ne
 C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ReDiseño.PageTrial.resources
 C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
 C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\itextsharp.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\itextsharp.dll

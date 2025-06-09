@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             label8 = new Label();
@@ -47,6 +49,7 @@
             label1 = new Label();
             txtBuscar = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            btnSorprendeme = new Guna.UI2.WinForms.Guna2Button();
             tableLayoutPanel7 = new TableLayoutPanel();
             tableLayoutPanel8 = new TableLayoutPanel();
             label2 = new Label();
@@ -111,7 +114,7 @@
             btnFiltro.BorderRadius = 5;
             btnFiltro.BorderThickness = 1;
             btnFiltro.Cursor = Cursors.Hand;
-            btnFiltro.CustomizableEdges = customizableEdges7;
+            btnFiltro.CustomizableEdges = customizableEdges1;
             btnFiltro.DisabledState.BorderColor = Color.DarkGray;
             btnFiltro.DisabledState.CustomBorderColor = Color.DarkGray;
             btnFiltro.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -121,7 +124,7 @@
             btnFiltro.ForeColor = Color.White;
             btnFiltro.Location = new Point(-3, 3);
             btnFiltro.Name = "btnFiltro";
-            btnFiltro.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnFiltro.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnFiltro.Size = new Size(94, 38);
             btnFiltro.TabIndex = 1;
             btnFiltro.Text = "Filtrar";
@@ -188,39 +191,43 @@
             // 
             tableLayoutPanel5.BackColor = Color.FromArgb(2, 5, 20);
             tableLayoutPanel5.ColumnCount = 3;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
             tableLayoutPanel5.Controls.Add(tableLayoutPanel6, 1, 0);
             tableLayoutPanel5.Controls.Add(tableLayoutPanel7, 1, 2);
             tableLayoutPanel5.Controls.Add(flowLayoutPanel1, 1, 1);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.ForeColor = Color.FromArgb(2, 5, 20);
             tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 3;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 67F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel5.Size = new Size(882, 500);
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel5.Size = new Size(1008, 667);
             tableLayoutPanel5.TabIndex = 1;
             // 
             // tableLayoutPanel6
             // 
-            tableLayoutPanel6.ColumnCount = 4;
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            tableLayoutPanel6.ColumnCount = 5;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 114F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 343F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 175F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 114F));
             tableLayoutPanel6.Controls.Add(label1, 0, 0);
             tableLayoutPanel6.Controls.Add(txtBuscar, 1, 0);
-            tableLayoutPanel6.Controls.Add(guna2Button1, 3, 0);
+            tableLayoutPanel6.Controls.Add(guna2Button1, 4, 0);
+            tableLayoutPanel6.Controls.Add(btnSorprendeme, 3, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(53, 3);
+            tableLayoutPanel6.Location = new Point(60, 4);
+            tableLayoutPanel6.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.Size = new Size(776, 44);
+            tableLayoutPanel6.Size = new Size(888, 59);
             tableLayoutPanel6.TabIndex = 0;
             // 
             // label1
@@ -231,7 +238,7 @@
             label1.ForeColor = SystemColors.ButtonFace;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(94, 44);
+            label1.Size = new Size(108, 59);
             label1.TabIndex = 19;
             label1.Text = "Catalogo";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -240,7 +247,7 @@
             // 
             txtBuscar.BorderColor = Color.Black;
             txtBuscar.BorderRadius = 8;
-            txtBuscar.CustomizableEdges = customizableEdges9;
+            txtBuscar.CustomizableEdges = customizableEdges3;
             txtBuscar.DefaultText = "";
             txtBuscar.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBuscar.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -251,12 +258,13 @@
             txtBuscar.Font = new Font("Segoe UI", 9F);
             txtBuscar.ForeColor = Color.Black;
             txtBuscar.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBuscar.Location = new Point(103, 9);
+            txtBuscar.Location = new Point(117, 11);
+            txtBuscar.Margin = new Padding(3, 5, 3, 5);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.PlaceholderText = "";
             txtBuscar.SelectedText = "";
-            txtBuscar.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtBuscar.Size = new Size(294, 32);
+            txtBuscar.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            txtBuscar.Size = new Size(337, 43);
             txtBuscar.TabIndex = 0;
             txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
@@ -266,7 +274,7 @@
             guna2Button1.BorderRadius = 5;
             guna2Button1.BorderThickness = 1;
             guna2Button1.Cursor = Cursors.Hand;
-            guna2Button1.CustomizableEdges = customizableEdges11;
+            guna2Button1.CustomizableEdges = customizableEdges5;
             guna2Button1.DisabledState.BorderColor = Color.DarkGray;
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -274,27 +282,52 @@
             guna2Button1.FillColor = Color.Black;
             guna2Button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(679, 3);
+            guna2Button1.Location = new Point(777, 4);
+            guna2Button1.Margin = new Padding(3, 4, 3, 4);
             guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Button1.Size = new Size(94, 38);
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2Button1.Size = new Size(107, 51);
             guna2Button1.TabIndex = 1;
             guna2Button1.Text = "Filtrar";
             guna2Button1.Click += btnFiltro_Click;
+            // 
+            // btnSorprendeme
+            // 
+            btnSorprendeme.Animated = true;
+            btnSorprendeme.BorderColor = Color.White;
+            btnSorprendeme.BorderRadius = 5;
+            btnSorprendeme.BorderThickness = 2;
+            btnSorprendeme.CustomizableEdges = customizableEdges7;
+            btnSorprendeme.DisabledState.BorderColor = Color.DarkGray;
+            btnSorprendeme.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSorprendeme.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSorprendeme.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSorprendeme.Dock = DockStyle.Fill;
+            btnSorprendeme.FillColor = Color.Black;
+            btnSorprendeme.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSorprendeme.ForeColor = Color.White;
+            btnSorprendeme.Location = new Point(602, 3);
+            btnSorprendeme.Name = "btnSorprendeme";
+            btnSorprendeme.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnSorprendeme.Size = new Size(169, 53);
+            btnSorprendeme.TabIndex = 20;
+            btnSorprendeme.Text = "🎲 Sorpréndeme";
+            btnSorprendeme.Click += btnSorprendeme_Click_1;
             // 
             // tableLayoutPanel7
             // 
             tableLayoutPanel7.ColumnCount = 3;
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 171F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel7.Controls.Add(tableLayoutPanel8, 1, 0);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(53, 473);
+            tableLayoutPanel7.Location = new Point(60, 631);
+            tableLayoutPanel7.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(776, 24);
+            tableLayoutPanel7.Size = new Size(888, 32);
             tableLayoutPanel7.TabIndex = 2;
             // 
             // tableLayoutPanel8
@@ -305,11 +338,12 @@
             tableLayoutPanel8.Controls.Add(label2, 0, 0);
             tableLayoutPanel8.Controls.Add(label3, 1, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
-            tableLayoutPanel8.Location = new Point(316, 3);
+            tableLayoutPanel8.Location = new Point(361, 4);
+            tableLayoutPanel8.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 1;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(144, 18);
+            tableLayoutPanel8.Size = new Size(165, 24);
             tableLayoutPanel8.TabIndex = 0;
             // 
             // label2
@@ -322,7 +356,7 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(66, 18);
+            label2.Size = new Size(76, 24);
             label2.TabIndex = 25;
             label2.Text = "<";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -337,9 +371,9 @@
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(75, 0);
+            label3.Location = new Point(85, 0);
             label3.Name = "label3";
-            label3.Size = new Size(66, 18);
+            label3.Size = new Size(77, 24);
             label3.TabIndex = 24;
             label3.Text = ">";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -350,19 +384,19 @@
             // 
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(53, 53);
+            flowLayoutPanel1.Location = new Point(60, 71);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(776, 414);
+            flowLayoutPanel1.Size = new Size(888, 552);
             flowLayoutPanel1.TabIndex = 3;
             // 
             // Catalog
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(882, 500);
+            ClientSize = new Size(1008, 667);
             Controls.Add(tableLayoutPanel5);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Catalog";
             Text = "Catalog";
             Load += Catalog_Load;
@@ -401,5 +435,6 @@
         private Label label2;
         private Label label3;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Button btnSorprendeme;
     }
 }

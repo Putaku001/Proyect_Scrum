@@ -91,8 +91,42 @@ namespace ProyectScrum.Forms
             // Agregar panel al formulario
             this.Controls.Add(panelFiltro);
             panelFiltro.BringToFront();
+
         }
 
+        private Manga ObtenerMangaAleatorio()
+        {
+            SqlDataAccess db = new SqlDataAccess();
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                // Usamos NEWID() para ordenar aleatoriamente en SQL Server
+                string query = @"SELECT TOP 1 MangaID, Titulo, Autor, Descripcion, Estado, 
+                        FechaPublicacion, URLMangaDrive, URLPortada, GeneroID
+                        FROM Mangas
+                        ORDER BY NEWID()";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return new Manga
+                    {
+                        MangaID = reader.GetInt32(0),
+                        Titulo = reader.GetString(1),
+                        Autor = reader.GetString(2),
+                        Descripcion = reader.GetString(3),
+                        Estado = reader.GetString(4),
+                        FechaPublicacion = reader.GetDateTime(5),
+                        URLMangaDrive = reader.GetString(6),
+                        URLPortada = reader.GetString(7),
+                        GeneroID = reader.GetInt32(8)
+                    };
+                }
+            }
+            return null;
+        }
         private List<Manga> ObtenerMangas()
         {
             List<Manga> mangas = new List<Manga>();
@@ -628,6 +662,26 @@ namespace ProyectScrum.Forms
                 contenedor.Controls.Add(portada);
                 contenedor.Controls.Add(lblTitulo);
                 flowLayoutPanel1.Controls.Add(contenedor);
+            }
+        }
+
+        private void btnSorprendeme_Click_1(object sender, EventArgs e)
+        {
+            Manga mangaAleatorio = ObtenerMangaAleatorio();
+
+            if (mangaAleatorio != null)
+            {
+                string genero = ObtenerGenero(mangaAleatorio.GeneroID);
+                mangaForm form = new mangaForm(CapturedData.UsuarioID);
+                form.CargarManga(mangaAleatorio, genero);
+
+                if (this.TopLevelControl is Main main)
+                    main.AbrirFormularioEnPanel(form);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo encontrar un manga aleatorio.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
