@@ -173,6 +173,7 @@ namespace ProyectScrum.Forms
         private void MostrarPortadas()
         {
             flowLayoutPanel1.Controls.Clear();
+
             var mangas = ObtenerMangas();
 
             foreach (var manga in mangas)
@@ -229,6 +230,12 @@ namespace ProyectScrum.Forms
                 // Evento al hacer clic en la portada o el contenedor
                 EventHandler abrirManga = (s, e) =>
                 {
+                    if (!UsuarioTieneSuscripcionActiva(CapturedData.UsuarioID))
+                    {
+                        MessageBox.Show("Necesitas una suscripción activa para leer este manga.", "Suscripción requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
                     string titulo = (string)((Control)s).Tag;
                     Manga m = ObtenerMangaPorTitulo(titulo);
 
@@ -426,6 +433,12 @@ namespace ProyectScrum.Forms
 
                 EventHandler abrirManga = (s, e) =>
                 {
+                    if (!UsuarioTieneSuscripcionActiva(CapturedData.UsuarioID))
+                    {
+                        MessageBox.Show("Necesitas una suscripción activa para leer este manga.", "Suscripción requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
                     string titulo = (string)((Control)s).Tag;
                     Manga m = ObtenerMangaPorTitulo(titulo);
                     if (m != null)
@@ -627,6 +640,12 @@ namespace ProyectScrum.Forms
 
                 EventHandler abrirManga = (s, e) =>
                 {
+                    if (!UsuarioTieneSuscripcionActiva(CapturedData.UsuarioID))
+                    {
+                        MessageBox.Show("Necesitas una suscripción activa para leer este manga.", "Suscripción requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
                     string titulo = (string)((Control)s).Tag;
                     Manga m = ObtenerMangaPorTitulo(titulo);
 
@@ -638,6 +657,10 @@ namespace ProyectScrum.Forms
 
                         if (this.TopLevelControl is Main main)
                             main.AbrirFormularioEnPanel(form);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo cargar el manga.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 };
 
@@ -709,5 +732,31 @@ namespace ProyectScrum.Forms
             return titulos;
         }
 
+        private bool UsuarioTieneSuscripcionActiva(int usuarioId)
+        {
+            SqlDataAccess db = new SqlDataAccess();
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                // Verifica si tiene suscripción activa o es premium
+                string query = @"
+                    SELECT 
+                        CASE 
+                            WHEN EXISTS (
+                                SELECT 1 FROM Suscripciones 
+                                WHERE UsuarioID = @UsuarioID AND CONVERT(date, FechaFin) >= CONVERT(date, GETDATE())
+                            ) THEN 1
+                            WHEN EXISTS (
+                                SELECT 1 FROM Usuarios 
+                                WHERE UsuarioID = @UsuarioID AND EsPremium = 1
+                            ) THEN 1
+                            ELSE 0
+                        END";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+                int result = (int)cmd.ExecuteScalar();
+                return result == 1;
+            }
+        }
     }
 }
