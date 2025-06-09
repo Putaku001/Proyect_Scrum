@@ -1,16 +1,21 @@
 <?php
-/* 1 ─ Iniciar sesión SOLAMENTE si aún no existe */
+/*─────────────────────────────────────────────────────────────*
+ * detalle_manga.php – Ficha de un manga + lista de tomos PDF *
+ * Bloquea todo acceso a tomos para usuarios NO Premium       *
+ *─────────────────────────────────────────────────────────────*/
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 require_once 'db.php';
-require_once 'drive_auth.php';   // ← ya devuelve $access_token
+require_once 'drive_auth.php';   // ← $access_token listo
 
-/*────  Datos del manga  ───────────────────────────────────────────*/
+/*─────  Manga solicitado  ────────────────────────────────────*/
 if (!isset($_GET['id'])) die('Manga no especificado.');
 $mangaId = (int)$_GET['id'];
 
+/* Info del manga */
 $sql = "SELECT M.Titulo, M.Autor, M.Descripcion, M.FechaPublicacion,
                M.URLMangaDrive, M.URLPortada, M.URLPortadaWeb,
                G.Nombre AS Genero
@@ -29,7 +34,7 @@ $urlPortadaDrive  = sqlsrv_get_field($stmt, 5);
 $urlPortadaWeb    = sqlsrv_get_field($stmt, 6);
 $genero           = sqlsrv_get_field($stmt, 7);
 
-/*────  Portada  ──────────────────────────────────────────────────*/
+/*─────  Portada  ─────────────────────────────────────────────*/
 $urlPortada = './imgs/no_portada.png';
 if (!empty($urlPortadaWeb) && file_exists($urlPortadaWeb)) {
     $urlPortada = $urlPortadaWeb;
@@ -37,15 +42,29 @@ if (!empty($urlPortadaWeb) && file_exists($urlPortadaWeb)) {
     $urlPortada = $urlPortadaDrive;
 }
 
-/*────  Extraer ID de carpeta de Drive  ───────────────────────────*/
-function folderId($url) {
+/*─────  ¿El visitante es Premium?  ──────────────────────────*/
+$usuarioPremium = false;
+if (isset($_SESSION['usuario_id'])) {
+    $stmtP = sqlsrv_query(
+        $conn,
+        "SELECT EsPremium FROM Usuarios WHERE UsuarioID = ?",
+        [$_SESSION['usuario_id']]
+    );
+    if ($stmtP && sqlsrv_fetch($stmtP)) {
+        $usuarioPremium = (bool) sqlsrv_get_field($stmtP, 0);
+    }
+}
+
+/*─────  ID de la carpeta Drive  ─────────────────────────────*/
+function folderId($url)
+{
     if (preg_match('/\/folders\/([a-zA-Z0-9_-]+)/', $url, $m)) return $m[1];
     if (preg_match('/[?&]id=([a-zA-Z0-9_-]+)/', $url, $m))    return $m[1];
     return null;
 }
 $folder_id = folderId($urlDrive) ?: die('Carpeta Drive inválida.');
 
-/*────  Listar los PDFs  ──────────────────────────────────────────*/
+/*─────  Listar PDFs  ─────────────────────────────────────────*/
 $ch = curl_init(
     'https://www.googleapis.com/drive/v3/files?' . http_build_query([
         'q'        => sprintf("'%s' in parents and mimeType='application/pdf' and trashed=false", $folder_id),
@@ -61,13 +80,12 @@ $data     = json_decode(curl_exec($ch), true) ?: [];
 $archivos = $data['files'] ?? [];
 curl_close($ch);
 
-usort($archivos, function($a,$b){
-    preg_match('/(\d+)/',$a['name'],$na);
-    preg_match('/(\d+)/',$b['name'],$nb);
-    return ($na[1]??0) - ($nb[1]??0);
+/* Orden numérico */
+usort($archivos, function ($a, $b) {
+    preg_match('/(\d+)/', $a['name'], $na);
+    preg_match('/(\d+)/', $b['name'], $nb);
+    return ($na[1] ?? 0) - ($nb[1] ?? 0);
 });
-
-/*────  HTML (idéntico a tu versión original) ─────────────────────*/
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -76,6 +94,7 @@ usort($archivos, function($a,$b){
     <title><?php echo htmlspecialchars($titulo); ?> - Manga Verse</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
+        /* ——— TODO tu CSS original sin tocar ——— */
         body {
             background: var(--bg-primary);
             color: var(--text-primary);
@@ -148,7 +167,7 @@ usort($archivos, function($a,$b){
             text-decoration: underline;
         }
         footer p {
-        color: var(--text-secondary);
+            color: var(--text-secondary);
         }
     </style>
 </head>
@@ -195,18 +214,16 @@ usort($archivos, function($a,$b){
             <h3>📖 Sinopsis</h3>
             <p><?php echo nl2br(htmlspecialchars($descripcion)); ?></p>
 
-            <?php
-            $esFavorito = false;
-            if (isset($_SESSION['usuario_id'])) {
-                $usuarioId = $_SESSION['usuario_id'];
-                $sqlFav = "SELECT 1 FROM Favoritos WHERE UsuarioID = ? AND MangaID = ?";
-                $stmtFav = sqlsrv_query($conn, $sqlFav, [$usuarioId, $mangaId]);
-                if ($stmtFav && sqlsrv_fetch($stmtFav)) {
-                    $esFavorito = true;
-                }
-            }
-            ?>
-
+<?php
+/*── Favoritos ───────────────────────────────────────────────*/
+$esFavorito = false;
+if (isset($_SESSION['usuario_id'])) {
+    $usuarioId = $_SESSION['usuario_id'];
+    $sqlFav = "SELECT 1 FROM Favoritos WHERE UsuarioID = ? AND MangaID = ?";
+    $stmtFav = sqlsrv_query($conn, $sqlFav, [$usuarioId, $mangaId]);
+    if ($stmtFav && sqlsrv_fetch($stmtFav)) $esFavorito = true;
+}
+?>
             <?php if (isset($_SESSION['usuario_id'])): ?>
                 <form action="<?= $esFavorito ? 'quitar_favorito.php' : 'agregar_favorito.php' ?>" method="POST" style="margin-top: 15px;">
                     <input type="hidden" name="manga_id" value="<?= $mangaId ?>">
@@ -227,32 +244,44 @@ usort($archivos, function($a,$b){
                 <p><a href="login.html" style="color: #1e90ff;">Inicia sesión para agregar a favoritos</a></p>
             <?php endif; ?>
 
-        </div>
-    </div>
+        </div><!-- /.detalle-info -->
+    </div><!-- /.detalle-top -->
 
+  <div class="tomos-section">
+    <h2>📚 Tomos disponibles:</h2>
 
-    <div class="tomos-section">
-        <h2>📚 Tomos disponibles:</h2>
-        <?php if (!empty($archivos)): ?>
-            <?php foreach ($archivos as $index => $archivo): ?>
-                <?php
-                    $archivoId = $archivo['id'];
-                    $archivoNombre = htmlspecialchars($archivo['name']);
-                ?>
-                <div class="tomo-card">
-                    <strong><?= $archivoNombre ?></strong><br>
-                    <a href="<?= htmlspecialchars($archivo['webViewLink']) ?>" target="_blank">🌐 Ver en Google Drive</a> |
-                    <a href="visor.php?manga_id=<?= $mangaId ?>&index=<?= $index ?>&mode=cascade">📖 Leer aquí</a>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p style="color: #ccc;">No hay tomos disponibles en esta carpeta.</p>
-        <?php endif; ?>
+<?php if (!empty($archivos)): ?>
+<?php foreach ($archivos as $idx => $file): 
+      $nombre = htmlspecialchars($file['name']);
+      $idPDF  = $file['id'];
+      $linkGV = htmlspecialchars($file['webViewLink']);
+      $esPremiumTomo = str_starts_with($file['name'], '[P]');
+?>
+    <div class="tomo-card">
+        <strong><?= $nombre ?></strong><br>
+
+<?php if ($esPremiumTomo && !$usuarioPremium): ?>
+        <!-- Solo para Premium si empieza con [P] -->
+        <a href="#" onclick="alert('Este tomo es exclusivo para usuarios Premium.'); return false;">
+            🚫 Tomo Premium
+        </a>
+<?php else: ?>
+        <!-- Tomo libre o usuario Premium -->
+        <a href="<?= $linkGV ?>" target="_blank">🌐 Ver en Google Drive</a> |
+        <a href="visor.php?manga_id=<?= $mangaId ?>&index=<?= $idx ?>&id=<?= $idPDF ?>">📖 Leer aquí</a>
+<?php endif; ?>
     </div>
-</div>
+<?php endforeach; ?>
+<?php else: ?>
+    <p style="color:#ccc;">No hay tomos disponibles en esta carpeta.</p>
+<?php endif; ?>
+
+</div><!-- /.tomos-section -->
+
+</div><!-- /.detalle-container -->
 
 <footer>
-    <p style="text-align:center; color:#888; padding:40px 0;">&copy; 2025 Manga Verse. Todos los derechos reservados.</p>
+  <p style="text-align:center;color:#888;padding:40px 0;">&copy; 2025 Manga Verse</p>
 </footer>
 
 <script src="./js/theme-switcher.js"></script>

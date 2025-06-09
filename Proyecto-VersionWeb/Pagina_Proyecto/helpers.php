@@ -1,13 +1,11 @@
 <?php
-/**
- * Devuelve la ruta/URI del avatar que debe mostrarse.
- * Prioridad:
- *   1) BLOB almacenado en la sesión   → data-URI
- *   2) Imagen por defecto             → ./imgs/default.png
- */
-function avatarSrcFromSession(): string
-{
-    return isset($_SESSION['avatar_bin']) && $_SESSION['avatar_bin'] !== ''
-        ? 'data:image/png;base64,' . base64_encode($_SESSION['avatar_bin'])
+/* helpers.php
+ * ——— Funciones comunes ——— */
+function avatarSrcFromDB($conn, $usuarioID) {
+    $sql = "SELECT Avatar FROM Usuarios WHERE UsuarioID = ?";
+    $stmt = sqlsrv_query($conn, $sql, [$usuarioID]);
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+    return ($row && $row['Avatar'])
+        ? 'data:image/png;base64,' . base64_encode($row['Avatar'])
         : './imgs/default.png';
 }

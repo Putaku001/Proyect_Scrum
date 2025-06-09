@@ -5,9 +5,39 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
-require_once 'helpers.php';           // función avatarSrcFromSession()
+require_once 'db.php';
 
-$fotoPerfil = avatarSrcFromSession();
+$uid = $_SESSION['usuario_id'];
+$stmt = sqlsrv_query($conn, "SELECT Avatar FROM Usuarios WHERE UsuarioID = ?", [$uid]);
+$row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+
+$fotoPerfil = ($row && $row['Avatar'])
+    ? 'data:image/png;base64,' . base64_encode($row['Avatar'])
+    : './imgs/default.png';
+
+// Verificar si la suscripción ha vencido o sigue activa
+$sqlPremium = "
+    SELECT EsPremium,
+           (SELECT TOP 1 FechaFin FROM Suscripciones WHERE UsuarioID = ? ORDER BY FechaFin DESC) AS FechaFin
+    FROM Usuarios WHERE UsuarioID = ?
+";
+$stmt2 = sqlsrv_query($conn, $sqlPremium, [$uid, $uid]);
+$userData = sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC);
+
+$mostrarAviso = false;
+$badgePremium = '';
+if ($userData && $userData['EsPremium']) {
+    $fechaFinObj = $userData['FechaFin'];
+    if ($fechaFinObj instanceof DateTime) {
+        $vence = strtotime($fechaFinObj->format('Y-m-d'));
+        $hoy = strtotime(date('Y-m-d'));
+        if ($vence < $hoy) {
+            $mostrarAviso = true;
+        } else {
+            $badgePremium = "<span class='premium-badge'>🎖️ Usuario Premium</span>";
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,6 +54,26 @@ $fotoPerfil = avatarSrcFromSession();
   .dropdown-content a{display:block;padding:12px;color:var(--text-primary);text-decoration:none}
   .dropdown-content a:hover{background:var(--bg-secondary)}
   .profile-dropdown:hover .dropdown-content{display:block}
+  .aviso-premium {
+    background: #ff7676;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    text-align: center;
+    font-weight: bold;
+    max-width: 500px;
+  }
+  .premium-badge {
+    display: inline-block;
+    background: #00d4ff;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 15px;
+  }
 </style>
 </head>
 <body>
@@ -51,8 +101,8 @@ $fotoPerfil = avatarSrcFromSession();
     <!-- Perfil -->
     <div class="profile">
       <div class="profile-dropdown">
-        <img src="<?=$fotoPerfil?>" alt="Perfil">
-        <span class="profile-name">Hola, <?=$_SESSION['nombre']?>!</span>
+        <img src="<?= $fotoPerfil ?>" alt="Perfil">
+        <span class="profile-name">Hola, <?= htmlspecialchars($_SESSION['nombre']) ?>!</span>
         <div class="dropdown-content">
           <a href="editar_perfil.php">Editar perfil</a>
           <a href="#" onclick="document.getElementById('logoutModal').style.display='block'">Cerrar sesión</a>
@@ -65,8 +115,16 @@ $fotoPerfil = avatarSrcFromSession();
 <main>
   <section class="hero">
     <div class="hero-content">
-      <h1>Bienvenido a tu perfil, <?=$_SESSION['nombre']?>!</h1>
+      <h1>Bienvenido a tu perfil, <?= htmlspecialchars($_SESSION['nombre']) ?>!</h1>
       <p>Aquí podrás gestionar tu lista de mangas, favoritos y más.</p>
+
+      <?= $badgePremium ?>
+
+      <?php if ($mostrarAviso): ?>
+        <div class="aviso-premium">
+          Tu suscripción premium ha vencido. <a href="suscripciones.php" style="text-decoration:underline;">Renovar ahora</a>.
+        </div>
+      <?php endif; ?>
     </div>
   </section>
 </main>

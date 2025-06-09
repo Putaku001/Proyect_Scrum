@@ -8,18 +8,33 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 $id = $_SESSION['usuario_id'];
-$sql = "SELECT EsPremium, (SELECT TOP 1 FechaFin FROM Suscripciones WHERE UsuarioID = ? ORDER BY FechaFin DESC) AS FechaFin FROM Usuarios u LEFT JOIN Suscripciones s ON u.UsuarioID = s.UsuarioID WHERE u.UsuarioID = ?";
+$sql = "SELECT EsPremium, 
+        (SELECT TOP 1 FechaFin FROM Suscripciones WHERE UsuarioID = ? ORDER BY FechaFin DESC) AS FechaFin 
+        FROM Usuarios WHERE UsuarioID = ?";
 $stmt = sqlsrv_query($conn, $sql, [$id, $id]);
 $user = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
-if ($user['EsPremium']) {
-    header("Location: editar_perfil.php");
-    exit();
+$fechaFin = $user['FechaFin'] ?? null;
+$esPremium = $user['EsPremium'] ?? 0;
+$hoy = new DateTime();
+$estado = "Sin suscripción activa";
+$vencida = true;
+
+if ($fechaFin instanceof DateTime) {
+    if ($fechaFin > $hoy) {
+        $estado = "Suscripción activa hasta el " . $fechaFin->format('d/m/Y');
+        $vencida = false;
+
+        // OPCIONAL: redirigir si ya tiene suscripción activa
+        // header("Location: editar_perfil.php");
+        // exit();
+    } else {
+        $estado = "Tu suscripción venció el " . $fechaFin->format('d/m/Y');
+    }
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Planes de Suscripción</title>
@@ -37,7 +52,21 @@ if ($user['EsPremium']) {
 
         h1 {
             color: #00d4ff;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+
+        .estado-sub {
+            font-size: 1em;
+            margin-bottom: 30px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: #3b3e5c;
+            color: #f0f0f0;
+            text-align: center;
+        }
+
+        .estado-sub.vencida {
+            background: #933;
         }
 
         .plans {
@@ -99,21 +128,22 @@ if ($user['EsPremium']) {
 </head>
 
 <body>
+    <h1><?= $esPremium ? ($vencida ? 'Renovar Suscripción' : 'Cambiar o ampliar tu suscripción') : 'Elige tu plan de suscripción' ?></h1>
 
-    <h1>Elige tu plan de suscripción</h1>
+    <div class="estado-sub <?= $vencida ? 'vencida' : '' ?>">
+        <?= $estado ?>
+    </div>
 
     <div class="plans">
-
         <div class="plan-card">
             <div class="plan-title">Plan Mensual</div>
             <div class="plan-price">$5 / mes</div>
             <div class="plan-details">
-                Disfruta del catálogo completo de Mangaverse y vive
-                increíbles aventuras en el mundo del manga durante un mes.<br>
+                Accede al catálogo premium durante 30 días.
             </div>
             <form action="pago.php" method="GET">
                 <input type="hidden" name="plan" value="mensual">
-                <button type="submit">Elegir Plan Mensual</button>
+                <button type="submit"><?= $vencida ? 'Renovar' : 'Elegir' ?> Mensual</button>
             </form>
         </div>
 
@@ -121,17 +151,13 @@ if ($user['EsPremium']) {
             <div class="plan-title">Plan Anual</div>
             <div class="plan-price">$50 / año</div>
             <div class="plan-details">
-                Disfruta del catálogo completo de Mangaverse y vive
-                increíbles aventuras en el mundo del manga durante un año.<br>
+                Accede al catálogo premium durante 365 días.
             </div>
             <form action="pago.php" method="GET">
                 <input type="hidden" name="plan" value="anual">
-                <button type="submit">Elegir Plan Anual</button>
+                <button type="submit"><?= $vencida ? 'Renovar' : 'Elegir' ?> Anual</button>
             </form>
         </div>
-
     </div>
-
 </body>
-
 </html>
