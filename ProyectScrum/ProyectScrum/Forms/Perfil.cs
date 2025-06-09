@@ -57,7 +57,7 @@ namespace ProyectScrum.Forms
         private void Perfil_Activated(object sender, EventArgs e)
         {
             CargarDatosUsuario();
-        }   
+        }
 
         private void CargarAvatarUsuario()
         {
@@ -107,6 +107,7 @@ namespace ProyectScrum.Forms
             txtEmail.Text = CapturedData.Email;
 
             btnGestionarSuscripcion.Visible = (CapturedData.RolID != 1);
+            btnCancelarSuscripcion.Visible = (CapturedData.EsPremium && CapturedData.RolID == 2);
             labelEsPremium.Visible = (CapturedData.RolID != 1);
 
             if (CapturedData.EsPremium && CapturedData.RolID == 2)
@@ -135,7 +136,7 @@ namespace ProyectScrum.Forms
 
         private void AplicarEstilo()
         {
-            this.BackColor = Color.FromArgb(2,5,20);
+            this.BackColor = Color.FromArgb(2, 5, 20);
 
         }
 
@@ -267,5 +268,47 @@ namespace ProyectScrum.Forms
             control.Region = region;
         }
 
+        private void btnCancelarSuscripcion_Click(object sender, EventArgs e)
+        {
+            var confirmar = MessageBox.Show("¿Estás seguro que quieres cancelar tu suscripción? Perderás acceso Premium.",
+                                    "Confirmar cancelación",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Warning);
+
+            if (confirmar == DialogResult.Yes)
+            {
+                if (CancelarSuscripcion())
+                {
+                    MessageBox.Show("Suscripción cancelada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarDatosUsuario(); // Refrescamos la vista
+                }
+                else
+                {
+                    MessageBox.Show("Error al cancelar la suscripción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private bool CancelarSuscripcion()
+        {
+            var dataAccess = new SqlDataAccess();
+            using (var conn = dataAccess.GetConnection())
+            {
+                conn.Open();
+                var cmd = new SqlCommand("UPDATE Usuarios SET EsPremium = 0, FechaFinSuscripcion = NULL WHERE UsuarioID = @ID", conn);
+                cmd.Parameters.AddWithValue("@ID", CapturedData.UsuarioID);
+
+                int result = cmd.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    // Actualizamos CapturedData también
+                    CapturedData.EsPremium = false;
+                    CapturedData.FechaFinSuscripcion = null;
+
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

@@ -20,21 +20,29 @@ $hoy = new DateTime();
 $estado = "Sin suscripción activa";
 $vencida = true;
 
-if ($fechaFin instanceof DateTime) {
-    if ($fechaFin > $hoy) {
-        $estado = "Suscripción activa hasta el " . $fechaFin->format('d/m/Y');
-        $vencida = false;
-
-        // OPCIONAL: redirigir si ya tiene suscripción activa
-        // header("Location: editar_perfil.php");
-        // exit();
+if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la FechaFin
+    if ($fechaFin instanceof DateTime) {
+        if ($fechaFin > $hoy) {
+            $estado = "Suscripción activa hasta el " . $fechaFin->format('d/m/Y');
+            $vencida = false;
+        } else {
+            $estado = "Tu suscripción venció el " . $fechaFin->format('d/m/Y');
+        }
     } else {
-        $estado = "Tu suscripción venció el " . $fechaFin->format('d/m/Y');
+        // Es premium pero no hay FechaFin (caso raro)
+        $estado = "Suscripción activa";
+        $vencida = false;
     }
+} else {
+    // EsPremium = 0 → siempre mostramos "Sin suscripción activa"
+    $estado = "Sin suscripción activa";
+    $vencida = true;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Planes de Suscripción</title>
@@ -160,4 +168,5 @@ if ($fechaFin instanceof DateTime) {
         </div>
     </div>
 </body>
+
 </html>

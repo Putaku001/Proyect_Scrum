@@ -1,21 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\",
+  "WorkspaceRootPath": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\downloads\\proyect_scrum\\proyectscrum\\proyectscrum\\db\\dbconection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\db\\dbconection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\downloads\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\pago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\pago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\downloads\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\aleja\\source\\repos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\fuent\\downloads\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|c:\\users\\aleja\\source\\repos\\proyect_scrum\\proyectscrum\\proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{93308F91-2B93-4155-A588-0329F51C931E}|ProyectScrum\\ProyectScrum.csproj|solutionrelative:proyectscrum\\forms\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,54 +66,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Pago.cs",
-              "DocumentMoniker": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Pago.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Pago.cs",
-              "ToolTip": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Pago.cs",
-              "RelativeToolTip": "ProyectScrum\\Forms\\Pago.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAmwMsAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T02:47:57.369Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "dbConection.cs",
-              "DocumentMoniker": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\DB\\dbConection.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\DB\\dbConection.cs",
-              "ToolTip": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\DB\\dbConection.cs",
-              "RelativeToolTip": "ProyectScrum\\DB\\dbConection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAmAAAAAAAAAA==",
+              "Title": "Catalog.cs",
+              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
+              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Catalog.cs",
+              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
+              "RelativeToolTip": "ProyectScrum\\Forms\\Catalog.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAAAIoAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T02:33:44.551Z",
+              "WhenOpened": "2025-06-09T17:50:36.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Catalog.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
+              "DocumentMoniker": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
               "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Catalog.cs",
-              "ToolTip": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\aleja\\source\\repos\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs [Dise\u00F1o]",
               "RelativeToolTip": "ProyectScrum\\Forms\\Catalog.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T02:30:12.755Z",
+              "WhenOpened": "2025-06-09T17:50:34.15Z",
               "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Catalog.cs",
-              "DocumentMoniker": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
-              "RelativeDocumentMoniker": "ProyectScrum\\Forms\\Catalog.cs",
-              "ToolTip": "C:\\Users\\fuent\\Downloads\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Forms\\Catalog.cs",
-              "RelativeToolTip": "ProyectScrum\\Forms\\Catalog.cs",
-              "ViewState": "AgIAAGUCAAAAAAAAAAAuwJ4CAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T02:28:53.432Z",
-              "EditorCaption": ""
             }
           ]
         }

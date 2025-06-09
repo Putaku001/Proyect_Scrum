@@ -684,5 +684,30 @@ namespace ProyectScrum.Forms
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        public List<string> ObtenerTitulosAlternativos(int mangaId)
+        {
+            List<string> titulos = new List<string>();
+            SqlDataAccess db = new SqlDataAccess();
+
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT TituloAlternativo FROM TitulosAlternativos WHERE MangaID = @MangaID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MangaID", mangaId);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    titulos.Add(reader.GetString(0));
+                }
+            }
+
+            return titulos;
+        }
+
     }
 }

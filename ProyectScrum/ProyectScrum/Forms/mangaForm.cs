@@ -576,10 +576,5 @@ namespace ProyectScrum.Forms
                 BorderStyle = BorderStyle.FixedSingle
             };
         }
-
-        private void flowPanelVolumenes_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

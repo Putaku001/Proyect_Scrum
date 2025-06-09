@@ -54,6 +54,7 @@
             txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             btnEliminarCuenta = new Guna.UI2.WinForms.Guna2Button();
             btnGuardar = new Guna.UI2.WinForms.Guna2Button();
+            btnCancelarSuscripcion = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -169,7 +170,7 @@
             btnAvatarAnterior.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnAvatarAnterior.Dock = DockStyle.Fill;
             btnAvatarAnterior.FillColor = Color.Transparent;
-            btnAvatarAnterior.Font = new Font("UD Digi Kyokasho NP-B", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            btnAvatarAnterior.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
             btnAvatarAnterior.ForeColor = Color.White;
             btnAvatarAnterior.Location = new Point(3, 72);
             btnAvatarAnterior.Name = "btnAvatarAnterior";
@@ -208,7 +209,7 @@
             btnAvatarSiguiente.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnAvatarSiguiente.Dock = DockStyle.Fill;
             btnAvatarSiguiente.FillColor = Color.Transparent;
-            btnAvatarSiguiente.Font = new Font("UD Digi Kyokasho NP-B", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            btnAvatarSiguiente.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
             btnAvatarSiguiente.ForeColor = Color.White;
             btnAvatarSiguiente.Location = new Point(3, 72);
             btnAvatarSiguiente.Name = "btnAvatarSiguiente";
@@ -311,6 +312,7 @@
             tableLayoutPanel4.Controls.Add(txtEmail, 1, 4);
             tableLayoutPanel4.Controls.Add(btnEliminarCuenta, 1, 7);
             tableLayoutPanel4.Controls.Add(btnGuardar, 1, 6);
+            tableLayoutPanel4.Controls.Add(btnCancelarSuscripcion, 1, 8);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(391, 3);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -368,12 +370,13 @@
             txtNombre.Font = new Font("Segoe UI", 9F);
             txtNombre.ForeColor = Color.Black;
             txtNombre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNombre.Location = new Point(19, 102);
+            txtNombre.Location = new Point(19, 103);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
             txtNombre.PlaceholderText = "";
             txtNombre.SelectedText = "";
             txtNombre.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            txtNombre.Size = new Size(294, 29);
+            txtNombre.Size = new Size(294, 27);
             txtNombre.TabIndex = 2;
             // 
             // txtEmail
@@ -391,12 +394,13 @@
             txtEmail.Font = new Font("Segoe UI", 9F);
             txtEmail.ForeColor = Color.Black;
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(19, 167);
+            txtEmail.Location = new Point(19, 168);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            txtEmail.Size = new Size(294, 29);
+            txtEmail.Size = new Size(294, 27);
             txtEmail.TabIndex = 3;
             // 
             // btnEliminarCuenta
@@ -440,6 +444,21 @@
             btnGuardar.TabIndex = 4;
             btnGuardar.Text = "💾 Guardar Cambios";
             btnGuardar.Click += btnGuardar_Click;
+            // 
+            // btnCancelarSuscripcion
+            // 
+            btnCancelarSuscripcion.BackColor = Color.DarkRed;
+            btnCancelarSuscripcion.FlatStyle = FlatStyle.Popup;
+            btnCancelarSuscripcion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelarSuscripcion.ForeColor = SystemColors.ButtonFace;
+            btnCancelarSuscripcion.Location = new Point(21, 324);
+            btnCancelarSuscripcion.Margin = new Padding(5);
+            btnCancelarSuscripcion.Name = "btnCancelarSuscripcion";
+            btnCancelarSuscripcion.Size = new Size(290, 59);
+            btnCancelarSuscripcion.TabIndex = 5;
+            btnCancelarSuscripcion.Text = "❌ Cancelar Suscripción";
+            btnCancelarSuscripcion.UseVisualStyleBackColor = false;
+            btnCancelarSuscripcion.Click += btnCancelarSuscripcion_Click;
             // 
             // Perfil
             // 
@@ -487,5 +506,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2Button btnEliminarCuenta;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
+        private Button btnCancelarSuscripcion;
     }
 }
