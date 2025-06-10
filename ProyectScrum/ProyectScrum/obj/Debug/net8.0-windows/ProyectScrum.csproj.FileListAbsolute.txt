@@ -816,8 +816,6 @@ C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\ne
 C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.MainAdminLayout.resources
 C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.SubidaMangaForm.resources
 C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ReDiseño.PageTrial.resources
-C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
-C:\Users\aleja\source\repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\itextsharp.dll
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
 C:\Users\fuent\Downloads\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\itextsharp.dll
 C:\Users\blanc_ma7kouo\Desktop\ultimo sprint a realizar\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\Recursos\client_secret_575258247418-j2j23d6abc5a7jtnnrbgn4ldpg1is6tn.apps.googleusercontent.com.json
@@ -882,3 +880,31 @@ C:\Users\blanc_ma7kouo\Desktop\ultimo sprint a realizar\Proyect_Scrum\ProyectScr
 C:\Users\blanc_ma7kouo\Desktop\ultimo sprint a realizar\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.genruntimeconfig.cache
 C:\Users\blanc_ma7kouo\Desktop\ultimo sprint a realizar\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ref\ProyectScrum.dll
 C:\Users\blanc_ma7kouo\Desktop\ultimo sprint a realizar\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Admin.CrossData.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\obj\Debug\net8.0-windows\ProyectScrum.Forms.Admin.CrossData.resources
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-Black.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-BlackItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-Bold.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-BoldItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-ExtraBold.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-ExtraBoldItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-ExtraLight.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-ExtraLightItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-Italic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-Light.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-LightItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-Medium.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-MediumItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-Regular.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-SemiBold.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-SemiBoldItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-Thin.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\Lato-ThinItalic.ttf
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\LatoFont\OFL.txt
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\QuestPDF.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\linux-arm64\native\libQuestPdfSkia.so
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\linux-musl-x64\native\libQuestPdfSkia.so
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\linux-x64\native\libQuestPdfSkia.so
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\osx-arm64\native\libQuestPdfSkia.dylib
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\osx-x64\native\libQuestPdfSkia.dylib
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x64\native\QuestPdfSkia.dll
+C:\Users\aleja\Source\Repos\Proyect_Scrum\ProyectScrum\ProyectScrum\bin\Debug\net8.0-windows\runtimes\win-x86\native\QuestPdfSkia.dll

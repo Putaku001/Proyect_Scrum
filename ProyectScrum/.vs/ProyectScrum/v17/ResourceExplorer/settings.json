@@ -1,1 +1,17 @@
-{"ShowEmptyProjects":false,"CustomColumnOrderings":{"name":0,"file-path":1,"file-name":2,"neutral-value":3,"neutral-comment":4,"type":5},"ShowValidationErrors":true,"SelectedResourceGroupsByProjectFilePath":{"C:\\Users\\kenne\\OneDrive\\Desktop\\ps\\version aristides Nuevo\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\ProyectScrum.csproj":["C:\\Users\\kenne\\OneDrive\\Desktop\\ps\\version aristides Nuevo\\Proyect_Scrum\\ProyectScrum\\ProyectScrum\\Properties\\Resources.resx"]},"VisibleColumnKeys":["name","neutral-value","neutral-comment"]}
+{
+  "ShowEmptyProjects": false,
+  "SelectedGroups": [],
+  "ExpandedProjects": [],
+  "EnableSpellChecker": true,
+  "ColumnOrder": [
+    "name",
+    "type",
+    "neutral-value",
+    "neutral-comment"
+  ],
+  "VisibleColumnKeys": [
+    "name",
+    "neutral-comment",
+    "neutral-value"
+  ]
+}

@@ -1,13 +1,9 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 using System.Data;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 
 namespace ProyectScrum.Entities
 {
@@ -35,73 +31,89 @@ namespace ProyectScrum.Entities
             if (tabla.Rows.Count == 0)
                 return "No hay usuarios premium para mostrar.";
 
-            Document doc = new Document(PageSize.A4, 50, 50, 80, 50);
             string nombreArchivo = $"ReporteUsuariosPremium_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
             string rutaArchivo = Path.Combine(rutaDestino, nombreArchivo);
 
             try
             {
-                PdfWriter.GetInstance(doc, new FileStream(rutaArchivo, FileMode.Create));
-                doc.Open();
-
-                //Estilo de título
-                iTextSharp.text.Font tituloFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
-                Paragraph titulo = new Paragraph("REPORTE DE USUARIOS PREMIUM", tituloFont)
+                Document.Create(container =>
                 {
-                    Alignment = Element.ALIGN_CENTER,
-                    SpacingAfter = 20f
-                };
-                doc.Add(titulo);
-
-                //Fecha
-                iTextSharp.text.Font fechaFont = FontFactory.GetFont(FontFactory.HELVETICA, 10);
-                doc.Add(new Paragraph(new Phrase("Fecha de generación: " + DateTime.Now.ToString("dd/MM/yyyy"), fechaFont)));
-                doc.Add(new Paragraph("\n"));
-
-                // Tabla con estilo
-                PdfPTable pdfTable = new PdfPTable(3)
-                {
-                    WidthPercentage = 100
-                };
-                pdfTable.SetWidths(new float[] { 2, 3, 2 });
-
-                //Encabezado
-                string[] headers = { "Usuario", "Email", "Fin de suscripción" };
-                iTextSharp.text.Font headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
-                BaseColor headerBgColor = new BaseColor(0, 102, 204); // Azul
-
-                foreach (string header in headers)
-                {
-                    PdfPCell celda = new PdfPCell(new Phrase(header, headerFont))
+                    container.Page(page =>
                     {
-                        BackgroundColor = headerBgColor,
-                        HorizontalAlignment = Element.ALIGN_CENTER,
-                        Padding = 5
-                    };
-                    pdfTable.AddCell(celda);
-                }
+                        page.Margin(50);
+                        page.Size(PageSizes.A4);
 
-                //Datos
-                iTextSharp.text.Font cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 10);
-                foreach (DataRow row in tabla.Rows)
-                {
-                    pdfTable.AddCell(new PdfPCell(new Phrase(row["NombreUsuario"].ToString(), cellFont)) { Padding = 5 });
-                    pdfTable.AddCell(new PdfPCell(new Phrase(row["Email"].ToString(), cellFont)) { Padding = 5 });
-                    pdfTable.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row["FechaFinSuscripcion"]).ToString("dd/MM/yyyy"), cellFont)) { Padding = 5 });
-                }
+                        page.Header().Column(col =>
+                        {
+                            col.Item().Text("REPORTE DE USUARIOS PREMIUM")
+                                .FontSize(22).Bold().AlignCenter();
 
-                doc.Add(pdfTable);
+                            col.Item().Element(e => e
+                                .AlignCenter()
+                                .PaddingBottom(15)
+                                .Text($"Fecha de generación: {DateTime.Now:dd/MM/yyyy}")
+                                .FontSize(12));
+                        });
+
+                        page.Content().Table(table =>
+                        {
+                            table.ColumnsDefinition(columns =>
+                            {
+                                columns.RelativeColumn(2);
+                                columns.RelativeColumn(3);
+                                columns.RelativeColumn(2);
+                            });
+
+                            table.Header(header =>
+                            {
+                                header.Cell().Element(CellHeader).Text("Usuario");
+                                header.Cell().Element(CellHeader).Text("Email");
+                                header.Cell().Element(CellHeader).Text("Fin de suscripción");
+
+                                static IContainer CellHeader(IContainer container)
+                                {
+                                    return container
+                                        .Background("#007ACC")
+                                        .Border(1).BorderColor(Colors.Grey.Darken2)
+                                        .AlignCenter()
+                                        .PaddingVertical(6)
+                                        .PaddingHorizontal(4)
+                                        .DefaultTextStyle(x => x.FontSize(12).Bold().FontColor(Colors.White));
+                                }
+                            });
+
+                            foreach (DataRow row in tabla.Rows)
+                            {
+                                table.Cell().Element(CellStyle).Text(row["NombreUsuario"].ToString());
+                                table.Cell().Element(CellStyle).Text(row["Email"].ToString());
+                                table.Cell().Element(CellStyle).Text(Convert.ToDateTime(row["FechaFinSuscripcion"]).ToString("dd/MM/yyyy"));
+
+                                static IContainer CellStyle(IContainer container)
+                                {
+                                    return container
+                                        .Border(1).BorderColor(Colors.Grey.Lighten2)
+                                        .PaddingVertical(5).PaddingHorizontal(4)
+                                        .AlignLeft();
+                                }
+                            }
+                        });
+
+                        page.Footer().AlignCenter().Text(text =>
+                        {
+                            text.Span("Página ");
+                            text.CurrentPageNumber();
+                            text.Span(" de ");
+                            text.TotalPages();
+                        });
+                    });
+                }).GeneratePdf(rutaArchivo);
+
                 return $"Reporte guardado en: {rutaArchivo}";
             }
             catch (Exception ex)
             {
                 return $"Error al generar el PDF: {ex.Message}";
             }
-            finally
-            {
-                doc.Close();
-            }
         }
-
     }
 }
