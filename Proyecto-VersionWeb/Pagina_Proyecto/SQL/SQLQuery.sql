@@ -176,6 +176,7 @@ VALUES (
 ALTER TABLE Usuarios
 ADD Avatar VARBINARY(MAX) NULL;
 
+ALTER TABLE Suscripciones ADD Cancelada BIT DEFAULT 0;
 
 select * from TitulosAlternativos
 select * from Generos

@@ -8,19 +8,25 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 $id = $_SESSION['usuario_id'];
+// Consultamos si tiene o tuvo alguna suscripción
 $sql = "SELECT EsPremium, 
-        (SELECT TOP 1 FechaFin FROM Suscripciones WHERE UsuarioID = ? ORDER BY FechaFin DESC) AS FechaFin 
+        (SELECT TOP 1 FechaFin FROM Suscripciones WHERE UsuarioID = ? ORDER BY FechaFin DESC) AS FechaFin,
+        (SELECT COUNT(*) FROM Suscripciones WHERE UsuarioID = ?) AS TotalSuscripciones
         FROM Usuarios WHERE UsuarioID = ?";
-$stmt = sqlsrv_query($conn, $sql, [$id, $id]);
+$stmt = sqlsrv_query($conn, $sql, [$id, $id, $id]);
 $user = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
 $fechaFin = $user['FechaFin'] ?? null;
 $esPremium = $user['EsPremium'] ?? 0;
+$totalSuscripciones = $user['TotalSuscripciones'] ?? 0;
 $hoy = new DateTime();
 $estado = "Sin suscripción activa";
 $vencida = true;
 
-if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la FechaFin
+// ¿Alguna vez ha tenido suscripción?
+$esNuevo = ($totalSuscripciones == 0);
+
+if ($esPremium == 1) {
     if ($fechaFin instanceof DateTime) {
         if ($fechaFin > $hoy) {
             $estado = "Suscripción activa hasta el " . $fechaFin->format('d/m/Y');
@@ -29,12 +35,10 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
             $estado = "Tu suscripción venció el " . $fechaFin->format('d/m/Y');
         }
     } else {
-        // Es premium pero no hay FechaFin (caso raro)
         $estado = "Suscripción activa";
         $vencida = false;
     }
 } else {
-    // EsPremium = 0 → siempre mostramos "Sin suscripción activa"
     $estado = "Sin suscripción activa";
     $vencida = true;
 }
@@ -57,12 +61,10 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
             align-items: center;
             padding: 40px 20px;
         }
-
         h1 {
             color: #00d4ff;
             margin-bottom: 10px;
         }
-
         .estado-sub {
             font-size: 1em;
             margin-bottom: 30px;
@@ -72,18 +74,15 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
             color: #f0f0f0;
             text-align: center;
         }
-
         .estado-sub.vencida {
             background: #933;
         }
-
         .plans {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .plan-card {
             background: #2c2f4a;
             border-radius: 12px;
@@ -94,30 +93,25 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
             border: 2px solid transparent;
             transition: transform 0.3s, border 0.3s;
         }
-
         .plan-card:hover {
             transform: scale(1.05);
             border-color: #00d4ff;
         }
-
         .plan-title {
             font-size: 1.4em;
             margin-bottom: 10px;
             color: #00d4ff;
         }
-
         .plan-price {
             font-size: 2em;
             margin-bottom: 15px;
             font-weight: bold;
         }
-
         .plan-details {
             font-size: .9em;
             color: #ccc;
             margin-bottom: 20px;
         }
-
         .plan-card button {
             background: #00d4ff;
             color: #000;
@@ -128,7 +122,6 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
             cursor: pointer;
             font-size: 1em;
         }
-
         .plan-card button:hover {
             background: #00aacc;
         }
@@ -136,7 +129,17 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
 </head>
 
 <body>
-    <h1><?= $esPremium ? ($vencida ? 'Renovar Suscripción' : 'Cambiar o ampliar tu suscripción') : 'Elige tu plan de suscripción' ?></h1>
+    <h1>
+        <?php
+            if ($esNuevo) {
+                echo 'Suscribirse';
+            } else if ($esPremium && !$vencida) {
+                echo 'Cambiar o ampliar tu suscripción';
+            } else {
+                echo 'Renovar Suscripción';
+            }
+        ?>
+    </h1>
 
     <div class="estado-sub <?= $vencida ? 'vencida' : '' ?>">
         <?= $estado ?>
@@ -151,7 +154,9 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
             </div>
             <form action="pago.php" method="GET">
                 <input type="hidden" name="plan" value="mensual">
-                <button type="submit"><?= $vencida ? 'Renovar' : 'Elegir' ?> Mensual</button>
+                <button type="submit">
+                    <?= $esNuevo ? 'Suscribirse' : ($vencida ? 'Renovar' : 'Elegir') ?> Mensual
+                </button>
             </form>
         </div>
 
@@ -163,7 +168,9 @@ if ($esPremium == 1) {   // <--- SOLO si es Premium, entonces evaluamos la Fecha
             </div>
             <form action="pago.php" method="GET">
                 <input type="hidden" name="plan" value="anual">
-                <button type="submit"><?= $vencida ? 'Renovar' : 'Elegir' ?> Anual</button>
+                <button type="submit">
+                    <?= $esNuevo ? 'Suscribirse' : ($vencida ? 'Renovar' : 'Elegir') ?> Anual
+                </button>
             </form>
         </div>
     </div>

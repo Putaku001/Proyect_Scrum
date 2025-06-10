@@ -130,7 +130,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     <nav>
       <ul>
         <li><a href="dashboard.php">Inicio</a></li>
-        <li><a href="#">Mi Lista</a></li>
+        <li><a href="favoritos.php">Mi Lista</a></li>
         <li><a href="catalogo.php">Catálogo</a></li>
       </ul>
     </nav>

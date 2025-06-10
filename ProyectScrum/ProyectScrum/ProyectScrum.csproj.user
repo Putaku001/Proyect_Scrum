@@ -13,6 +13,9 @@
     <Compile Update="Forms\Admin\AdminUsersList.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Admin\CrossData.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Admin\EditUserForm.cs">
       <SubType>Form</SubType>
     </Compile>

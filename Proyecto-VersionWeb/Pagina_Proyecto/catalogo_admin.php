@@ -98,43 +98,116 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      position: relative;
+      transition: transform 0.3s ease;
     }
-    .manga-card img {
+    .manga-card:hover {
+      transform: scale(1.02);
+    }
+    .img-wrapper {
+      position: relative;
       width: 100%;
       height: 300px;
+      overflow: hidden;
+    }
+    .img-wrapper a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      display: block;
+    }
+    .img-wrapper:hover .card-buttons-top {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .card-buttons-top {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+    .card-buttons-top a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 18px;
+      border: 1px solid white;
+    }
+    .card-buttons-top a:hover {
+      background: #00d4ff;
+      color: black;
+    }
+    .card-buttons-top .eliminar:hover {
+      background: red;
+      color: white;
     }
     .manga-card .info {
-      padding: 15px;
+      padding: 16px 15px;
+      background-color: #2c2f4a;
+      box-sizing: border-box;
     }
     .manga-card h3 {
       color: #00d4ff;
-    }
-    .manga-card .admin-buttons {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .admin-buttons a {
-      background: #ff8c00;
-      color: #fff;
-      padding: 6px 12px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 0.85rem;
-    }
-    .admin-buttons a.eliminar {
-      background: red;
+      font-size: 1.15rem;
+      margin: 0;
     }
     footer {
       margin-top: 60px;
       text-align: center;
       color: #aaa;
     }
+    .btn-volver {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  background: #232544;
+  color: #00eaff;
+  border-radius: 11px;
+  padding: 11px 24px 11px 18px;
+  font-weight: 700;
+  font-size: 1.16em;
+  text-decoration: none;
+  box-shadow: 0 4px 22px #0005;
+  border: 2px solid #00eaff22;
+  transition: background .15s, color .15s, border .14s, box-shadow .12s, transform .11s;
+  z-index: 10;
+  display: inline-block;
+}
+.btn-volver:hover, .btn-volver:focus {
+  background: #00eaff;
+  color: #232544;
+  border: 2.5px solid #00eaff;
+  box-shadow: 0 8px 24px #00eaff66;
+  outline: none;
+  transform: scale(1.04);
+}
+@media (max-width:600px){
+  .btn-volver{top:10px;left:8px;font-size:1em;padding:9px 13px;}
+}
+
   </style>
 </head>
 <body>
+<a href="admin_dashboard.php" class="btn-volver" title="Volver al dashboard">
+  <span style="font-size:1.6em;vertical-align:-2px;">←</span> Volver
+</a>
 
 <div class="catalog-container">
   <div class="catalog-header">
@@ -159,17 +232,18 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
   <div class="manga-grid">
     <?php foreach ($mangas as $manga): ?>
       <div class="manga-card">
-        <img src="<?= htmlspecialchars($manga['PortadaElegida']) ?>" alt="Portada de <?= htmlspecialchars($manga['Titulo']) ?>">
+        <div class="img-wrapper">
+          <a href="detalle_manga_admin.php?id=<?= $manga['MangaID'] ?>">
+            <img src="<?= htmlspecialchars($manga['PortadaElegida']) ?>" alt="Portada de <?= htmlspecialchars($manga['Titulo']) ?>">
+          </a>
+          <div class="card-buttons-top">
+            <a href="editar_manga.php?id=<?= $manga['MangaID'] ?>" title="Editar">✏️</a>
+            <a href="eliminar_manga.php?id=<?= $manga['MangaID'] ?>" class="eliminar" title="Eliminar"
+               onclick="return confirm('¿Eliminar este manga?')">🗑️</a>
+          </div>
+        </div>
         <div class="info">
           <h3><?= $manga['Titulo'] ?></h3>
-          <p><strong>Autor:</strong> <?= $manga['Autor'] ?></p>
-          <p><strong>Género:</strong> <?= $manga['Genero'] ?></p>
-          <p><strong>Estado:</strong> <?= $manga['Estado'] ?></p>
-          <div class="admin-buttons">
-            <a href="detalle_manga.php?id=<?= $manga['MangaID'] ?>">📖 Detalles</a>
-            <a href="editar_manga.php?id=<?= $manga['MangaID'] ?>">✏️ Editar</a>
-            <a href="eliminar_manga.php?id=<?= $manga['MangaID'] ?>" class="eliminar" onclick="return confirm('¿Eliminar este manga?')">🗑️ Eliminar</a>
-          </div>
         </div>
       </div>
     <?php endforeach; ?>

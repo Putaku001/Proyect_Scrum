@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.html");
     exit();
@@ -38,6 +40,7 @@ if ($userData && $userData['EsPremium']) {
         }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -87,7 +90,7 @@ if ($userData && $userData['EsPremium']) {
     <nav>
       <ul>
         <li><a href="#">Inicio</a></li>
-        <li><a href="#">Mi Lista</a></li>
+        <li><a href="./favoritos.php">Mi Lista</a></li>
         <li><a href="./catalogo.php">Catálogo</a></li>
       </ul>
     </nav>

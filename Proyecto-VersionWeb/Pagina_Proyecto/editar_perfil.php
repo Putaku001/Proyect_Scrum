@@ -7,11 +7,11 @@ if (!isset($_SESSION['usuario_id'])) {
   exit();
 }
 
-$id  = $_SESSION['usuario_id'];
+$id = $_SESSION['usuario_id'];
 $rol = $_SESSION['rol'] ?? 1; // 1 = usuario, 2 = admin
 $backPage = ($rol == 2) ? 'admin_dashboard.php' : 'dashboard.php';
 
-$sql  = "SELECT * FROM Usuarios WHERE UsuarioID = ?";
+$sql = "SELECT * FROM Usuarios WHERE UsuarioID = ?";
 $stmt = sqlsrv_query($conn, $sql, [$id]);
 $user = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
@@ -20,20 +20,26 @@ function avatarToDataUri(?string $bin)
   return $bin ? ('data:image/png;base64,' . base64_encode($bin)) : './imgs/default.png';
 }
 
+// --- Cambia aquí: consulta SIEMPRE la última suscripción (aunque esté vencida) ---
+$sqlSub = "SELECT TOP 1 * FROM Suscripciones WHERE UsuarioID = ? ORDER BY FechaFin DESC";
+$stmtSub = sqlsrv_query($conn, $sqlSub, [$id]);
+$rowSub = sqlsrv_fetch_array($stmtSub, SQLSRV_FETCH_ASSOC);
+
 $fechaFinText = '';
-$subsVencida = false;
-if ($user['EsPremium']) {
-  $sqlFechaFin = "SELECT TOP 1 FechaFin FROM Suscripciones WHERE UsuarioID = ? ORDER BY FechaFin DESC";
-  $stmtFechaFin = sqlsrv_query($conn, $sqlFechaFin, [$id]);
-  $rowFechaFin  = sqlsrv_fetch_array($stmtFechaFin, SQLSRV_FETCH_ASSOC);
-  if ($rowFechaFin && $rowFechaFin['FechaFin'] instanceof DateTime) {
-    $fechaFin = $rowFechaFin['FechaFin'];
-    $hoy = new DateTime();
-    $fechaFinText = $fechaFin->format('d/m/Y');
-    $subsVencida = $fechaFin < $hoy;
-  }
+$subsVencida = true;    // Por defecto: vencida
+$subsCancelada = false;
+$tieneSuscripcion = false;
+
+if ($rowSub && isset($rowSub['FechaFin'])) {
+  $tieneSuscripcion = true;
+  $fechaFin = $rowSub['FechaFin'];
+  $fechaFinText = ($fechaFin instanceof DateTime) ? $fechaFin->format('d/m/Y') : date('d/m/Y', strtotime($fechaFin));
+  $hoy = new DateTime();
+  $subsVencida = ($fechaFin instanceof DateTime ? $fechaFin : new DateTime($fechaFin)) < $hoy;
+  $subsCancelada = isset($rowSub['Cancelada']) && $rowSub['Cancelada'];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -265,17 +271,32 @@ if ($user['EsPremium']) {
 
     <?php if ($rol == 1): ?>
       <div class="badge-box">
-        <?php if ($user['EsPremium']): ?>
+        <?php if ($user['EsPremium'] && !$subsVencida): ?>
           <span class="badge yes">Premium ✅</span><br>
           <?php if ($fechaFinText): ?>
-            <span style="font-size: .85em; color: #aaa;">Expira el: <?= $fechaFinText ?></span><br>
+            <span style="font-size: .85em; color: #aaa;">
+              Expira el: <?= $fechaFinText ?>
+              <?php if ($subsCancelada): ?>
+                <br><span style="color:#ff7676;">(Cancelada, mantienes premium hasta la fecha)</span>
+              <?php endif; ?>
+            </span><br>
           <?php endif; ?>
 
-          <!-- Botón para cancelar suscripción -->
-          <button type="button" class="guardar-btn" onclick="cancelarSuscripcion()">
-            Cancelar Suscripción
-          </button>
+          <?php if (!$subsCancelada): ?>
+            <!-- Solo permite cancelar si no está ya cancelada -->
+            <button type="button" class="guardar-btn" onclick="cancelarSuscripcion()">
+              Cancelar Suscripción
+            </button>
+          <?php endif; ?>
 
+        <?php elseif ($tieneSuscripcion && $subsVencida): ?>
+          <span class="badge no">Vencida</span><br>
+          <span style="font-size: .85em; color: #aaa;">
+            Tu suscripción venció el <?= $fechaFinText ?>
+          </span><br>
+          <button type="button" class="guardar-btn" onclick="window.location.href='suscripciones.php'">
+            Renovar Suscripción
+          </button>
         <?php else: ?>
           <span class="badge no">Gratis</span>
           <button type="button" class="guardar-btn" onclick="window.location.href='suscripciones.php'">
@@ -283,6 +304,7 @@ if ($user['EsPremium']) {
           </button>
         <?php endif; ?>
       </div>
+
     <?php endif; ?>
 
     <button type="submit" class="guardar-btn">Guardar Cambios</button>

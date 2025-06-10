@@ -9,15 +9,18 @@ if (!isset($_SESSION['usuario_id'])) {
 
 $id = $_SESSION['usuario_id'];
 
-// 1. Marcar al usuario como no premium
-$sql = "UPDATE Usuarios SET EsPremium = 0 WHERE UsuarioID = ?";
-$stmt = sqlsrv_query($conn, $sql, [$id]);
+// Marcar la suscripción activa (vigente y no cancelada) como cancelada
+$sql = "UPDATE Suscripciones
+        SET Cancelada = 1
+        WHERE UsuarioID = ? AND Cancelada = 0
+        AND FechaFin = (
+            SELECT MAX(FechaFin) FROM Suscripciones WHERE UsuarioID = ? AND Cancelada = 0
+        )";
+$stmt = sqlsrv_query($conn, $sql, [$id, $id]);
 
-// Validación simple
 if ($stmt === false) {
     die(print_r(sqlsrv_errors(), true));
 }
 
-// 2. Redirigir de vuelta con mensaje
 header("Location: editar_perfil.php?mensaje=cancelada");
 exit();

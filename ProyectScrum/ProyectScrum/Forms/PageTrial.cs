@@ -38,16 +38,16 @@ namespace ReDiseño
             // Puedes cargar desde recursos, archivos o URLs.
             
 
-            imagenes.Add(Image.FromFile("C:\\Users\\blanc_ma7kouo\\Documents\\aprendiendo C#\\ReDiseño\\ReDiseño\\Recursos\\img\\koe no katachi.jpg"));
+            imagenes.Add(Image.FromFile("Recursos\\img\\koe no katachi.jpg"));
             
 
-            imagenes.Add(Image.FromFile("C:\\Users\\blanc_ma7kouo\\Documents\\aprendiendo C#\\ReDiseño\\ReDiseño\\Recursos\\img\\ruri-dragon-vol1.jpg"));
+            imagenes.Add(Image.FromFile("Recursos\\img\\ruri-dragon-vol1.jpg"));
 
-            imagenes.Add(Image.FromFile("C:\\Users\\blanc_ma7kouo\\Documents\\aprendiendo C#\\ReDiseño\\ReDiseño\\Recursos\\img\\KS.jpg"));
+            imagenes.Add(Image.FromFile("Recursos\\img\\KS.jpg"));
 
-            imagenes.Add(Image.FromFile("C:\\Users\\blanc_ma7kouo\\Documents\\aprendiendo C#\\ReDiseño\\ReDiseño\\Recursos\\img\\Kurosawa.jpg"));
+            imagenes.Add(Image.FromFile("Recursos\\img\\Kurosawa.jpg"));
 
-            imagenes.Add(Image.FromFile("C:\\Users\\blanc_ma7kouo\\Documents\\aprendiendo C#\\ReDiseño\\ReDiseño\\Recursos\\img\\yourname.jpg"));
+            imagenes.Add(Image.FromFile("Recursos\\img\\yourname.jpg"));
 
         }
 

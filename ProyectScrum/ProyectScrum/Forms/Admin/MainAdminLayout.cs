@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ProyectScrum.Data;
 using ProyectScrum.Entities;
 using ProyectScrum.Forms;
+using ProyectScrum.Forms.Admin;
 
 namespace ProyectScrum.Forms
 {
@@ -207,6 +208,13 @@ namespace ProyectScrum.Forms
         {
             ActivateButton(sender);
             OpenChildForm(new SubidaMangaForm());
+            HideSubmenu();
+        }
+
+        private void btnCrossData_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            OpenChildForm(new CrossData());
             HideSubmenu();
         }
     }

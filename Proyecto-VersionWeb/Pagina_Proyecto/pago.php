@@ -90,36 +90,79 @@ $precio = $plan === 'mensual' ? 5 : 50;
         <h2><?= $tipoPago ?> - <?= ucfirst($plan) ?> ($<?= $precio ?>)</h2>
         <input type="hidden" name="plan" value="<?= htmlspecialchars($plan) ?>">
 
-        <label>Número de Tarjeta</label>
-        <input type="text" name="card_number" id="card_number" required placeholder="1234 5678 9012 3456">
-
         <label>Nombre en la Tarjeta</label>
-        <input type="text" name="card_name" required placeholder="Tu Nombre">
+        <input type="text" name="card_name" required placeholder="Tu Nombre" autocomplete="cc-name">
+
+        <label>Número de Tarjeta</label>
+        <input type="text" name="card_number" id="card_number" required 
+               placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" autocomplete="cc-number">
 
         <label>Fecha de Expiración (MM/AA)</label>
-        <input type="text" name="expiry_date" id="expiry_date" required placeholder="MM/AA">
+        <input type="text" name="expiry_date" id="expiry_date" required 
+               placeholder="MM/AA" maxlength="5" inputmode="numeric" autocomplete="cc-exp">
 
         <label>CVV</label>
-        <input type="number" name="cvv" id="cvv" required placeholder="123" maxlength="3">
+        <input type="number" name="cvv" id="cvv" required placeholder="123" maxlength="3" autocomplete="cc-csc" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,3);">
 
         <button type="submit">Pagar $<?= $precio ?></button>
     </form>
 
     <script>
+        // NÚMERO DE TARJETA: solo dígitos, espacio cada 4 dígitos, 16 dígitos exactos (19 con espacios)
+        const cardNumberInput = document.getElementById('card_number');
+        cardNumberInput.addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, '');  // Solo números
+            if (value.length > 16) value = value.slice(0,16);
+
+            // Insertar espacios cada 4 dígitos
+            let formatted = '';
+            for (let i = 0; i < value.length; i += 4) {
+                if (i > 0) formatted += ' ';
+                formatted += value.substr(i, 4);
+            }
+            this.value = formatted;
+        });
+
+        // FECHA DE EXPIRACIÓN: Formato MM/AA y añade la pleca automáticamente
+        const expiryInput = document.getElementById('expiry_date');
+        expiryInput.addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, ''); // Solo números
+            if (value.length > 4) value = value.slice(0,4);
+
+            if (value.length > 2) {
+                value = value.slice(0,2) + '/' + value.slice(2);
+            }
+            this.value = value;
+        });
+
+        // VALIDACIÓN AL ENVIAR
         function validarFormulario() {
+            const card = document.getElementById('card_number').value.replace(/\s/g, '');
             const exp = document.getElementById('expiry_date').value.trim();
             const cvv = document.getElementById('cvv').value.trim();
+
+            if (!/^\d{16}$/.test(card)) {
+                alert('El número de tarjeta debe contener exactamente 16 dígitos numéricos.');
+                return false;
+            }
 
             if (!/^\d{2}\/\d{2}$/.test(exp)) {
                 alert('La fecha debe estar en formato MM/AA');
                 return false;
             }
 
+            // Validar mes y que no esté vencida
             const [mm, yy] = exp.split('/').map(Number);
+            if (mm < 1 || mm > 12) {
+                alert('El mes debe estar entre 01 y 12.');
+                return false;
+            }
             const fechaActual = new Date();
-            const fechaIngresada = new Date(2000 + yy, mm - 1);
-
-            if (fechaIngresada < fechaActual) {
+            const fechaIngresada = new Date(2000 + yy, mm - 1, 1);
+            if (
+                fechaIngresada.getFullYear() < fechaActual.getFullYear() ||
+                (fechaIngresada.getFullYear() === fechaActual.getFullYear() && fechaIngresada.getMonth() < fechaActual.getMonth())
+            ) {
                 alert('La tarjeta está vencida.');
                 return false;
             }
@@ -128,7 +171,6 @@ $precio = $plan === 'mensual' ? 5 : 50;
                 alert('El CVV debe tener exactamente 3 dígitos.');
                 return false;
             }
-
             return true;
         }
     </script>

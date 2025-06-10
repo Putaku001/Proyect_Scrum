@@ -1,17 +1,20 @@
 <?php
 session_start();
 include("db.php");
+include_once("limpiar_suscripciones.php");
 
 if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] != 2) {
     header("Location: login.html");
     exit();
 }
 
-require_once('vendor/TCPDF-main/tcpdf.php');
+require_once('vendor/tecnickcom/tcpdf/tcpdf.php');
 
-$sql = "SELECT u.NombreUsuario, u.Email, s.TipoSuscripcion, s.FechaInicio, s.FechaFin
+// Trae el campo Cancelada
+$sql = "SELECT u.NombreUsuario, u.Email, s.TipoSuscripcion, s.FechaInicio, s.FechaFin, s.Cancelada
         FROM Suscripciones s
         INNER JOIN Usuarios u ON s.UsuarioID = u.UsuarioID
+        WHERE s.FechaFin >= CONVERT(date, GETDATE())
         ORDER BY s.FechaInicio DESC";
 $stmt = sqlsrv_query($conn, $sql);
 
@@ -39,15 +42,24 @@ $html = '<table border="1" cellpadding="4">
                 <th><b>Tipo de Suscripción</b></th>
                 <th><b>Fecha Inicio</b></th>
                 <th><b>Fecha Fin</b></th>
+                <th><b>Estado</b></th>
             </tr>';
 
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+    // Determina el estado
+    if (!empty($row['Cancelada']) && $row['Cancelada'] == 1) {
+        $estado = "Cancelada (activa)";
+    } else {
+        $estado = "Activa";
+    }
+
     $html .= '<tr>
                 <td>' . htmlspecialchars($row['NombreUsuario']) . '</td>
                 <td>' . htmlspecialchars($row['Email']) . '</td>
                 <td>' . htmlspecialchars($row['TipoSuscripcion']) . '</td>
-                <td>' . $row['FechaInicio']->format('Y-m-d') . '</td>
-                <td>' . $row['FechaFin']->format('Y-m-d') . '</td>
+                <td>' . ($row['FechaInicio'] instanceof DateTime ? $row['FechaInicio']->format('Y-m-d') : date('Y-m-d', strtotime($row['FechaInicio']))) . '</td>
+                <td>' . ($row['FechaFin'] instanceof DateTime ? $row['FechaFin']->format('Y-m-d') : date('Y-m-d', strtotime($row['FechaFin']))) . '</td>
+                <td>' . $estado . '</td>
               </tr>';
 }
 
