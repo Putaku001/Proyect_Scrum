@@ -1,9 +1,9 @@
 <?php
-$serverName = "localhost\\SQLEXPRESS";
+$serverName = "localhost";
 $connectionOptions = [
-    "Database" => "proyectoDBS3",
-    "Uid" => "kenn",    // ← reemplaza con tu usuario
-    "PWD" => "123", // ← reemplaza con tu contraseña
+    "Database" => "proyectoDBS2",
+    "Uid" => "Shadow01xd",    // ← reemplaza con tu usuario
+    "PWD" => "PraiseTheFool", // ← reemplaza con tu contraseña
     "CharacterSet" => "UTF-8"
 ];
 

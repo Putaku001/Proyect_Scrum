@@ -21,44 +21,39 @@
           <li><a href="#">Catálogo</a></li>
         </ul>
       </nav>
-
-      <!-- Selector de tema oscuro/claro -->
       <div class="theme-switcher">
         <button id="theme-toggle" aria-label="Cambiar tema">
-          <span class="dark-icon">🌙</span> <!-- Icono para tema oscuro -->
-          <span class="light-icon">☀️</span> <!-- Icono para tema claro -->
+          <span class="dark-icon">🌙</span>
+          <span class="light-icon">☀️</span>
         </button>
       </div>
-
       <div class="profile">
         <a href="login.html" id="login-link">Iniciar Sesión</a>
       </div>
     </div>
   </header>
 
-  <!-- Contenido principal: Formulario de login -->
-  <main class="login-container">
-    <div class="login-box">
-      <h2>Inicia Sesión</h2>
-      <form action="login.php" method="POST">
-        <label for="email">Correo electrónico</label>
-        <input type="email" name="email" id="email" required placeholder="Correo">
+  <!-- WRAPPER -->
+  <div class="page-wrapper">
+    <main class="login-container">
+      <div class="login-box">
+        <h2>Inicia Sesión</h2>
+        <form action="login.php" method="POST">
+          <label for="email">Correo electrónico</label>
+          <input type="email" name="email" id="email" required placeholder="Correo">
 
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password" required placeholder="Contraseña">
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" id="password" required placeholder="Contraseña">
 
-        <button type="submit">Ingresar</button>
-      </form>
-      <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Manga Verse. Todos los derechos reservados.</p>
-  </footer>
-
-    <!-- Script para el cambio de tema -->
-    <script src="./js/theme-switcher.js"></script>
+          <button type="submit">Ingresar</button>
+        </form>
+        <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 Manga Verse. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+  <script src="./js/theme-switcher.js"></script>
 </body>
 </html>

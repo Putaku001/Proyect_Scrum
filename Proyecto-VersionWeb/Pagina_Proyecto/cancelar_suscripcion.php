@@ -1,26 +1,24 @@
 <?php
 session_start();
-include("db.php");
+require 'db.php';
 
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.html");
     exit();
 }
 
-$id = $_SESSION['usuario_id'];
+$uid = $_SESSION['usuario_id'];
 
-// Marcar la suscripción activa (vigente y no cancelada) como cancelada
-$sql = "UPDATE Suscripciones
-        SET Cancelada = 1
-        WHERE UsuarioID = ? AND Cancelada = 0
-        AND FechaFin = (
-            SELECT MAX(FechaFin) FROM Suscripciones WHERE UsuarioID = ? AND Cancelada = 0
+// Marcar como cancelada la última suscripción activa no cancelada ni vencida
+$sql = "UPDATE Suscripciones 
+        SET Cancelada = 1 
+        WHERE SuscripcionID = (
+            SELECT TOP 1 SuscripcionID FROM Suscripciones 
+            WHERE UsuarioID = ? AND (Cancelada IS NULL OR Cancelada = 0) AND FechaFin >= GETDATE()
+            ORDER BY FechaFin DESC
         )";
-$stmt = sqlsrv_query($conn, $sql, [$id, $id]);
-
-if ($stmt === false) {
-    die(print_r(sqlsrv_errors(), true));
-}
+sqlsrv_query($conn, $sql, [$uid]);
 
 header("Location: editar_perfil.php?mensaje=cancelada");
 exit();
+?>

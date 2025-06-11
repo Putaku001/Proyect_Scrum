@@ -46,10 +46,7 @@ if (!$stmt) {
     exit();
 }
 
-// ✅ Actualizar nombre en la sesión
 $_SESSION['nombre'] = $nombre;
-
-// ✅ Redirección correcta según el rol
 $destino = ($rol === 2) ? 'admin_dashboard.php' : 'dashboard.php';
 header("Location: $destino");
 exit();

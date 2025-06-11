@@ -195,134 +195,268 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <title>Exportar / Importar Mangas</title>
+    <title>Exportar / Importar Mangas - Manga Verse</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #0d1530;
-        color: #f5f6fa;
-        padding: 2rem;
-    }
+         body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+        }
+        .admin-container {
+            max-width: 800px;
+            margin: 80px auto 50px;
+            padding: 0 20px;
+        }
 
-    h1, h2 {
-        color: #00ffff;
-        text-align: center;
-    }
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
 
-    .panel {
-        background: #1c2541;
-        padding: 2rem;
-        border-radius: 12px;
-        margin-bottom: 30px;
-        max-width: 700px;
-        margin-inline: auto;
-        box-shadow: 0 0 12px #0006;
-    }
+        h2 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
 
-    button {
-        background: #00bcd4;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-weight: bold;
-        font-size: 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
+        .panel {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border: 1px solid var(--input-border);
+        }
 
-    button:hover {
-        background: #1de9b6;
-    }
+        button {
+            background: var(--button-primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    input[type="file"] {
-        margin-top: 10px;
-        color: #eee;
-        background: #1e2a4a;
-        border: 1px solid #2c3e50;
-        padding: 8px;
-        border-radius: 6px;
-    }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
 
-    form {
-        display: inline;
-    }
+        input[type="file"] {
+            width: 100%;
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--input-border);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            transition: border-color 0.3s ease;
+        }
 
-    .manga-btn {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 6px 0;
-        border-bottom: 1px solid #2e3d5c;
-        padding-bottom: 6px;
-        color: #eee;
-    }
+        input[type="file"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+        }
 
-    .volver {
-        position: absolute;
-        top: 20px;
-        left: 30px;
-        background: #0f213b;
-        color: #00eaff;
-        padding: 10px 18px;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: bold;
-        box-shadow: 0 0 8px #00eaff55;
-        transition: 0.3s;
-    }
+        .manga-list {
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 20px 0;
+            padding-right: 10px;
+        }
 
-    .volver:hover {
-        background: #173153;
-        color: #66ffff;
-    }
-</style>
+        .manga-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--input-border);
+            transition: all 0.3s ease;
+        }
 
+        .manga-item:hover {
+            background: var(--bg-secondary);
+            transform: translateX(5px);
+        }
+
+        .manga-title {
+            flex-grow: 1;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .btn-volver {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: var(--bg-card);
+            color: var(--accent-color);
+            border-radius: 12px;
+            padding: 12px 24px 12px 18px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid var(--accent-color);
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-volver:hover, .btn-volver:focus {
+            background: var(--accent-color);
+            color: var(--button-text-color);
+            box-shadow: 0 8px 24px rgba(138, 43, 226, 0.3);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 10;
+        }
+
+        .import-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .panel-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                margin-top: 100px;
+            }
+            
+            .btn-volver, .theme-switcher {
+                top: 15px;
+            }
+            
+            .btn-volver {
+                left: 15px;
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+            
+            .theme-switcher {
+                right: 15px;
+            }
+            
+            .manga-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .panel-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
+<a href="admin_dashboard.php" class="btn-volver" title="Volver al dashboard">
+    <i class="fas fa-arrow-left"></i> Volver
+</a>
 
-<a href="admin_dashboard.php" class="volver">← Volver</a>
-
-<h1 style="text-align:center;">📦 Gestión de Mangas (.SQL)</h1>
-
-<div class="panel">
-    <h2>Exportar todos los mangas</h2>
-    <form method="post">
-        <button name="export_all">📤 Exportar TODO</button>
-    </form>
+<div class="theme-switcher">
+    <button id="theme-toggle" aria-label="Cambiar tema">
+        <span class="dark-icon">🌙</span><span class="light-icon">☀️</span>
+    </button>
 </div>
 
-<div class="panel">
-    <h2>Exportar manga individual</h2>
-    <?php
-    $stmt = sqlsrv_query($conn, "SELECT MangaID, Titulo FROM Mangas ORDER BY Titulo");
-    while ($m = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        $id = $m['MangaID'];
-        $titulo = htmlspecialchars($m['Titulo']);
-        echo "<div class='manga-btn'>
-                <span>$titulo</span>
-                <form method='post'>
-                    <input type='hidden' name='export_id' value='$id'>
-                    <button>Exportar</button>
-                </form>
-              </div>";
-    }
-    ?>
+<div class="admin-container">
+    <h1><i class="fas fa-database"></i> Gestión de Datos de Mangas</h1>
+
+    <div class="panel">
+        <h2><i class="fas fa-file-export"></i> Exportar todos los mangas</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">
+            Genera un archivo SQL con todos los mangas del sistema
+        </p>
+        <div style="text-align: center;">
+            <form method="post">
+                <button type="submit" name="export_all">
+                    <i class="fas fa-file-export"></i> Exportar Todo
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2><i class="fas fa-file-export"></i> Exportar manga individual</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">
+            Selecciona un manga para exportar su estructura completa
+        </p>
+        <div class="manga-list">
+            <?php
+            $stmt = sqlsrv_query($conn, "SELECT MangaID, Titulo FROM Mangas ORDER BY Titulo");
+            while ($m = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                $id = $m['MangaID'];
+                $titulo = htmlspecialchars($m['Titulo']);
+                echo "<div class='manga-item'>
+                        <span class='manga-title'>{$titulo}</span>
+                        <form method='post'>
+                            <input type='hidden' name='export_id' value='{$id}'>
+                            <button type='submit'>
+                                <i class='fas fa-download'></i> Exportar
+                            </button>
+                        </form>
+                      </div>";
+            }
+            ?>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2><i class="fas fa-file-import"></i> Importar script SQL</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">
+            Importa un manga desde un archivo SQL con su estructura completa
+        </p>
+        <form method="post" enctype="multipart/form-data" class="import-form">
+            <input type="file" name="sql_file" accept=".sql" required>
+            <div class="panel-actions">
+                <button type="submit" name="importar">
+                    <i class="fas fa-upload"></i> Importar Manga
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 
-<div class="panel">
-    <h2>Importar script SQL</h2>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="sql_file" required>
-        <br><br>
-        <button name="importar">📥 Importar</button>
-    </form>
-</div>
-
+<script src="./js/theme-switcher.js"></script>
 </body>
 </html>

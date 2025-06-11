@@ -76,256 +76,356 @@ usort($archivos, function ($a, $b) {
   <link rel="stylesheet" href="./css/style.css">
   <style>
     body {
-      background: #181b2e;
-      color: #ecf6fb;
-      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Roboto', sans-serif;
       margin: 0;
+      padding: 0;
     }
+    
     .btn-volver {
       position: fixed;
-      top: 32px;
-      left: 32px;
-      background: #232544;
-      color: #00eaff;
-      border-radius: 11px;
-      padding: 11px 24px 11px 18px;
-      font-weight: 700;
-      font-size: 1.16em;
+      top: 20px;
+      left: 20px;
+      background: var(--bg-card);
+      color: var(--accent-color);
+      border-radius: 50px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 1rem;
       text-decoration: none;
-      box-shadow: 0 4px 22px #0005;
-      border: 2px solid #00eaff22;
-      transition: background .15s, color .15s, border .14s, box-shadow .12s, transform .11s;
-      z-index: 10;
-      display: inline-block;
-    }
-    .btn-volver:hover, .btn-volver:focus {
-      background: #00eaff;
-      color: #232544;
-      border: 2.5px solid #00eaff;
-      box-shadow: 0 8px 24px #00eaff66;
-      outline: none;
-      transform: scale(1.04);
-    }
-    .detalle-manga-admin-wrap {
-      position: relative;
-      max-width: 1000px;
-      margin: 80px auto 48px;
-      padding-right: 110px;
-    }
-    .card-btns-externos {
-      position: absolute;
-      top: 50%;
-      right: -90px;
-      transform: translateY(-50%);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border: 2px solid var(--accent-color);
+      transition: all 0.3s ease;
+      z-index: 100;
       display: flex;
-      flex-direction: column;
-      gap: 22px;
-      z-index: 4;
+      align-items: center;
+      gap: 8px;
     }
-    .fab-btn {
-      width: 56px;
-      height: 56px;
+    
+    .btn-volver:hover, .btn-volver:focus {
+      background: var(--accent-color);
+      color: var(--button-text-color);
+      box-shadow: 0 6px 24px rgba(138, 43, 226, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .btn-volver span {
+      font-size: 1.2em;
+    }
+    
+    /* NUEVO CONTENEDOR PARA BOTONES SUPERIORES */
+    .top-action-buttons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+      background: var(--bg-card);
+      padding: 10px 15px;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--input-border);
+    }
+    
+    .action-btn {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       border: none;
-      color: #fff;
-      font-size: 2.1em;
-      background: linear-gradient(135deg,#00eaff 60%,#8f4fff 100%);
-      box-shadow: 0 6px 22px #0006;
+      color: white;
+      font-size: 1.2em;
+      background: var(--button-primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       cursor: pointer;
-      transition: transform .16s, box-shadow .13s, background .14s;
+      transition: all 0.3s ease;
       outline: none;
     }
-    .fab-btn:hover {
-      background: linear-gradient(135deg,#02ffe3,#7043ff 90%);
-      color: #232544;
-      transform: scale(1.09);
-      box-shadow: 0 10px 30px #00eaff88;
+    
+    .action-btn:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
     }
-    .fab-btn.delete {
-      background: linear-gradient(135deg,#ff2951 55%,#4f0034 100%);
+    
+    .action-btn.delete {
+      background: linear-gradient(135deg, #ff4d4d, #d00000);
     }
-    .fab-btn.delete:hover {
-      background: linear-gradient(135deg,#ff2951 55%,#f91e1e 100%);
-      color: #fff;
-      box-shadow: 0 10px 38px #ff295188;
+    
+    .action-btn.delete:hover {
+      background: linear-gradient(135deg, #ff3333, #b80000);
     }
+    
+    .detalle-manga-admin-wrap {
+      max-width: 1200px;
+      margin: 100px auto 60px;
+      padding: 0 20px;
+    }
+    
     .detalle-manga-admin-card {
-      max-width: 900px;
-      margin: 0 auto;
-      background: #21244c;
-      border-radius: 18px;
-      box-shadow: 0 0 30px #0009;
-      padding: 0 0 34px 0;
+      background: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      padding: 30px;
       position: relative;
-      overflow: visible;
-      min-height: 420px;
+      overflow: hidden;
+      border: 1px solid var(--input-border);
     }
+    
     .detalle-manga-top {
       display: flex;
       flex-wrap: wrap;
-      gap: 34px;
-      padding: 38px 40px 0 38px;
+      gap: 40px;
+      margin-bottom: 40px;
     }
+    
     .detalle-manga-portada {
-      width: 310px;
-      height: 460px;
+      width: 300px;
+      height: 450px;
       object-fit: cover;
-      border-radius: 14px;
-      box-shadow: 0 6px 34px #0007;
-      background: #131628;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
     }
+    
+    .detalle-manga-portada:hover {
+      transform: scale(1.02);
+    }
+    
     .detalle-manga-info {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      min-width: 270px;
+      min-width: 300px;
     }
+    
     .detalle-manga-info h1 {
-      font-size: 2.6rem;
-      margin: 0 0 14px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: #00eaff;
-      line-height: 1.14;
+      font-size: 2.5rem;
+      margin: 0 0 15px;
+      color: var(--accent-color);
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+    
     .badge-genero {
-      background: linear-gradient(135deg, #00eaff 60%, #8f4fff 100%);
-      color: #232544;
-      display: inline-block;
+      background: var(--button-primary);
+      color: white;
       padding: 8px 20px;
-      border-radius: 21px;
-      font-size: 1.06rem;
+      border-radius: 50px;
+      font-size: 1rem;
       margin-bottom: 20px;
       font-weight: 600;
-      box-shadow: 0 2px 10px #00eaff33;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
     }
+    
     .detalle-manga-info p {
-      font-size: 1.11rem;
-      line-height: 1.57;
-      margin: 0 0 12px;
-      color: #d3e2ef;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0 0 15px;
+      color: var(--text-primary);
     }
+    
     .detalle-manga-info h3 {
-      font-size: 1.22rem;
-      color: #8f4fff;
-      margin-top: 18px;
-      margin-bottom: 9px;
+      font-size: 1.3rem;
+      color: var(--accent-color);
+      margin: 25px 0 10px;
       font-weight: 600;
     }
+    
     .detalle-manga-info .datos-sec {
       font-size: 1rem;
-      margin-bottom: 9px;
-      color: #6ff6ff;
+      margin-bottom: 10px;
+      color: var(--text-secondary);
       font-weight: 500;
     }
+    
     .tomos-section {
-      margin: 44px 0 0 0;
-      padding: 0 38px;
+      margin-top: 40px;
     }
+    
     .tomos-section h2 {
-      font-size: 1.41rem;
-      margin-bottom: 17px;
-      color: #49f5ff;
-      font-weight: 700;
-      letter-spacing: 0.03em;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 10px;
     }
+    
+    .tomos-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--button-primary);
+      border-radius: 3px;
+    }
+    
     .tomo-card {
-      background: #252e57;
-      color: #ffe072;
-      padding: 16px 22px 15px 22px;
-      margin-bottom: 12px;
-      border-radius: 9px;
-      font-size: 1.08rem;
-      box-shadow: 0 2px 12px #0004;
+      background: var(--bg-secondary);
+      padding: 18px 25px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      transition: box-shadow 0.18s;
+      gap: 20px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--input-border);
     }
+    
     .tomo-card:hover {
-      box-shadow: 0 8px 24px #00eaff33;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(138, 43, 226, 0.2);
     }
+    
     .tomo-info {
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 15px;
+      flex-wrap: wrap;
     }
+    
     .tomo-title {
-      font-weight: bold;
-      font-size: 1.05em;
-      color: #ffea77;
-      letter-spacing: 0.04em;
+      font-weight: 600;
+      color: var(--text-primary);
     }
+    
     .premium-badge {
-      display: inline-block;
-      padding: 4px 13px 4px 9px;
-      background: linear-gradient(90deg,#f43fff 60%,#8e24aa 100%);
-      color: #fff;
-      border-radius: 18px;
-      font-size: 0.93em;
+      padding: 5px 15px;
+      background: linear-gradient(135deg, #ff4dff, #8e24aa);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.9em;
       font-weight: 600;
-      margin-left: 9px;
-      box-shadow: 0 1px 7px #8e24aa44;
+      box-shadow: 0 4px 12px rgba(142, 36, 170, 0.3);
     }
+    
     .nopremium-badge {
-      display: inline-block;
-      padding: 4px 14px 4px 9px;
-      background: linear-gradient(90deg,#1de9b6 70%,#40c4ff 100%);
-      color: #23305c;
-      border-radius: 18px;
-      font-size: 0.93em;
+      padding: 5px 15px;
+      background: linear-gradient(135deg, #1de9b6, #40c4ff);
+      color: var(--bg-primary);
+      border-radius: 50px;
+      font-size: 0.9em;
       font-weight: 600;
-      margin-left: 9px;
-      box-shadow: 0 1px 7px #49f5ff33;
+      box-shadow: 0 4px 12px rgba(29, 233, 182, 0.3);
     }
+    
+    .tomo-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
     .tomo-links a {
-      color: #00eaff;
+      color: var(--accent-color);
       text-decoration: none;
-      margin-right: 15px;
       font-weight: 600;
-      font-size: 1.05em;
-      transition: color .16s;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      padding: 8px 15px;
+      border-radius: 6px;
+      background: rgba(138, 43, 226, 0.1);
+      border: 1px solid rgba(138, 43, 226, 0.3);
     }
+    
     .tomo-links a:hover {
-      color: #ffe072;
-      text-shadow: 0 1px 4px #00eaff55;
+      background: rgba(138, 43, 226, 0.2);
+      color: var(--text-primary);
+      box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
     }
-    @media (max-width:1100px){
-      .card-btns-externos {
-        right: 10px;
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      margin-top: 60px;
+      box-shadow: 0 -8px 32px rgba(137, 129, 248, 0.1);
+    }
+    
+    @media (max-width: 900px) {
+      .detalle-manga-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
       }
+      
+      .detalle-manga-portada {
+        width: 250px;
+        height: 375px;
+      }
+      
+      .detalle-manga-info {
+        min-width: 100%;
+      }
+    }
+    
+    @media (max-width: 700px) {
+      .top-action-buttons {
+        top: 70px;
+        right: 50%;
+        transform: translateX(50%);
+        padding: 8px 12px;
+      }
+      
       .detalle-manga-admin-wrap {
-        padding-right: 80px;
+        margin: 140px auto 40px;
       }
-    }
-    @media (max-width:900px) {
-      .detalle-manga-top { flex-direction:column; align-items:center; gap:24px;padding:30px 10px 0 10px; }
-      .detalle-manga-portada { width: 210px;height: 320px; }
-      .detalle-manga-info { min-width:180px;width:100%; }
-      .tomos-section {padding:0 11px;}
-    }
-    @media (max-width:700px){
-      .card-btns-externos {
-        position: static;
-        transform: none;
-        flex-direction: row;
-        gap: 13px;
-        margin: 14px 0 18px 0;
+      
+      .btn-volver {
+        top: 10px;
+        left: 10px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .tomo-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .tomo-links {
+        width: 100%;
         justify-content: flex-end;
       }
-      .detalle-manga-admin-wrap {
-        padding-right: 0;
-        margin: 40px 0 32px 0;
-      }
     }
-    @media (max-width:600px){
-      .btn-volver{top:10px;left:8px;font-size:1em;padding:9px 13px;}
+    
+    @media (max-width: 500px) {
+      .detalle-manga-admin-card {
+        padding: 20px;
+      }
+      
+      .detalle-manga-info h1 {
+        font-size: 2rem;
+      }
+      
+      .tomo-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .tomo-links a {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .top-action-buttons {
+        gap: 10px;
+      }
+      
+      .action-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1em;
+      }
     }
   </style>
 </head>
@@ -335,13 +435,18 @@ usort($archivos, function ($a, $b) {
 </a>
 
 <div class="detalle-manga-admin-wrap">
-  <!-- BOTONES FUERA DE LA CARD PERO ALINEADOS -->
-  <div class="card-btns-externos">
-    <a href="editar_manga.php?id=<?= $mangaId ?>" class="fab-btn" title="Editar manga">✏️</a>
-    <form action="eliminar_manga.php" method="POST" style="margin:0;" onsubmit="return confirm('¿Seguro que deseas eliminar este manga? Esta acción no se puede deshacer.');">
-      <input type="hidden" name="manga_id" value="<?= $mangaId ?>">
-      <button type="submit" class="fab-btn delete" title="Eliminar manga">🗑️</button>
-    </form>
+  <!-- Botones de acción en la parte superior derecha -->
+    <div class="top-action-buttons">
+      <a href="editar_manga.php?id=<?= $mangaId ?>" class="action-btn" title="Editar manga">✏️</a>
+      <form action="eliminar_manga.php" method="POST" style="margin:0;" onsubmit="return confirm('¿Seguro que deseas eliminar este manga? Esta acción no se puede deshacer.');">
+        <input type="hidden" name="manga_id" value="<?= $mangaId ?>">
+        <button type="submit" class="action-btn delete" title="Eliminar manga">🗑️</button>
+      </form>
+      <button id="theme-toggle" class="action-btn" aria-label="Cambiar tema">
+        <span class="dark-icon">🌙</span>
+        <span class="light-icon">☀️</span>
+      </button>
+    </div>
   </div>
   <div class="detalle-manga-admin-card">
     <div class="detalle-manga-top">
@@ -393,3 +498,5 @@ usort($archivos, function ($a, $b) {
 </footer>
 </body>
 </html>
+
+<script src="./js/theme-switcher.js"></script>

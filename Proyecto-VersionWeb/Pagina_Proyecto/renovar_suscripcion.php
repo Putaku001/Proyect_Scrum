@@ -15,8 +15,8 @@ $fechaFin = $tipo === 'Anual'
     : date('Y-m-d', strtotime('+1 month'));
 
 // Registrar nueva suscripción
-$sql = "INSERT INTO Suscripciones (UsuarioID, TipoSuscripcion, FechaInicio, FechaFin)
-        VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO Suscripciones (UsuarioID, TipoSuscripcion, FechaInicio, FechaFin, Cancelada)
+        VALUES (?, ?, ?, ?, 0)";
 $params = [$usuarioId, $tipo, $fechaInicio, $fechaFin];
 sqlsrv_query($conn, $sql, $params);
 

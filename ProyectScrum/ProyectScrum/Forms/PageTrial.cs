@@ -17,6 +17,9 @@ namespace ReDiseño
         {
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.Dpi;
+            CargarImagenes();
+            MostrarImagenActual();
+
         }
         private void ISButton_Click(object sender, EventArgs e)
         {
@@ -35,36 +38,55 @@ namespace ReDiseño
         }
         private void CargarImagenes()
         {
-            // Puedes cargar desde recursos, archivos o URLs.
-            
+            // Subimos desde bin\Debug\net8.0-windows hasta el proyecto raíz
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Recursos\img");
+            basePath = Path.GetFullPath(basePath); // Resuelve correctamente la ruta
 
-            imagenes.Add(Image.FromFile("Recursos\\img\\koe no katachi.jpg"));
-            
+            string[] archivos = {
+    "koe no katachi.jpg",
+    "ruri-dragon-vol1.jpg",
+    "KS.jpg",
+    "Kurosawa.jpg",
+    "yourname.jpg"
+};
 
-            imagenes.Add(Image.FromFile("Recursos\\img\\ruri-dragon-vol1.jpg"));
-
-            imagenes.Add(Image.FromFile("Recursos\\img\\KS.jpg"));
-
-            imagenes.Add(Image.FromFile("Recursos\\img\\Kurosawa.jpg"));
-
-            imagenes.Add(Image.FromFile("Recursos\\img\\yourname.jpg"));
-
+            foreach (var archivo in archivos)
+            {
+                string rutaCompleta = Path.Combine(basePath, archivo);
+                if (File.Exists(rutaCompleta))
+                {
+                    imagenes.Add(Image.FromFile(rutaCompleta));
+                }
+                else
+                {
+                    MessageBox.Show($"Imagen no encontrada: {rutaCompleta}");
+                }
+            }
         }
+
+
 
         private void MostrarImagenActual()
         {
-            guna2PictureBox1.Image = imagenes[indiceActual];
+            if (imagenes.Count > 0)
+            {
+                guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                guna2PictureBox1.Image = imagenes[indiceActual];
+            }
         }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             indiceActual = (indiceActual + 1) % imagenes.Count;
+            MostrarImagenActual();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             timer1.Stop();
             indiceActual = (indiceActual + 1) % imagenes.Count;
+            MostrarImagenActual();
             timer1.Start();
         }
 
@@ -72,6 +94,7 @@ namespace ReDiseño
         {
             timer1.Stop();
             indiceActual = (indiceActual - 1 + imagenes.Count) % imagenes.Count;
+            MostrarImagenActual();
             timer1.Start();
         }
     }

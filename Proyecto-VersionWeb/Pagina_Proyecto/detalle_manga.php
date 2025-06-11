@@ -94,11 +94,11 @@ usort($archivos, function ($a, $b) {
     <title><?php echo htmlspecialchars($titulo); ?> - Manga Verse</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
-        /* ——— TODO tu CSS original sin tocar ——— */
+        /* ——— Estilos actualizados para detalle_manga.php ——— */
         body {
             background: var(--bg-primary);
             color: var(--text-primary);
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
         }
         .detalle-container {
@@ -107,7 +107,8 @@ usort($archivos, function ($a, $b) {
             background: var(--bg-card);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px rgba(137, 129, 248, 0.3);
+            border: 1px solid var(--input-border);
         }
         .detalle-top {
             display: flex;
@@ -119,55 +120,111 @@ usort($archivos, function ($a, $b) {
             height: 420px;
             object-fit: cover;
             border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
         .detalle-info {
             flex: 1;
+            min-width: 300px;
         }
         .detalle-info h1 {
             font-size: 2.2rem;
             margin-bottom: 10px;
+            color: var(--accent-color);
         }
         .detalle-info p {
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: var(--text-primary);
         }
         .detalle-info h3 {
             font-size: 1.2rem;
-            color: #1e90ff;
+            color: var(--accent-color);
             margin-top: 20px;
         }
+        .detalle-info h4 {
+            color: var(--text-primary); /* Usará blanco en modo oscuro */
+            font-size: 1.1rem;
+            margin: 15px 0 10px;
+        }
         .badge-genero {
-            background: linear-gradient(135deg, #1e90ff, #8a2be2);
+            background: var(--button-primary);
+            color: white;
             display: inline-block;
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.85rem;
             margin: 10px 0 20px;
+            font-weight: bold;
         }
         .tomos-section {
-            margin-top: 30px;
+            margin-top: 40px;
         }
         .tomos-section h2 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
+            color: var(--accent-color);
         }
         .tomo-card {
             background: var(--bg-secondary);
-            color: var(--accent-color);
-            padding: 12px 18px;
-            margin-bottom: 10px;
-            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--input-border);
+        }
+        .tomo-card strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 8px;
         }
         .tomo-card a {
             color: var(--accent-color);
             text-decoration: none;
-            margin-right: 10px;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
         .tomo-card a:hover {
-            text-decoration: underline;
+            text-decoration: none;
+            background: rgba(138, 43, 226, 0.1);
         }
-        footer p {
-            color: var(--text-secondary);
+        
+        /* ——— Estilos mejorados para el botón de favoritos ——— */
+        .favoritos-form {
+            margin-top: 25px;
+        }
+        .favoritos-btn {
+            padding: 12px 24px;
+            background: var(--button-primary);
+            color: var(--button-text-color);
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        .favoritos-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        .favoritos-btn.quitar {
+            background: linear-gradient(135deg, #ff4757, #dc3545);
+        }
+        
+        /* ——— Estilo para el enlace de login ——— */
+        .login-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .login-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -273,7 +330,7 @@ if (isset($_SESSION['usuario_id'])) {
     </div>
 <?php endforeach; ?>
 <?php else: ?>
-    <p style="color:#ccc;">No hay tomos disponibles en esta carpeta.</p>
+    <p>No hay tomos disponibles en esta carpeta.</p>
 <?php endif; ?>
 
 </div><!-- /.tomos-section -->
@@ -281,7 +338,7 @@ if (isset($_SESSION['usuario_id'])) {
 </div><!-- /.detalle-container -->
 
 <footer>
-  <p style="text-align:center;color:#888;padding:40px 0;">&copy; 2025 Manga Verse</p>
+  <p>&copy; 2025 Manga Verse</p>
 </footer>
 
 <script src="./js/theme-switcher.js"></script>
