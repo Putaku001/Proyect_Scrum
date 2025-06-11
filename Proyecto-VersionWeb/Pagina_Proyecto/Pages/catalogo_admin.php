@@ -38,10 +38,20 @@ $stmt = sqlsrv_query($conn, $sql, $params);
 $mangas = [];
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $portadaWeb = $row['URLPortadaWeb'];
-    $row['PortadaElegida'] = (!empty($portadaWeb) && file_exists($portadaWeb)) ? $portadaWeb : $row['URLPortada'];
+
+    // Convierte la URL pública en ruta física antes de comprobar file_exists
+    $pathFisico = $_SERVER['DOCUMENT_ROOT'] . $portadaWeb;
+
+    // Usa portada local si existe; de lo contrario cae a la de Drive
+    $row['PortadaElegida'] = (!empty($portadaWeb) && file_exists($pathFisico))
+                             ? $portadaWeb
+                             : $row['URLPortada'];
+
     $mangas[] = $row;
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -49,400 +59,333 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
   <title>Catálogo Admin - Manga Verse</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    .catalog-container {
-      max-width: 1200px;
-      margin: 100px auto 50px;
-      padding: 0 20px;
-    }
+    :root {
+  --bg-primary: #181928;
+  --bg-secondary: #232346;
+  --bg-tertiary: #101020;
+  --bg-card: #21213a;
+  --input-bg: #23233b;
+  --input-border: #36368a;
+  --accent-color: #7c4cff;
+  --button-primary: linear-gradient(90deg, #7c4cff 40%, #5e96fc 100%);
+  --button-text-color: #fff;
+  --text-primary: #fafaff;
+  --text-secondary: #adb0c8;
+  --shadow-strong: 0 8px 32px 0 rgba(39, 23, 107, 0.18);
+  --shadow-card: 0 2px 18px 0 rgba(22,18,63,0.08);
+}
 
-    .catalog-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-      gap: 20px;
-    }
+body {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .catalog-header form {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      flex-grow: 1;
-    }
+/* Sticky header look */
+.catalog-header {
+  background: rgba(28, 28, 48, 0.90);
+  backdrop-filter: blur(4px);
+  border-radius: 14px;
+  box-shadow: var(--shadow-strong);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 18px 26px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  border: 1.5px solid var(--input-border);
+  animation: fadein 0.6s;
+}
 
-    .catalog-header input,
-    .catalog-header select {
-      padding: 12px 15px;
-      border-radius: 8px;
-      border: 1px solid var(--input-border);
-      background: var(--input-bg);
-      color: var(--text-primary);
-      font-size: 1rem;
-      min-width: 200px;
-      flex-grow: 1;
-      transition: border-color 0.3s ease;
-    }
+/* Catálogo container */
+.catalog-container {
+  max-width: 1220px;
+  margin: 100px auto 54px;
+  padding: 0 22px 36px 22px;
+  background: transparent;
+  border-radius: 18px;
+}
 
-    .catalog-header input:focus,
-    .catalog-header select:focus {
-      outline: none;
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
-    }
+.catalog-header form {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  align-items: center;
+}
 
-    .catalog-header button {
-      padding: 12px 24px;
-      border-radius: 8px;
-      border: none;
-      background: var(--button-primary);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
+.catalog-header input,
+.catalog-header select {
+  background: var(--input-bg);
+  color: var(--text-primary);
+  padding: 13px 16px;
+  border-radius: 9px;
+  border: 1.5px solid var(--input-border);
+  font-size: 1rem;
+  min-width: 210px;
+  flex-grow: 1;
+  box-shadow: 0 1.5px 7px 0 rgba(55,70,125,0.05);
+  transition: border 0.2s, box-shadow 0.3s;
+}
 
-    .catalog-header button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+.catalog-header input:focus,
+.catalog-header select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(124,76,255,0.13);
+}
 
-    .admin-actions a {
-      padding: 12px 24px;
-      background: var(--button-primary);
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
+.catalog-header button {
+  padding: 13px 30px;
+  border-radius: 9px;
+  border: none;
+  background: var(--button-primary);
+  color: var(--button-text-color);
+  font-weight: bold;
+  font-size: 1.06rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 14px 0 rgba(124,76,255,0.10);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.catalog-header button:hover {
+  background: linear-gradient(90deg, #9d4dff 30%, #5ec8fc 100%);
+  transform: translateY(-1.5px) scale(1.04);
+  box-shadow: 0 8px 24px 0 rgba(124,76,255,0.12);
+}
 
-    .admin-actions a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+/* Botón volver */
+.btn-volver {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  background: rgba(28,28,48,0.78);
+  color: var(--accent-color);
+  border-radius: 13px;
+  padding: 12px 27px 12px 20px;
+  font-weight: 700;
+  font-size: 1.13rem;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(124, 76, 255, 0.12);
+  border: 2px solid var(--accent-color);
+  transition: all 0.2s;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  backdrop-filter: blur(2.5px);
+}
+.btn-volver:hover,
+.btn-volver:focus {
+  background: var(--accent-color);
+  color: var(--button-text-color);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
 
-    .manga-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 25px;
-    }
+/* Acciones admin */
+.admin-actions a {
+  padding: 13px 32px;
+  background: var(--button-primary);
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 9px;
+  font-size: 1.08rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 14px 0 rgba(124,76,255,0.10);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  transition: background 0.15s, box-shadow 0.18s, transform 0.18s;
+}
+.admin-actions a:hover {
+  background: linear-gradient(90deg, #a67cfc 0%, #6ae3ff 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 26px 0 rgba(124,76,255,0.17);
+}
 
-    .manga-card {
-      background: var(--bg-card);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      position: relative;
-      transition: all 0.3s ease;
-      border: 1px solid var(--input-border);
-    }
+.manga-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 30px;
+  margin-top: 16px;
+  animation: fadein 1.2s;
+}
 
-    .manga-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+/* CARD */
+.manga-card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  border: 1.5px solid var(--input-border);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s, box-shadow 0.22s;
+  animation: floatin 0.8s;
+}
+.manga-card:hover {
+  transform: translateY(-7px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(124, 76, 255, 0.16);
+  border-color: var(--accent-color);
+}
 
-    .img-wrapper {
-      position: relative;
-      width: 100%;
-      height: 320px;
-      overflow: hidden;
-    }
+.img-wrapper {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border-bottom: 2.5px solid var(--input-border);
+  position: relative;
+  background: #23233b;
+}
+.img-wrapper a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s;
+  display: block;
+  border-radius: 0;
+}
+.manga-card:hover .img-wrapper img {
+  transform: scale(1.07) rotate(-0.6deg);
+}
 
-    .img-wrapper a {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+.card-buttons-top {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s;
+  z-index: 2;
+}
+.manga-card:hover .card-buttons-top {
+  opacity: 1;
+  pointer-events: all;
+}
 
-    .img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
+.card-buttons-top a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(29, 20, 59, 0.88);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.23em;
+  border: 2px solid var(--accent-color);
+  transition: background 0.18s, border 0.18s, transform 0.18s;
+}
+.card-buttons-top a:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: scale(1.16);
+}
+.card-buttons-top .eliminar:hover {
+  background: #ff4c4c;
+  border-color: #ff4c4c;
+}
 
-    .manga-card:hover .img-wrapper img {
-      transform: scale(1.05);
-    }
+.manga-card .info {
+  padding: 21px 17px 19px 17px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 70px;
+}
 
-    .card-buttons-top {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 2;
-    }
-
-    .manga-card:hover .card-buttons-top {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .card-buttons-top a {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      font-size: 18px;
-      border: 1px solid var(--accent-color);
-      transition: all 0.3s ease;
-    }
-
-    .card-buttons-top a:hover {
-      background: var(--accent-color);
-      color: white;
-      transform: scale(1.1);
-    }
-
-    .card-buttons-top .eliminar:hover {
-      background: #ff4c4c;
-      border-color: #ff4c4c;
-    }
-
-    .manga-card .info {
-      padding: 18px;
-      background: var(--bg-card);
-    }
-
-    .manga-card h3 {
-      color: var(--accent-color);
-      font-size: 1.2rem;
-      margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .btn-volver {
-      position: fixed;
-      top: 32px;
-      left: 32px;
-      background: var(--bg-card);
-      color: var(--accent-color);
-      border-radius: 12px;
-      padding: 12px 24px 12px 18px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      border: 2px solid var(--accent-color);
-      transition: all 0.3s ease;
-      z-index: 10;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-volver:hover,
-    .btn-volver:focus {
-      background: var(--accent-color);
-      color: var(--button-text-color);
-      box-shadow: 0 8px 24px rgba(138, 43, 226, 0.3);
-      transform: translateY(-2px);
-      outline: none;
-    }
-
-   body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', Arial, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-    }
-
-
+.manga-card h3 {
+  color: var(--accent-color);
+  font-size: 1.15rem;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 footer {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   padding: 20px;
   text-align: center;
   color: var(--text-secondary);
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
+  font-size: 1.07rem;
+  box-shadow: 0 -2px 16px rgba(39, 23, 107, 0.10);
+  z-index: 2;
+  border-top: 1.5px solid var(--input-border);
 }
 
+@media (max-width: 1120px) {
+  .catalog-container { padding: 0 7px; }
+}
+@media (max-width: 900px) {
+  .manga-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+  .img-wrapper { height: 210px; }
+}
+@media (max-width: 768px) {
+  .catalog-header { padding: 10px 9px; }
+  .admin-actions a { font-size: 0.97rem; padding: 11px 20px; }
+  .img-wrapper { height: 160px; }
+  .btn-volver { font-size: 0.97rem; top: 9px; left: 9px; padding: 8px 16px 8px 12px; }
+  .catalog-header input, .catalog-header select, .catalog-header button { font-size: 0.92rem; }
+}
+@media (max-width: 480px) {
+  .manga-grid { grid-template-columns: 1fr; gap: 15px; }
+  .catalog-header { flex-direction: column; gap: 8px; }
+  .catalog-header form { flex-direction: column; gap: 8px; }
+  .img-wrapper { height: 90vw; max-height: 310px; }
+  .btn-volver { font-size: 0.85rem; padding: 7px 9px; }
+}
+@media (max-width: 360px) {
+  .manga-card .info { padding: 9px 4px; }
+  .img-wrapper { height: 150px; }
+  .card-buttons-top a { width: 32px; height: 32px; font-size: 1em; }
+}
 
+@keyframes fadein {
+  0% { opacity: 0; transform: translateY(12px);}
+  100% { opacity: 1; transform: none;}
+}
+@keyframes floatin {
+  0% { opacity: 0.7; transform: scale(0.98);}
+  100% { opacity: 1; transform: none;}
+}
 
-
-    .theme-switcher {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      z-index: 10;
-    }
-
-    @media (max-width: 1024px) {
-      .catalog-container {
-        margin-top: 90px;
-        padding: 0 15px;
-      }
-
-      .manga-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 20px;
-      }
-
-      .img-wrapper {
-        height: 300px;
-      }
-
-      .catalog-header form {
-        flex-direction: row;
-      }
-
-      .admin-actions a {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .catalog-container {
-        margin-top: 80px;
-      }
-
-      .manga-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 15px;
-      }
-
-      .img-wrapper {
-        height: 250px;
-      }
-
-      .catalog-header input,
-      .catalog-header select,
-      .catalog-header button {
-        padding: 10px 12px;
-        font-size: 0.9rem;
-      }
-
-      .manga-card .info {
-        padding: 12px;
-      }
-
-      .manga-card h3 {
-        font-size: 1.1rem;
-      }
-
-      .btn-volver {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .catalog-container {
-        margin-top: 70px;
-      }
-
-      .catalog-header {
-        gap: 12px;
-      }
-
-      .catalog-header form {
-        flex-direction: column;
-      }
-
-      .manga-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      }
-
-      .img-wrapper {
-        height: 220px;
-      }
-
-      .admin-actions a {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .card-buttons-top a {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
-      }
-
-      .btn-volver {
-        top: 10px;
-        left: 10px;
-        padding: 6px 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .catalog-container {
-        margin-top: 60px;
-      }
-
-      .manga-grid {
-        grid-template-columns: 1fr;
-        max-width: 350px;
-        margin: 0 auto;
-      }
-
-      .img-wrapper {
-        height: 400px;
-      }
-
-      .catalog-header input,
-      .catalog-header select {
-        min-width: 0;
-      }
-
-      .theme-switcher {
-        top: 10px;
-        right: 10px;
-      }
-
-      .btn-volver {
-        font-size: 0.8rem;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .img-wrapper {
-        height: 350px;
-      }
-
-      .manga-card h3 {
-        font-size: 1rem;
-      }
-
-      .card-buttons-top {
-        top: 8px;
-        right: 8px;
-        gap: 6px;
-      }
-
-      .card-buttons-top a {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-      }
+footer {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 32px 10px 22px 10px;
+      background: var(--bg-tertiary, #151526);
+      color: var(--text-secondary, #b7b7de);
+      font-size: 0.96rem;
+      box-shadow: 0 -4px 10px rgba(137, 129, 248, 0.08);
+      border-top: 1px solid var(--input-border, #39396b);
+      width: 100%;
+      margin-top: auto;
     }
   </style>
 </head>
@@ -480,8 +423,10 @@ footer {
           </a>
           <div class="card-buttons-top">
             <a href="./Admin/editar_manga.php?id=<?= $manga['MangaID'] ?>" title="Editar">✏️</a>
-            <a href="./Admin/eliminar_manga.php?id=<?= $manga['MangaID'] ?>" class="eliminar" title="Eliminar"
-               onclick="return confirm('¿Eliminar este manga?')">🗑️</a>
+          <a href="Admin/eliminar_manga.php?id=<?= $manga['MangaID'] ?>"
+   class="eliminar" title="Eliminar"
+   onclick="return confirm('¿Eliminar este manga?')">🗑️</a>
+
           </div>
         </div>
         <div class="info">

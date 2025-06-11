@@ -1,19 +1,27 @@
 <?php
+/*────────────────────────────────────────────────────────────────
+ * editar_manga.php
+ *   • Admin: edición de datos, portada y tomos de un manga
+ *   • SQL Server (sqlsrv)
+ *   • Google Drive API v3 (google/apiclient)
+ *──────────────────────────────────────────────────────────────*/
 session_start();
 require_once '../../Config/db.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
 $client = require '../../drive_auth_admin.php';
-$drive = new Google\Service\Drive($client);
+$drive  = new Google\Service\Drive($client);
 
-const COVER_DIR = __DIR__ . '../../assets/imgs/covers/';
-const COVER_WEB = '../../assets/imgs/covers/';
+/*─── Rutas para portadas ──────────────────────────────────────*/
+const COVER_DIR = __DIR__ . '/../../assets/imgs/covers/';     // disco
+const COVER_WEB = '/Pagina_Proyecto/assets/imgs/covers/';     // url pública
 
+/*─── Seguridad ────────────────────────────────────────────────*/
 if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] != 2) {
   header("Location: ../../Public/login.html");
   exit();
 }
 
-// --- Utilidades y ordenamiento especial de tomos ---
+/*─── Utilidades ───────────────────────────────────────────────*/
 function extractDriveId($url)
 {
   if (preg_match('~/file/d/([^/]+)~', $url, $m)) return $m[1];
@@ -33,18 +41,15 @@ function getParentFolder($fileId, $drive)
     return null;
   }
 }
-// Ordenamiento pro para tomos (por número de tomo natural, luego extras)
 function customSortTomos($a, $b)
 {
-  $pattern = '/(\d+)(?!.*\d)/'; // último número en el nombre
+  $pattern = '/(\d+)(?!.*\d)/';
   $na = $a->name;
   $nb = $b->name;
-  // Priorizar premium
   $pa = str_starts_with($na, '[P]');
   $pb = str_starts_with($nb, '[P]');
   if ($pa && !$pb) return -1;
   if (!$pa && $pb) return 1;
-  // Orden por número de tomo, extras al final
   $fa = preg_match($pattern, $na, $ma) ? (int)$ma[1] : 1e6;
   $fb = preg_match($pattern, $nb, $mb) ? (int)$mb[1] : 1e6;
   if ($fa != $fb) return $fa - $fb;
@@ -67,13 +72,18 @@ function listTomos($folderId, $drive)
   return $result;
 }
 
-$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?: 0;
-if ($id <= 0) die("ID inválido");
+/*─── Cargar manga ─────────────────────────────────────────────*/
+$id = isset($_GET['id']) ? (int)trim($_GET['id']) : null;
+if ($id === null || $id < 0) {
+    http_response_code(400);
+    exit('ID inválido');
+}
 
-$sql = "SELECT M.*, TA.TituloAlternativo FROM Mangas M
+$sql = "SELECT M.*, TA.TituloAlternativo 
+        FROM Mangas M
         LEFT JOIN TitulosAlternativos TA ON M.MangaID = TA.MangaID
         WHERE M.MangaID = ?";
-$stmt = sqlsrv_query($conn, $sql, [$id]);
+$stmt  = sqlsrv_query($conn, $sql, [$id]);
 $manga = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 if (!$manga) die("Manga no encontrado");
 
@@ -81,8 +91,9 @@ $generos = [];
 $res = sqlsrv_query($conn, "SELECT GeneroID, Nombre FROM Generos");
 while ($g = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) $generos[] = $g;
 
-// --- EDICIÓN DE DATOS Y PORTADA ---
+/*────────────────── 1. GUARDAR DATOS Y PORTADA ───────────────*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && !isset($_POST['accion_tomo'])) {
+
   $titulo = trim($_POST['titulo']);
   $alt    = trim($_POST['titulo_alt']);
   $autor  = trim($_POST['autor']);
@@ -95,21 +106,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && !isset($
     echo "<script>alert('Faltan campos requeridos');history.back();</script>";
     exit;
   }
+
   $urlPortDrive = $manga['URLPortada'];
   $urlPortWeb   = $manga['URLPortadaWeb'];
   $localPrev    = COVER_DIR . basename($urlPortWeb);
 
-  // Subida segura de portada nueva
+  /*── Subir nueva portada (opcional) ─────────────────────────*/
   if (!empty($_FILES['portada']['tmp_name'])) {
-    $tmp  = $_FILES['portada']['tmp_name'];
+    $tmp = $_FILES['portada']['tmp_name'];
     $info = getimagesize($tmp);
     if (!$info || !in_array($info[2], [IMAGETYPE_PNG, IMAGETYPE_JPEG])) {
       echo "<script>alert('La portada debe ser PNG o JPG.');history.back();</script>";
       exit;
     }
-    $ext  = $info[2] === IMAGETYPE_PNG ? 'png' : 'jpg';
-    $mime = $ext === 'png' ? 'image/png' : 'image/jpeg';
+    $ext  = ($info[2] === IMAGETYPE_PNG) ? 'png' : 'jpg';
+    $mime = ($ext === 'png') ? 'image/png' : 'image/jpeg';
 
+    /* carpeta “Portada” dentro del folder del manga */
     $raizId   = extractFolderId($manga['URLMangaDrive']);
     $parentId = null;
 
@@ -125,27 +138,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && !isset($
             break;
           }
         }
-      } catch (Exception $e) {
-      }
+      } catch (Exception $e) { /* ignorar */ }
     }
 
+    /* Si no se encontró, usar la carpeta padre del archivo anterior */
     $oldId = extractDriveId($urlPortDrive);
-    if (!$parentId && $oldId) {
-      $parentId = getParentFolder($oldId, $drive);
-    }
+    if (!$parentId && $oldId) $parentId = getParentFolder($oldId, $drive);
+
     if (!$parentId) {
       echo "<script>alert('No se encontró carpeta Portada en Google Drive');history.back();</script>";
       exit;
     }
 
-    if ($oldId) {
-      try {
-        $drive->files->delete($oldId);
-      } catch (Exception $e) {
-      }
-    }
-    if (file_exists($localPrev)) unlink($localPrev);
+    /* borrar portada anterior (Drive + local) */
+    if ($oldId) { try { $drive->files->delete($oldId); } catch (Exception $e) { } }
+    if (is_file($localPrev)) unlink($localPrev);
 
+    /* subir nueva portada a Drive */
     $meta = new Google\Service\Drive\DriveFile([
       'name'    => "portada.$ext",
       'parents' => [$parentId]
@@ -159,13 +168,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && !isset($
     $newId = $upload->id;
     $urlPortDrive = "https://drive.google.com/uc?export=view&id=$newId";
 
+    /* guardar localmente */
     if (!is_dir(COVER_DIR)) mkdir(COVER_DIR, 0755, true);
-    $filename    = strtolower(preg_replace('/[^a-z0-9]+/i', '_', $titulo)) . '.' . $ext;
+    $filename    = strtolower(preg_replace('/[^a-z0-9]+/i', '_', $titulo)) . ".$ext";
     $fullPath    = COVER_DIR . $filename;
     $urlPortWeb  = COVER_WEB . $filename;
     move_uploaded_file($tmp, $fullPath);
   }
 
+  /*── Guardar en BD ──────────────────────────────────────────*/
   sqlsrv_query(
     $conn,
     "UPDATE Mangas SET
@@ -176,23 +187,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && !isset($
 
   sqlsrv_query($conn, "DELETE FROM TitulosAlternativos WHERE MangaID=?", [$id]);
   if ($alt !== '') {
-    sqlsrv_query($conn, "INSERT INTO TitulosAlternativos (MangaID, TituloAlternativo) VALUES (?,?)", [$id, $alt]);
+    sqlsrv_query($conn,
+      "INSERT INTO TitulosAlternativos (MangaID, TituloAlternativo) VALUES (?,?)",
+      [$id, $alt]
+    );
   }
   echo "<script>alert('✅ Cambios guardados.');location='editar_manga.php?id=$id';</script>";
   exit;
 }
 
-// --- ACCIONES DE TOMOS ---
+/*────────────────── 2. ACCIONES SOBRE TOMOS ─────────────────*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion_tomo'])) {
   $accion = $_POST['accion_tomo'];
   $fileId = $_POST['file_id'] ?? '';
   $nombre = $_POST['file_name'] ?? '';
 
   if ($accion === 'eliminar' && $fileId) {
-    try {
-      $drive->files->delete($fileId);
-    } catch (Exception $e) {
-    }
+    try { $drive->files->delete($fileId); } catch (Exception $e) { }
   } elseif ($accion === 'marcar_premium' && $fileId) {
     $newName = "[P] " . preg_replace('/^\[P\]\s*/', '', $nombre);
     $drive->files->update($fileId, new Google\Service\Drive\DriveFile(['name' => $newName]));
@@ -204,7 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion_tomo'])) {
   exit;
 }
 
-// --- SUBIDA DE TOMO NUEVO ---
+/*────────────────── 3. SUBIR NUEVO TOMO ─────────────────────*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['nuevo_tomo'])) {
   $folderId = extractFolderId($manga['URLMangaDrive']);
   if ($folderId && $_FILES['nuevo_tomo']['error'] === 0) {
@@ -218,8 +229,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['nuevo_tomo'])) {
       'parents' => [$folderId]
     ]);
     $drive->files->create($fileMeta, [
-      'data' => file_get_contents($_FILES['nuevo_tomo']['tmp_name']),
-      'mimeType' => 'application/pdf',
+      'data'       => file_get_contents($_FILES['nuevo_tomo']['tmp_name']),
+      'mimeType'   => 'application/pdf',
       'uploadType' => 'multipart'
     ]);
   }
@@ -227,9 +238,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['nuevo_tomo'])) {
   exit;
 }
 
+/*─── Listar tomos ───────────────────────────────────────────*/
 $tomos = listTomos(extractFolderId($manga['URLMangaDrive']), $drive);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -690,146 +701,142 @@ $tomos = listTomos(extractFolderId($manga['URLMangaDrive']), $drive);
       color: #3182ce;
     }
   </style>
-  <script>
-    function previewPortada(e) {
-      const input = e.target,
-        file = input.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(ev) {
-        document.getElementById('previewPortada').src = ev.target.result;
-      }
+   <script>
+    function previewPortada(e){
+      const file = e.target.files[0];
+      if(!file) return;
+      const reader=new FileReader();
+      reader.onload=ev=>document.getElementById('previewPortada').src=ev.target.result;
       reader.readAsDataURL(file);
     }
-    // Tooltip elegante para nombres de tomo largos
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.tomo-name').forEach(el => {
-        if (el.scrollWidth > el.clientWidth) el.setAttribute('title', el.textContent);
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.tomo-name').forEach(el=>{
+        if(el.scrollWidth>el.clientWidth) el.title=el.textContent;
       });
     });
   </script>
-  <script src="../../assets/js/theme-switcher.js"></script>
+  <script src="/Pagina_Proyecto/assets/js/theme-switcher.js"></script>
 </head>
-
 <body>
-  <a href="../catalogo_admin.php" class="btn-volver" title="Volver al catálogo">
-    <span style="font-size:1.6em;vertical-align:-2px;">←</span> Volver
-  </a>
+<a href="../catalogo_admin.php" class="btn-volver" title="Volver al catálogo">
+  <span style="font-size:1.6em;vertical-align:-2px;">←</span> Volver
+</a>
 
-  <button id="theme-toggle" class="theme-switcher-btn" title="Cambiar tema">
-  <span class="dark-icon">🌙</span>
-  <span class="light-icon">☀️</span>
-  </button>
+<button id="theme-toggle" class="theme-switcher-btn" title="Cambiar tema">
+  <span class="dark-icon">🌙</span><span class="light-icon">☀️</span>
+</button>
 
-  <form method="POST" enctype="multipart/form-data" autocomplete="off">
-    <div class="container-main">
-      <!-- Datos del Manga -->
-      <div class="col-data">
-        <h1>Editar Manga</h1>
-        <div class="form-row">
-          <label>Título:</label>
-          <input type="text" name="titulo" value="<?= htmlspecialchars($manga['Titulo']) ?>" required maxlength="100">
-        </div>
-        <div class="form-row">
-          <label>Título alternativo:</label>
-          <input type="text" name="titulo_alt" value="<?= htmlspecialchars($manga['TituloAlternativo'] ?? '') ?>" maxlength="100">
-        </div>
-        <div class="form-row">
-          <label>Autor:</label>
-          <input type="text" name="autor" value="<?= htmlspecialchars($manga['Autor']) ?>" required maxlength="80">
-        </div>
-        <div class="form-row">
-          <label>Descripción:</label>
-          <textarea name="descripcion" rows="4" maxlength="600"><?= htmlspecialchars($manga['Descripcion']) ?></textarea>
-        </div>
-        <div class="form-row">
-          <label>Estado:</label>
-          <select name="estado">
-            <option value="En emisión" <?= $manga['Estado'] == 'En emisión' ? 'selected' : '' ?>>En emisión</option>
-            <option value="Finalizado" <?= $manga['Estado'] == 'Finalizado' ? 'selected' : '' ?>>Finalizado</option>
-            <option value="Pausado" <?= $manga['Estado'] == 'Pausado' ? 'selected' : '' ?>>Pausado</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>Fecha publicación:</label>
-          <input type="date" name="fecha" value="<?= $manga['FechaPublicacion']->format('Y-m-d') ?>">
-        </div>
-        <div class="form-row">
-          <label>Género:</label>
-          <select name="genero">
-            <?php foreach ($generos as $g): ?>
-              <option value="<?= $g['GeneroID'] ?>" <?= $manga['GeneroID'] == $g['GeneroID'] ? 'selected' : '' ?>>
-                <?= htmlspecialchars($g['Nombre']) ?>
-              </option>
-            <?php endforeach; ?>
-          </select>
-        </div>
-        <div class="form-actions">
-          <button type="submit">💾 Guardar</button>
-          <button type="button" onclick="location.href='../catalogo_admin.php'">✖ Cancelar</button>
-        </div>
+<form method="POST" enctype="multipart/form-data" autocomplete="off">
+  <div class="container-main">
+    <!-- Datos -->
+    <div class="col-data">
+      <h1>Editar Manga</h1>
+      <div class="form-row">
+        <label>Título:</label>
+        <input type="text" name="titulo" value="<?= htmlspecialchars($manga['Titulo']) ?>" required maxlength="100">
       </div>
-      <!-- Portada -->
-      <div class="col-portada">
-        <div class="portada-box">
-          <label>Cambiar portada (opcional):</label>
-          <input type="file" name="portada" accept="image/png, image/jpeg" onchange="previewPortada(event)">
-          <img class="preview" id="previewPortada" src="<?= htmlspecialchars($manga['URLPortadaWeb']) ?>" alt="Portada actual">
-        </div>
+      <div class="form-row">
+        <label>Título alternativo:</label>
+        <input type="text" name="titulo_alt" value="<?= htmlspecialchars($manga['TituloAlternativo'] ?? '') ?>" maxlength="100">
+      </div>
+      <div class="form-row">
+        <label>Autor:</label>
+        <input type="text" name="autor" value="<?= htmlspecialchars($manga['Autor']) ?>" required maxlength="80">
+      </div>
+      <div class="form-row">
+        <label>Descripción:</label>
+        <textarea name="descripcion" rows="4" maxlength="600"><?= htmlspecialchars($manga['Descripcion']) ?></textarea>
+      </div>
+      <div class="form-row">
+        <label>Estado:</label>
+        <select name="estado">
+          <option value="En emisión" <?= $manga['Estado']=='En emisión'?'selected':'' ?>>En emisión</option>
+          <option value="Finalizado" <?= $manga['Estado']=='Finalizado'?'selected':'' ?>>Finalizado</option>
+          <option value="Pausado"    <?= $manga['Estado']=='Pausado'   ?'selected':'' ?>>Pausado</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Fecha publicación:</label>
+        <input type="date" name="fecha" value="<?= $manga['FechaPublicacion']->format('Y-m-d') ?>">
+      </div>
+      <div class="form-row">
+        <label>Género:</label>
+        <select name="genero">
+          <?php foreach($generos as $g): ?>
+            <option value="<?= $g['GeneroID'] ?>" <?= $manga['GeneroID']==$g['GeneroID']?'selected':'' ?>>
+              <?= htmlspecialchars($g['Nombre']) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="submit">💾 Guardar</button>
+        <button type="button" onclick="location.href='../catalogo_admin.php'">✖ Cancelar</button>
       </div>
     </div>
-  </form>
 
-  <!-- Tomos -->
-  <div class="seccion-tomos">
-    <div class="tomos-card">
-      <div class="tomos-title">Tomos del Manga (ordenados):</div>
-      <?php foreach ($tomos as $t): ?>
-        <div class="tomo">
-          <div class="tomo-info">
-            <?php if (str_starts_with($t->name, '[P]')): ?>
-              <span class="tomo-premium-badge premium" title="Tomo premium">Premium</span>
-            <?php else: ?>
-              <span class="tomo-premium-badge no-premium" title="No premium">No premium</span>
-            <?php endif; ?>
-            <span class="tomo-name"><?= htmlspecialchars($t->name) ?></span>
-          </div>
-          <div class="tomo-actions">
-            <form method="POST" onsubmit="return confirm('¿Eliminar este tomo?');">
-              <input type="hidden" name="file_id" value="<?= $t->id ?>">
-              <input type="hidden" name="file_name" value="<?= $t->name ?>">
-              <input type="hidden" name="accion_tomo" value="eliminar">
-              <button type="submit" title="Eliminar">🗑</button>
-            </form>
-            <?php if (str_starts_with($t->name, '[P]')): ?>
-              <form method="POST" style="display:inline;">
-                <input type="hidden" name="file_id" value="<?= $t->id ?>">
-                <input type="hidden" name="file_name" value="<?= $t->name ?>">
-                <input type="hidden" name="accion_tomo" value="quitar_premium">
-                <button type="submit" title="Quitar Premium">🔓</button>
-              </form>
-            <?php else: ?>
-              <form method="POST" style="display:inline;">
-                <input type="hidden" name="file_id" value="<?= $t->id ?>">
-                <input type="hidden" name="file_name" value="<?= $t->name ?>">
-                <input type="hidden" name="accion_tomo" value="marcar_premium">
-                <button type="submit" title="Marcar Premium">🔒</button>
-              </form>
-            <?php endif; ?>
-          </div>
-        </div>
-      <?php endforeach; ?>
-
-      <form method="POST" enctype="multipart/form-data" class="nuevo-tomo">
-        <label style="margin-top:18px;">📤 Subir nuevo tomo (PDF):</label>
-        <input type="file" name="nuevo_tomo" accept="application/pdf" required style="margin-bottom:10px;">
-        <div style="margin-top:7px;">
-          <button type="submit" style="width:100%;padding:11px 0; background:#0ed6e7; color:#23264a; font-weight:600; border-radius:8px;">Subir</button>
-        </div>
-      </form>
+    <!-- Portada -->
+    <div class="col-portada">
+      <div class="portada-box">
+        <label>Cambiar portada (opcional):</label>
+        <input type="file" name="portada" accept="image/png, image/jpeg" onchange="previewPortada(event)">
+        <img id="previewPortada"
+             src="<?= htmlspecialchars($manga['URLPortadaWeb']) ?>"
+             alt="Portada actual">
+      </div>
     </div>
   </div>
+</form>
+
+<!-- Tomos -->
+<div class="seccion-tomos">
+  <div class="tomos-card">
+    <div class="tomos-title">Tomos del Manga (ordenados):</div>
+    <?php foreach($tomos as $t): ?>
+      <div class="tomo">
+        <div class="tomo-info">
+          <?php if(str_starts_with($t->name,'[P]')): ?>
+            <span class="tomo-premium-badge premium" title="Tomo premium">Premium</span>
+          <?php else: ?>
+            <span class="tomo-premium-badge no-premium" title="No premium">No premium</span>
+          <?php endif; ?>
+          <span class="tomo-name"><?= htmlspecialchars($t->name) ?></span>
+        </div>
+        <div class="tomo-actions">
+          <form method="POST" onsubmit="return confirm('¿Eliminar este tomo?');">
+            <input type="hidden" name="file_id" value="<?= $t->id ?>">
+            <input type="hidden" name="file_name" value="<?= $t->name ?>">
+            <input type="hidden" name="accion_tomo" value="eliminar">
+            <button type="submit" title="Eliminar">🗑</button>
+          </form>
+          <?php if(str_starts_with($t->name,'[P]')): ?>
+            <form method="POST">
+              <input type="hidden" name="file_id" value="<?= $t->id ?>">
+              <input type="hidden" name="file_name" value="<?= $t->name ?>">
+              <input type="hidden" name="accion_tomo" value="quitar_premium">
+              <button type="submit" title="Quitar Premium">🔓</button>
+            </form>
+          <?php else: ?>
+            <form method="POST">
+              <input type="hidden" name="file_id" value="<?= $t->id ?>">
+              <input type="hidden" name="file_name" value="<?= $t->name ?>">
+              <input type="hidden" name="accion_tomo" value="marcar_premium">
+              <button type="submit" title="Marcar Premium">🔒</button>
+            </form>
+          <?php endif; ?>
+        </div>
+      </div>
+    <?php endforeach; ?>
+
+    <form method="POST" enctype="multipart/form-data" class="nuevo-tomo">
+      <label style="margin-top:18px;">📤 Subir nuevo tomo (PDF):</label>
+      <input type="file" name="nuevo_tomo" accept="application/pdf" required style="margin-bottom:10px;">
+      <div style="margin-top:7px;">
+        <button type="submit" style="width:100%;padding:11px 0; background:#0ed6e7; color:#23264a; font-weight:600; border-radius:8px;">Subir</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 </body>
-
 </html>

@@ -178,6 +178,19 @@ ADD Avatar VARBINARY(MAX) NULL;
 
 ALTER TABLE Suscripciones ADD Cancelada BIT DEFAULT 0;
 
+UPDATE Mangas SET URLPortadaWeb = '../assets/imgs/covers/koe no katachi.jpg' WHERE Titulo = 'Koe no Katachi';
+UPDATE Mangas SET URLPortadaWeb = '../assets/imgs/covers/akunohana.jpg' WHERE Titulo = 'Aku no Hana';
+UPDATE Mangas SET URLPortadaWeb = '../assets/imgs/covers/Kurosawa.jpg' WHERE Titulo = 'Onanie Master Kurosawa';
+UPDATE Mangas SET URLPortadaWeb = '../assets/imgs/covers/ruri-dragon-vol1.jpg' WHERE Titulo = 'Ruri Dragon';
+UPDATE Mangas SET URLPortadaWeb = '../assets/imgs/covers/yourname.jpg' WHERE Titulo = 'Kimi no Na wa';
+UPDATE Mangas SET URLPortadaWeb = '../assets/imgs/covers/KS.jpg' WHERE Titulo = 'Kaichou-kun no Shimobe';
+
+
+UPDATE Mangas
+SET URLPortadaWeb = REPLACE(URLPortadaWeb, '../assets/', '/Pagina_Proyecto/assets/')
+WHERE URLPortadaWeb LIKE '../assets/%';
+
+
 select * from TitulosAlternativos
 select * from Generos
 select * from Mangas

@@ -35,12 +35,28 @@ $urlPortadaWeb    = sqlsrv_get_field($stmt, 6);
 $genero           = sqlsrv_get_field($stmt, 7);
 
 /*─────  Portada  ─────────────────────────────────────────────*/
-$urlPortada = '../assets/imgs/no_portada.png';
-if (!empty($urlPortadaWeb) && file_exists($urlPortadaWeb)) {
-    $urlPortada = $urlPortadaWeb;
-} elseif (!empty($urlPortadaDrive)) {
-    $urlPortada = $urlPortadaDrive;
+/*─────  Portada  ────────────────────────────────────────────*/
+$defaultCover = '../assets/imgs/no_portada.png';
+$urlPortada   = $defaultCover;
+
+/* 1) Intenta primero la copia local -------------------------*/
+if (!empty($urlPortadaWeb)) {
+    //   Si viene absoluta (/Pagina_Proyecto/…), usa DOCUMENT_ROOT.
+    //   Si viene relativa (assets/imgs/…), complétala con __DIR__.
+    $absPath = str_starts_with($urlPortadaWeb, '/')
+        ? $_SERVER['DOCUMENT_ROOT'] . $urlPortadaWeb
+        : __DIR__ . '/../' . ltrim($urlPortadaWeb, './');
+
+    if (is_file($absPath)) {
+        $urlPortada = $urlPortadaWeb;                       // ¡encontrada!
+    }
 }
+
+/* 2) Si no existe localmente, usa la de Google Drive --------*/
+if ($urlPortada === $defaultCover && !empty($urlPortadaDrive)) {
+    $urlPortada = driveThumbnail($urlPortadaDrive);         // enlace directo
+}
+
 
 /*─────  ¿El visitante es Premium?  ──────────────────────────*/
 $usuarioPremium = false;
@@ -226,6 +242,18 @@ usort($archivos, function ($a, $b) {
         .login-link:hover {
             text-decoration: underline;
         }
+        footer {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 32px 10px 22px 10px;
+      background: var(--bg-tertiary, #151526);
+      color: var(--text-secondary, #b7b7de);
+      font-size: 0.96rem;
+      box-shadow: 0 -4px 10px rgba(137, 129, 248, 0.08);
+      border-top: 1px solid var(--input-border, #39396b);
+      width: 100%;
+      margin-top: auto;
+    }
     </style>
 </head>
 <body>

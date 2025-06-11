@@ -1,139 +1,158 @@
 <?php
 /*-------------------------------------------------------------
- * subidaMangaForm.php  – CRUD Mangas  (admin)
+ * subidaMangaForm.php  – carga de un manga completo
  *   • SQL Server (sqlsrv)
- *   • Google Drive API v3   (google/apiclient)
+ *   • Google Drive API v3 (google/apiclient)
  *------------------------------------------------------------*/
-if (session_status() === PHP_SESSION_NONE)
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
 
-require_once '../../Config/db.php';                               // $conn
-require_once __DIR__ . '/../..//vendor/autoload.php';         // Google SDK
-$client = require '../../drive_auth_admin.php';            // ← tu Google_Client
-$drive = new Google\Service\Drive($client);
+require_once __DIR__ . '/../../Config/db.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-/*─────────── CONSTANTES ────────────────────────────────────*/
-const COVER_DIR = __DIR__ . '../../assets/imgs/covers';          // destino local
-const COVER_PATH = '../../assets/imgs/covers/';                  // ruta que guarda la BD
-const DRIVE_ROOT = '1LgM-Yh70-ShdG4jT96DuxMEGn1L3MZPe';   // carpeta “mangas app”
+$client = require __DIR__ . '/../../drive_auth_admin.php';
+$drive  = new Google\Service\Drive($client);
 
-/*─────────── UTIL ─────────────────────────────────────────*/
-function slug(string $txt): string
-{
+/*── Rutas de portadas ───────────────────────────────────────*/
+const COVER_DIR = __DIR__ . '/../../assets/imgs/covers/';            // disco  (¡termina en “/”!)
+const COVER_WEB = '/Pagina_Proyecto/assets/imgs/covers/';            // url pública
+const DRIVE_ROOT = '1LgM-Yh70-ShdG4jT96DuxMEGn1L3MZPe';              // carpeta principal en Drive
+
+/*── Utilidades ──────────────────────────────────────────────*/
+function slug(string $txt): string {
     $txt = preg_replace('~[^\pL\d]+~u', '-', $txt);
     $txt = iconv('utf-8', 'ascii//TRANSLIT', $txt);
-    return strtolower(preg_replace('~[^-\w]+~', '', $txt));
+    return strtolower(trim(preg_replace('~[^-\w]+~', '', $txt), '-'));
 }
-function mime_from_ext(string $file): string
-{
-    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-    return $ext === 'png' ? 'image/png' : 'image/jpeg';
+function mime_from_ext(string $file): string {
+    return (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'png')
+           ? 'image/png'
+           : 'image/jpeg';
 }
 
-/*─────────── SUBIDA ──────────────────────────────────────*/
+/*── Proceso POST ────────────────────────────────────────────*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    /* 1. datos */
-    $titulo = trim($_POST['titulo'] ?? '');
-    
-    $autor = trim($_POST['autor'] ?? '');
-    $desc = trim($_POST['descripcion'] ?? '');
-    $estado = trim($_POST['estado'] ?? 'En emisión');
-    $genero = (int) ($_POST['genero'] ?? 0);
-    $fecha = $_POST['fecha'] ?: date('Y-m-d');
+    /*── 1. Datos del formulario ─────────────────────────────*/
+    $titulo = trim($_POST['titulo']        ?? '');
+    $autor  = trim($_POST['autor']         ?? '');
+    $desc   = trim($_POST['descripcion']   ?? '');
+    $estado = trim($_POST['estado']        ?? 'En emisión');
+    $genero = (int)($_POST['genero']       ?? 0);
+    $fecha  =              $_POST['fecha'] ?? date('Y-m-d');
 
-    /* 2. crear carpetas Drive */
+    if ($titulo === '' || $autor === '' || $genero === 0) {
+        echo "<script>alert('❌ Faltan campos obligatorios');history.back();</script>";
+        exit;
+    }
+
+    /*── 2. Crear carpetas en Google Drive ──────────────────*/
     $idManga = $drive->files->create(
         new Google\Service\Drive\DriveFile([
-            'name' => $titulo,
-            'mimeType' => 'application/vnd.google-apps.folder',
-            'parents' => [DRIVE_ROOT]
+            'name'     => $titulo,
+            'parents'  => [DRIVE_ROOT],
+            'mimeType' => 'application/vnd.google-apps.folder'
         ]),
         ['fields' => 'id']
     )->id;
 
     $idPortada = $drive->files->create(
         new Google\Service\Drive\DriveFile([
-            'name' => 'Portada',
-            'mimeType' => 'application/vnd.google-apps.folder',
-            'parents' => [$idManga]
+            'name'     => 'Portada',
+            'parents'  => [$idManga],
+            'mimeType' => 'application/vnd.google-apps.folder'
         ]),
         ['fields' => 'id']
     )->id;
 
     $idVols = $drive->files->create(
         new Google\Service\Drive\DriveFile([
-            'name' => 'Volumenes',
-            'mimeType' => 'application/vnd.google-apps.folder',
-            'parents' => [$idManga]
+            'name'     => 'Volumenes',
+            'parents'  => [$idManga],
+            'mimeType' => 'application/vnd.google-apps.folder'
         ]),
         ['fields' => 'id']
     )->id;
 
-    /* 3. ─── PORTADA (Drive + local) ───────────────────────*/
-    $tmpPortada = $_FILES['portada']['tmp_name'];
-    $ext = strtolower(pathinfo($_FILES['portada']['name'], PATHINFO_EXTENSION));
-    $mimeImg = mime_from_ext($ext);
+    /*── 3. Validar y copiar portada al servidor ─────────────*/
+    if (!isset($_FILES['portada']) || $_FILES['portada']['error'] !== UPLOAD_ERR_OK) {
+        echo "<script>alert('❌ Error: No se recibió la imagen de portada.');history.back();</script>";
+        exit;
+    }
 
-    /* 3A)   Drive */
-    $metaImg = new Google\Service\Drive\DriveFile([
-        'name' => 'cover.' . $ext,
+    $tmpPortada = $_FILES['portada']['tmp_name'];
+    $ext        = strtolower(pathinfo($_FILES['portada']['name'], PATHINFO_EXTENSION));
+
+    if (!in_array($ext, ['jpg', 'jpeg', 'png'])) {
+        echo "<script>alert('❌ Solo se permiten imágenes JPG o PNG.');history.back();</script>";
+        exit;
+    }
+    if (!is_uploaded_file($tmpPortada)) {
+        echo "<script>alert('❌ La imagen no fue subida correctamente.');history.back();</script>";
+        exit;
+    }
+
+    if (!is_dir(COVER_DIR) && !mkdir(COVER_DIR, 0775, true)) {
+        echo "<script>alert('❌ No se pudo crear la carpeta de portadas.');history.back();</script>";
+        exit;
+    }
+
+    $fileLocal = slug($titulo) . '.' . $ext;
+    $destLocal = COVER_DIR . $fileLocal;
+    if (!move_uploaded_file($tmpPortada, $destLocal)) {
+        echo "<script>alert('❌ No se pudo guardar la imagen local.');history.back();</script>";
+        exit;
+    }
+
+    /* url pública que usará el catálogo */
+    $urlPortWeb   = COVER_WEB . $fileLocal;
+
+    /*── 4. Subir portada a Drive ────────────────────────────*/
+    $portadaMeta = new Google\Service\Drive\DriveFile([
+        'name'    => 'cover.' . $ext,
         'parents' => [$idPortada]
     ]);
-    $driveRes = $drive->files->create(
-        $metaImg,
+    $portadaUp = $drive->files->create(
+        $portadaMeta,
         [
-            'data' => file_get_contents($tmpPortada),
-            'mimeType' => $mimeImg,
+            'data'       => file_get_contents($destLocal),
+            'mimeType'   => mime_from_ext($ext),
             'uploadType' => 'multipart',
-            'fields' => 'id'
+            'fields'     => 'id'
         ]
     );
-    $urlPortDrive = "https://drive.google.com/uc?export=view&id={$driveRes->id}";
+    $urlPortDrive = "https://drive.google.com/uc?export=view&id={$portadaUp->id}";
 
-    /* 3B)   Local  (/imgs/covers/slug.jpg) */
-    if (!is_dir(COVER_DIR))
-        mkdir(COVER_DIR, 0775, true);
-    $fileLocal = slug($titulo) . '.' . $ext;
-    $destLocal = COVER_DIR . '/' . $fileLocal;
-    move_uploaded_file($tmpPortada, $destLocal);
-    $urlPortWeb = COVER_PATH . $fileLocal;            // lo que verá la web
-
-    /* 4. ─── TOMOS  (solo Drive) ──────────────────────────*/
-    foreach ($_FILES['tomos']['tmp_name'] as $k => $tmp) {
-        if (!is_uploaded_file($tmp))
-            continue;
-        $meta = new Google\Service\Drive\DriveFile([
-            'name' => $_FILES['tomos']['name'][$k],
-            'parents' => [$idVols]
-        ]);
-        $drive->files->create($meta, [
-            'data' => file_get_contents($tmp),
-            'mimeType' => 'application/pdf',
-            'uploadType' => 'multipart'
-        ]);
+    /*── 5. Subir tomos PDF ─────────────────────────────────*/
+    if (!empty($_FILES['tomos']['tmp_name'][0])) {
+        foreach ($_FILES['tomos']['tmp_name'] as $k => $tmp) {
+            if (!is_uploaded_file($tmp)) continue;
+            $meta = new Google\Service\Drive\DriveFile([
+                'name'    => $_FILES['tomos']['name'][$k],
+                'parents' => [$idVols]
+            ]);
+            $drive->files->create($meta, [
+                'data'       => file_get_contents($tmp),
+                'mimeType'   => 'application/pdf',
+                'uploadType' => 'multipart'
+            ]);
+        }
     }
+
     $urlVols = "https://drive.google.com/drive/folders/{$idVols}?usp=sharing";
 
-    /* 5. ─── INSERT BD  (incluye URLPortadaWeb) ───────────*/
+    /*── 6. Guardar en la base de datos ─────────────────────*/
     $sql = "INSERT INTO Mangas
-            (Titulo,Autor,Descripcion,Estado,FechaPublicacion,
-             URLMangaDrive,URLPortada,URLPortadaWeb,GeneroID)
-            VALUES (?,?,?,?,?,?,?,?,?)";
+            (Titulo, Autor, Descripcion, Estado, FechaPublicacion,
+             URLMangaDrive, URLPortada, URLPortadaWeb, GeneroID)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     $ok = sqlsrv_query(
         $conn,
         $sql,
-        [
-            $titulo,
-            $autor,
-            $desc,
-            $estado,
-            $fecha,
-            $urlVols,
-            $urlPortDrive,
-            $urlPortWeb,
-            $genero
-        ]
+        [$titulo, $autor, $desc, $estado, $fecha,
+         $urlVols, $urlPortDrive, $urlPortWeb, $genero]
     );
 
     if ($ok) {
@@ -317,7 +336,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <header>
   <div class="header-left">
-    <a href="catalogo_admin.php" class="btn-volver">
+    <a href="../catalogo_admin.php" class="btn-volver">
       <i class="fas fa-arrow-left"></i> Volver
     </a>
   </div>

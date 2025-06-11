@@ -4,12 +4,11 @@ require_once '../Config/db.php';
 require_once '../drive_auth.php';
 
 if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] != 2) {
-    header("Location: ../Public/login.html");
-    exit();
+  header("Location: ../Public/login.html");
+  exit();
 }
-
 if (!isset($_GET['id'])) die('Manga no especificado.');
-$mangaId = (int)$_GET['id'];
+$mangaId = $_GET['id']; // Mantener string por si el ID es 0
 
 // ───── Obtener info manga ─────
 $sql = "SELECT M.Titulo, M.Autor, M.Descripcion, M.FechaPublicacion,
@@ -32,40 +31,42 @@ $genero           = sqlsrv_get_field($stmt, 7);
 
 // ───── Portada ─────
 $urlPortada = '../assets/imgs/no_portada.png';
-if (!empty($urlPortadaWeb) && file_exists($urlPortadaWeb)) {
-    $urlPortada = $urlPortadaWeb;
-} elseif (!empty($urlPortadaDrive)) {
-    $urlPortada = $urlPortadaDrive;
+if (!empty($urlPortadaWeb)) {
+  $abs = rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') . $urlPortadaWeb;
+  if (is_file($abs)) $urlPortada = $urlPortadaWeb; // ✓ existe en disco
+}
+if ($urlPortada === '../assets/imgs/no_portada.png' && !empty($urlPortadaDrive)) {
+  $urlPortada = $urlPortadaDrive; // fallback Drive
 }
 
 // ───── Carpeta Google Drive ─────
 function folderId($url) {
-    if (preg_match('/\/folders\/([a-zA-Z0-9_-]+)/', $url, $m)) return $m[1];
-    if (preg_match('/[?&]id=([a-zA-Z0-9_-]+)/', $url, $m))    return $m[1];
-    return null;
+  if (preg_match('/\/folders\/([a-zA-Z0-9_-]+)/', $url, $m)) return $m[1];
+  if (preg_match('/[?&]id=([a-zA-Z0-9_-]+)/', $url, $m))    return $m[1];
+  return null;
 }
 $folder_id = folderId($urlDrive) ?: die('Carpeta Drive inválida.');
 
 // ───── Listar PDFs ─────
 $ch = curl_init(
-    'https://www.googleapis.com/drive/v3/files?' . http_build_query([
-        'q'        => sprintf("'%s' in parents and mimeType='application/pdf' and trashed=false", $folder_id),
-        'fields'   => 'files(id,name,webViewLink)',
-        'pageSize' => 100
-    ])
+  'https://www.googleapis.com/drive/v3/files?' . http_build_query([
+    'q'        => sprintf("'%s' in parents and mimeType='application/pdf' and trashed=false", $folder_id),
+    'fields'   => 'files(id,name,webViewLink)',
+    'pageSize' => 100
+  ])
 );
 curl_setopt_array($ch, [
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER     => ["Authorization: Bearer $access_token"]
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_HTTPHEADER     => ["Authorization: Bearer $access_token"]
 ]);
 $data     = json_decode(curl_exec($ch), true) ?: [];
 $archivos = $data['files'] ?? [];
 curl_close($ch);
 
 usort($archivos, function ($a, $b) {
-    preg_match('/(\d+)/', $a['name'], $na);
-    preg_match('/(\d+)/', $b['name'], $nb);
-    return ($na[1] ?? 0) - ($nb[1] ?? 0);
+  preg_match('/(\d+)/', $a['name'], $na);
+  preg_match('/(\d+)/', $b['name'], $nb);
+  return ($na[1] ?? 0) - ($nb[1] ?? 0);
 });
 ?>
 <!DOCTYPE html>
@@ -427,6 +428,30 @@ usort($archivos, function ($a, $b) {
         font-size: 1.1em;
       }
     }
+
+
+     footer {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 32px 10px 22px 10px;
+      background: var(--bg-tertiary, #151526);
+      color: var(--text-secondary, #b7b7de);
+      font-size: 0.96rem;
+      box-shadow: 0 -4px 10px rgba(137, 129, 248, 0.08);
+      border-top: 1px solid var(--input-border, #39396b);
+      width: 100%;
+      margin-top: auto;
+    }
+      body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-primary, #1c1c28);
+      color: var(--text-primary, #f0f0f0);
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+
+    
   </style>
 </head>
 <body>
@@ -438,10 +463,15 @@ usort($archivos, function ($a, $b) {
   <!-- Botones de acción en la parte superior derecha -->
     <div class="top-action-buttons">
       <a href="./Admin/editar_manga.php?id=<?= $mangaId ?>" class="action-btn" title="Editar manga">✏️</a>
-      <form action="./Admin/eliminar_manga.php" method="POST" style="margin:0;" onsubmit="return confirm('¿Seguro que deseas eliminar este manga? Esta acción no se puede deshacer.');">
-        <input type="hidden" name="manga_id" value="<?= $mangaId ?>">
-        <button type="submit" class="action-btn delete" title="Eliminar manga">🗑️</button>
-      </form>
+      <!-- 🔄 Eliminar manga -->
+<form method="POST"
+      action="./Admin/eliminar_manga.php?id=<?= $mangaId ?>"
+      style="margin:0;"
+      onsubmit="return confirm('¿Seguro que deseas eliminar este manga? Esta acción no se puede deshacer.');">
+  <!-- Si usas token CSRF, colócalo aquí -->
+  <button type="submit" class="action-btn delete" title="Eliminar manga">🗑️</button>
+</form>
+
       <button id="theme-toggle" class="action-btn" aria-label="Cambiar tema">
         <span class="dark-icon">🌙</span>
         <span class="light-icon">☀️</span>

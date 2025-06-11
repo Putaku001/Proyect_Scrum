@@ -5,6 +5,7 @@ require_once '../Config/db.php';
 $generoSeleccionado = $_GET['genero'] ?? '';
 $busqueda = $_GET['buscar'] ?? '';
 
+// Redirección aleatoria
 if (isset($_GET['sorprendeme'])) {
     $sqlAleatorio = "SELECT TOP 1 MangaID FROM Mangas ORDER BY NEWID()";
     $stmtAleatorio = sqlsrv_query($conn, $sqlAleatorio);
@@ -22,7 +23,7 @@ while ($row = sqlsrv_fetch_array($stmtGeneros, SQLSRV_FETCH_ASSOC)) {
     $generos[] = $row;
 }
 
-// Obtener mangas con filtros, incluyendo URLPortadaWeb
+// Obtener mangas con filtros
 $sql = "SELECT M.MangaID, M.Titulo, M.Autor, M.Descripcion, M.Estado, M.FechaPublicacion, 
                M.URLMangaDrive, M.URLPortada, M.URLPortadaWeb, G.Nombre AS Genero
         FROM Mangas M
@@ -30,29 +31,27 @@ $sql = "SELECT M.MangaID, M.Titulo, M.Autor, M.Descripcion, M.Estado, M.FechaPub
         WHERE 1=1";
 $params = [];
 
-if ($generoSeleccionado != '') {
+if (!empty($generoSeleccionado)) {
     $sql .= " AND M.GeneroID = ?";
     $params[] = $generoSeleccionado;
 }
-if ($busqueda != '') {
-    $sql .= " AND M.Titulo LIKE ?";
+
+if (!empty($busqueda)) {
+    // Búsqueda sin distinguir mayúsculas ni acentos
+    $sql .= " AND M.Titulo COLLATE Latin1_General_CI_AI LIKE ?";
     $params[] = '%' . $busqueda . '%';
 }
 
 $stmt = sqlsrv_query($conn, $sql, $params);
 $mangas = [];
+
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-    // Elegir portada: local si existe, si no la de Drive
-    $portadaWeb = $row['URLPortadaWeb'];
-    if (!empty($portadaWeb) && file_exists($portadaWeb)) {
-        $row['PortadaElegida'] = $portadaWeb;
-    } else {
-        $row['PortadaElegida'] = $row['URLPortada'];
-    }
+    // Elegir portada local si está seteada, de lo contrario usar la de Drive
+    $portadaWeb = trim($row['URLPortadaWeb']);
+    $row['PortadaElegida'] = (!empty($portadaWeb)) ? $portadaWeb : $row['URLPortada'];
     $mangas[] = $row;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">

@@ -1,200 +1,290 @@
 <?php
+/*─────────────────────────────────────────────────────────────
+ * admin_datos.php   –   Exportar / Importar mangas
+ *     • SQL Server (sqlsrv)
+ *     • Google Drive API v3 (cuenta de servicio)
+ *────────────────────────────────────────────────────────────*/
 session_start();
 require_once '../../Config/db.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+$client = require __DIR__ . '/../../drive_auth_admin.php';
+$drive  = new Google\Service\Drive($client);
 
 if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] != 2) {
     header("Location: ../../Public/login.html");
     exit();
 }
 
-function slug(string $txt): string {
+/*──────── Rutas de portadas ─────────────────────────────────*/
+const COVER_DIR = __DIR__ . '/../../assets/imgs/covers/';   // disco
+const COVER_WEB = '/Pagina_Proyecto/assets/imgs/covers/';   // url pública
+
+/*──────── Utilidades genéricas ─────────────────────────────*/
+function slug(string $txt): string
+{
     $txt = preg_replace('~[^\pL\d]+~u', '-', $txt);
     $txt = iconv('utf-8', 'ascii//TRANSLIT', $txt);
-    return strtolower(preg_replace('~[^-\w]+~', '', $txt));
+    return strtolower(trim(preg_replace('~[^-\w]+~', '', $txt), '-'));
+}
+function esc($txt) { return str_replace("'", "''", $txt ?? ''); }
+
+/*──────── Saber si ya existe ───────────────────────────────*/
+function mangaYaExiste(string $titulo, $conn): bool
+{
+    $stmt = sqlsrv_query(
+        $conn,
+        "SELECT 1 FROM Mangas WHERE LOWER(RTRIM(LTRIM(Titulo))) = ?",
+        [strtolower(trim($titulo))]
+    );
+    return (bool) sqlsrv_fetch_array($stmt);
 }
 
-function mangaYaExiste($titulo, $conn): bool {
-    $stmt = sqlsrv_query($conn, "SELECT 1 FROM Mangas WHERE LOWER(RTRIM(LTRIM(Titulo))) = ?", [strtolower(trim($titulo))]);
-    return sqlsrv_fetch_array($stmt) ? true : false;
+/*──────── Sacar ID de Drive de cualquier URL ───────────────*/
+function driveIdFromUrl(string $url): ?string
+{
+    // https://drive.google.com/uc?export=view&id=ID
+    if (preg_match('/[?&]id=([^&]+)/', $url, $m))           return $m[1];
+
+    // https://drive.google.com/file/d/ID/view
+    if (preg_match('~/file/d/([^/]+)~', $url, $m))          return $m[1];
+
+    // https://drive.google.com/open?id=ID
+    if (preg_match('~/open\?id=([^&]+)~', $url, $m))        return $m[1];
+
+    // Compartido desde la app móvil: https://drive.google.com/uc?id=ID&export=download
+    if (preg_match('/\/uc\?.*id=([^&]+)/', $url, $m))       return $m[1];
+
+    return null;
 }
 
-function extraerTituloYPortada($script): array {
-    $pattern = "/INSERT INTO Mangas\s*\((.*?)\)\s*VALUES\s*\((.*?)\)/is";
-    if (preg_match($pattern, $script, $match)) {
-        $columnas = array_map('trim', explode(',', $match[1]));
-        $valores  = array_map('trim', explode(',', $match[2]));
+/*──────── Descargar imagen desde Drive ─────────────────────*/
+/**
+ * Descarga una imagen de Drive.
+ *  • 1º  intenta vía API (requiere permiso de la cuenta de servicio)
+ *  • 2º  si la API responde 404/403, intenta con el enlace público
+ *        https://drive.google.com/uc?export=download&id=ID
+ *  • 3º  si el enlace público tampoco sirve, lanza excepción
+ *
+ * Devuelve la extensión real ('jpg' o 'png').
+ */
+function descargarImagenDrive(string $url, string $dest): string
+{
+    global $drive;
 
-        $titulo = '';
-        $portada = '';
+    /* a)  Detectar enlace ya “lh3.googleusercontent.com” ------------- */
+    if (preg_match('~^(https://)?lh3\.googleusercontent\.com/~', $url)) {
+        $raw = @file_get_contents($url);
+        if ($raw === false) throw new Exception('No se pudo descargar imagen pública.');
+        file_put_contents($dest . '.jpg', $raw);
+        return 'jpg';
+    }
 
-        foreach ($columnas as $i => $col) {
-            $col = strtolower($col);
-            $valor = trim($valores[$i], " N'");
-            if ($col === 'titulo') $titulo = $valor;
-            if ($col === 'urlportada') $portada = $valor;
+    /* b)  Obtener ID -------------------------------------------------- */
+    $id = driveIdFromUrl($url);
+    if (!$id) throw new Exception('ID de Drive no válido: ' . $url);
+
+    /* c)  Intentar API de Drive -------------------------------------- */
+    try {
+        $meta = $drive->files->get($id, ['fields' => 'mimeType']);
+        $mime = $meta->mimeType;
+        if (!in_array($mime, ['image/jpeg', 'image/png'])) {
+            throw new Exception("El archivo no es JPG/PNG (mime=$mime).");
         }
-        return [$titulo, $portada];
-    }
-    return [null, null];
-}
-
-function descargarImagenDrive($urlDrive, $guardarComo) {
-    if (!preg_match('/id=([a-zA-Z0-9_-]+)/', $urlDrive, $idMatch)) {
-        throw new Exception("No se encontró ID válido en la URL de portada.");
-    }
-
-    $id = $idMatch[1];
-    $downloadUrl = "https://drive.google.com/uc?export=download&id=$id";
-
-    $ch = curl_init($downloadUrl);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
-    curl_setopt($ch, CURLOPT_COOKIEFILE, "");
-    $imageData = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if (!$imageData || $httpCode !== 200 || strlen($imageData) < 1000) {
-        throw new Exception("No se pudo descargar la portada desde Drive (HTTP $httpCode).");
-    }
-
-    if (!is_dir(dirname($guardarComo))) {
-        mkdir(dirname($guardarComo), 0775, true);
-    }
-
-    file_put_contents($guardarComo, $imageData);
-}
-
-function ejecutarScriptPorBloques($script, $conn) {
-    // ❌ ELIMINAR cualquier DECLARE/SET de @NewMangaID
-    $script = preg_replace("/DECLARE\s+@NewMangaID\s+INT\s*;/i", "", $script);
-    $script = preg_replace("/SET\s+@NewMangaID\s+=\s+SCOPE_IDENTITY\s*\(\s*\)\s*;/i", "", $script);
-    $script = preg_replace("/@NewMangaID/i", "SCOPE_IDENTITY()", $script);
-    $script = preg_replace("/IF EXISTS\s*\(.*?\)\s*BEGIN\s*.*?RETURN;.*?END\s*/is", "", $script);
-
-    $bloques = array_filter(array_map('trim', explode(';', $script)));
-    foreach ($bloques as $sql) {
-        if ($sql !== '') {
-            $stmt = sqlsrv_query($conn, $sql);
-            if (!$stmt) throw new Exception(print_r(sqlsrv_errors(), true));
+        $raw = $drive->files->get($id, ['alt' => 'media'])->getBody()->getContents();
+        if (!$raw || strlen($raw) < 500) {
+            throw new Exception('Descarga vacía o muy pequeña por API.');
         }
-    }
-}
+    } catch (\Google\Service\Exception $e) {
+        /* 404 o 403 → probamos enlace público ------------------------ */
+        if (in_array($e->getCode(), [403, 404])) {
+           $public = 'https://drive.google.com/uc?export=download&id=' . $id;
+            $raw    = @file_get_contents($public);
 
-// ─── Exportar todos los mangas ───
-if (isset($_POST['export_all'])) {
-    $sql = "SELECT MangaID FROM Mangas";
-    $stmt = sqlsrv_query($conn, $sql);
-    $script = "/* === EXPORTACIÓN MASIVA === */\nBEGIN TRANSACTION;\n";
-
-    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        $script .= generarScriptManga($row['MangaID'], $conn);
-    }
-
-    $script .= "COMMIT;\n";
-    header("Content-Type: text/sql");
-    header("Content-Disposition: attachment; filename=\"mangas_" . date("Ymd_His") . ".sql\"");
-    echo $script;
-    exit();
-}
-
-// ─── Exportar individual ───
-if (isset($_POST['export_id'])) {
-    $id = (int) $_POST['export_id'];
-    $script = generarScriptManga($id, $conn);
-    header("Content-Type: text/sql");
-    header("Content-Disposition: attachment; filename=\"manga_$id.sql\"");
-    echo $script;
-    exit();
-}
-function esc($txt) {
-    return str_replace("'", "''", $txt ?? '');
-}
-
-function generarScriptManga($id, $conn) {
-    $sql = "SELECT Titulo, Autor, Descripcion, Estado,
-                   CONVERT(date, FechaPublicacion) AS Fec,
-                   URLMangaDrive, URLPortada, GeneroID
-            FROM Mangas WHERE MangaID = ?";
-    $stmt = sqlsrv_query($conn, $sql, [$id]);
-    if (!$stmt || !($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))) return '';
-
-    extract($row);
-    $titulo = esc($Titulo);
-    $autor = esc($Autor);
-    $descripcion = esc($Descripcion);
-    $estado = esc($Estado);
-    $fecha = $Fec->format('Y-m-d');
-    $urlDrive = esc($URLMangaDrive);
-    $urlPortada = esc($URLPortada);
-    $generoID = (int)$GeneroID;
-
-    $script = "\n/* === $titulo === */\n";
-    $script .= "IF EXISTS (SELECT 1 FROM Mangas WHERE Titulo = N'$titulo')\nBEGIN\n";
-    $script .= "    PRINT 'Manga \"$titulo\" ya existe — se omitió.';\n    RETURN;\nEND\n";
-    $script .= "DECLARE @NewMangaID INT;\n";
-    $script .= "INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion, URLMangaDrive, URLPortada, GeneroID)\n";
-    $script .= "VALUES (N'$titulo', N'$autor', N'$descripcion', N'$estado', '$fecha', N'$urlDrive', N'$urlPortada', $generoID);\n";
-    $script .= "SET @NewMangaID = SCOPE_IDENTITY();\n";
-
-    $altTitles = sqlsrv_query($conn, "SELECT TituloAlternativo FROM TitulosAlternativos WHERE MangaID = ?", [$id]);
-    while ($alt = sqlsrv_fetch_array($altTitles, SQLSRV_FETCH_ASSOC)) {
-        $ta = esc($alt['TituloAlternativo']);
-        $script .= "INSERT INTO TitulosAlternativos (MangaID, TituloAlternativo)\n";
-        $script .= "VALUES (@NewMangaID, N'$ta');\n";
-    }
-
-    return $script;
-}
-
-
-/* ───── ACCIONES ───── */
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['importar']) && isset($_FILES['sql_file'])) {
-        $file = $_FILES['sql_file']['tmp_name'];
-        $name = $_FILES['sql_file']['name'];
-        $content = file_get_contents($file);
-        $msg = "";
-
-        [$titulo, $urlDrive] = extraerTituloYPortada($content);
-
-        if (!$titulo || !$urlDrive) {
-            $msg = "❌ Error al importar: Falta título o URL de portada.";
-        } else if (mangaYaExiste($titulo, $conn)) {
-            $msg = "⚠️ El manga '$titulo' ya existe. Se omitió.";
-        } else {
-            try {
-                $slug = slug($titulo);
-                $relativePath = "../../assets/imgs/covers/$slug.jpg";
-                $absolutePath = __DIR__ . "/$relativePath";
-
-                descargarImagenDrive($urlDrive, $absolutePath); // ✅ Descargar imagen
-
-                ejecutarScriptPorBloques($content, $conn); // ✅ Insertar
-
-                $stmt = sqlsrv_query($conn, "SELECT MangaID FROM Mangas WHERE LOWER(RTRIM(LTRIM(Titulo))) = ?", [strtolower(trim($titulo))]);
-                if ($manga = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                    $id = $manga['MangaID'];
-                    sqlsrv_query($conn,
-                        "UPDATE Mangas SET URLPortadaWeb = ? WHERE MangaID = ?",
-                        [$relativePath, $id]
-                    );
+            if (!$raw || strlen($raw) < 500) {
+                /* ——— FALLBACK: usar la portada genérica ——— */
+                $def = COVER_DIR . 'no_portada.png';         // asegúrate de que exista
+                if (!is_file($def)) {
+                    throw new Exception('Portada genérica no encontrada: ' . $def);
                 }
+                copy($def, $dest . '.png');
+                return 'png';
+            }
+            /* Necesitamos averiguar mime a partir del binario */
+            $mime = finfo_buffer(finfo_open(FILEINFO_MIME_TYPE), $raw);
+        } else {
+            throw $e;   // error distinto → lo re-lanzamos
+        }
+    }
 
-                $msg = "✅ Script '$name' importado correctamente.";
-            } catch (Exception $e) {
-                $msg = "❌ Error al importar: " . $e->getMessage();
+    /* d)  Elegir extensión y guardar --------------------------------- */
+    $ext = ($mime === 'image/png') ? 'png' : 'jpg';
+    if (!is_dir(dirname($dest))) mkdir(dirname($dest), 0775, true);
+    file_put_contents($dest . '.' . $ext, $raw);
+    return $ext;
+}
+
+/*──────── Extraer Título y URLPortada de un script SQL ─────
+ * Usa str_getcsv para soportar comas y saltos de línea dentro
+ * de las columnas tipo texto.                                */
+function extraerTituloYPortada(string $sql): array
+{
+    $pat = '/INSERT\s+INTO\s+\[?Mangas\]?\s*\((.*?)\)\s*VALUES\s*\((.*?)\)/is';
+    if (!preg_match($pat, $sql, $m)) return [null, null];
+
+    $cols = array_map('trim', explode(',', $m[1]));
+    $vals = str_getcsv($m[2], ',', "'");
+
+    $tit = $port = null;
+    foreach ($cols as $i => $c) {
+        $c = strtolower(trim($c, '[] '));
+        $v = isset($vals[$i]) ? trim($vals[$i]) : '';
+        if (stripos($v, "N'") === 0) $v = substr($v, 2);
+        $v = trim($v, "'");
+        if ($c === 'titulo')       $tit  = $v;
+        if ($c === 'urlportada')   $port = $v;
+    }
+    return [$tit, $port];
+}
+
+/*──────── Ejecutar script por bloques (;) ───────────────────*/
+function ejecutarScriptPorBloques(string $sql, $conn): void
+{
+    $find = [
+        '/DECLARE\s+@NewMangaID\s+INT\s*;/i',
+        '/SET\s+@NewMangaID\s+=\s+SCOPE_IDENTITY\(\)\s*;/i',
+        '/@NewMangaID/i',
+        '/IF EXISTS\s*\(.*?\)\s*BEGIN\s*.*?RETURN;.*?END\s*/is',
+    ];
+    $repl = ['', '', 'SCOPE_IDENTITY()', ''];
+    $sql  = preg_replace($find, $repl, $sql);
+
+    foreach (array_filter(array_map('trim', explode(';', $sql))) as $b) {
+        if ($b !== '') {
+            if (!sqlsrv_query($conn, $b)) {
+                throw new Exception(print_r(sqlsrv_errors(), true));
             }
         }
-
-        echo "<script>alert(" . json_encode($msg) . "); window.location.href=window.location.href;</script>";
-        exit();
     }
 }
+
+/*──────── Generar script de exportación ─────────────────────*/
+function scriptManga(int $id, $conn): string
+{
+    $q = "SELECT Titulo, Autor, Descripcion, Estado,
+                 CONVERT(date, FechaPublicacion) AS Fec,
+                 URLMangaDrive, URLPortada, GeneroID
+          FROM Mangas WHERE MangaID = ?";
+    $st = sqlsrv_query($conn, $q, [$id]);
+    if (!$st || !($r = sqlsrv_fetch_array($st, SQLSRV_FETCH_ASSOC))) return '';
+
+    extract($r);
+    $titulo = esc($Titulo);
+    $autor  = esc($Autor);
+    $desc   = esc($Descripcion);
+    $estado = esc($Estado);
+    $fecha  = $Fec->format('Y-m-d');
+    $drive  = esc($URLMangaDrive);
+    $port   = esc($URLPortada);
+    $genId  = (int) $GeneroID;
+
+    $s  = "\n/* === $titulo === */\n";
+    $s .= "IF EXISTS (SELECT 1 FROM Mangas WHERE Titulo = N'$titulo')\nBEGIN\n";
+    $s .= "  PRINT 'Manga \"$titulo\" ya existe — se omitió.';\n  RETURN;\nEND\n";
+    $s .= "DECLARE @NewMangaID INT;\n";
+    $s .= "INSERT INTO Mangas (Titulo, Autor, Descripcion, Estado, FechaPublicacion,\n";
+    $s .= "                     URLMangaDrive, URLPortada, GeneroID)\n";
+    $s .= "VALUES (N'$titulo', N'$autor', N'$desc', N'$estado', '$fecha',\n";
+    $s .= "        N'$drive', N'$port', $genId);\n";
+    $s .= "SET @NewMangaID = SCOPE_IDENTITY();\n";
+
+    $alts = sqlsrv_query($conn,
+        "SELECT TituloAlternativo FROM TitulosAlternativos WHERE MangaID = ?", [$id]);
+    while ($a = sqlsrv_fetch_array($alts, SQLSRV_FETCH_ASSOC)) {
+        $ta = esc($a['TituloAlternativo']);
+        $s .= "INSERT INTO TitulosAlternativos (MangaID, TituloAlternativo)\n";
+        $s .= "VALUES (@NewMangaID, N'$ta');\n";
+    }
+    return $s;
+}
+
+/*─────────────────────── EXPORTAR ───────────────────────────*/
+if (isset($_POST['export_all'])) {
+    $big = "/* EXPORT MASIVO */\nBEGIN TRANSACTION;\n";
+    $lst = sqlsrv_query($conn, "SELECT MangaID FROM Mangas");
+    while ($r = sqlsrv_fetch_array($lst, SQLSRV_FETCH_ASSOC)) {
+        $big .= scriptManga((int) $r['MangaID'], $conn);
+    }
+    $big .= "COMMIT;\n";
+    header('Content-Type: text/sql');
+    header('Content-Disposition: attachment; filename="mangas_' . date('Ymd_His') . '.sql"');
+    echo $big;
+    exit;
+}
+if (isset($_POST['export_id'])) {
+    $id  = (int) $_POST['export_id'];
+    $sql = scriptManga($id, $conn);
+    header('Content-Type: text/sql');
+    header("Content-Disposition: attachment; filename=\"manga_$id.sql\"");
+    echo $sql;
+    exit;
+}
+
+/*─────────────────────── IMPORTAR ───────────────────────────*/
+if ($_SERVER['REQUEST_METHOD'] === 'POST'
+    && isset($_POST['importar'])
+    && isset($_FILES['sql_file'])) {
+
+    $tmp  = $_FILES['sql_file']['tmp_name'];
+    $name = $_FILES['sql_file']['name'];
+    $sql  = file_get_contents($tmp);
+    [$titulo, $urlPort] = extraerTituloYPortada($sql);
+
+    $flash = '';
+    if (!$titulo || !$urlPort) {
+        $flash = "❌ Script inválido: falta Título o URLPortada.";
+    } elseif (mangaYaExiste($titulo, $conn)) {
+        $flash = "⚠️ El manga '$titulo' ya existe — se omitió.";
+    } else {
+        try {
+            /* 1. Descargar portada */
+            $slug = slug($titulo);
+            $dest = COVER_DIR . $slug;           // sin extensión aún
+            $ext  = descargarImagenDrive($urlPort, $dest);
+            $web  = COVER_WEB . $slug . '.' . $ext;
+
+            /* 2. Ejecutar script */
+            ejecutarScriptPorBloques($sql, $conn);
+
+            /* 3. Actualizar URLPortadaWeb */
+            $st = sqlsrv_query(
+                $conn,
+                "SELECT MangaID FROM Mangas WHERE LOWER(RTRIM(LTRIM(Titulo))) = ?",
+                [strtolower(trim($titulo))]
+            );
+            if ($m = sqlsrv_fetch_array($st, SQLSRV_FETCH_ASSOC)) {
+                sqlsrv_query(
+                    $conn,
+                    "UPDATE Mangas SET URLPortadaWeb = ? WHERE MangaID = ?",
+                    [$web, $m['MangaID']]
+                );
+            }
+            $flash = "✅ '$name' importado correctamente.";
+        } catch (Exception $e) {
+            $flash = "❌ Error al importar: " . $e->getMessage();
+        }
+    }
+
+    $_SESSION['flash'] = $flash;
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+
+/*────────── Mensaje Flash ──────────*/
+if (!empty($_SESSION['flash'])) {
+    echo "<script>alert(" . json_encode($_SESSION['flash']) . ");</script>";
+    unset($_SESSION['flash']);
+}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es" data-theme="dark">
 <head>

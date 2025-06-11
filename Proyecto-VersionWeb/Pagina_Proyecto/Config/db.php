@@ -2,8 +2,8 @@
 $serverName = "localhost";
 $connectionOptions = [
     "Database" => "proyectoDBS2",
-    "Uid" => "usuarioSQL",    // ← reemplaza con tu usuario
-    "PWD" => "Sijilo75", // ← reemplaza con tu contraseña
+    "Uid" => "Shadow01xd",    // ← reemplaza con tu usuario
+    "PWD" => "PraiseTheFool", // ← reemplaza con tu contraseña
     "CharacterSet" => "UTF-8"
 ];
 
