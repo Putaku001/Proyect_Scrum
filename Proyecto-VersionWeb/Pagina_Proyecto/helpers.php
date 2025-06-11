@@ -7,5 +7,5 @@ function avatarSrcFromDB($conn, $usuarioID) {
     $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
     return ($row && $row['Avatar'])
         ? 'data:image/png;base64,' . base64_encode($row['Avatar'])
-        : './imgs/default.png';
+        : './assets/imgs/default.png';
 }

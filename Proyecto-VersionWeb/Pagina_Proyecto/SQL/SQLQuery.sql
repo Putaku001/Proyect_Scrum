@@ -1,7 +1,7 @@
-﻿create database proyectoDBS2D
+﻿create database proyectoDBS2
 go
 
-use proyectoDBS2D
+use proyectoDBS2
 go
 
 
